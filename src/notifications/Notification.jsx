@@ -1,20 +1,8 @@
 import React from 'react';
-import { styled } from '@mui/system';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import useNotification from '../hooks/useNotification';
-
-const NotificationWrapper = styled('div')({
-  position: 'fixed',
-  right: '4px',
-  bottom: '4px',
-  zIndex: '2000',
-});
-
-const AlertWrapper = styled('div')({
-  marginBottom: '4px',
-  width: '400px',
-});
+import { AlertWrapper, NotificationWrapper } from './Notification.styled';
 
 function SnackbarProvider({ duration = 6000, alert, handleClose }) {
   React.useEffect(() => {

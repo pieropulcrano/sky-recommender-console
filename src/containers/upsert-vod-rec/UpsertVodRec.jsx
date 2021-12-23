@@ -1,43 +1,111 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   createVodRec,
+  getPrevVodRec,
   updateVodRec,
+  deleteVodRec,
 } from '../../providers/vod-rec-provider/VodRecProvider';
-import { prepareVodRec, normalizeVodRec } from '../../utils/vodRec';
+import { prepareVodRec, normalizeVodRec } from './UpsertVodRec.helpers';
 import Spinner from '../../components/spinner/Spinner';
 import VodRecForm from '../../components/vod-rec-form/VodRecForm';
-import useLastVodRec from '../../hooks/useLastVodRec';
 import useVodRec from '../../hooks/useVodRec';
 import useNotification from '../../hooks/useNotification';
 
-const UpsertVodRec = ({ id }) => {
+const UpsertVodRec = ({ id, onSuccess }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [prevVodRecIsLoading, setPrevVodRecIsLoading] = React.useState(false);
+  const [prevVodRec, setPrevRecVod] = React.useState([]);
 
   const { data: vodRec, error: vodRecError } = useVodRec(id);
-
-  const { data: lastVodRec, error: lastVodRecError } = useLastVodRec(id);
 
   const { addAlert } = useNotification();
 
   React.useEffect(() => {
-    if (lastVodRecError || vodRecError)
+    if (vodRecError)
       addAlert({
         text: 'An error occured during the loading of the vod rec.',
         title: 'Vod loading failed',
         type: 'error',
         id: Date.now(),
       });
-  }, [lastVodRecError, vodRecError]);
+  }, [addAlert, vodRecError]);
+
+  const loadPrevVodRec = React.useCallback(
+    async (params) => {
+      const { cluster, startDateTime } = params;
+      if (!cluster || !startDateTime) return;
+      try {
+        setPrevVodRecIsLoading(true);
+        const res = await getPrevVodRec({
+          cluster,
+          validFrom_lte: startDateTime,
+        });
+        if (res.length === 0)
+          addAlert({
+            text: 'There are no recommendations prior to the date entered.',
+            title: 'Previous Vod Not Found',
+            type: 'info',
+            id: Date.now(),
+          });
+
+        setPrevRecVod(res);
+      } catch (error) {
+        addAlert({
+          text: 'An error occured during the loading of the previous vod rec.',
+          title: 'Vod loading failed',
+          type: 'warning',
+          id: Date.now(),
+        });
+      } finally {
+        setPrevVodRecIsLoading(false);
+      }
+    },
+    [addAlert],
+  );
+
+  const onDelete = async (id) => {
+    try {
+      setIsDeleting(true);
+      await deleteVodRec(id);
+      onSuccess();
+      addAlert({
+        text: 'Vod was successfully deleted.',
+        title: ` Vod Deleted`,
+        type: 'success',
+        id: Date.now(),
+      });
+    } catch {
+      addAlert({
+        text: 'An error occurred while deleting the Vod recommendation.',
+        title: `Vod deleting error`,
+        type: 'error',
+        id: Date.now(),
+      });
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   const onSubmit = React.useCallback(
     async (values) => {
       setIsSubmitting(true);
       try {
         if (id) {
-          updateVodRec(id);
+          const updated = prepareVodRec(id, values);
+          await updateVodRec(id, updated);
+          onSuccess();
+          addAlert({
+            text: 'Vod was successfully updated.',
+            title: ` Vod Updated`,
+            type: 'success',
+            id: Date.now(),
+          });
         } else {
-          const vodRec = prepareVodRec(values);
+          const vodRec = prepareVodRec(null, values);
           await createVodRec(vodRec);
+          onSuccess();
           addAlert({
             text: 'Vod was successfully created.',
             title: ` Vod Created`,
@@ -56,35 +124,50 @@ const UpsertVodRec = ({ id }) => {
         setIsSubmitting(false);
       }
     },
-    [id, addAlert],
+    [id, onSuccess, addAlert],
   );
 
   return (
     <>
-      {((!lastVodRec && !lastVodRecError) || vodRec) && (
+      {id && !vodRec && !vodRecError ? (
         <Spinner height="300px" width="700px" />
-      )}
-      {(vodRec || lastVodRec || lastVodRecError) && (
+      ) : (
         <VodRecForm
+          recId={id}
           onSubmit={onSubmit}
+          onDelete={onDelete}
+          isDeleting={isDeleting}
           isSubmitting={isSubmitting}
+          prevVodRecIsLoading={prevVodRecIsLoading}
+          loadPrevVodRec={loadPrevVodRec}
           initialValues={
             vodRec
               ? {
-                  cluster: vodRec.cluster,
-                  startDateTime: vodRec.validFrom,
-                  recommendation: vodRec.recommendation,
+                  cluster: vodRec[0].cluster,
+                  startDateTime: vodRec[0].validFrom,
+                  recommendation: normalizeVodRec(vodRec[0].recommendation),
                 }
-              : {
-                  recommendation: lastVodRecError
-                    ? []
-                    : normalizeVodRec(lastVodRec[0].recommendation),
+              : prevVodRec.length > 0
+              ? {
+                  cluster: prevVodRec[0].cluster,
+                  startDateTime: prevVodRec[0].startDateTime,
+                  recommendation: normalizeVodRec(prevVodRec[0].recommendation),
                 }
+              : {}
           }
         />
       )}
     </>
   );
+};
+
+UpsertVodRec.defaultProps = {
+  id: undefined,
+};
+
+UpsertVodRec.propTypes = {
+  id: PropTypes.string,
+  onSuccess: PropTypes.func.isRequired,
 };
 
 export default UpsertVodRec;

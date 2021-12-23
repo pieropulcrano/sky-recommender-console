@@ -1,25 +1,21 @@
 import React from 'react';
-import { styled } from '@mui/system';
+import PropTypes from 'prop-types';
+import { useField, useFormikContext } from 'formik';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import { useField, useFormikContext } from 'formik';
 
-const SelectWrapper = styled('div')((props) => ({
-  width: props.size && props.size === 'medium' ? '150px' : '120px',
-}));
-
-const Select = ({ name, options, size, ...otherProps }) => {
-  const { setFieldValue } = useFormikContext();
+const Select = ({ name, options, ...props }) => {
   const [field, meta] = useField(name);
+  const { setFieldValue } = useFormikContext();
 
-  const handleChange = (evt) => {
-    const { value } = evt.target;
+  const handleChange = (event) => {
+    const { value } = event.target;
     setFieldValue(name, value);
   };
 
   const configSelect = {
     ...field,
-    ...otherProps,
+    ...props,
     select: true,
     variant: 'outlined',
     fullWidth: true,
@@ -32,18 +28,21 @@ const Select = ({ name, options, size, ...otherProps }) => {
   }
 
   return (
-    <SelectWrapper size={size}>
-      <TextField {...configSelect} size="small">
-        {Object.keys(options).map((item, pos) => {
-          return (
-            <MenuItem key={pos} value={item}>
-              {options[item]}
-            </MenuItem>
-          );
-        })}
-      </TextField>
-    </SelectWrapper>
+    <TextField {...configSelect} size="small">
+      {Object.keys(options).map((item, pos) => {
+        return (
+          <MenuItem key={pos} value={item}>
+            {options[item]}
+          </MenuItem>
+        );
+      })}
+    </TextField>
   );
+};
+
+Select.propTypes = {
+  name: PropTypes.string.isRequired,
+  options: PropTypes.object.isRequired,
 };
 
 export default Select;

@@ -1,24 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
-import { styled } from '@mui/material';
-import { columns } from './config';
-import { initialValues, validationSchema } from './validation';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Marginer from '../marginer/Marginer';
 import DataGridTable from '../form/data-grid-table/DataGridTable';
 import TextInput from '../form/text-input/TextInput';
-
-const VodRecSearchFormWrapper = styled('div')({
-  width: '100%',
-  height: '100%',
-  maxWidth: '800px',
-});
-
-const SelectButtonWrapper = styled('div')({
-  display: 'flex',
-  justifyContent: 'flex-end',
-});
+import {
+  VodRecSearchFormWrapper,
+  SelectButtonWrapper,
+} from './VodRecSearchForm.styled';
+import { initialValues, validationSchema } from './validation';
+import { columns } from './config';
 
 const VodRecSearchForm = ({
   onSubmit,
@@ -26,13 +19,6 @@ const VodRecSearchForm = ({
   isSearching,
   searchResult,
 }) => {
-  const searchEvent = (values) => {
-    const params = {};
-    if (values.title) params.title = values.title;
-    if (Object.values(params).every((key) => key === undefined)) return;
-    return onSearch(params);
-  };
-
   return (
     <VodRecSearchFormWrapper>
       <Formik
@@ -54,7 +40,7 @@ const VodRecSearchForm = ({
                 <Button
                   type="button"
                   variant="contained"
-                  onClick={() => searchEvent(values)}
+                  onClick={() => onSearch(values)}
                 >
                   Search
                 </Button>
@@ -84,6 +70,17 @@ const VodRecSearchForm = ({
       </Formik>
     </VodRecSearchFormWrapper>
   );
+};
+
+VodRecSearchForm.defaultProps = {
+  searchResult: [],
+};
+
+VodRecSearchForm.propTypes = {
+  searchResult: PropTypes.array,
+  isSearching: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default VodRecSearchForm;

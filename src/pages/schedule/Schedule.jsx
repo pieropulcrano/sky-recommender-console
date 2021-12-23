@@ -1,31 +1,18 @@
 import React from 'react';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Modal from '../../components/modal/Modal';
-import UpsertVodRec from '../../containers/upsert-vod-rec/UpsertVodRec';
+import Scheduler from '../../components/scheduler/Scheduler';
+import Marginer from '../../components/marginer/Marginer';
 
 const Schedule = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   return (
     <Container maxWidth="xl">
       <Box sx={{ m: 2 }} />
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button onClick={handleOpen} variant="contained">
-          NEW VOD
-        </Button>
-      </div>
-      <Modal
-        title="NEW VOD"
-        open={open}
-        handleClose={handleClose}
-        handleOpen={handleOpen}
-      >
-        <UpsertVodRec />
-      </Modal>
+      <Container maxWidth="lg">
+        <Marginer direction="horizontal" margin={40} />
+        <Scheduler />
+      </Container>
+      <Marginer direction="horizontal" margin={80} />
     </Container>
   );
 };

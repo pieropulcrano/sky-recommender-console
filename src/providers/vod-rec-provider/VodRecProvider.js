@@ -1,7 +1,17 @@
 import axios from 'axios';
+import { createUrlQuery } from '../../utils/url';
 
 export async function getVodRec(id) {
-  // todo use axios
+  const url = `http://localhost:3001/recommendations?id=${id}`;
+  const res = await axios.get(url);
+  return res.data;
+}
+
+export async function getPrevVodRec(params) {
+  const query = createUrlQuery(params);
+  const url = `http://localhost:3001/recommendations?${query}`;
+  const res = await axios.get(url);
+  return res.data;
 }
 
 export async function getLastVodRec(url) {
@@ -10,29 +20,29 @@ export async function getLastVodRec(url) {
 }
 
 export async function createVodRec(recVod) {
-  const res = await axios.post(
-    'http://localhost:3001/create-vod-recommendation',
-    recVod,
-  );
+  const res = await axios.post('http://localhost:3001/recommendations', recVod);
   return res.data;
 }
 
 export async function updateVodRec(id, recVod) {
   const res = await axios.put(
-    'http://localhost:3001/update-vod-recommendation',
+    `http://localhost:3001/recommendations/${id}`,
     recVod,
   );
   return res.data;
 }
 
+export async function deleteVodRec(id) {
+  const url = `http://localhost:3001/recommendations/${id}`;
+  const res = await axios.delete(url);
+  return res.data;
+}
+
 export async function searchVodRec(params) {
-  const query = Object.keys(params)
-    .map((key) => key + '=' + params[key])
-    .join('&');
+  const query = createUrlQuery(params);
+  const url = encodeURI(`http://localhost:3001/event?${query}`);
 
-  const url = `http://localhost:3001/search-vod-recommendation?${query}`;
-
-  const res = await axios.get(encodeURI(url));
+  const res = await axios.get(url);
   return res.data;
 }
 
@@ -43,7 +53,7 @@ export async function getFallbackVodRec(url) {
 
 export async function updateFallbackVodRec(fallbackVodRec) {
   const res = await axios.put(
-    'http://localhost:3001/fallback-vod-recommendation/94',
+    'http://localhost:3001/fallback-vod-recommendation/1',
     fallbackVodRec,
   );
   return res.data;
