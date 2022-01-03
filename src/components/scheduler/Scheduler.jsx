@@ -1,0 +1,142 @@
+import React from 'react';
+import FullCalendar from '@fullcalendar/react';
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import UpsertVodRec from '../../containers/upsert-vod-rec/UpsertVodRec';
+import RecTooltipInfo from './rec-tooltip-info/RecTooltipInfo';
+import useNotification from '../../hooks/useNotification';
+import Spinner from '../spinner/Spinner';
+import Modal from '../../components/modal/Modal';
+import { Hidden } from './Scheduler.styled';
+import { resources, recTypes } from './config';
+import { mapForScheduler } from './Scheduler.helpers';
+import { getRec } from '../../providers/rec-provider/RecProvider';
+import './style.css';
+
+const Scheduler = () => {
+  // isloading is handled here in order to avoid infinite loop
+  // https://github.com/fullcalendar/fullcalendar-react/issues/97
+  const [recIsLoading, setRecIsLoading] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [selectedRec, setSelectedRec] = React.useState(undefined);
+  const [recType, setRecType] = React.useState(undefined);
+
+  const { addAlert } = useNotification();
+
+  const CalendarRef = React.useRef();
+
+  const modalTitle = `${isEditing ? `EDIT ${recType}` : `NEW ${recType}`}`;
+
+  const handleOpenModal = () => setOpenModal(true);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    if (isEditing) {
+      setIsEditing(false);
+      setSelectedRec(false);
+    }
+  };
+
+  const loadRec = React.useCallback(
+    async (info, success, error) => {
+      try {
+        const res = await getRec({
+          validFrom_gte: info.startStr,
+          validTo_lte: info.endStr,
+        });
+        const data = mapForScheduler(res);
+        success(data);
+      } catch (err) {
+        addAlert({
+          text: 'An error occured during the loading of the scheduled recommendations.',
+          title: 'Recommendations loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
+        error(err);
+      }
+    },
+    [addAlert],
+  );
+
+  const handleRecLoading = (isLoading) => setRecIsLoading(isLoading);
+
+  const handleRecEdit = (eventInfo) => {
+    setIsEditing(true);
+    setRecType(eventInfo.event.extendedProps.extraProps.type);
+    setSelectedRec(eventInfo.event);
+    handleOpenModal();
+  };
+
+  const handleRecCreate = (type) => {
+    setRecType(type);
+    handleOpenModal();
+  };
+
+  const handleCRUDSuccess = () => {
+    handleCloseModal();
+    CalendarRef.current.getApi().refetchEvents();
+  };
+
+  const renderRecContent = (arg) => {
+    return (
+      <RecTooltipInfo
+        title={arg.event.title}
+        recommendation={arg.event.extendedProps.extraProps.recommendation}
+        startDateTime={arg.event.start}
+        endDateTime={arg.event.end}
+      />
+    );
+  };
+
+  return (
+    <>
+      {recIsLoading && <Spinner height="65vh" />}
+      <Hidden isLoading={recIsLoading}>
+        <FullCalendar
+          ref={CalendarRef}
+          aspectRatio={2}
+          schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
+          plugins={[resourceTimelinePlugin]}
+          initialView="resourceTimelineMonth"
+          resourceAreaHeaderContent="Clusters"
+          resources={resources}
+          headerToolbar={{
+            left: `prev,next,today,resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth`,
+            center: 'title',
+            right: 'newVod newLin',
+          }}
+          customButtons={{
+            newVod: {
+              text: 'NEW VOD',
+              click: () => handleRecCreate(recTypes.vod),
+            },
+            newLin: {
+              text: 'NEW LIN',
+            },
+          }}
+          nowIndicator
+          eventContent={renderRecContent}
+          expandRows
+          events={loadRec}
+          eventClick={handleRecEdit}
+          loading={handleRecLoading}
+        />
+        <Modal
+          title={modalTitle}
+          open={openModal}
+          handleClose={handleCloseModal}
+        >
+          {!isEditing && recType === recTypes.vod && (
+            <UpsertVodRec onSuccess={handleCRUDSuccess} />
+          )}
+          {isEditing && selectedRec?.id && (
+            <UpsertVodRec id={selectedRec?.id} onSuccess={handleCRUDSuccess} />
+          )}
+        </Modal>
+      </Hidden>
+    </>
+  );
+};
+
+export default Scheduler;

@@ -6,6 +6,10 @@
     "@emotion/react": "11.7.0",
     "@emotion/styled": "11.6.0",
     "@fontsource/roboto": "4.5.1",
+    "@fullcalendar/core": "5.10.1",
+    "@fullcalendar/react": "5.10.1",
+    "@fullcalendar/resource-timeline": "5.10.1",
+    "@fullcalendar/timegrid": "5.10.1",
     "@material-ui/core": "4.12.3",
     "@material-ui/icons": "4.11.2",
     "@mui/icons-material": "5.2.1",
@@ -14,13 +18,18 @@
     "@mui/x-data-grid": "5.2.0",
     "axios": "0.24.0",
     "date-fns": "2.27.0",
+    "date-fns-tz": "1.2.2",
     "formik": "2.2.9",
+    "prop-types": "15.8.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
     "swr": "1.1.1",
     "yup": "0.32.11"
+  },
+  "engines": {
+    "node": "^16.13.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,516 +1,431 @@
 {
   "recommendations": [
     {
+      "id": "1",
       "cluster": "C1",
       "type": "VOD",
-      "validFrom": "2021-11-01T06:00:00Z",
+      "validFrom": "2021-12-28T08:00:00.000Z",
       "validTo": "",
       "recommendation": [
         {
           "id": "61GU",
-          "title": "Il Vulcano Piu",
-          "position": "1"
+          "title": "Il Vulcano piu grande del mondo",
+          "position": "1",
+          "startProgram": "2021-12-24T12:00:00Z",
+          "endProgram": "2021-12-24T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L8",
           "title": "Victoria - Ep.2",
-          "position": "2"
+          "position": "2",
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L9",
           "title": "Victoria - Ep.3",
-          "position": "3"
+          "position": "3",
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LA",
           "title": "Victoria - Ep.4",
-          "position": "4"
+          "position": "4",
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LE",
           "title": "Victoria - Ep.8",
-          "position": "5"
+          "position": "5",
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         }
       ]
     },
     {
+      "id": "2",
       "cluster": "C1",
       "type": "LIN",
-      "validFrom": "2021-11-01T20:00:00Z",
-      "validTo": "2021-11-01T23:00:00Z",
+      "validFrom": "2021-12-24T12:00:00Z",
+      "validTo": "2021-12-26T15:00:00Z",
       "recommendation": [
         {
           "id": "LIN_229439924",
           "title": "Femmine contro maschi",
           "resolution": "HD",
           "position": "1",
-          "channelId": "169_",
-          "bouquetId": [
-            "1234",
-            "2345"
-          ]
+          "startProgram": "2021-12-26T15:00:00Z",
+          "endProgram": "2021-12-26T15:00:00Z",
+          "linearSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "verticalImageUrl": "",
+          "channel": "Sky Cinema HD",
+          "thumbnailType": ""
         },
         {
           "id": "LIN_3333333",
           "title": "Femmine contro maschi",
           "resolution": "SD",
           "position": "1",
-          "channelId": "170_",
-          "bouquetId": [
-            "1234",
-            "2345"
-          ]
+          "startProgram": "2021-12-26T15:00:00Z",
+          "endProgram": "2021-12-26T15:00:00Z",
+          "linearSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "verticalImageUrl": "",
+          "channel": "Sky Cinema HD",
+          "thumbnailType": ""
         }
       ]
     },
     {
-      "id": "1",
+      "id": 4,
       "cluster": "C1",
       "type": "VOD",
-      "validFrom": "2021-12-15T19:40:19.000Z",
+      "validFrom": "2022-01-28T17:00:00.000Z",
       "validTo": "",
       "recommendation": [
         {
           "id": "61GU",
-          "title": "Il Vulcano",
+          "title": "Il Vulcano piu grande del mondo",
           "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-24T12:00:00Z",
+          "endProgram": "2021-12-24T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L8",
           "title": "Victoria - Ep.2",
           "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L9",
           "title": "Victoria - Ep.3",
           "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LA",
           "title": "Victoria - Ep.4",
           "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LE",
           "title": "Victoria - Ep.8",
           "position": "5",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         }
       ]
-    }
-  ],
-  "last-vod-recommendation": [
-    {
-      "cluster": "C1",
-      "type": "VOD",
-      "validFrom": "2021-11-01T06:00:00Z",
-      "validTo": "",
-      "recommendation": [
-        {
-          "id": "61GU",
-          "title": "Il Vulcano",
-          "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L8",
-          "title": "Victoria - Ep.2",
-          "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L9",
-          "title": "Victoria - Ep.3",
-          "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68LA",
-          "title": "Victoria - Ep.4",
-          "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68LE",
-          "title": "Victoria - Ep.8",
-          "position": "5",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        }
-      ]
-    }
-  ],
-  "create-vod-recommendation": [
+    },
     {
       "id": 3,
       "cluster": "C1",
       "type": "VOD",
-      "validFrom": "2021-12-21T15:10:00Z",
+      "validFrom": "2022-01-06T17:00:00.000Z",
       "validTo": "",
       "recommendation": [
         {
           "id": "61GU",
-          "title": "Il Vulcano",
+          "title": "Il Vulcano piu grande del mondo",
           "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-24T12:00:00Z",
+          "endProgram": "2021-12-24T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L8",
           "title": "Victoria - Ep.2",
           "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L9",
           "title": "Victoria - Ep.3",
           "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LA",
           "title": "Victoria - Ep.4",
           "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LE",
           "title": "Victoria - Ep.8",
           "position": "5",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         }
       ]
     },
     {
-      "id": 99,
+      "id": 51,
       "cluster": "C1",
       "type": "VOD",
-      "validFrom": "2021-12-21T19:05:50Z",
+      "validFrom": "2022-01-19T17:00:00.000Z",
       "validTo": "",
       "recommendation": [
         {
           "id": "61GU",
-          "title": "Il Vulcano",
+          "title": "Il Vulcano piu grande del mondo",
           "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-24T12:00:00Z",
+          "endProgram": "2021-12-24T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L8",
           "title": "Victoria - Ep.2",
           "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68L9",
           "title": "Victoria - Ep.3",
           "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LA",
           "title": "Victoria - Ep.4",
           "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
           "id": "68LE",
           "title": "Victoria - Ep.8",
           "position": "5",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "cluster": "C1",
-      "type": "VOD",
-      "validFrom": "2021-12-21T19:41:26Z",
-      "validTo": "",
-      "recommendation": [
-        {
-          "id": "61GU",
-          "title": "Il Vulcano",
-          "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L8",
-          "title": "Victoria - Ep.2",
-          "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L9",
-          "title": "Victoria - Ep.3",
-          "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68LA",
-          "title": "Victoria - Ep.4",
-          "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "1",
-          "title": "The Truman Show",
-          "genre": "drammatico",
-          "startDate": "2021-11-01 06:00:00",
-          "endDate": "2021-21-01 07:00:00",
-          "banding": "SKY Cinema 1 HD",
-          "synopsis": "The Truman Show è un film del 1998 diretto da Peter Weir, su soggetto di Andrew Niccol, e interpretato da Jim Carrey, fino ad allora conosciuto principalmente per ruoli comici in film demenziali[2], in una delle sue prove attoriali più apprezzate.[3] La pellicola è una satira fantascientifica,[4] ispirata parzialmente a un episodio di Ai confini della realtà[5], alla vita di Michael Jackson, a diverse idee ed intuizioni sviluppate dallo scrittore americano di fantascienza Philip K. Dick nel suo romanzo Tempo fuor di sesto e dalla allora nascente moda di raccontare la vita in televisione attraverso i reality show,[3] immaginando una situazione paradossale, portata all'estremo, dalla quale emergono temi filosofici.[6",
-          "position": "5"
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "cluster": "C1",
-      "type": "VOD",
-      "validFrom": "2021-12-22T19:45:41Z",
-      "validTo": "",
-      "recommendation": [
-        {
-          "id": "61GU",
-          "title": "Il Vulcano",
-          "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L8",
-          "title": "Victoria - Ep.2",
-          "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L9",
-          "title": "Victoria - Ep.3",
-          "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68LA",
-          "title": "Victoria - Ep.4",
-          "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "4",
-          "title": "Black Widow",
-          "genre": "azione",
-          "startDate": "2021-09-01 06:00:00",
-          "endDate": "2021-12-01 06:00:00",
-          "banding": "SKY Cinema 1 HD",
-          "position": "5"
-        }
-      ]
-    },
-    {
-      "id": 20,
-      "cluster": "C1",
-      "type": "VOD",
-      "validFrom": "2021-12-21T20:50:38Z",
-      "validTo": "",
-      "recommendation": [
-        {
-          "id": "61GU",
-          "title": "Il Vulcano",
-          "position": "1",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L8",
-          "title": "Victoria - Ep.2",
-          "position": "2",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68L9",
-          "title": "Victoria - Ep.3",
-          "position": "3",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68LA",
-          "title": "Victoria - Ep.4",
-          "position": "4",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
-        },
-        {
-          "id": "68LE",
-          "title": "Victoria - Ep.8",
-          "position": "5",
-          "startDate": "2021-11-01T06:00:00Z",
-          "endDate": "2021-11-01T06:00:00Z"
+          "startProgram": "2021-12-30T12:00:00Z",
+          "endProgram": "2021-12-31T15:00:00Z",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         }
       ]
     }
   ],
-  "search-vod-recommendation": [
+  "event": [
     {
-      "id": "1",
+      "id": "61GU",
       "title": "The Truman Show",
-      "genre": "drammatico",
-      "startDate": "2021-11-01T06:00:00Z",
-      "endDate": "2021-21-01T07:00:00Z",
-      "banding": "SKY Cinema 1 HD",
-      "synopsis": "The Truman Show è un film del 1998 diretto da Peter Weir, su soggetto di Andrew Niccol, e interpretato da Jim Carrey, fino ad allora conosciuto principalmente per ruoli comici in film demenziali[2], in una delle sue prove attoriali più apprezzate.[3] La pellicola è una satira fantascientifica,[4] ispirata parzialmente a un episodio di Ai confini della realtà[5], alla vita di Michael Jackson, a diverse idee ed intuizioni sviluppate dallo scrittore americano di fantascienza Philip K. Dick nel suo romanzo Tempo fuor di sesto e dalla allora nascente moda di raccontare la vita in televisione attraverso i reality show,[3] immaginando una situazione paradossale, portata all'estremo, dalla quale emergono temi filosofici.[6"
+      "startProgram": "2021-12-24T12:00:00Z",
+      "endProgram": "2021-12-24T15:00:00Z",
+      "branding": "Sky Cinema HD",
+      "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "thumbnailType": "",
+      "verticalImageUrl": ""
     },
     {
-      "id": "2",
-      "title": "Ghost",
-      "genre": "drammatico",
-      "startDate": "2021-08-01T06:00:00Z",
-      "endDate": "2021-09-01T06:00:00Z",
-      "banding": "SKY Cinema 2 HD"
-    },
-    {
-      "id": "3",
-      "title": "Tenet",
-      "genre": "azione",
-      "startDate": "2021-10-01T06:00:00Z",
-      "endDate": "2021-12-01T06:00:00Z",
-      "banding": "SKY Cinema 3 HD"
-    },
-    {
-      "id": "4",
+      "id": "61GF",
       "title": "Black Widow",
-      "genre": "azione",
-      "startDate": "2021-09-01T06:00:00Z",
-      "endDate": "2021-12-01T06:00:00Z",
-      "banding": "SKY Cinema 1 HD"
+      "startProgram": "2021-12-24T12:00:00Z",
+      "endProgram": "2021-12-24T15:00:00Z",
+      "branding": "Sky Cinema HD",
+      "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "thumbnailType": "",
+      "verticalImageUrl": ""
     },
     {
-      "id": "5",
-      "title": "Escape Room",
-      "genre": "horror",
-      "startDate": "2021-09-01T06:00:00Z",
-      "endDate": "2021-12-01T06:00:00Z",
-      "banding": "SKY Cinema 2 HD"
-    },
-    {
-      "id": "6",
-      "title": "Emma",
-      "genre": "romantico",
-      "startDate": "2021-09-01T06:00:00Z",
-      "endDate": "2021-12-01T06:00:00Z",
-      "banding": "SKY Cinema 1 HD"
-    },
-    {
-      "id": "7",
-      "title": "A star is born",
-      "genre": "romantico",
-      "startDate": "2021-09-01T06:00:00Z",
-      "endDate": "2021-12-01T06:00:00Z",
-      "banding": "SKY Cinema 2 HD"
-    },
-    {
-      "id": "8",
-      "title": "Alladin",
-      "genre": "romantico",
-      "startDate": "2021-09-01T06:00:00Z",
-      "endDate": "2021-12-01T06:00:00Z",
-      "banding": "SKY Cinema 1 HD"
+      "id": "61GZ",
+      "title": "Hercules",
+      "startProgram": "2021-12-24T12:00:00Z",
+      "endProgram": "2021-12-24T15:00:00Z",
+      "branding": "Sky Cinema HD",
+      "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "thumbnailType": "",
+      "verticalImageUrl": ""
     }
   ],
   "fallback-vod-recommendation": [
     {
-      "id": 94,
+      "id": "1",
       "type": "FALLBACK",
       "recommendation": [
         {
-          "id": "1",
+          "id": "61GU",
           "title": "The Truman Show",
-          "genre": "drammatico",
-          "startDate": "2021-11-01 06:00:00",
-          "endDate": "2021-21-01 07:00:00",
-          "banding": "SKY Cinema 1 HD",
-          "synopsis": "The Truman Show è un film del 1998 diretto da Peter Weir, su soggetto di Andrew Niccol, e interpretato da Jim Carrey, fino ad allora conosciuto principalmente per ruoli comici in film demenziali[2], in una delle sue prove attoriali più apprezzate.[3] La pellicola è una satira fantascientifica,[4] ispirata parzialmente a un episodio di Ai confini della realtà[5], alla vita di Michael Jackson, a diverse idee ed intuizioni sviluppate dallo scrittore americano di fantascienza Philip K. Dick nel suo romanzo Tempo fuor di sesto e dalla allora nascente moda di raccontare la vita in televisione attraverso i reality show,[3] immaginando una situazione paradossale, portata all'estremo, dalla quale emergono temi filosofici.[6"
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
-          "id": "68L8",
-          "title": "Victoria - Ep.2",
-          "endDate": "2021-11-01T07:00:00Z"
-        },
-        {
-          "id": "68L9",
-          "title": "Victoria - Ep.3"
-        },
-        {
-          "id": "68LA",
-          "title": "Victoria - Ep.4"
-        },
-        {
-          "id": "68LE",
-          "title": "Victoria - Ep.8"
-        },
-        {
-          "id": "61GUA",
-          "title": "Sei In Un Paese Meraviglioso 6 - Il Vulcano Piu\\u0027 Piccolo Al Mondo"
-        },
-        {
-          "id": "4",
+          "id": "61GF",
           "title": "Black Widow",
-          "genre": "azione",
-          "startDate": "2021-09-01 06:00:00",
-          "endDate": "2021-12-01 06:00:00",
-          "banding": "SKY Cinema 1 HD"
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
-          "id": "68L9C",
-          "title": "Victoria - Ep.3"
+          "id": "61GZ",
+          "title": "Hercules",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
-          "id": "1",
+          "id": "61GZ",
+          "title": "Hercules",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
+        },
+        {
+          "id": "61GF",
+          "title": "Black Widow",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
+        },
+        {
+          "id": "61GU",
           "title": "The Truman Show",
-          "genre": "drammatico",
-          "startDate": "2021-11-01 06:00:00",
-          "endDate": "2021-21-01 07:00:00",
-          "banding": "SKY Cinema 1 HD",
-          "synopsis": "The Truman Show è un film del 1998 diretto da Peter Weir, su soggetto di Andrew Niccol, e interpretato da Jim Carrey, fino ad allora conosciuto principalmente per ruoli comici in film demenziali[2], in una delle sue prove attoriali più apprezzate.[3] La pellicola è una satira fantascientifica,[4] ispirata parzialmente a un episodio di Ai confini della realtà[5], alla vita di Michael Jackson, a diverse idee ed intuizioni sviluppate dallo scrittore americano di fantascienza Philip K. Dick nel suo romanzo Tempo fuor di sesto e dalla allora nascente moda di raccontare la vita in televisione attraverso i reality show,[3] immaginando una situazione paradossale, portata all'estremo, dalla quale emergono temi filosofici.[6"
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         },
         {
-          "id": "1",
-          "title": "The Truman Show",
-          "genre": "drammatico",
-          "startDate": "2021-11-01 06:00:00",
-          "endDate": "2021-21-01 07:00:00",
-          "banding": "SKY Cinema 1 HD",
-          "synopsis": "The Truman Show è un film del 1998 diretto da Peter Weir, su soggetto di Andrew Niccol, e interpretato da Jim Carrey, fino ad allora conosciuto principalmente per ruoli comici in film demenziali[2], in una delle sue prove attoriali più apprezzate.[3] La pellicola è una satira fantascientifica,[4] ispirata parzialmente a un episodio di Ai confini della realtà[5], alla vita di Michael Jackson, a diverse idee ed intuizioni sviluppate dallo scrittore americano di fantascienza Philip K. Dick nel suo romanzo Tempo fuor di sesto e dalla allora nascente moda di raccontare la vita in televisione attraverso i reality show,[3] immaginando una situazione paradossale, portata all'estremo, dalla quale emergono temi filosofici.[6"
+          "id": "61GFZ",
+          "title": "Black Widow",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
+        },
+        {
+          "id": "61GF",
+          "title": "Black Widow",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
+        },
+        {
+          "id": "61GZ",
+          "title": "Hercules",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
+        },
+        {
+          "id": "61GZ",
+          "title": "Hercules",
+          "startProgram": "24.12.2021 13:00",
+          "endProgram": "24.12.2021 16:00",
+          "branding": "Sky Cinema HD",
+          "vodSummaryLong": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "thumbnailType": "",
+          "verticalImageUrl": ""
         }
       ]
     }

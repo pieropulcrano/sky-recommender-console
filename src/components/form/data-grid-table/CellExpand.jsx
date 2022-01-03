@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
@@ -11,14 +12,13 @@ function isOverflown(element) {
   );
 }
 
-const GridCellExpand = React.memo(function GridCellExpand(props) {
-  const { width, value } = props;
-  const wrapper = React.useRef(null);
-  const cellDiv = React.useRef(null);
-  const cellValue = React.useRef(null);
+const GridCellExpand = React.memo(({ width, value }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showFullCell, setShowFullCell] = React.useState(false);
   const [showPopper, setShowPopper] = React.useState(false);
+  const wrapper = React.useRef(null);
+  const cellDiv = React.useRef(null);
+  const cellValue = React.useRef(null);
 
   const handleMouseEnter = () => {
     const isCurrentlyOverflown = isOverflown(cellValue.current);
@@ -107,13 +107,17 @@ const GridCellExpand = React.memo(function GridCellExpand(props) {
   );
 });
 
-function CellExpand(params) {
+const CellExpand = (params) => {
   return (
     <GridCellExpand
       value={params.value || ''}
       width={params.colDef.computedWidth}
     />
   );
-}
+};
+
+CellExpand.propTypes = {
+  params: PropTypes.object.isRequired,
+};
 
 export default CellExpand;

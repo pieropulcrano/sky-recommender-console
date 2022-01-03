@@ -21,16 +21,16 @@ let reducer = (state, action) => {
   }
 };
 
-function AlertContextProvider(props) {
+const AlertContextProvider = (props) => {
   let [state, dispatch] = useReducer(reducer, initialState);
 
   const actions = {
-    addAlert: (payload) => {
+    addAlert: React.useCallback((payload) => {
       dispatch({ type: 'ADD_ALERT', payload });
-    },
-    removeAlert: (payload) => {
+    }, []),
+    removeAlert: React.useCallback((payload) => {
       dispatch({ type: 'REMOVE_ALERT', payload });
-    },
+    }, []),
   };
 
   return (
@@ -38,6 +38,6 @@ function AlertContextProvider(props) {
       {props.children}
     </AlertContext.Provider>
   );
-}
+};
 
 export { AlertContext, AlertContextProvider };

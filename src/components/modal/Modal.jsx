@@ -1,30 +1,10 @@
 import React from 'react';
-import { styled } from '@mui/material';
+import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import ModalComp from '@mui/material/Modal';
-
-const ModalBody = styled('div')({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  boxShadow: 24,
-  backgroundColor: '#fff',
-  padding: '10px 20px',
-  borderRadius: '4px',
-  maxWidth: '100%',
-  maxHeight: '100%',
-  overflow: 'auto',
-  margin: '5px',
-});
-
-const ModalHeader = styled('div')({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-});
+import { ModalHeader, ModalBody } from './Modal.styled';
 
 const Modal = ({ title, open, handleClose, children }) => {
   return (
@@ -43,6 +23,13 @@ const Modal = ({ title, open, handleClose, children }) => {
       </ModalBody>
     </ModalComp>
   );
+};
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

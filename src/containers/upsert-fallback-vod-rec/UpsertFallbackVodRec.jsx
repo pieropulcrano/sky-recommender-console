@@ -4,7 +4,7 @@ import { updateFallbackVodRec } from '../../providers/vod-rec-provider/VodRecPro
 import {
   normalizeFallbackVodRec,
   prepareFallbackVodRec,
-} from '../../utils/vodRec';
+} from './UpsertFallbackVodRec.helpers';
 import useNotification from '../../hooks/useNotification';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
 import VodRecFallbackForm from '../../components/vod-rec-fallback-form/VodRecFallbackForm';
@@ -25,7 +25,7 @@ const UpsertFallbackVodRec = () => {
         id: Date.now(),
       });
     }
-  }, [fallbackVodRecError]);
+  }, [addAlert, fallbackVodRecError]);
 
   const onSubmit = async (values) => {
     try {

@@ -1,13 +1,12 @@
 import React from 'react';
-import TextField from '@mui/material/TextField';
+import PropTypes from 'prop-types';
 import { useFormikContext } from 'formik';
+import TextField from '@mui/material/TextField';
 
 const TextInput = ({ name, ...props }) => {
   const { setFieldValue } = useFormikContext();
 
-  const handleChange = (event) => {
-    setFieldValue(name, event.target.value || '');
-  };
+  const handleChange = (event) => setFieldValue(name, event.target.value || '');
 
   return (
     <TextField
@@ -18,6 +17,10 @@ const TextInput = ({ name, ...props }) => {
       {...props}
     />
   );
+};
+
+TextInput.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
 export default TextInput;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -17,5 +18,15 @@ const Spinner = ({ height, width }) => (
     <CircularProgress size="32px" />
   </Box>
 );
+
+Spinner.defaultProps = {
+  height: null,
+  width: null,
+};
+
+Spinner.propTypes = {
+  height: PropTypes.string,
+  width: PropTypes.string,
+};
 
 export default Spinner;
