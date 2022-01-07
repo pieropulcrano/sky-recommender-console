@@ -8,14 +8,12 @@ node >= v.16.13.0
 
 ```
 npm i -g json-server
-
 ```
 
 ## frontend
 
 ```
 yarn
-
 ```
 
 # Run Project
@@ -24,12 +22,10 @@ yarn
 
 ```
 json-server --watch db.json --port 3001 --delay 1000
-
 ```
 
 ## frontend
 
 ```
 npm start
-
 ```

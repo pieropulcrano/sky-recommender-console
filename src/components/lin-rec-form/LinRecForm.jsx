@@ -2,33 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import Grid from '@mui/material/Grid';
-import Marginer from '../marginer/Marginer';
-import LoadingButton from '@mui/lab/LoadingButton';
-import SearchVodRec from '../../containers/search-vod-rec/SearchVodRec';
-import EventSlot from '../form/event-slot/EventSlot';
-import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import Select from '../form/select/Select';
+import EventSlot from '../form/event-slot/EventSlot';
 import ClearBtn from '../form/clear-btn/ClearBtn';
+import LoadingButton from '@mui/lab/LoadingButton';
+import SearchLinRec from '../../containers/search-lin-rec/SearchLinRec';
 import Modal from '../modal/Modal';
-import {
-  VocRecFormWrapper,
-  SlotsRowWrapper,
-  ButtonsWrapper,
-  LeftButtons,
-} from './VodRecForm.styled';
 import { DEFAULT_VALUES, validationSchema } from './validation';
+import {
+  SlotsRowWrapper,
+  LinRecFormWrapper,
+  LeftButtons,
+  ButtonsWrapper,
+} from './LinRecForm.styled';
+import Marginer from '../marginer/Marginer';
+import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import { clusters } from './config';
-import { isExpired } from '../../utils/date';
+import { slotTypes } from '../form/event-slot/EventSlot.types';
+import { isExpired, nowIsBetweenTwoDates } from '../../utils/date';
 
-const VocRecForm = ({
+const LinRecForm = ({
   recId,
   onSubmit,
   onDelete,
   isDeleting,
-  initialValues,
   isSubmitting,
-  prevVodRecIsLoading,
-  loadPrevVodRec,
+  initialValues,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
@@ -57,6 +56,7 @@ const VocRecForm = ({
       values: {
         ...DEFAULT_VALUES,
         startDateTime: values.startDateTime,
+        endDateTime: values.endDateTime,
         cluster: values.cluster,
       },
     });
@@ -68,15 +68,16 @@ const VocRecForm = ({
     });
   };
 
-  const createRow = (startIndex, endIndex, values, recId) => {
+  const createRow = (slotType, startDateTime) => {
     const rows = [];
-    for (let i = startIndex; i <= endIndex; i++) {
+    for (let i = 1; i <= 5; i++) {
       rows.push(
         <EventSlot
           key={i}
-          name={`recommendation.${i}`}
           handleOpen={handleOpen}
-          disabled={recId && isExpired(values.startDateTime)}
+          name={`recommendation.${i}.${slotType}`}
+          hd={slotType === slotTypes.HD}
+          disabled={recId && isExpired(startDateTime)}
         />,
       );
     }
@@ -84,17 +85,17 @@ const VocRecForm = ({
   };
 
   return (
-    <VocRecFormWrapper>
+    <LinRecFormWrapper>
       <Formik
-        onSubmit={onSubmit}
         initialValues={mergedInitialValues}
         validationSchema={validationSchema}
+        onSubmit={onSubmit}
         enableReinitialize
       >
         {({ setFieldValue, values, resetForm }) => (
           <Form>
             <Grid container spacing={1.5}>
-              {/* The VOD is still editable (not in the past) or we are creating new one */}
+              {/* The LIN is still editable (not in the past) or we are creating new one */}
               {((recId && !isExpired(values.startDateTime)) || !recId) && (
                 <>
                   <Grid item xs={4}>
@@ -105,7 +106,6 @@ const VocRecForm = ({
                       options={clusters}
                     />
                   </Grid>
-
                   <Grid item xs={4}>
                     <DateTimePicker
                       name="startDateTime"
@@ -113,32 +113,41 @@ const VocRecForm = ({
                       disablePast
                     />
                   </Grid>
-
-                  <Grid item xs={4} justifyContent="flex-end">
-                    <LoadingButton
-                      variant="contained"
-                      color="primary"
-                      loading={prevVodRecIsLoading}
-                      onClick={() => loadPrevVodRec(values)}
-                    >
-                      Load
-                    </LoadingButton>
-                  </Grid>
                 </>
+              )}
+
+              {((recId &&
+                nowIsBetweenTwoDates(
+                  values.startDateTime,
+                  values.endDateTime,
+                )) ||
+                (recId && !isExpired(values.endDateTime)) ||
+                !recId) && (
+                <Grid item xs={4}>
+                  <DateTimePicker
+                    name="endDateTime"
+                    label="End Date"
+                    disablePast
+                  />
+                </Grid>
               )}
 
               <Grid item xs={12}>
                 <Marginer direction="horizontal" margin={10} />
                 <SlotsRowWrapper>
-                  {createRow(1, 5, values, recId)}
+                  {createRow(slotTypes.SD, values.startDateTime)}
                 </SlotsRowWrapper>
-                <Marginer direction="horizontal" margin={10} />
               </Grid>
 
-              {/* The VOD is still editable (not in the past) or we are creating new one */}
-              {((recId && !isExpired(values.startDateTime)) || !recId) && (
-                <Grid item xs={12}>
-                  <ButtonsWrapper>
+              <Grid item xs={12}>
+                <SlotsRowWrapper>
+                  {createRow(slotTypes.HD, values.startDateTime)}
+                </SlotsRowWrapper>
+              </Grid>
+
+              <Grid item xs={12}>
+                <ButtonsWrapper>
+                  {((recId && !isExpired(values.startDateTime)) || !recId) && (
                     <LeftButtons>
                       <ClearBtn onClick={() => clearSlots(resetForm, values)}>
                         Clear
@@ -155,6 +164,15 @@ const VocRecForm = ({
                         </LoadingButton>
                       )}
                     </LeftButtons>
+                  )}
+
+                  {((recId &&
+                    nowIsBetweenTwoDates(
+                      values.startDateTime,
+                      values.endDateTime,
+                    )) ||
+                    (recId && !isExpired(values.endDateTime)) ||
+                    !recId) && (
                     <LoadingButton
                       type="submit"
                       variant="contained"
@@ -163,33 +181,35 @@ const VocRecForm = ({
                     >
                       {recId ? 'Update' : 'Create'}
                     </LoadingButton>
-                  </ButtonsWrapper>
-                </Grid>
-              )}
+                  )}
+                </ButtonsWrapper>
+              </Grid>
             </Grid>
-
-            <Modal title="SEARCH VOD" open={open} handleClose={handleClose}>
-              <SearchVodRec
+            <Modal
+              title={`SEARCH LIN [${currentSlot?.split('.')[2].toUpperCase()}]`}
+              open={open}
+              handleClose={handleClose}
+            >
+              <SearchLinRec
                 addEvent={assignEventToSlot(setFieldValue)}
+                resolution={currentSlot?.split('.')[2].toUpperCase()}
                 handleClose={handleClose}
               />
             </Modal>
           </Form>
         )}
       </Formik>
-    </VocRecFormWrapper>
+    </LinRecFormWrapper>
   );
 };
 
-VocRecForm.propTypes = {
+LinRecForm.propTypes = {
   recId: PropTypes.string,
-  loadPrevVodRec: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   isDeleting: PropTypes.bool.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
-  prevVodRecIsLoading: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
-export default VocRecForm;
+export default LinRecForm;

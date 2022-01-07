@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFormikContext } from 'formik';
 import Button from '@mui/material/Button';
 
-const ClearBtn = ({ children, initialValues, ...props }) => {
-  const { resetForm } = useFormikContext();
-
-  const handleClick = () => resetForm({ values: initialValues });
-
+const ClearBtn = ({ children, onClick, ...props }) => {
   const configButton = {
     variant: 'contained',
-    onClick: handleClick,
+    onClick: onClick,
     size: 'medium',
   };
 
@@ -23,7 +18,7 @@ const ClearBtn = ({ children, initialValues, ...props }) => {
 
 ClearBtn.propTypes = {
   children: PropTypes.node.isRequired,
-  initialValues: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ClearBtn;

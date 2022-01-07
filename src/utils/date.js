@@ -4,9 +4,10 @@ const timeZone = 'Europe/Rome';
 const pattern = 'd.M.yyyy HH:mm';
 
 export function isExpired(date) {
-  const todayDate = new Date();
-  const otherDate = utcToZonedTime(date, timeZone);
-  return otherDate <= todayDate;
+  if (!date) return;
+  const now = new Date();
+  const zoned = utcToZonedTime(date, timeZone);
+  return now >= zoned;
 }
 
 export function formatToHumanReadable(date) {
@@ -17,6 +18,14 @@ export function formatToHumanReadable(date) {
 }
 
 export function resetSecondsToZero(date) {
-  let resetSeconds = date.setSeconds(0);
-  return new Date(resetSeconds);
+  let resetSeconds = new Date(date);
+  return new Date(resetSeconds.setSeconds(0));
+}
+
+export function nowIsBetweenTwoDates(startDate, endDate) {
+  const now = new Date();
+  const startDateTime = utcToZonedTime(startDate, timeZone);
+  const endDateTime = utcToZonedTime(endDate, timeZone);
+
+  return now >= startDateTime && now < endDateTime;
 }

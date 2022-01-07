@@ -1,3 +1,5 @@
+import { resetSecondsToZero } from '../../utils/date';
+
 export const prepareVodRec = (
   id,
   { cluster, startDateTime, recommendation },
@@ -6,7 +8,7 @@ export const prepareVodRec = (
     id: id ?? Math.floor(Math.random() * 101),
     cluster,
     type: 'VOD',
-    validFrom: startDateTime,
+    validFrom: resetSecondsToZero(startDateTime),
     validTo: '',
     recommendation: Object.values(recommendation),
   };

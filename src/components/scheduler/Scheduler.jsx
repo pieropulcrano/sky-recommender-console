@@ -6,6 +6,7 @@ import RecTooltipInfo from './rec-tooltip-info/RecTooltipInfo';
 import useNotification from '../../hooks/useNotification';
 import Spinner from '../spinner/Spinner';
 import Modal from '../../components/modal/Modal';
+import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
 import { Hidden } from './Scheduler.styled';
 import { resources, recTypes } from './config';
 import { mapForScheduler } from './Scheduler.helpers';
@@ -113,6 +114,7 @@ const Scheduler = () => {
             },
             newLin: {
               text: 'NEW LIN',
+              click: () => handleRecCreate(recTypes.lin),
             },
           }}
           nowIndicator
@@ -130,8 +132,14 @@ const Scheduler = () => {
           {!isEditing && recType === recTypes.vod && (
             <UpsertVodRec onSuccess={handleCRUDSuccess} />
           )}
-          {isEditing && selectedRec?.id && (
+          {!isEditing && recType === recTypes.lin && (
+            <UpsertLinRec onSuccess={handleCRUDSuccess} />
+          )}
+          {isEditing && recType === recTypes.vod && selectedRec?.id && (
             <UpsertVodRec id={selectedRec?.id} onSuccess={handleCRUDSuccess} />
+          )}
+          {isEditing && recType === recTypes.lin && selectedRec?.id && (
+            <UpsertLinRec id={selectedRec?.id} onSuccess={handleCRUDSuccess} />
           )}
         </Modal>
       </Hidden>

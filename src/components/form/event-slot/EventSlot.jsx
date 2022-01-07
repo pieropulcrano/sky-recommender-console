@@ -21,11 +21,11 @@ const EventSlot = ({ name, handleOpen, hd, disabled }) => {
   const { setFieldValue } = useFormikContext();
   const { value } = field;
 
-  const rmvEvent = () => setFieldValue(name, null);
+  const rmvEvent = () => setFieldValue(name, {});
 
   const handleOpenModal = () => handleOpen(name);
 
-  return value && Object.keys(value).length > 0 ? (
+  return value && Object.keys(value).length !== 0 ? (
     <SlotWrapper>
       <EventImageWrapper>
         {hd && <HD />}
@@ -34,7 +34,7 @@ const EventSlot = ({ name, handleOpen, hd, disabled }) => {
             <ClearIcon color="error" fontSize="small" />
           </XButton>
         )}
-        {isExpired(value.endProgram) && <Warning />}
+        {value.endProgram && isExpired(value.endProgram) && <Warning />}
         <EventImage />
       </EventImageWrapper>
       <Typography noWrap sx={{ fontSize: '12px' }}>
@@ -50,10 +50,11 @@ const EventSlot = ({ name, handleOpen, hd, disabled }) => {
   ) : (
     <SlotWrapper>
       <EventImageWrapper error={meta && meta.touched && meta.error}>
+        {hd && <HD />}
         <EmptyEventWrapper error={meta && meta.touched && meta.error}>
           {!disabled && (
             <IconButton onClick={handleOpenModal}>
-              <AddCircleIcon color="primary" fontSize="large" />
+              <AddCircleIcon style={{ color: 'blue' }} fontSize="large" />
             </IconButton>
           )}
         </EmptyEventWrapper>
