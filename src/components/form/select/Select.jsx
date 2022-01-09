@@ -24,7 +24,7 @@ const Select = ({ name, options, ...props }) => {
 
   if (meta && meta.touched && meta.error) {
     configSelect.error = true;
-    configSelect.helperText = 'Required';
+    configSelect.helperText = meta.error;
   }
 
   return (

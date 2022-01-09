@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
 import { DataGrid } from '@mui/x-data-grid';
-import { ErrorMessage, DataGridTableWrapper } from './DataGridTable.styled';
+import { DataGridTableWrapper } from './DataGridTable.styled';
+import { ErrorMsg } from '../error-msg/ErrorMsg.styled';
 
 const DataGridTable = ({ name, rows, columns, ...props }) => {
   const [selectionModel, setSelectionModel] = React.useState([]);
@@ -38,9 +39,7 @@ const DataGridTable = ({ name, rows, columns, ...props }) => {
         onSelectionModelChange={handleSelectionModelChange}
         {...props}
       />
-      {meta.error && (
-        <ErrorMessage>Pick a value from the result list.</ErrorMessage>
-      )}
+      {meta.error && <ErrorMsg>Pick a value from the result list.</ErrorMsg>}
     </DataGridTableWrapper>
   );
 };

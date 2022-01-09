@@ -40,6 +40,13 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
     });
   };
 
+  const clearSlots = (resetForm) =>
+    resetForm({
+      values: {
+        ...DEFAULT_VALUES,
+      },
+    });
+
   const createRow = (startIndex, endIndex) => {
     const rows = [];
     for (let i = startIndex; i <= endIndex; i++) {
@@ -61,7 +68,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
         initialValues={mergedInitialValues}
         validationSchema={validationSchema}
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, resetForm }) => (
           <Form>
             <Grid container spacing={1.5}>
               <Grid item xs={12}>
@@ -74,7 +81,9 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
 
               <Grid item xs={12}>
                 <ButtonsWrapper>
-                  <ClearBtn initialValues={DEFAULT_VALUES}>Clear</ClearBtn>
+                  <ClearBtn onClick={() => clearSlots(resetForm)}>
+                    Clear
+                  </ClearBtn>
                   <LoadingButton
                     type="submit"
                     variant="contained"

@@ -4,13 +4,19 @@ import { TooltipContentWrapper, RecInfoWrapper } from './RecTooltipInfo.styled';
 import { formatToHumanReadable } from '../../../utils/date';
 
 const TooltipContent = ({ recommendation, startDateTime, endDateTime }) => {
+  const sorted = recommendation.sort(
+    (prev, next) => prev.position - next.position,
+  );
   return (
     <TooltipContentWrapper>
       <span>Start: {formatToHumanReadable(startDateTime)}</span>
       <span>End: {formatToHumanReadable(endDateTime)}</span>
       <br />
-      {recommendation.map((event, index) => (
-        <li key={index}>{event.title}</li>
+      {sorted.map((event, index) => (
+        <span key={index}>
+          {`${event.position}. `}
+          {event.resolution === 'HD' && '[HD]'} {event.title}
+        </span>
       ))}
     </TooltipContentWrapper>
   );
@@ -41,7 +47,7 @@ RecTooltipInfo.propTypes = {
   title: PropTypes.string.isRequired,
   recommendation: PropTypes.array.isRequired,
   startDateTime: PropTypes.instanceOf(Date).isRequired,
-  endDateTime: PropTypes.instanceOf(Date).isRequired,
+  endDateTime: PropTypes.instanceOf(Date),
 };
 
 export default RecTooltipInfo;

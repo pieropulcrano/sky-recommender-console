@@ -9,12 +9,12 @@ const objShape = {
 export const DEFAULT_VALUES = {
   cluster: '',
   startDateTime: null,
-  recommendation: { 1: null, 2: null, 3: null, 4: null, 5: null },
+  recommendation: { 1: {}, 2: {}, 3: {}, 4: {}, 5: {} },
 };
 
 export const validationSchema = Yup.object().shape({
-  cluster: Yup.string().required(),
-  startDateTime: Yup.date().required(),
+  cluster: Yup.string().required('Required'),
+  startDateTime: Yup.date().typeError('Invalid date').required(),
   recommendation: Yup.object()
     .shape({
       1: Yup.object().shape(objShape).required(),
