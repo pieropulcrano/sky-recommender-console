@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
+import { isAfter } from 'date-fns';
 
 const allSelectedEventsAreCoupleHdSd = (slotsObj) => {
-  let decoupledEvents = false;
+  let coupled = true;
   for (let key in slotsObj) {
     if (
       (Object.keys(slotsObj[key].hd).length === 0 &&
@@ -9,20 +10,19 @@ const allSelectedEventsAreCoupleHdSd = (slotsObj) => {
       (Object.keys(slotsObj[key].hd).length !== 0 &&
         Object.keys(slotsObj[key].sd).length === 0)
     ) {
-      decoupledEvents = true;
+      coupled = false;
       break;
     }
   }
-  return decoupledEvents;
+  return coupled;
 };
 
-Yup.addMethod(Yup.object, 'allSelectedEventsAreCoupleHdSd', function (list) {
+Yup.addMethod(Yup.object, 'allSelectedEventsAreCoupleHdSd', function () {
   return this.test({
     name: 'allSelectedEventsAreCoupleHdSd',
     message: 'Each event pair must have one HD event and one SD event',
     exclusive: true,
-    params: { keys: list.join(', ') },
-    test: (slotsObj) => !allSelectedEventsAreCoupleHdSd(slotsObj),
+    test: (slotsObj) => allSelectedEventsAreCoupleHdSd(slotsObj),
   });
 });
 
@@ -58,8 +58,17 @@ export const validationSchema = Yup.object().shape({
     .required(),
   endDateTime: Yup.date()
     .typeError('Invalid date')
-    .min(Yup.ref('startDateTime'), "End date can't be before start date")
-    .required(),
+    .test(
+      'endDateTime',
+      'End date should be after initial date',
+      function checkEnd(endDateTime) {
+        const { startDateTime } = this.parent;
+        let startDateResetted = startDateTime.setSeconds(0);
+        let endDateResetted = endDateTime.setSeconds(0);
+        return isAfter(endDateResetted, startDateResetted);
+      },
+    )
+    .required('End date required'),
   recommendation: Yup.object()
     .shape(slotsShape)
     .allSelectedEventsAreCoupleHdSd(['1', '2', '3', '4', '5'])

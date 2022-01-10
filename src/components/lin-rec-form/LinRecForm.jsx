@@ -91,7 +91,6 @@ const LinRecForm = ({
         initialValues={mergedInitialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        enableReinitialize
       >
         {({ setFieldValue, values, resetForm, errors }) => (
           <Form>
