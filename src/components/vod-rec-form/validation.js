@@ -6,15 +6,12 @@ const objShape = {
   title: Yup.string().required(),
 };
 
-export const DEFAULT_VALUES = {
-  cluster: '',
-  startDateTime: null,
-  recommendation: { 1: {}, 2: {}, 3: {}, 4: {}, 5: {} },
-};
-
 export const validationSchema = Yup.object().shape({
   cluster: Yup.string().required('Required'),
-  startDateTime: Yup.date().typeError('Invalid date').required(),
+  startDateTime: Yup.date()
+    .typeError('Invalid date')
+    .min(new Date(), 'Date cannot be in the past')
+    .required(),
   recommendation: Yup.object()
     .shape({
       1: Yup.object().shape(objShape).required(),

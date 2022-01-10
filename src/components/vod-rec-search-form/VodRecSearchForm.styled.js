@@ -10,3 +10,8 @@ export const SelectButtonWrapper = styled('div')({
   display: 'flex',
   justifyContent: 'flex-end',
 });
+
+export const initialValues = {
+  title: '',
+  selectedEvent: null,
+};

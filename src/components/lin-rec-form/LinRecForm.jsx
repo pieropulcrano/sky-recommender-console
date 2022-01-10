@@ -8,16 +8,17 @@ import ClearBtn from '../form/clear-btn/ClearBtn';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SearchLinRec from '../../containers/search-lin-rec/SearchLinRec';
 import Modal from '../modal/Modal';
-import { DEFAULT_VALUES, validationSchema } from './validation';
+import { validationSchema } from './validation';
 import {
   SlotsRowWrapper,
   LinRecFormWrapper,
   LeftButtons,
   ButtonsWrapper,
 } from './LinRecForm.styled';
+import { ErrorMsg } from '../form/error-msg/ErrorMsg.styled';
 import Marginer from '../marginer/Marginer';
 import DateTimePicker from '../form/date-time-picker/DateTimePicker';
-import { clusters } from './config';
+import { clusters, DEFAULT_VALUES } from './config';
 import { slotTypes } from '../form/event-slot/EventSlot.types';
 import { isExpired, nowIsBetweenTwoDates } from '../../utils/date';
 
@@ -92,7 +93,7 @@ const LinRecForm = ({
         onSubmit={onSubmit}
         enableReinitialize
       >
-        {({ setFieldValue, values, resetForm }) => (
+        {({ setFieldValue, values, resetForm, errors }) => (
           <Form>
             <Grid container spacing={1.5}>
               {/* The LIN is still editable (not in the past) or we are creating new one */}
@@ -143,6 +144,9 @@ const LinRecForm = ({
                 <SlotsRowWrapper>
                   {createRow(slotTypes.HD, values.startDateTime)}
                 </SlotsRowWrapper>
+                {errors && !Array.isArray(errors.recommendation) && (
+                  <ErrorMsg>{errors.recommendation}</ErrorMsg>
+                )}
               </Grid>
 
               <Grid item xs={12}>

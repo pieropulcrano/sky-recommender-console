@@ -16,8 +16,8 @@ const DateTimePicker = ({ name, label, ...props }) => {
   }
 
   const setDateTime = (value) => {
-    setFieldValue(name, value);
     setFieldTouched(name);
+    setFieldValue(name, value);
   };
 
   const renderInput = (params) => (
