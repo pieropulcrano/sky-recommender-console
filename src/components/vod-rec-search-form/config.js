@@ -14,3 +14,8 @@ export const columns = [
   { field: 'thumbnailType', headerName: 'Thumbnail Type', width: '180' },
   { field: 'verticalImageUrl', headerName: 'Vertical Image Url', width: '180' },
 ];
+
+export const initialValues = {
+  title: '',
+  selectedEvent: null,
+};

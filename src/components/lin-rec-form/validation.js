@@ -4,10 +4,10 @@ const allSelectedEventsAreCoupleHdSd = (slotsObj) => {
   let decoupledEvents = false;
   for (let key in slotsObj) {
     if (
-      (Object.keys(slotsObj[key]?.hd).length === 0 &&
-        Object.keys(slotsObj[key]?.sd).length !== 0) ||
-      (Object.keys(slotsObj[key]?.hd).length !== 0 &&
-        Object.keys(slotsObj[key]?.sd).length === 0)
+      (Object.keys(slotsObj[key].hd).length === 0 &&
+        Object.keys(slotsObj[key].sd).length !== 0) ||
+      (Object.keys(slotsObj[key].hd).length !== 0 &&
+        Object.keys(slotsObj[key].sd).length === 0)
     ) {
       decoupledEvents = true;
       break;
@@ -19,7 +19,7 @@ const allSelectedEventsAreCoupleHdSd = (slotsObj) => {
 Yup.addMethod(Yup.object, 'allSelectedEventsAreCoupleHdSd', function (list) {
   return this.test({
     name: 'allSelectedEventsAreCoupleHdSd',
-    message: 'Insert hd / sd event pairs',
+    message: 'Each event pair must have one HD event and one SD event',
     exclusive: true,
     params: { keys: list.join(', ') },
     test: (slotsObj) => !allSelectedEventsAreCoupleHdSd(slotsObj),
@@ -50,22 +50,12 @@ const slotsShape = {
   5: Yup.object().shape(emptySlotShape).required(),
 };
 
-export const DEFAULT_VALUES = {
-  cluster: '',
-  startDateTime: null,
-  endDateTime: null,
-  recommendation: {
-    1: { sd: {}, hd: {} },
-    2: { sd: {}, hd: {} },
-    3: { sd: {}, hd: {} },
-    4: { sd: {}, hd: {} },
-    5: { sd: {}, hd: {} },
-  },
-};
-
 export const validationSchema = Yup.object().shape({
   cluster: Yup.string().required('Required'),
-  startDateTime: Yup.date().typeError('Invalid date').required(),
+  startDateTime: Yup.date()
+    .typeError('Invalid date')
+    .min(new Date(), 'Date cannot be in the past')
+    .required(),
   endDateTime: Yup.date()
     .typeError('Invalid date')
     .min(Yup.ref('startDateTime'), "End date can't be before start date")

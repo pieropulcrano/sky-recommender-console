@@ -12,7 +12,8 @@ import {
   SlotsRowWrapper,
   ButtonsWrapper,
 } from './VodRecFallbackForm.styled';
-import { DEFAULT_VALUES, validationSchema } from './validation';
+import { validationSchema } from './validation';
+import { DEFAULT_VALUES } from './config';
 
 const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
   const [open, setOpen] = React.useState(false);

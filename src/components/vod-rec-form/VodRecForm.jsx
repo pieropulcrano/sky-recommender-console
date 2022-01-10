@@ -16,8 +16,8 @@ import {
   ButtonsWrapper,
   LeftButtons,
 } from './VodRecForm.styled';
-import { DEFAULT_VALUES, validationSchema } from './validation';
-import { clusters } from './config';
+import { validationSchema } from './validation';
+import { clusters, DEFAULT_VALUES } from './config';
 import { isExpired } from '../../utils/date';
 
 const VocRecForm = ({

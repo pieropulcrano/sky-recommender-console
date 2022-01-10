@@ -10,8 +10,8 @@ import {
   VodRecSearchFormWrapper,
   SelectButtonWrapper,
 } from './VodRecSearchForm.styled';
-import { initialValues, validationSchema } from './validation';
-import { columns } from './config';
+import { validationSchema } from './validation';
+import { initialValues, columns } from './config';
 
 const VodRecSearchForm = ({
   onSubmit,
