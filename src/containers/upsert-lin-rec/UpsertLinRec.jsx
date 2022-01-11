@@ -33,6 +33,7 @@ const UpsertLinRec = ({ id, onSuccess }) => {
     try {
       setIsDeleting(true);
       await deleteLinRec(id);
+      onSuccess();
       addAlert({
         text: 'Lin was successfully deleted.',
         title: ` Lin Deleted`,
@@ -48,7 +49,6 @@ const UpsertLinRec = ({ id, onSuccess }) => {
       });
     } finally {
       setIsDeleting(false);
-      onSuccess();
     }
   };
 
@@ -59,6 +59,7 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         if (id) {
           const updated = prepareLinRec(id, values);
           await updateLinRec(id, updated);
+          onSuccess();
           addAlert({
             text: 'Lin was successfully updated.',
             title: ` Lin Updated`,
@@ -68,6 +69,7 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         } else {
           const linRec = prepareLinRec(null, values);
           await createLinRec(linRec);
+          onSuccess();
           addAlert({
             text: 'Lin was successfully created.',
             title: 'Lin Created',
@@ -84,7 +86,6 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         });
       } finally {
         setIsSubmitting(false);
-        onSuccess();
       }
     },
     [id, onSuccess, addAlert],

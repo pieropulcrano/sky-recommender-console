@@ -7,6 +7,7 @@ import Marginer from '../marginer/Marginer';
 import DataGridTable from '../form/data-grid-table/DataGridTable';
 import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import TextInput from '../form/text-input/TextInput';
+
 import {
   LinRecSearchFormWrapper,
   SelectButtonWrapper,
@@ -23,6 +24,10 @@ const VodRecSearchForm = ({
 }) => {
   const searchEvent = (values, resolution) => () => {
     const params = {};
+
+    if (values.startDateTime instanceof Date && isNaN(values.startDateTime))
+      return;
+
     if (values.title) params.title = values.title;
     if (values.startDateTime)
       params.startProgram_gte = values.startDateTime.toISOString();

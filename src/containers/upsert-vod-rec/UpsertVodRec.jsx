@@ -75,6 +75,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         type: 'success',
         id: Date.now(),
       });
+      onSuccess();
     } catch {
       addAlert({
         text: 'An error occurred while deleting the Vod recommendation.',
@@ -84,7 +85,6 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       });
     } finally {
       setIsDeleting(false);
-      onSuccess();
     }
   };
 
@@ -95,6 +95,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         if (id) {
           const updated = prepareVodRec(id, values);
           await updateVodRec(id, updated);
+          onSuccess();
           addAlert({
             text: 'Vod was successfully updated.',
             title: ` Vod Updated`,
@@ -104,6 +105,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         } else {
           const vodRec = prepareVodRec(null, values);
           await createVodRec(vodRec);
+          onSuccess();
           addAlert({
             text: 'Vod was successfully created.',
             title: ` Vod Created`,
@@ -120,7 +122,6 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         });
       } finally {
         setIsSubmitting(false);
-        onSuccess();
       }
     },
     [id, onSuccess, addAlert],
