@@ -22,7 +22,7 @@ fc-header-right {
   display: block;
 }
 
-@media (max-width: 840px) {
+@media (max-width: 870px) {
   .fc .fc-toolbar.fc-header-toolbar {
     display: flex;
     flex-direction: column;
