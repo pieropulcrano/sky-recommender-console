@@ -8,7 +8,7 @@ const Schedule = () => {
   return (
     <Container maxWidth="xl">
       <Box sx={{ m: 2 }} />
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Marginer direction="horizontal" margin={40} />
         <Scheduler />
       </Container>

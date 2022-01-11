@@ -96,10 +96,11 @@ const Scheduler = () => {
       <Hidden isLoading={recIsLoading}>
         <FullCalendar
           ref={CalendarRef}
-          aspectRatio={2}
           schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
           plugins={[resourceTimelinePlugin]}
           initialView="resourceTimelineMonth"
+          height="70vh"
+          resourceAreaWidth="180px"
           resourceAreaHeaderContent="Clusters"
           resources={resources}
           headerToolbar={{
