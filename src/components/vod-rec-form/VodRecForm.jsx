@@ -114,16 +114,18 @@ const VocRecForm = ({
                     />
                   </Grid>
 
-                  <Grid item xs={4} justifyContent="flex-end">
-                    <LoadingButton
-                      variant="contained"
-                      color="primary"
-                      loading={prevVodRecIsLoading}
-                      onClick={() => loadPrevVodRec(values)}
-                    >
-                      Load
-                    </LoadingButton>
-                  </Grid>
+                  {!recId && (
+                    <Grid item xs={4} justifyContent="flex-end">
+                      <LoadingButton
+                        variant="contained"
+                        color="primary"
+                        loading={prevVodRecIsLoading}
+                        onClick={() => loadPrevVodRec(values)}
+                      >
+                        Load
+                      </LoadingButton>
+                    </Grid>
+                  )}
                 </>
               )}
 
