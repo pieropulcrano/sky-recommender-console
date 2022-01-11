@@ -1,6 +1,10 @@
 import Tooltip from '@mui/material/Tooltip';
 import PropTypes from 'prop-types';
-import { TooltipContentWrapper, RecInfoWrapper } from './RecTooltipInfo.styled';
+import {
+  TooltipContentWrapper,
+  RecInfoWrapper,
+  TooltipWrapper,
+} from './RecTooltipInfo.styled';
 import { formatToHumanReadable } from '../../../utils/date';
 
 const TooltipContent = ({ recommendation, startDateTime, endDateTime }) => {
@@ -29,17 +33,19 @@ const RecTooltipInfo = ({
   endDateTime,
 }) => {
   return (
-    <Tooltip
-      title={
-        <TooltipContent
-          recommendation={recommendation}
-          startDateTime={startDateTime}
-          endDateTime={endDateTime}
-        />
-      }
-    >
-      <RecInfoWrapper>{title}</RecInfoWrapper>
-    </Tooltip>
+    <TooltipWrapper>
+      <Tooltip
+        title={
+          <TooltipContent
+            recommendation={recommendation}
+            startDateTime={startDateTime}
+            endDateTime={endDateTime}
+          />
+        }
+      >
+        <RecInfoWrapper>{title}</RecInfoWrapper>
+      </Tooltip>
+    </TooltipWrapper>
   );
 };
 
