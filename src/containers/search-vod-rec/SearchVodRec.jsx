@@ -12,8 +12,6 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
 
   const onSearch = React.useCallback(
     async (values) => {
-      if (Object.values(values).every((key) => key === '' || key === null))
-        return;
       setSearchResult([]);
       setIsSearching(true);
       try {

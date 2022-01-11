@@ -15,7 +15,6 @@ import {
   LeftButtons,
   ButtonsWrapper,
 } from './LinRecForm.styled';
-import { ErrorMsg } from '../form/error-msg/ErrorMsg.styled';
 import Marginer from '../marginer/Marginer';
 import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import { clusters, DEFAULT_VALUES } from './config';
@@ -92,7 +91,7 @@ const LinRecForm = ({
         validationSchema={recId ? isEditingValidationSchema : validationSchema}
         onSubmit={onSubmit}
       >
-        {({ setFieldValue, values, resetForm, errors }) => (
+        {({ setFieldValue, values, resetForm }) => (
           <Form>
             <Grid container spacing={1.5}>
               {/* The LIN is still editable (not in the past) or we are creating new one */}
@@ -143,9 +142,6 @@ const LinRecForm = ({
                 <SlotsRowWrapper>
                   {createRow(slotTypes.HD, values.startDateTime)}
                 </SlotsRowWrapper>
-                {errors && !Array.isArray(errors.recommendation) && (
-                  <ErrorMsg>{errors.recommendation}</ErrorMsg>
-                )}
               </Grid>
 
               <Grid item xs={12}>

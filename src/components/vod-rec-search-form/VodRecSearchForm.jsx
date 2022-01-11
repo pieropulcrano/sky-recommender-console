@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import VodEventSearchForm from '../vod-event-search-form/VodEventSearchForm';
 import Marginer from '../marginer/Marginer';
 import DataGridTable from '../form/data-grid-table/DataGridTable';
-import TextInput from '../form/text-input/TextInput';
 import {
   VodRecSearchFormWrapper,
   SelectButtonWrapper,
@@ -21,50 +21,32 @@ const VodRecSearchForm = ({
 }) => {
   return (
     <VodRecSearchFormWrapper>
+      <VodEventSearchForm onSubmit={onSearch} />
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
-        validateOnChange={false}
-        validateOnBlur={false}
       >
-        {({ values }) => (
-          <Form>
-            <Marginer direction="horizontal" margin={10} />
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <TextInput name="title" label="Title" />
-              </Grid>
-
-              <Grid item xs={6}>
-                <Button
-                  type="button"
-                  variant="contained"
-                  onClick={() => onSearch(values)}
-                >
-                  Search
-                </Button>
-              </Grid>
-
-              <Grid item xs={12}>
-                <DataGridTable
-                  name="selectedEvent"
-                  columns={columns}
-                  loading={isSearching}
-                  rows={searchResult}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <SelectButtonWrapper>
-                  <Button type="submit" variant="contained" color="success">
-                    Select
-                  </Button>
-                </SelectButtonWrapper>
-              </Grid>
+        <Form>
+          <Marginer direction="horizontal" margin={10} />
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <DataGridTable
+                name="selectedEvent"
+                columns={columns}
+                loading={isSearching}
+                rows={searchResult}
+              />
             </Grid>
-          </Form>
-        )}
+            <Grid item xs={12}>
+              <SelectButtonWrapper>
+                <Button type="submit" variant="contained" color="success">
+                  Select
+                </Button>
+              </SelectButtonWrapper>
+            </Grid>
+          </Grid>
+        </Form>
       </Formik>
     </VodRecSearchFormWrapper>
   );

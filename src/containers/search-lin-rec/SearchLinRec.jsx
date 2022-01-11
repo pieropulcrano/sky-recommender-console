@@ -15,7 +15,12 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
       setSearchResult([]);
       setIsSearching(true);
       try {
-        let res = await searchVodRec(values);
+        let res = await searchVodRec({
+          ...values,
+          startProgram_gte: values.startDateTime.toISOString(),
+          type: 'LIN',
+          resolution,
+        });
         const rows = mapSearchResultForDataTable(res);
         setSearchResult(rows);
       } catch (error) {
@@ -29,7 +34,7 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
         setIsSearching(false);
       }
     },
-    [addAlert],
+    [resolution, addAlert],
   );
 
   const onSubmit = (event) => {

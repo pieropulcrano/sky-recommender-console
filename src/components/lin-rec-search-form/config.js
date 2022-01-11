@@ -17,7 +17,5 @@ export const columns = [
 ];
 
 export const initialValues = {
-  title: '',
   selectedEvent: null,
-  startDateTime: null,
 };
