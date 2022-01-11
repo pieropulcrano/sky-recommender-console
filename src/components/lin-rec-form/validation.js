@@ -74,3 +74,25 @@ export const validationSchema = Yup.object().shape({
     .allSelectedEventsAreCoupleHdSd(['1', '2', '3', '4', '5'])
     .required(),
 });
+
+export const isEditingValidationSchema = Yup.object().shape({
+  cluster: Yup.string().required('Required'),
+  startDateTime: Yup.date().typeError('Invalid date').required(),
+  endDateTime: Yup.date()
+    .typeError('Invalid date')
+    .test(
+      'endDateTime',
+      'End date should be after initial date',
+      function checkEnd(endDateTime) {
+        const { startDateTime } = this.parent;
+        let startDateResetted = startDateTime.setSeconds(0);
+        let endDateResetted = endDateTime.setSeconds(0);
+        return isAfter(endDateResetted, startDateResetted);
+      },
+    )
+    .required('End date required'),
+  recommendation: Yup.object()
+    .shape(slotsShape)
+    .allSelectedEventsAreCoupleHdSd(['1', '2', '3', '4', '5'])
+    .required(),
+});

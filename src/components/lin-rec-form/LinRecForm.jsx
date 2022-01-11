@@ -8,7 +8,7 @@ import ClearBtn from '../form/clear-btn/ClearBtn';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SearchLinRec from '../../containers/search-lin-rec/SearchLinRec';
 import Modal from '../modal/Modal';
-import { validationSchema } from './validation';
+import { isEditingValidationSchema, validationSchema } from './validation';
 import {
   SlotsRowWrapper,
   LinRecFormWrapper,
@@ -89,7 +89,7 @@ const LinRecForm = ({
     <LinRecFormWrapper>
       <Formik
         initialValues={mergedInitialValues}
-        validationSchema={validationSchema}
+        validationSchema={recId ? isEditingValidationSchema : validationSchema}
         onSubmit={onSubmit}
       >
         {({ setFieldValue, values, resetForm, errors }) => (
