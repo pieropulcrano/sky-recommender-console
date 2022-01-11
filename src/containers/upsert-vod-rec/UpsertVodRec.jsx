@@ -150,7 +150,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
               : prevVodRec.length > 0
               ? {
                   cluster: prevVodRec[0].cluster,
-                  startDateTime: prevVodRec[0].startDateTime,
+                  startDateTime: prevVodRec[0].validFrom,
                   recommendation: normalizeVodRec(prevVodRec[0].recommendation),
                 }
               : {}
