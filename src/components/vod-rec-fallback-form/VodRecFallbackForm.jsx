@@ -53,6 +53,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
     for (let i = startIndex; i <= endIndex; i++) {
       rows.push(
         <EventSlot
+          customClass="fallback-slot"
           key={i}
           name={`recommendation.${i}`}
           handleOpen={handleOpen}
@@ -97,7 +98,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
               </Grid>
             </Grid>
 
-            <Modal title="SEARCH VOD" open={open} handleClose={handleClose}>
+            <Modal title="SEARCH VOD" data_test="search-vod-modal" open={open} handleClose={handleClose}>
               <SearchVodRec
                 addEvent={assignEventToSlot(setFieldValue)}
                 handleClose={handleClose}

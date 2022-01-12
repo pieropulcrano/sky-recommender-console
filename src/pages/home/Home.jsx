@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar data-test="app-bar"position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -51,7 +51,7 @@ const Home = () => {
       <Box sx={{ m: 2 }} />
       <Container maxWidth="xl">
         <Marginer direction="horizontal" margin={10} />
-        <Tabs value={selectedTab} onChange={handleChange}>
+        <Tabs data-test="nav-tabs" value={selectedTab} onChange={handleChange}>
           <Tab label="Schedule" />
           <Tab label="Fallback" />
         </Tabs>
