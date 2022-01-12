@@ -92,13 +92,14 @@ const VocRecForm = ({
         enableReinitialize
       >
         {({ setFieldValue, values, resetForm }) => (
-          <Form>
+          <Form  data-test="form-upsert-rec-vod">
             <Grid container spacing={1.5}>
               {/* The VOD is still editable (not in the past) or we are creating new one */}
               {((recId && !isExpired(values.startDateTime)) || !recId) && (
                 <>
                   <Grid item xs={4}>
                     <Select
+                    data-test="select-cluster"
                       name="cluster"
                       label="Cluster"
                       size="medium"
@@ -108,6 +109,7 @@ const VocRecForm = ({
 
                   <Grid item xs={4}>
                     <DateTimePicker
+                      data_test="select-date"
                       name="startDateTime"
                       label="Start Date"
                       disablePast
