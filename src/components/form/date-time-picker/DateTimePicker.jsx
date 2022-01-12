@@ -4,7 +4,7 @@ import { useField, useFormikContext } from 'formik';
 import TextField from '@mui/material/TextField';
 import DateTimePickerComp from '@mui/lab/DateTimePicker';
 
-const DateTimePicker = ({ name, label, ...props }) => {
+const DateTimePicker = ({ name, label,data_test, ...props }) => {
   const [field, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
 
@@ -31,6 +31,7 @@ const DateTimePicker = ({ name, label, ...props }) => {
       inputFormat="dd/MM/yyyy h:mm a"
       value={field.value}
       onChange={setDateTime}
+      data-testid={data_test}
       {...props}
     />
   );

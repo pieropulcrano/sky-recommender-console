@@ -14,7 +14,7 @@ const Modal = ({ title, open, handleClose, children,data_test }) => {
           <Typography variant="h6" component="h6">
             {title}
           </Typography>
-          <IconButton onClick={handleClose}>
+          <IconButton data-test="close-modal-btn" onClick={handleClose}>
             <ClearIcon color="error" fontSize="medium" />
           </IconButton>
         </ModalHeader>
