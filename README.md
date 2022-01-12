@@ -29,3 +29,9 @@ json-server --watch db.json --port 3001 --delay 1000
 ```
 npm start
 ```
+
+## test
+
+```
+yarn run cypress open
+```

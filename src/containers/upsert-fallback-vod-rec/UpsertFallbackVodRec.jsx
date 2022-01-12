@@ -36,6 +36,7 @@ const UpsertFallbackVodRec = () => {
         text: 'Vod Fallback was successfully created.',
         title: ` Vod Fallback created`,
         type: 'success',
+        data_test:"vod-fallback-ok-not",
         id: Date.now(),
       });
     } catch (error) {

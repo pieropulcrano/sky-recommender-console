@@ -13,7 +13,7 @@ function SnackbarProvider({ duration = 6000, alert, handleClose }) {
   }, [alert, duration, handleClose]);
 
   return (
-    <AlertWrapper>
+    <AlertWrapper data-test={alert.data_test}>
       <Alert
         onClose={() => handleClose(alert)}
         id={alert.id}
