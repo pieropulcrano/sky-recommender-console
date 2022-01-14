@@ -128,7 +128,6 @@ const Scheduler = () => {
           eventDidMount={renderEvent}
           eventClick={handleRecEdit}
           loading={handleRecLoading}
-          className="aaaa"
         />
         <Modal
           title={modalTitle}
