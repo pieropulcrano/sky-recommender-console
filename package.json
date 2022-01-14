@@ -19,6 +19,7 @@
     "axios": "0.24.0",
     "date-fns": "2.27.0",
     "date-fns-tz": "1.2.2",
+    "dayjs": "^1.10.7",
     "formik": "2.2.9",
     "prop-types": "15.8.0",
     "react": "17.0.2",

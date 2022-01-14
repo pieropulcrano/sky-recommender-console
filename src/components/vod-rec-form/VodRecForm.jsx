@@ -73,6 +73,7 @@ const VocRecForm = ({
     for (let i = startIndex; i <= endIndex; i++) {
       rows.push(
         <EventSlot
+          customClass="prev-vod-slot"
           key={i}
           name={`recommendation.${i}`}
           handleOpen={handleOpen}
@@ -163,6 +164,7 @@ const VocRecForm = ({
                       type="submit"
                       variant="contained"
                       color="success"
+                      data-test="submit-upsert-btn"
                       loading={isSubmitting}
                     >
                       {recId ? 'Update' : 'Create'}
@@ -172,7 +174,7 @@ const VocRecForm = ({
               )}
             </Grid>
 
-            <Modal title="SEARCH VOD" open={open} handleClose={handleClose}>
+            <Modal title="SEARCH VOD" data_test="search-vod-modal" open={open} handleClose={handleClose}>
               <SearchVodRec
                 addEvent={assignEventToSlot(setFieldValue)}
                 handleClose={handleClose}

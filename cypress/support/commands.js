@@ -35,7 +35,7 @@ Cypress.Commands.add("testSearchVodModal", () => {
         cy.request('GET', 'http://localhost:3001/event?type=VOD').then((response) => {
             let vods = response.body;
             let randomIndex = cy.getRandomNumber(0, vods.length - 1);
-           // debugger
+            // debugger
             for (var i = 0; i < vods.length; i++) {
                 //ne prendiamo uno a caso
                 if (i === randomIndex) {
@@ -57,3 +57,14 @@ Cypress.Commands.add("testSearchVodModal", () => {
         cy.get('[data-test="search-vod-modal"]').should('have.length', 0);
     });
 });
+
+
+Cypress.Commands.add("selectRandomCluster", (randomIndexClusterVal) => {
+
+    //click on cluster select
+    cy.get('[data-test="select-cluster"]').click();
+    //click on cluster select
+    cy.get('[data-value="' + randomIndexClusterVal + '"]').click();
+
+});
+
