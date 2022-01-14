@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Testing vod raccomandation', () => {
+describe('Testing create vod raccomandation', () => {
 
     beforeEach(() => {
         // Cypress starts out with a blank slate for each test
