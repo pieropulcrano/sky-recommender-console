@@ -5,36 +5,27 @@ describe('Testing lin recommendation', () => {
     let toDelete;
     let eventId;
 
-    cy.intercept({ method: 'POST', path: '/recommendations' }).as('createLin');
-
-    cy.intercept({
-      method: 'GET',
-      path: 'http://localhost:3001/recommendations*',
-    }).as('loadLin');
-
     // visit the schedule page
     cy.visit('http://localhost:3000/schedule');
 
-    // intercept call to create new lin recommendation to update
-
+    // create the lin recommendation to delete
     cy.request({
       method: 'POST',
       url: 'http://localhost:3001/recommendations',
       body: linRec,
     }).then((response) => {
       expect(response.status).to.eql(201);
+      // set the id of lin recommendation to delete
       toDelete = response.body.id;
       eventId = `eventId-${toDelete}`;
 
-      // get lin rec to update;
+      // get lin rec to delete;
       cy.get(`[data-testid="${eventId}"]`).click();
 
-      // intercept does not work goddam
-      cy.wait(2000);
-
-      // invia
+      // confirm deletion
       cy.contains('Delete').click();
 
+      // check for notification
       cy.contains('Lin Deleted');
     });
   });
