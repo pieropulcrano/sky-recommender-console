@@ -92,7 +92,7 @@ const LinRecForm = ({
         onSubmit={onSubmit}
       >
         {({ setFieldValue, values, resetForm }) => (
-          <Form>
+          <Form data-testid="form-upsert-rec-lin">
             <Grid container spacing={1.5}>
               {/* The LIN is still editable (not in the past) or we are creating new one */}
               {((recId && !isExpired(values.startDateTime)) || !recId) && (
@@ -103,6 +103,7 @@ const LinRecForm = ({
                       label="Cluster"
                       size="medium"
                       options={clusters}
+                      data-test="select-cluster"
                     />
                   </Grid>
                   <Grid item xs={4}>
@@ -131,14 +132,14 @@ const LinRecForm = ({
                 </Grid>
               )}
 
-              <Grid item xs={12}>
+              <Grid item xs={12} data-testid="sd-slot-row">
                 <Marginer direction="horizontal" margin={10} />
                 <SlotsRowWrapper>
                   {createRow(slotTypes.SD, values.startDateTime)}
                 </SlotsRowWrapper>
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} data-testid="hd-slot-row">
                 <SlotsRowWrapper>
                   {createRow(slotTypes.HD, values.startDateTime)}
                 </SlotsRowWrapper>
@@ -188,6 +189,7 @@ const LinRecForm = ({
               title={`SEARCH LIN [${currentSlot?.split('.')[2].toUpperCase()}]`}
               open={open}
               handleClose={handleClose}
+              data_test="search-lin-modal"
             >
               <SearchLinRec
                 addEvent={assignEventToSlot(setFieldValue)}

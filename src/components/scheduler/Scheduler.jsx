@@ -99,7 +99,7 @@ const Scheduler = () => {
           schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
           plugins={[resourceTimelinePlugin]}
           initialView="resourceTimelineMonth"
-          height="70vh"
+          height="700px"
           resourceAreaWidth="180px"
           resourceAreaHeaderContent="Clusters"
           resources={resources}
