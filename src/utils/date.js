@@ -12,14 +12,18 @@ export function isExpired(date) {
 }
 
 export function formatToHumanReadable(date) {
-  const zonedDate = utcToZonedTime(date, timeZone);
-  const formatted = format(zonedDate, pattern, { timeZone });
-  return formatted;
+  try {
+    const zonedDate = utcToZonedTime(date, timeZone);
+    const formatted = format(zonedDate, pattern, { timeZone });
+    return formatted;
+  } catch (err) {}
 }
 
 export function resetSecondsToZero(date) {
-  let resetSeconds = new Date(date);
-  return new Date(resetSeconds.setSeconds(0));
+  try {
+    let resetSeconds = new Date(date);
+    return new Date(resetSeconds.setSeconds(0));
+  } catch (err) {}
 }
 
 export function nowIsBetweenTwoDates(startDate, endDate) {
