@@ -90,6 +90,13 @@ const Scheduler = () => {
     );
   };
 
+  const renderEvent = (data) => {
+    data.el.setAttribute(
+      'data-testId',
+      'eventId-' + data.event.extendedProps.extraProps.id,
+    );
+  };
+
   return (
     <>
       {recIsLoading && <Spinner height="65vh" />}
@@ -121,6 +128,7 @@ const Scheduler = () => {
           nowIndicator
           eventContent={renderRecContent}
           expandRows
+          eventDidMount={renderEvent}
           events={loadRec}
           eventClick={handleRecEdit}
           loading={handleRecLoading}

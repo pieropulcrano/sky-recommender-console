@@ -7,6 +7,7 @@ cy.getRandomNumber = (rangeMin, rangeMax) => {
 
 cy.generateFutureDate = (plusDate, format) => {
   let tomorrow = Cypress.dayjs().add(plusDate, 'day');
+  if (!format) return Cypress.dayjs(tomorrow).utc().format();
   return Cypress.dayjs(tomorrow).format(format);
 };
 
