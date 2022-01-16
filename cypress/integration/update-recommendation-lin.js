@@ -5,18 +5,10 @@ describe('Testing lin recommendation', () => {
     let toUpdate;
     let eventId;
 
-    cy.intercept({ method: 'POST', path: '/recommendations' }).as('createLin');
-
-    cy.intercept({
-      method: 'GET',
-      path: 'http://localhost:3001/recommendations*',
-    }).as('loadLin');
-
     // visit the schedule page
     cy.visit('http://localhost:3000/schedule');
 
-    // intercept call to create new lin recommendation to update
-
+    // create lin rec to update
     cy.request({
       method: 'POST',
       url: 'http://localhost:3001/recommendations',
@@ -29,13 +21,10 @@ describe('Testing lin recommendation', () => {
       // get lin rec to update;
       cy.get(`[data-testid="${eventId}"]`).click();
 
-      // intercept does not work goddam
-      cy.wait(2000);
-
       // pick a random cluster
       let randomIndexClusterVal = cy.generateRandomCluster();
-
       cy.selectRandomCluster(randomIndexClusterVal);
+
       // select sd slot row
       cy.get('[data-testid="sd-slot-row"]')
         .find('[data-testid="AddCircleIcon"] > path')
@@ -84,16 +73,16 @@ describe('Testing lin recommendation', () => {
           });
         });
 
-      // invia
+      // submit update
       cy.contains('Update').click();
 
+      // check for notification
       cy.contains('Lin Updated');
-      // delete created lin
 
-      cy.wait(2000);
-
+      // delete created notification
       cy.request('DELETE', `http://localhost:3001/recommendations/1000`);
 
+      // force refresh of the page
       cy.visit('http://localhost:3000/schedule');
     });
   });
