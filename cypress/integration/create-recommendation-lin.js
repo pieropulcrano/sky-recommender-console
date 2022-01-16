@@ -1,16 +1,23 @@
 describe('Testing lin recommendation', () => {
   it('Check create new lin recommendation', () => {
-    // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
     // pick a random cluster
-    let randomIndexClusterVal = cy.generateRandomCluster();
+    const randomIndexClusterVal = cy.generateRandomCluster();
     // create tomorrow date as startDateTime
-    let startDateTime = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
+    const startDateTime = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
     // create a date five days after tomorrow date as endDateTime
-    let endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A');
+    const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A');
+    // SD event to search
+    const sdEvent = "L'immortale";
+    // HD event to search
+    const hdEvent = 'Avatar';
+    // start date of the event to search
+    const startDateEvent = '19/01/2022 6:29 PM';
 
     // intercept create new lin request to make assertions
     cy.intercept({ method: 'POST', path: '/recommendations' }).as('createLin');
+
+    // visit the schedule page
+    cy.visit('http://localhost:3000/schedule');
 
     // click on create new lin button
     cy.contains('NEW LIN').click();
@@ -30,9 +37,9 @@ describe('Testing lin recommendation', () => {
         // get the opened modal
         cy.get('[data-test="search-lin-modal"]').within(() => {
           // search lin event title
-          cy.get('input[type="text"]').first().type("L'immortale");
+          cy.get('input[type="text"]').first().type(sdEvent);
           // insert startDate
-          cy.get('input[type="text"]').last().type('19/01/2022 6:29 PM');
+          cy.get('input[type="text"]').last().type(startDateEvent);
           // click on search button
           cy.contains('Search').click();
           // it should be at least one result
@@ -54,9 +61,9 @@ describe('Testing lin recommendation', () => {
         // get the opened modal
         cy.get('[data-test="search-lin-modal"]').within(() => {
           // search lin title
-          cy.get('input[type="text"]').first().type('Avatar');
+          cy.get('input[type="text"]').first().type(hdEvent);
           // insert startDate
-          cy.get('input[type="text"]').last().type('19/01/2022 6:29 PM');
+          cy.get('input[type="text"]').last().type(startDateEvent);
           // click on search button
           cy.contains('Search').click();
           // it should be at least one result
@@ -80,6 +87,8 @@ describe('Testing lin recommendation', () => {
         'DELETE',
         `http://localhost:3001/recommendations/${response.body.id}`,
       );
+      // force refresh view
+      cy.visit('http://localhost:3000/schedule');
     });
   });
 });
