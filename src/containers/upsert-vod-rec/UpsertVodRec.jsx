@@ -40,6 +40,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         setPrevVodRecIsLoading(true);
         const res = await getPrevVodRec({
           cluster,
+          type:'VOD',
           validFrom_lte: startDateTime,
         });
         if (res.length === 0)
@@ -110,6 +111,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             text: 'Vod was successfully created.',
             title: ` Vod Created`,
             type: 'success',
+            data_test:"vod-update-ok-not",
             id: Date.now(),
           });
         }

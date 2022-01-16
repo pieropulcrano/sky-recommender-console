@@ -52,7 +52,7 @@ const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
       </Typography>
     </SlotWrapper>
   ) : (
-    <SlotWrapper>
+    <SlotWrapper className="empity-slot">
       <EventImageWrapper error={meta && meta.touched && meta.error}>
         {hd && <HD />}
         <EmptyEventWrapper error={meta && meta.touched && meta.error}>
