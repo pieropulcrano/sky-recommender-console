@@ -17,7 +17,7 @@ export const prepareLinRec = (
   { cluster, startDateTime, endDateTime, recommendation },
 ) => {
   return {
-    id: id ?? Math.floor(Math.random() * 101),
+    id: id ?? Math.floor(Math.random() * 10001),
     cluster,
     type: 'LIN',
     validFrom: resetSecondsToZero(startDateTime),

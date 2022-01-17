@@ -6,7 +6,7 @@ describe('Testing lin recommendation', () => {
     let eventId;
 
     // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
+    cy.visit('http://localhost:3000');
 
     // create lin rec to update
     cy.request({
@@ -17,7 +17,8 @@ describe('Testing lin recommendation', () => {
       expect(response.status).to.eql(201);
       toUpdate = response.body.id;
       eventId = `eventId-${toUpdate}`;
-
+      //refresh
+      cy.visit('http://localhost:3000');
       // get lin rec to update;
       cy.get(`[data-testid="${eventId}"]`).click();
 
@@ -83,7 +84,7 @@ describe('Testing lin recommendation', () => {
       cy.request('DELETE', `http://localhost:3001/recommendations/1000`);
 
       // force refresh of the page
-      cy.visit('http://localhost:3000/schedule');
+      cy.visit('http://localhost:3000');
     });
   });
 });

@@ -19,8 +19,8 @@ const App = () => {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <AlertContextProvider>
           <Switch>
-            <Redirect exact from="/" to="/schedule" />
-            <Route exact path="/:page?" component={Home} />
+            <Route exact from="/" component={Home} />
+            <Redirect from="*" to={'/'} />
           </Switch>
           <Notification />
         </AlertContextProvider>

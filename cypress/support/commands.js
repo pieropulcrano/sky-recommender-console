@@ -36,7 +36,6 @@ Cypress.Commands.add('testSearchVodModal', () => {
       (response) => {
         let vods = response.body;
         let randomIndex = cy.getRandomNumber(0, vods.length - 1);
-        // debugger
         for (var i = 0; i < vods.length; i++) {
           //ne prendiamo uno a caso
           if (i === randomIndex) {
