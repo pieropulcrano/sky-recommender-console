@@ -78,9 +78,7 @@ const Scheduler = () => {
     handleCloseModal();
     CalendarRef.current.getApi().refetchEvents();
   };
-  const renderEvent= (data) => {
-    data.el.setAttribute("data-testId", "eventId-"+data.event.extendedProps.extraProps.id);
-  };
+
   const renderRecContent = (arg) => {
     return (
       <RecTooltipInfo
@@ -133,7 +131,6 @@ const Scheduler = () => {
           expandRows
           eventDidMount={renderEvent}
           events={loadRec}
-          eventDidMount={renderEvent}
           eventClick={handleRecEdit}
           loading={handleRecLoading}
         />
