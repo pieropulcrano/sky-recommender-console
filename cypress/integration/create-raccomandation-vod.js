@@ -69,6 +69,12 @@ describe('Testing create vod raccomandation', () => {
              cy.get('[data-test="form-upsert-rec-vod"]').should('have.length', 0);
              //deve comparire notifica ok
              cy.get('[data-test="vod-update-ok-not"]').should('have.length', 1);
+             cy.request(
+              'DELETE',
+              `http://localhost:3001/recommendations/${response.body.id}`,
+            );
+            // force refresh view
+            cy.visit('http://localhost:3000/schedule');
          })
 
     });
@@ -146,6 +152,12 @@ describe('Testing create vod raccomandation', () => {
             cy.get('[data-test="form-upsert-rec-vod"]').should('have.length', 0);
             //deve comparire notifica ok
             cy.get('[data-test="vod-update-ok-not"]').should('have.length', 1);
+            cy.request(
+              'DELETE',
+              `http://localhost:3001/recommendations/${response.body.id}`,
+            );
+            // force refresh view
+            cy.visit('http://localhost:3000/schedule');
         })
 
     })
