@@ -16,7 +16,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 
-const EventSlot = ({ name, handleOpen, hd, disabled,customClass }) => {
+const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
   const { value } = field;
@@ -40,7 +40,11 @@ const EventSlot = ({ name, handleOpen, hd, disabled,customClass }) => {
       <Typography data-test="event-title" noWrap sx={{ fontSize: '12px' }}>
         {value.title && <span>{<b>{value.title}</b>}</span>}
       </Typography>
-      <Typography data-test="event-startProgram" noWrap sx={{ fontSize: '12px' }}>
+      <Typography
+        data-test="event-startProgram"
+        noWrap
+        sx={{ fontSize: '12px' }}
+      >
         {value.startProgram && formatToHumanReadable(value.startProgram)}
       </Typography>
       <Typography data-test="event-endProgram" noWrap sx={{ fontSize: '12px' }}>
