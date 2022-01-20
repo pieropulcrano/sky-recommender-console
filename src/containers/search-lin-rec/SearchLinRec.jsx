@@ -14,13 +14,14 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
     async (values) => {
       setSearchResult([]);
       setIsSearching(true);
+      const toSearch = {
+        ...values,
+        startProgram_gte: values.startDateTime.toISOString(),
+        type: 'LIN',
+      };
+      if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
-        let res = await searchVodRec({
-          ...values,
-          startProgram_gte: values.startDateTime.toISOString(),
-          type: 'LIN',
-          resolution,
-        });
+        let res = await searchVodRec(toSearch);
         const rows = mapSearchResultForDataTable(res);
         setSearchResult(rows);
       } catch (error) {
