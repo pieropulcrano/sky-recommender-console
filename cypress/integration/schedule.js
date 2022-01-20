@@ -5,7 +5,7 @@ describe('Testing Schedule Page', () => {
     cy.intercept({ method: 'GET', url: '**/recommendations*' }, (req) => {
       delete req.headers['if-none-match'];
     }).as('searchRequest');
-    cy.visit('http://localhost:3000/schedule');
+    cy.visit('http://localhost:3000');
     cy.wait('@searchRequest').then((interception) => {
       //se non è tornato 304
       if (interception.response.statusCode == 200) {

@@ -17,7 +17,7 @@ describe('Testing lin recommendation', () => {
     cy.intercept({ method: 'POST', path: '/recommendations' }).as('createLin');
 
     // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
+    cy.visit('http://localhost:3000/');
 
     // click on create new lin button
     cy.contains('NEW LIN').click();
@@ -77,7 +77,7 @@ describe('Testing lin recommendation', () => {
 
     // invia
     cy.contains('Create').click();
-
+    cy.wait(2000);
     cy.wait('@createLin').should(({ req, response }) => {
       expect(response.statusCode).to.equal(201);
       // check that notification appears
@@ -88,7 +88,7 @@ describe('Testing lin recommendation', () => {
         `http://localhost:3001/recommendations/${response.body.id}`,
       );
       // force refresh view
-      cy.visit('http://localhost:3000/schedule');
+      cy.visit('http://localhost:3000');
     });
   });
 });

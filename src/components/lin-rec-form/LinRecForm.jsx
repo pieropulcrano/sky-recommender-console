@@ -90,6 +90,7 @@ const LinRecForm = ({
         initialValues={mergedInitialValues}
         validationSchema={recId ? isEditingValidationSchema : validationSchema}
         onSubmit={onSubmit}
+        enableReinitialize
       >
         {({ setFieldValue, values, resetForm }) => (
           <Form data-testid="form-upsert-rec-lin">

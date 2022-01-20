@@ -6,8 +6,8 @@ describe('Testing lin recommendation', () => {
     let eventId;
 
     // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
-
+    cy.visit('http://localhost:3000');
+    cy.wait(2000);
     // create the lin recommendation to delete
     cy.request({
       method: 'POST',
@@ -19,6 +19,8 @@ describe('Testing lin recommendation', () => {
       toDelete = response.body.id;
       eventId = `eventId-${toDelete}`;
 
+      // visit the schedule page
+      cy.visit('http://localhost:3000');
       // get lin rec to delete;
       cy.get(`[data-testid="${eventId}"]`).click();
 

@@ -1,40 +1,51 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Schedule from '../../pages/schedule/Schedule';
-import Fallback from '../../pages/fallback/Fallback';
+import Schedule from '../../components/schedule/Schedule';
+import Fallback from '../../components/fallback/Fallback';
 import Marginer from '../../components/marginer/Marginer';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { TabIcon, Warning } from './Home.styled';
+import useFallbackVodRec from '../../hooks/useFallbackVodRec';
+import { isExpired } from '../../utils/date';
 
 const Home = () => {
-  const history = useHistory();
-  const { page } = useParams();
-
-  const tabNameToIndex = {
-    0: 'schedule',
-    1: 'fallback',
-  };
-
-  const indexToTabName = {
-    schedule: 0,
-    fallback: 1,
-  };
-
-  const [selectedTab, setSelectedTab] = React.useState(indexToTabName[page]);
+  const [selectedTab, setSelectedTab] = React.useState(0);
+  const [alertFallback, setAlertFallback] = React.useState(0);
+  const { data: fallbackVodRec, error: fallbackVodRecError } =
+    useFallbackVodRec();
 
   const handleChange = (event, newValue) => {
-    history.push(`/${tabNameToIndex[newValue]}`);
     setSelectedTab(newValue);
   };
 
+  const handleAlertFallback = (recFallback) => {
+    //todo quando ci sarà il BE da rivedere
+    let isExpiredFlag = 0;
+    let rec = Array.isArray(recFallback)
+      ? recFallback[0].recommendation
+      : recFallback.recommendation;
+    for (var i = 0; i < rec.length; i++) {
+      if (isExpired(rec[i].endProgram)) {
+        isExpiredFlag = 1;
+      }
+    }
+    setAlertFallback(isExpiredFlag);
+  };
+
+  React.useEffect(() => {
+    if (fallbackVodRec) {
+      handleAlertFallback(fallbackVodRec);
+    }
+  }, [fallbackVodRec]);
+
   return (
     <>
-      <AppBar data-test="app-bar"position="static">
+      <AppBar data-test="app-bar" position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -53,10 +64,27 @@ const Home = () => {
         <Marginer direction="horizontal" margin={10} />
         <Tabs data-test="nav-tabs" value={selectedTab} onChange={handleChange}>
           <Tab label="Schedule" />
-          <Tab label="Fallback" />
+          {alertFallback === 0 && (
+            <Tab data-test="fallback-nav-tab" label="Fallback" />
+          )}
+          {alertFallback === 1 && (
+            <TabIcon
+              data-test="fallback-nav-tab"
+              icon={<Warning />}
+              iconPosition="end"
+              label="Fallback"
+            />
+          )}
         </Tabs>
+
         {selectedTab === 0 && <Schedule />}
-        {selectedTab === 1 && <Fallback />}
+        {selectedTab === 1 && (
+          <Fallback
+            fallbackVodRec={fallbackVodRec}
+            fallbackVodRecError={fallbackVodRecError}
+            handleAlertFallback={handleAlertFallback}
+          />
+        )}
       </Container>
     </>
   );

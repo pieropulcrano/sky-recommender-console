@@ -8,7 +8,7 @@ describe('Testing vod raccomandation', () => {
     let interceptedUpdate = false;
 
     // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
+    cy.visit('http://localhost:3000');
 
     // create lin rec to update
     cy.request({
@@ -26,7 +26,7 @@ describe('Testing vod raccomandation', () => {
         });
       }).as('updateVod');
       // visit the schedule page
-      cy.visit('http://localhost:3000/schedule');
+      cy.visit('http://localhost:3000');
 
       // get vod rec to update;
       cy.get(`[data-testid="${eventId}"]`).click();
@@ -58,7 +58,7 @@ describe('Testing vod raccomandation', () => {
       cy.contains('Vod Updated');
       cy.request('DELETE', `http://localhost:3001/recommendations/1001`);
       // force refresh of the page
-      cy.visit('http://localhost:3000/schedule');
+      cy.visit('http://localhost:3000');
     });
   });
 });

@@ -15,7 +15,7 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
       setSearchResult([]);
       setIsSearching(true);
       try {
-        let res = await searchVodRec(values);
+        let res = await searchVodRec({ ...values, type: 'VOD' });
         const rows = mapSearchResultForDataTable(res);
         setSearchResult(rows);
       } catch (error) {

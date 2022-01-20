@@ -5,7 +5,7 @@ export const prepareVodRec = (
   { cluster, startDateTime, recommendation },
 ) => {
   return {
-    id: id ?? Math.floor(Math.random() * 101),
+    id: id ?? Math.floor(Math.random() * 10001),
     cluster,
     type: 'VOD',
     validFrom: resetSecondsToZero(startDateTime),

@@ -6,7 +6,7 @@ describe('Testing vod recommendation', () => {
     let eventId;
 
     // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
+    cy.visit('http://localhost:3000');
 
     // create the lin recommendation to delete
     cy.request({
@@ -17,7 +17,7 @@ describe('Testing vod recommendation', () => {
       expect(response.status).to.eql(201);
       // set the id of lin recommendation to delete
       // visit the schedule page
-      cy.visit('http://localhost:3000/schedule');
+      cy.visit('http://localhost:3000');
       toDelete = response.body.id;
       eventId = `eventId-${toDelete}`;
 
