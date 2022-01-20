@@ -1,4 +1,4 @@
-import linRec from '../fixtures/lin-recommendation';
+import { futurelinRec } from '../fixtures/lin-recommendation';
 
 describe('Testing lin recommendation', () => {
   it('Check delete lin recommendation', () => {
@@ -7,20 +7,20 @@ describe('Testing lin recommendation', () => {
 
     // visit the schedule page
     cy.visit('http://localhost:3000');
-    cy.wait(2000);
+
     // create the lin recommendation to delete
     cy.request({
       method: 'POST',
       url: 'http://localhost:3001/recommendations',
-      body: linRec,
+      body: futurelinRec,
     }).then((response) => {
       expect(response.status).to.eql(201);
       // set the id of lin recommendation to delete
+      // visit the schedule page
+      cy.visit('http://localhost:3000');
       toDelete = response.body.id;
       eventId = `eventId-${toDelete}`;
 
-      // visit the schedule page
-      cy.visit('http://localhost:3000');
       // get lin rec to delete;
       cy.get(`[data-testid="${eventId}"]`).click();
 

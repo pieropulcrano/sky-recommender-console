@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchForm';
 import useNotification from '../../hooks/useNotification';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
-import { mapSearchResultForDataTable } from './SearchLinRec.helpers';
 
 const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
   const [isSearching, setIsSearching] = React.useState(false);
@@ -22,8 +21,7 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
         let res = await searchVodRec(toSearch);
-        const rows = mapSearchResultForDataTable(res);
-        setSearchResult(rows);
+        setSearchResult(res);
       } catch (error) {
         addAlert({
           title: 'Vod search error',

@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
-//import '../support/commands';
-//import  '../support/utils';
+import fallbackRec from '../fixtures/fallback-reccomendation';
 
 describe('Testing Fallback Page', () => {
   beforeEach(() => {
@@ -39,15 +38,7 @@ describe('Testing Fallback Page', () => {
   });
 
   it('Check fallback events', () => {
-    let randomIndex = cy.getRandomNumber(1, 10);
-
-    cy.get('.fallback-slot').each(($el, index, $list) => {
-      //console.log(randomIndex)
-      if (index === randomIndex) {
-        //click on delete element
-        cy.wrap($el).find('button').click();
-      }
-    });
+    cy.get('.MuiSvgIcon-colorError').first().click({ force: true });
     //click update senza un'elemnto dovrebbe dare errore
     cy.get('.MuiLoadingButton-root').click({ force: true });
     //non dovrebbe comparire notifica ok
@@ -60,6 +51,15 @@ describe('Testing Fallback Page', () => {
     cy.testSearchVodModal();
     //risave
     cy.get('.MuiLoadingButton-root').click({ force: true });
+    /*cy.request({
+      method: 'PUT',
+      url: 'http://localhost:3001/fallback-vod-recommendation/1',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: fallbackRec,
+    });*/
+    //cy.wait(2000);
     //dovrebbe esser comparsa la  notifica di ok
     cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 1);
   });
