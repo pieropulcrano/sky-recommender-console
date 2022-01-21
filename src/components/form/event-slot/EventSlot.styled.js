@@ -23,6 +23,7 @@ export const EventImageWrapper = styled(Box)(({ error }) => ({
 export const EventImage = styled('div')(({ url }) => ({
   height: '100%',
   width: '100%',
+  border: '1px solid #ccc',
   backgroundImage: url
     ? `url(${url})`
     : `url(https://via.placeholder.com/100x140)`,

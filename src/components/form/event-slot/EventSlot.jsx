@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
-import { isExpired, formatToHumanReadable } from '../../../utils/date';
+import { formatToHumanReadable } from '../../../utils/date';
 import {
   SlotWrapper,
   EventImageWrapper,
@@ -15,6 +15,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Tooltip } from '@material-ui/core';
 
 const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
   const [field, meta] = useField(name);
@@ -34,7 +35,11 @@ const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
             <ClearIcon color="error" fontSize="small" />
           </XButton>
         )}
-        {value.endProgram && isExpired(value.endProgram) && <Warning />}
+        {value.warningMessage && (
+          <Tooltip title={value.warningMessage}>
+            <Warning />
+          </Tooltip>
+        )}
         <EventImage />
       </EventImageWrapper>
       <Typography data-test="event-title" noWrap sx={{ fontSize: '12px' }}>

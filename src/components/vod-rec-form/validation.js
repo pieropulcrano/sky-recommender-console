@@ -11,7 +11,7 @@ export const validationSchema = Yup.object().shape({
   startDateTime: Yup.date()
     .typeError('Invalid date')
     .min(new Date(), 'Date cannot be in the past')
-    .required(),
+    .required('Required'),
   recommendation: Yup.object()
     .shape({
       1: Yup.object().shape(objShape).required(),
