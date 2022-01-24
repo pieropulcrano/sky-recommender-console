@@ -11,6 +11,17 @@ cy.generateFutureDate = (plusDate, format) => {
   return Cypress.dayjs(tomorrow).format(format);
 };
 
+cy.generatePastDate = (subDate,unit, format) => {
+  let tomorrow = Cypress.dayjs().subtract(subDate, unit);
+  if (!format) return Cypress.dayjs(tomorrow).utc().format();
+  return Cypress.dayjs(tomorrow).format(format);
+};
+
+cy.setDay = (day) => {
+  let date = Cypress.dayjs().set('date', day);
+  return Cypress.dayjs(date).utc().format();
+};
+
 cy.generateRandomCluster = () => {
   let randomIndexCluster = cy.getRandomNumber(1, 2);
   let randomIndexClusterVal = 'C' + randomIndexCluster;

@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import { FALLBACK_VOD_TITLE_TO_SEARCH } from './constants';
+//import reccomendationMock from '../fixtures/reccomendation-mock';
 
 Cypress.Commands.add('testSearchVodModal', () => {
   //dovrebbe esserci un modal apert
@@ -57,3 +58,21 @@ Cypress.Commands.add('selectRandomCluster', (randomIndexClusterVal) => {
   //click on cluster select
   cy.get('[data-value="' + randomIndexClusterVal + '"]').click();
 });
+
+Cypress.Commands.add('useMockDataForSchedule', () => {
+  cy.fixture('reccomendation-mock').then((recc) => {
+    //LIN;
+    //il 7 del mese corrente
+    recc[0].validFrom = cy.setDay(7);
+    //termina domani
+    recc[0].validTo = cy.generateFutureDate(1);
+    //Primo Vod
+    //nel passato
+    recc[1].validFrom = cy.generatePastDate(7,'day');
+    //Secondo Vod
+    //nel Futuro
+    recc[2].validFrom = cy.generateFutureDate(1);
+    cy.intercept('GET', '**/recommendations?validFrom_gte=*', recc);
+  });
+});
+
