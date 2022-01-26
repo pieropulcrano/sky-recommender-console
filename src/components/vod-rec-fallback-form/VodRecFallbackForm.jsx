@@ -53,7 +53,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
     for (let i = startIndex; i <= endIndex; i++) {
       rows.push(
         <EventSlot
-          customClass="fallback-slot"
+          data_test_slot="fallback-slot"
           key={i}
           name={`recommendation.${i}`}
           handleOpen={handleOpen}

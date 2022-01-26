@@ -17,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Tooltip } from '@material-ui/core';
 
-const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
+const EventSlot = ({ name, handleOpen, hd, disabled, data_test_slot }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
   const { value } = field;
@@ -27,7 +27,7 @@ const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
   const handleOpenModal = () => handleOpen(name);
 
   return value && Object.keys(value).length !== 0 ? (
-    <SlotWrapper className={customClass} data-test={value.id}>
+    <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
       <EventImageWrapper>
         {hd && <HD />}
         {!disabled && (

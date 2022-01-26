@@ -2,6 +2,8 @@
 
 describe('Testing Schedule Page', () => {
   it('Check render all reccomandation', () => {
+    cy.useMockDataForSchedule();
+    cy.useMockDataForFallback();
     cy.intercept({ method: 'GET', url: '**/recommendations*' }, (req) => {
       delete req.headers['if-none-match'];
     }).as('searchRequest');

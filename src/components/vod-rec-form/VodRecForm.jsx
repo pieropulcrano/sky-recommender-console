@@ -73,7 +73,7 @@ const VocRecForm = ({
     for (let i = startIndex; i <= endIndex; i++) {
       rows.push(
         <EventSlot
-          customClass="prev-vod-slot"
+          data_test_slot="prev-vod-slot"
           key={i}
           name={`recommendation.${i}`}
           handleOpen={handleOpen}
