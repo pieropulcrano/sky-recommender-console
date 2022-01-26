@@ -2,6 +2,7 @@ let randomIndexClusterVal = 'C1';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
+let mockData = [];
 
 describe('Testing crud vod raccomandation', () => {
   beforeEach(() => {
@@ -12,14 +13,21 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForSchedule();
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
-    cy.fixture('prev-recc-vod-mock').then((recc) => {
-      recc[0].validFrom = cy.generatePastDate(1, 'month');
-
-      cy.intercept(
-        'GET',
-        '**/recommendations?cluster=C1&type=VOD&validFrom_lte=**',
-      );
+    //parsing fixture
+    cy.fixture('prev-recc-vod-mock').then((val) => {
+      val[0].validFrom = cy.generatePastDate(1, 'month');
+      mockData.push(val[0]);
     });
+    cy.intercept(
+      { method: 'GET', path: '/recommendations?cluster=C1&type=VOD&*' },
+      (req) => {
+        req.reply({
+          statusCode: 201,
+          body: mockData,
+          delay: 10, // milliseconds
+        });
+      },
+    ).as('searchRequest');
     cy.fixture('vod-recc-mock').then((recc) => {
       recc[0].validFrom = cy.generateFutureDate(1);
       cy.intercept('GET', '**/recommendations?id=' + vodId, recc);
@@ -85,9 +93,6 @@ describe('Testing crud vod raccomandation', () => {
         'ddd MMM DD YYYY',
       ),
     );
-    cy.intercept('GET', '**/recommendations?cluster=C1&type=VOD**').as(
-      'searchRequest',
-    );
     //opena modal
     cy.contains('NEW VOD').click();
 
@@ -96,7 +101,6 @@ describe('Testing crud vod raccomandation', () => {
     cy.get('input[type="text"]').type(dateToSearch);
     //click on load
     cy.get('.css-piwweb-MuiGrid-root > .MuiLoadingButton-root').click();
-
     //check if contains correct parameter cluster
     cy.get('@searchRequest')
       .its('request.url')
@@ -110,6 +114,7 @@ describe('Testing crud vod raccomandation', () => {
       .its('request.url')
       .should('to.match', new RegExp('type=VOD'));
     //intercetto la get search e verifico che i dati siano correti
+
     cy.wait('@searchRequest').should(({ req, response }) => {
       let body = response.body[0];
       //check render tutti i vod
