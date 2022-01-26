@@ -1,6 +1,7 @@
 let randomIndexClusterVal = 'C1';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
-let vodId='166';
+let vodId = '166';
+let eventToSearch = "L'isola che non c'è";
 
 describe('Testing crud vod raccomandation', () => {
   beforeEach(() => {
@@ -9,35 +10,23 @@ describe('Testing crud vod raccomandation', () => {
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     cy.useMockDataForSchedule();
+    cy.useMockDataForFallback();
+    cy.useMockDataForSearchVod();
     cy.fixture('prev-recc-vod-mock').then((recc) => {
-      recc[0].validFrom=cy.generatePastDate(1,'month');
-      cy.intercept('GET','/recommendations?cluster=C1&type=VOD*').as('searchRequest');
+      recc[0].validFrom = cy.generatePastDate(1, 'month');
+
+      cy.intercept(
+        'GET',
+        '**/recommendations?cluster=C1&type=VOD&validFrom_lte=**',
+      );
     });
-    cy.fixture('vod-to-update').then((recc) => {
+    cy.fixture('vod-recc-mock').then((recc) => {
       recc[0].validFrom = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendations?id='+vodId, recc);
+      cy.intercept('GET', '**/recommendations?id=' + vodId, recc);
     });
-    cy.intercept({ method: 'POST', path: '/recommendations' }, (req) => {
-      req.reply({
-        statusCode: 201,
-        body: req.body,
-        delay: 10, // milliseconds
-      });
-    });
-    cy.intercept({ method: 'PUT', path: '/recommendations/'+vodId }, (req) => {
-      req.reply({
-        statusCode: 201,
-        body: req.body,
-        delay: 10, // milliseconds
-      });
-    });
-    cy.intercept({ method: 'DELETE', path: '/recommendations/'+vodId }, (req) => {
-      req.reply({
-        statusCode: 201,
-        body: {},
-        delay: 10, // milliseconds
-      });
-    });
+    cy.useMockDataForCreate();
+    cy.useMockDataForUpdate();
+    cy.useMockDataForDelete();
     cy.visit('http://localhost:3000/');
   });
 
@@ -80,7 +69,7 @@ describe('Testing crud vod raccomandation', () => {
       cy.wrap($el)
         .find('[data-testid="AddCircleIcon"] > path')
         .click({ force: true });
-      cy.testSearchVodModal();
+      cy.testSearchVodModal(eventToSearch);
     });
     //click on create
     cy.get('[data-test="submit-upsert-btn"]').click();
@@ -96,10 +85,9 @@ describe('Testing crud vod raccomandation', () => {
         'ddd MMM DD YYYY',
       ),
     );
-    //intercept update search rec vod
-    cy.intercept({ method: 'POST', path: '/recommendations' }, (req) => {
-      req.continue((res) => {});
-    }).as('createVod');
+    cy.intercept('GET', '**/recommendations?cluster=C1&type=VOD**').as(
+      'searchRequest',
+    );
     //opena modal
     cy.contains('NEW VOD').click();
 
@@ -125,7 +113,7 @@ describe('Testing crud vod raccomandation', () => {
     cy.wait('@searchRequest').should(({ req, response }) => {
       let body = response.body[0];
       //check render tutti i vod
-      cy.get('.prev-vod-slot').should(
+      cy.get('[data-test-slot="prev-vod-slot"]').should(
         'have.length',
         body.recommendation.length,
       );
@@ -142,67 +130,66 @@ describe('Testing crud vod raccomandation', () => {
       }
     });
     //elimino gli slot esistenti e ne ricreo
-    cy.get('.prev-vod-slot').each(($el, index, $list) => {
+    cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, $list) => {
       // $el is a wrapped jQuery element
       cy.wrap($el).find('button').click();
       //click on create
       cy.get('[data-test="submit-upsert-btn"]').click();
       //el non dovrebbe avere + la classe di un event pieno
-      cy.wrap($el).should('not.have.class', 'prev-vod-slot');
+      // cy.wrap($el).should('not.have.class', 'prev-vod-slot');
       //click on plus icon to add a new vod
       cy.wrap($el)
         .find('[data-testid="AddCircleIcon"] > path')
         .click({ force: true });
-      cy.testSearchVodModal();
+      cy.testSearchVodModal(eventToSearch);
     });
     //click on create
     cy.get('[data-test="submit-upsert-btn"]').click();
-          //il modale dovrebbe essere chiuso
-          cy.get('[data-test="form-upsert-rec-vod"]').should('have.length', 0);
-          //deve comparire notifica ok
-          cy.get('[data-test="vod-update-ok-not"]').should('have.length', 1);
-
+    //il modale dovrebbe essere chiuso
+    cy.get('[data-test="form-upsert-rec-vod"]').should('have.length', 0);
+    //deve comparire notifica ok
+    cy.get('[data-test="vod-update-ok-not"]').should('have.length', 1);
   });
 
   /************************************UPDATE******************************************************************************************************** */
   it('Check update vod recommendation', () => {
-    let eventId='eventId-'+vodId;
+    let eventId = 'eventId-' + vodId;
 
-      // get vod rec to update;
-      cy.get(`[data-testid="${eventId}"]`).click();
+    // get vod rec to update;
+    cy.get(`[data-testid="${eventId}"]`).click();
 
-      // pick a random cluster
-      cy.selectRandomCluster(randomIndexClusterVal);
+    // pick a random cluster
+    cy.selectRandomCluster(randomIndexClusterVal);
 
-      // select sd slot row
-      cy.get('.prev-vod-slot').each(($el, index, list) => {
-        // for each slot
-        // click on delete button
-        cy.wrap($el).find('button').click({ force: true });
-        //click update
-        cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
-        //click on plus icon to add a new vod
-        cy.wrap($el)
-          .find('[data-testid="AddCircleIcon"] > path')
-          .click({ force: true });
-        cy.testSearchVodModal();
-      });
+    // select sd slot row
+    cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, list) => {
+      // for each slot
+      // click on delete button
+      cy.wrap($el).find('button').click({ force: true });
+      //click update
+      cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
+      //click on plus icon to add a new vod
+      cy.wrap($el)
+        .find('[data-testid="AddCircleIcon"] > path')
+        .click({ force: true });
+      cy.testSearchVodModal(eventToSearch);
+    });
 
-      // submit update
-      cy.contains('Update').click();
+    // submit update
+    cy.contains('Update').click();
 
-      // check for notification
-      cy.contains('Vod Updated');
+    // check for notification
+    cy.contains('Vod Updated');
   });
 
   /************************************DELETE******************************************************************************************************** */
   it('Check delete vod recommendation', () => {
-      let eventId = `eventId-${vodId}`;
-      // get vod rec to delete;
-      cy.get(`[data-testid="${eventId}"]`).click();
-      // confirm deletion
-      cy.contains('Delete').click();
-      // check for notification
-      cy.contains('Vod Deleted');
+    let eventId = `eventId-${vodId}`;
+    // get vod rec to delete;
+    cy.get(`[data-testid="${eventId}"]`).click();
+    // confirm deletion
+    cy.contains('Delete').click();
+    // check for notification
+    cy.contains('Vod Deleted');
   });
 });
