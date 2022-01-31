@@ -50,7 +50,7 @@ Cypress.Commands.add('selectRandomCluster', (randomIndexClusterVal) => {
 });
 
 Cypress.Commands.add('useMockDataForSchedule', () => {
-  cy.fixture('reccomendation-mock').then((recc) => {
+  cy.fixture('recomendation-mock').then((recc) => {
     //LIN PRESENT;
     //dal 1 del mese corrente
     recc[0].validFrom = cy.setDay(1);

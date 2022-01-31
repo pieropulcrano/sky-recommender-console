@@ -18,6 +18,7 @@
         thumbnailType: '',
         resolution: 'HD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GK',
@@ -31,6 +32,7 @@
         thumbnailType: '',
         resolution: 'SD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GP',
@@ -44,6 +46,7 @@
         thumbnailType: '',
         resolution: 'HD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GL',
@@ -57,6 +60,7 @@
         thumbnailType: '',
         resolution: 'SD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
     ],
   },

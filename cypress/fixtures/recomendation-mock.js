@@ -18,6 +18,7 @@
         thumbnailType: '',
         resolution: 'HD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GK',
@@ -31,6 +32,7 @@
         thumbnailType: '',
         resolution: 'SD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GP',
@@ -44,6 +46,7 @@
         thumbnailType: '',
         resolution: 'HD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GL',
@@ -57,6 +60,7 @@
         thumbnailType: '',
         resolution: 'SD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
     ],
   },
@@ -79,6 +83,7 @@
         thumbnailType: '',
         resolution: 'HD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GK',
@@ -92,6 +97,7 @@
         thumbnailType: '',
         resolution: 'SD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GP',
@@ -105,6 +111,7 @@
         thumbnailType: '',
         resolution: 'HD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
       {
         id: '61GL',
@@ -118,6 +125,7 @@
         thumbnailType: '',
         resolution: 'SD',
         verticalImageUrl: '',
+        warningMessage: '',
       },
     ],
   },
@@ -140,6 +148,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '1',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -153,6 +162,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '2',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -166,6 +176,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '3',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -179,6 +190,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '4',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -192,6 +204,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '5',
+        warningMessage: '',
       },
     ],
   },
@@ -214,6 +227,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '1',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -227,6 +241,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '2',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -240,6 +255,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '3',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -253,6 +269,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '4',
+        warningMessage: '',
       },
       {
         id: '61GP6',
@@ -266,6 +283,7 @@
         thumbnailType: '',
         verticalImageUrl: '',
         position: '5',
+        warningMessage: '',
       },
     ],
   },

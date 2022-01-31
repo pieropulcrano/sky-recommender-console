@@ -1,4 +1,4 @@
-[
+export  const fallbackRecMock =
   {
     id: '5',
     type: 'FALLBACK',
@@ -6,7 +6,7 @@
       {
         id: '61GU',
         type: 'VOD',
-        title: 'The Truman Show',
+        title: 'The Truman Show234',
         startProgram: '2021-12-24T12:00:00Z',
         endProgram: '2022-12-24T15:00:00Z',
         branding: 'Sky Cinema HD',
@@ -134,5 +134,4 @@
         warningMessage: '',
       },
     ],
-  },
-]
+  }

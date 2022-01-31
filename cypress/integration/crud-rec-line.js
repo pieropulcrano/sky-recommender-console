@@ -69,13 +69,15 @@ describe('Testing crud Line raccomandation', () => {
 
     // invia
     cy.contains('Create').click();
+        // check for notification
+    cy.contains('Lin Created');
   });
 
   /************************************UDATE******************************************************************************************************** */
   it('Check update lin recommendation scheduled for the future', () => {
     let eventId = `eventId-${idFutureLine}`;
     // get lin rec to update;
-    cy.get(`[data-testid="${eventId}"]`).click();
+    cy.get(`[data-testid="${eventId}"]`).click({ force: true });
     // pick a random cluster
     cy.selectRandomCluster(indexClusterVal);
     // select sd slot row
@@ -109,7 +111,7 @@ describe('Testing crud Line raccomandation', () => {
     // create a date five days after tomorrow date as endDateTime
     const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A');
     // get lin rec to update;
-    cy.get(`[data-testid="${eventId}"]`).click();
+    cy.get(`[data-testid="${eventId}"]`).click({ force: true });
     // pick a random cluster
     // fill recommendation endDateTime
     cy.get('input[type="text"]').clear();
@@ -124,7 +126,7 @@ describe('Testing crud Line raccomandation', () => {
   it('Check delete lin recommendation', () => {
     let eventId = `eventId-${idFutureLine}`;
     // get lin rec to delete;
-    cy.get(`[data-testid="${eventId}"]`).click();
+    cy.get(`[data-testid="${eventId}"]`).click({ force: true });
     // confirm deletion
     cy.contains('Delete').click();
     // check for notification
