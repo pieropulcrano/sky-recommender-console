@@ -12,6 +12,7 @@ import VodRecForm from '../../components/vod-rec-form/VodRecForm';
 import useVodRec from '../../hooks/useVodRec';
 import useNotification from '../../hooks/useNotification';
 
+
 const UpsertVodRec = ({ id, onSuccess }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
@@ -21,6 +22,8 @@ const UpsertVodRec = ({ id, onSuccess }) => {
   const { data: vodRec, error: vodRecError } = useVodRec(id);
 
   const { addAlert } = useNotification();
+
+  let searchedDate=React.useRef();
 
   React.useEffect(() => {
     if (vodRecError)
@@ -50,7 +53,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             type: 'info',
             id: Date.now(),
           });
-
+          searchedDate.current=startDateTime;
         setPrevRecVod(res);
       } catch (error) {
         addAlert({
@@ -152,7 +155,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
               : prevVodRec.length > 0
               ? {
                   cluster: prevVodRec[0].cluster,
-                  startDateTime: prevVodRec[0].validFrom,
+                  startDateTime:searchedDate.current,
                   recommendation: normalizeVodRec(prevVodRec[0].recommendation),
                 }
               : {}
