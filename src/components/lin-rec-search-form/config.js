@@ -1,9 +1,22 @@
 import CellExpand from '../form/data-grid-table/CellExpand';
+import { formatToHumanReadable } from '../../utils/date';
 
 export const columns = [
   { field: 'title', headerName: 'Title', width: '150', renderCell: CellExpand },
-  { field: 'startProgram', headerName: 'Start Date', width: '180' },
-  { field: 'endProgram', headerName: 'End Date', width: '180' },
+  {
+    field: 'startProgram',
+    headerName: 'Start Date',
+    type: 'dateTime',
+    width: '180',
+    valueFormatter: (params) => formatToHumanReadable(params.value),
+  },
+  {
+    field: 'endProgram',
+    headerName: 'End Date',
+    type: 'dateTime',
+    width: '180',
+    valueFormatter: (params) => formatToHumanReadable(params.value),
+  },
   {
     field: 'linearSummaryLong',
     headerName: 'Summary',

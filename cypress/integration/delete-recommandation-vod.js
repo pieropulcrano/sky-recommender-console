@@ -1,7 +1,7 @@
-import { futurelinRec } from '../fixtures/lin-recommendation';
+import vodRec from '../fixtures/vod-recommendation';
 
-describe('Testing lin recommendation', () => {
-  it('Check delete lin recommendation', () => {
+describe('Testing vod recommendation', () => {
+  it('Check delete vod recommendation', () => {
     let toDelete;
     let eventId;
 
@@ -12,7 +12,7 @@ describe('Testing lin recommendation', () => {
     cy.request({
       method: 'POST',
       url: 'http://localhost:3001/recommendations',
-      body: futurelinRec,
+      body: vodRec,
     }).then((response) => {
       expect(response.status).to.eql(201);
       // set the id of lin recommendation to delete
@@ -28,7 +28,7 @@ describe('Testing lin recommendation', () => {
       cy.contains('Delete').click();
 
       // check for notification
-      cy.contains('Lin Deleted');
+      cy.contains('Vod Deleted');
     });
   });
 });

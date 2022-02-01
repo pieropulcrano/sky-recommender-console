@@ -6,14 +6,14 @@ import {
   prepareFallbackVodRec,
 } from './UpsertFallbackVodRec.helpers';
 import useNotification from '../../hooks/useNotification';
-import useFallbackVodRec from '../../hooks/useFallbackVodRec';
 import VodRecFallbackForm from '../../components/vod-rec-fallback-form/VodRecFallbackForm';
 
-const UpsertFallbackVodRec = () => {
+const UpsertFallbackVodRec = ({
+  fallbackVodRec,
+  fallbackVodRecError,
+  handleAlertFallback,
+}) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const { data: fallbackVodRec, error: fallbackVodRecError } =
-    useFallbackVodRec();
-
   const { addAlert } = useNotification();
 
   React.useEffect(() => {
@@ -32,11 +32,12 @@ const UpsertFallbackVodRec = () => {
       setIsSubmitting(true);
       const data = prepareFallbackVodRec(fallbackVodRec[0].id, values);
       await updateFallbackVodRec(data);
+      handleAlertFallback(data);
       addAlert({
         text: 'Vod Fallback was successfully created.',
         title: ` Vod Fallback created`,
         type: 'success',
-        data_test:"vod-fallback-ok-not",
+        data_test: 'vod-fallback-ok-not',
         id: Date.now(),
       });
     } catch (error) {

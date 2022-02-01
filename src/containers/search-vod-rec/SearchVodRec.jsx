@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import VodRecSearchForm from '../../components/vod-rec-search-form/VodRecSearchForm';
 import useNotification from '../../hooks/useNotification';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
-import { mapSearchResultForDataTable } from './SearchVodRec.helpers';
 
 const SearchVodRec = ({ addEvent, handleClose }) => {
   const [isSearching, setIsSearching] = React.useState(false);
@@ -15,9 +14,8 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
       setSearchResult([]);
       setIsSearching(true);
       try {
-        let res = await searchVodRec(values);
-        const rows = mapSearchResultForDataTable(res);
-        setSearchResult(rows);
+        let res = await searchVodRec({ ...values, type: 'VOD' });
+        setSearchResult(res);
       } catch (error) {
         addAlert({
           title: 'Vod search error',

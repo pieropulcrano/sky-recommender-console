@@ -1,23 +1,24 @@
-import linRec from '../fixtures/lin-recommendation';
+import { presentlinRec, futurelinRec } from '../fixtures/lin-recommendation';
 
 describe('Testing lin recommendation', () => {
-  it('Check update lin recommendation', () => {
+  it('Check update lin recommendation scheduled for the future', () => {
     let toUpdate;
     let eventId;
 
     // visit the schedule page
-    cy.visit('http://localhost:3000/schedule');
+    cy.visit('http://localhost:3000');
 
     // create lin rec to update
     cy.request({
       method: 'POST',
       url: 'http://localhost:3001/recommendations',
-      body: linRec,
+      body: futurelinRec,
     }).then((response) => {
       expect(response.status).to.eql(201);
       toUpdate = response.body.id;
       eventId = `eventId-${toUpdate}`;
-
+      //refresh
+      cy.visit('http://localhost:3000');
       // get lin rec to update;
       cy.get(`[data-testid="${eventId}"]`).click();
 
@@ -81,6 +82,49 @@ describe('Testing lin recommendation', () => {
 
       // delete created notification
       cy.request('DELETE', `http://localhost:3001/recommendations/1000`);
+
+      // force refresh of the page
+      cy.visit('http://localhost:3000');
+    });
+  });
+
+  it('Check update lin recommendation scheduled for the present', () => {
+    let toUpdate;
+    let eventId;
+    // create a date five days after tomorrow date as endDateTime
+    const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A');
+
+    // visit the schedule page
+    cy.visit('http://localhost:3000/schedule');
+
+    // create lin rec to update
+    cy.request({
+      method: 'POST',
+      url: 'http://localhost:3001/recommendations',
+      body: presentlinRec,
+    }).then((response) => {
+      expect(response.status).to.eql(201);
+      toUpdate = response.body.id;
+      eventId = `eventId-${toUpdate}`;
+
+      cy.visit('http://localhost:3000/schedule');
+
+      // get lin rec to update;
+      cy.get(`[data-testid="${eventId}"]`).click();
+
+      // pick a random cluster
+      // fill recommendation endDateTime
+      cy.get('input[type="text"]').clear();
+      cy.get('input[type="text"]').last().type(endDateTime);
+
+      // submit update
+      cy.contains('Update').click();
+
+      // check for notification
+      cy.contains('Lin Updated');
+
+      // delete created notification
+      cy.request('DELETE', `http://localhost:3001/recommendations/${toUpdate}`);
 
       // force refresh of the page
       cy.visit('http://localhost:3000/schedule');

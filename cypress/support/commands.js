@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import { FALLBACK_VOD_TITLE_TO_SEARCH } from './constants';
 
 Cypress.Commands.add('testSearchVodModal', () => {
   //dovrebbe esserci un modal apert
@@ -31,21 +32,7 @@ Cypress.Commands.add('testSearchVodModal', () => {
   cy.get('[data-test="search-vod-modal"]').within(() => {
     //dovrebbe esserci scritto "no rows", il che vuol dire che non sono partite cose strane
     cy.get('.MuiDataGrid-overlay').should('have.text', 'No rows');
-    //get all VOD
-    cy.request('GET', 'http://localhost:3001/event?type=VOD').then(
-      (response) => {
-        let vods = response.body;
-        let randomIndex = cy.getRandomNumber(0, vods.length - 1);
-        // debugger
-        for (var i = 0; i < vods.length; i++) {
-          //ne prendiamo uno a caso
-          if (i === randomIndex) {
-            //digito un film a caso
-            cy.get('input[type="text"]').type(vods[i].title);
-          }
-        }
-      },
-    );
+    cy.get('input[type="text"]').type(FALLBACK_VOD_TITLE_TO_SEARCH);
     //clicco sul search
     cy.get(':nth-child(2) > .MuiButton-root').click();
     //dovrebbe aver trovato almeno 1 riga
