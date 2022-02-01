@@ -9,7 +9,6 @@ describe('VodRecFallbackForm', () => {
 
 
   it('should render', () => {
-    console.log(fallbackRecMock[0])
     props = {
       onSubmit: onSubitMock,
       initialValues: fallbackRecMock[0],

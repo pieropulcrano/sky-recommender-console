@@ -122,24 +122,16 @@ describe('Testing crud vod raccomandation', () => {
         'have.length',
         body.recommendation.length,
       );
-      //se la data tornata dalla request è minore di oggi:
-      if (Cypress.dayjs().isAfter(body.validFrom, 'minute')) {
-        //il div parent primo di input dovrebbe avere classe error
-        cy.get('input[type="text"]').parent().should('have.class', 'Mui-error');
-        //click on create
-        cy.get('[data-test="submit-upsert-btn"]').click();
-        //svuoto la text
-        cy.get('input[type="text"]').clear();
-        //type a correct date in the start date input
-        cy.get('input[type="text"]').type(dateToSearch);
-      }
     });
     //elimino gli slot esistenti e ne ricreo
     cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, $list) => {
       // $el is a wrapped jQuery element
-      cy.wrap($el).find('button').click();
+      cy.wrap($el).within(() => {
+        cy.get('button').click();
+      });
+
       //click on create
-      cy.get('[data-test="submit-upsert-btn"]').click();
+      cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
       //el non dovrebbe avere + la classe di un event pieno
       // cy.wrap($el).should('not.have.class', 'prev-vod-slot');
       //click on plus icon to add a new vod
@@ -193,7 +185,7 @@ describe('Testing crud vod raccomandation', () => {
     // get vod rec to delete;
     cy.get(`[data-testid="${eventId}"]`).click();
     // confirm deletion
-    cy.contains('Delete').click();
+    cy.contains('Delete').click({ force: true });
     // check for notification
     cy.contains('Vod Deleted');
   });

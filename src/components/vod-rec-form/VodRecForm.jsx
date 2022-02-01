@@ -68,6 +68,9 @@ const VocRecForm = ({
     });
   };
 
+  const handleSubmit = (values) => onSubmit(values);
+
+
   const createRow = (startIndex, endIndex, values, recId) => {
     const rows = [];
     for (let i = startIndex; i <= endIndex; i++) {
@@ -87,7 +90,7 @@ const VocRecForm = ({
   return (
     <VocRecFormWrapper>
       <Formik
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         initialValues={mergedInitialValues}
         validationSchema={validationSchema}
         enableReinitialize
