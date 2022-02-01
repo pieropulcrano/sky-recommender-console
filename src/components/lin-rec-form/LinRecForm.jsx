@@ -84,12 +84,14 @@ const LinRecForm = ({
     return rows;
   };
 
+  const handleSubmit = (values) => onSubmit(values);
+
   return (
     <LinRecFormWrapper>
       <Formik
         initialValues={mergedInitialValues}
         validationSchema={recId ? isEditingValidationSchema : validationSchema}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         enableReinitialize
       >
         {({ setFieldValue, values, resetForm }) => (

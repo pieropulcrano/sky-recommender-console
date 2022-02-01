@@ -193,7 +193,7 @@ describe('Testing crud vod raccomandation', () => {
     // get vod rec to delete;
     cy.get(`[data-testid="${eventId}"]`).click();
     // confirm deletion
-    cy.contains('Delete').click();
+    cy.contains('Delete').click({ force: true });
     // check for notification
     cy.contains('Vod Deleted');
   });
