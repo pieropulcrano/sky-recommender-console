@@ -20,13 +20,14 @@ const UpsertLinRec = ({ id, onSuccess }) => {
   const { addAlert } = useNotification();
 
   React.useEffect(() => {
-    if (linRecError)
+    if (linRecError) {
       addAlert({
         text: 'An error occured during the loading of the lin rec.',
         title: 'Lin loading failed',
         type: 'error',
         id: Date.now(),
       });
+    }
   }, [addAlert, linRecError]);
 
   const onDelete = async (id) => {
