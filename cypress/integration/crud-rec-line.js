@@ -109,7 +109,7 @@ describe('Testing crud Line raccomandation', () => {
     // create a date five days after tomorrow date as endDateTime
     const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A');
     // get lin rec to update;
-    cy.get(`[data-testid="${eventId}"]`).click();
+    cy.get(`[data-testid="${eventId}"]`).click({ force: true });
     // pick a random cluster
     // fill recommendation endDateTime
     cy.get('input[type="text"]').clear();
