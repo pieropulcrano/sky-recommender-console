@@ -44,3 +44,9 @@ npm test
 npm start
 yarn run cypress open
 ```
+
+### coverage
+
+```
+yarn test --coverage .
+```

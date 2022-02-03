@@ -21,13 +21,10 @@ const DateTimePicker = ({ name, label, data_test, ...props }) => {
     setFieldValue(name, value);
   };
 
+  const handleBlur = () => setFieldTouched(name);
+
   const renderInput = (params) => (
-    <TextField
-      {...params}
-      {...errors}
-      onBlur={() => setFieldTouched(name)}
-      size="small"
-    />
+    <TextField {...params} {...errors} onBlur={handleBlur} size="small" />
   );
 
   return (
