@@ -18,13 +18,13 @@ const MockVodRecForm = ({ ...props }) => {
 describe('Vod Rec Form', () => {
   let props;
   let handleSubmit;
-  let clusterLabel = 'Cluster';
-  let startDatePlaceHolder = 'Start Date';
-  let loadBtn = 'Load';
-  let createBtn = 'Create';
-  let updateBtn = 'Update';
-  let clearBtn = 'Clear';
-  let deleteBtn = 'Delete';
+  const clusterLabel = 'Cluster';
+  const startDatePlaceHolder = 'Start Date';
+  const loadBtn = 'Load';
+  const createBtn = 'Create';
+  const updateBtn = 'Update';
+  const clearBtn = 'Clear';
+  const deleteBtn = 'Delete';
 
   beforeEach(() => {
     handleSubmit = jest.fn();
@@ -36,7 +36,7 @@ describe('Vod Rec Form', () => {
       isSubmitting: false,
       initialValues: DEFAULT_VALUES,
       prevVodRecIsLoading: false,
-      loadPrevVodRec: jest.fn()
+      loadPrevVodRec: jest.fn(),
     };
   });
 
@@ -228,12 +228,11 @@ describe('Vod Rec Form', () => {
       };
       render(<MockVodRecForm {...props} />);
 
-
       const loadButton = screen.queryByText(loadBtn);
       await waitFor(() => fireEvent.click(loadButton));
       await waitFor(() => {
         expect(props.loadPrevVodRec).toHaveBeenCalledTimes(1);
-      })
+      });
     });
   });
 });
