@@ -153,7 +153,7 @@ describe('Vod Rec Form', () => {
     it('when the user create a new recommendation correctly', async () => {
       props.initialValues = {
         cluster: vodRec[0].cluster,
-        startDateTime: '2022-02-02T15:00:00Z',
+        startDateTime: '2999-02-02T15:00:00Z',
         recommendation: normalizeVodRec(vodRec[0].recommendation),
       };
 
