@@ -76,7 +76,7 @@ const LinRecForm = ({
           key={i}
           handleOpen={handleOpen}
           name={`recommendation.${i}.${slotType}`}
-          hd={slotType === slotTypes.HD}
+          type={slotType}
           disabled={recId && isExpired(startDateTime)}
         />,
       );

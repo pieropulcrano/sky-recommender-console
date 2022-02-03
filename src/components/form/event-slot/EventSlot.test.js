@@ -58,7 +58,21 @@ describe('Event Slot', () => {
     });
 
     it('should render an hd slot', () => {
-      props.hd = true;
+      props.type = 'hd';
+      render(
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+        >
+          <EventSlot {...props} />
+        </Formik>,
+      );
+
+      expect(document.body.childNodes[0].children).toMatchSnapshot();
+    });
+
+    it('should render an sd slot', () => {
+      props.type = 'sd';
       render(
         <Formik
           initialValues={initialValues}
@@ -72,7 +86,7 @@ describe('Event Slot', () => {
     });
 
     it('should render an hd disabled slot', () => {
-      props.hd = true;
+      props.type = 'hd';
       props.disabled = true;
       render(
         <Formik
@@ -144,7 +158,7 @@ describe('Event Slot', () => {
     });
 
     it('should render an hd slot', () => {
-      props.hd = true;
+      props.type = 'hd';
 
       render(
         <Formik
