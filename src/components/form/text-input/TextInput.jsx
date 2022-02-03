@@ -6,9 +6,11 @@ import TextField from '@mui/material/TextField';
 const TextInput = ({ name, ...props }) => {
   // eslint-disable-next-line no-unused-vars
   const [_, meta] = useField(name);
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue, setFieldTouched } = useFormikContext();
 
   const handleChange = (event) => setFieldValue(name, event.target.value || '');
+
+  const handleBlur = () => setFieldTouched(name);
 
   const errors = {};
 
@@ -22,6 +24,7 @@ const TextInput = ({ name, ...props }) => {
       variant="outlined"
       size="small"
       fullWidth
+      onBlur={handleBlur}
       onChange={handleChange}
       {...props}
       {...errors}
