@@ -106,13 +106,13 @@ const Scheduler = () => {
           ref={CalendarRef}
           schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
           plugins={[resourceTimelinePlugin]}
-          initialView="resourceTimelineMonth"
+          initialView="month"
           height="700px"
           resourceAreaWidth="180px"
           resourceAreaHeaderContent="Clusters"
           resources={resources}
           headerToolbar={{
-            left: `prev,next,today,resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth`,
+            left: `today,resourceTimelineDay,resourceTimelineWeek,month`,
             center: 'title',
             right: 'newVod newLin',
           }}
@@ -124,6 +124,22 @@ const Scheduler = () => {
             newLin: {
               text: 'NEW LIN',
               click: () => handleRecCreate(recTypes.lin),
+            },
+          }}
+          views={{
+            month: {
+              type: 'resourceTimeline',
+              visibleRange: function (currentDate) {
+                // Generate a new date for manipulating in the next step
+                var startDate = new Date(currentDate.valueOf());
+                var endDate = new Date(currentDate.valueOf());
+
+                // Adjust the start & end dates, respectively
+                startDate.setDate(startDate.getDate() - 7); // One day in the past
+                endDate.setDate(endDate.getDate() + 21); // Two days into the future
+
+                return { start: startDate, end: endDate };
+              },
             },
           }}
           nowIndicator
