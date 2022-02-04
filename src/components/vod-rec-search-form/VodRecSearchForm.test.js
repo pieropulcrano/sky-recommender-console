@@ -15,7 +15,7 @@ describe('Vod Rec Search Form', () => {
       onSubmit: handleSubmit,
       onSearch: jest.fn(),
       isSearching: false,
-      searchResult: initialValues,
+      searchResult: [],
     };
   });
 
