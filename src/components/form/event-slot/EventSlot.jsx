@@ -9,6 +9,7 @@ import {
   EventImage,
   EmptyEventWrapper,
   HD,
+  SD,
   Warning,
 } from './EventSlot.styled';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -17,7 +18,7 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Tooltip } from '@material-ui/core';
 
-const EventSlot = ({ name, handleOpen, hd, disabled, data_test_slot }) => {
+const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
   const { value } = field;
@@ -29,7 +30,7 @@ const EventSlot = ({ name, handleOpen, hd, disabled, data_test_slot }) => {
   return value && Object.keys(value).length !== 0 ? (
     <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
       <EventImageWrapper>
-        {hd && <HD />}
+        {type && type === 'sd' ? <SD /> : type === 'hd' ? <HD /> : null}
         {!disabled && (
           <XButton onClick={rmvEvent}>
             <ClearIcon color="error" fontSize="small" />
@@ -59,7 +60,7 @@ const EventSlot = ({ name, handleOpen, hd, disabled, data_test_slot }) => {
   ) : (
     <SlotWrapper className="empity-slot">
       <EventImageWrapper error={meta && meta.touched && meta.error}>
-        {hd && <HD />}
+        {type && type === 'sd' ? <SD /> : type === 'hd' ? <HD /> : null}
         <EmptyEventWrapper error={meta && meta.touched && meta.error}>
           {!disabled && (
             <IconButton onClick={handleOpenModal}>

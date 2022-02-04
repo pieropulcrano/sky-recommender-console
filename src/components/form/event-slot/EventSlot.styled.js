@@ -2,6 +2,7 @@ import { styled } from '@mui/system';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 import IconButton from '@mui/material/IconButton';
 import HdIcon from '@material-ui/icons/Hd';
+import SdIcon from '@mui/icons-material/Sd';
 import Box from '@mui/material/Box';
 
 export const SlotWrapper = styled('div')({
@@ -34,6 +35,13 @@ export const HD = styled(HdIcon)({
   left: '0',
   top: '0',
   color: 'blue',
+});
+
+export const SD = styled(SdIcon)({
+  position: 'absolute',
+  left: '0',
+  top: '0',
+  color: 'black',
 });
 
 export const XButton = styled(IconButton)({

@@ -13,7 +13,7 @@ import {
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
 
-const VodRecSearchForm = ({
+const LinRecSearchForm = ({
   onSubmit,
   onSearch,
   isSearching,
@@ -52,15 +52,15 @@ const VodRecSearchForm = ({
   );
 };
 
-VodRecSearchForm.defaultProps = {
+LinRecSearchForm.defaultProps = {
   searchResult: [],
 };
 
-VodRecSearchForm.propTypes = {
+LinRecSearchForm.propTypes = {
   searchResult: PropTypes.array,
   isSearching: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
 };
 
-export default VodRecSearchForm;
+export default LinRecSearchForm;
