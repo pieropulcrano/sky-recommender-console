@@ -20,6 +20,11 @@ describe('Testing Home Page', () => {
     cy.get('[data-test="app-bar"]');
   });
 
+  it('Check alert fallbac', () => {
+    cy.get('[data-test="fallback-nav-tab"]').should('have.class','MuiTab-labelIcon');
+
+  });
+
   it('Check navigation Tabs', () => {
     //check exist appbar
     cy.get('[data-test="nav-tabs"]').within(() => {

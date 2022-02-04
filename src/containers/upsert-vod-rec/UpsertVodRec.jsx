@@ -22,6 +22,8 @@ const UpsertVodRec = ({ id, onSuccess }) => {
 
   const { addAlert } = useNotification();
 
+  let searchedDate = React.useRef();
+
   React.useEffect(() => {
     if (vodRecError)
       addAlert({
@@ -40,9 +42,10 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         setPrevVodRecIsLoading(true);
         const res = await getPrevVodRec({
           cluster,
-          type:'VOD',
+          type: 'VOD',
           validFrom_lte: startDateTime,
         });
+
         if (res.length === 0)
           addAlert({
             text: 'There are no recommendations prior to the date entered.',
@@ -50,7 +53,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             type: 'info',
             id: Date.now(),
           });
-
+        searchedDate.current = startDateTime;
         setPrevRecVod(res);
       } catch (error) {
         addAlert({
@@ -111,7 +114,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             text: 'Vod was successfully created.',
             title: ` Vod Created`,
             type: 'success',
-            data_test:"vod-update-ok-not",
+            data_test: 'vod-update-ok-not',
             id: Date.now(),
           });
         }
@@ -152,7 +155,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
               : prevVodRec.length > 0
               ? {
                   cluster: prevVodRec[0].cluster,
-                  startDateTime: prevVodRec[0].validFrom,
+                  startDateTime: searchedDate.current,
                   recommendation: normalizeVodRec(prevVodRec[0].recommendation),
                 }
               : {}

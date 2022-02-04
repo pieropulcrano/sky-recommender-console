@@ -19,12 +19,13 @@ const VodRecSearchForm = ({
   isSearching,
   searchResult,
 }) => {
+  const handleSubmit = (values) => onSubmit(values);
   return (
     <VodRecSearchFormWrapper>
       <VodEventSearchForm onSubmit={onSearch} />
       <Formik
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <Form>

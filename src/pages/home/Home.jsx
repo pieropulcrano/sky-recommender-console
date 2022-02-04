@@ -11,7 +11,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { TabIcon, Warning } from './Home.styled';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
-import { isExpired } from '../../utils/date';
 
 const Home = () => {
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -30,7 +29,7 @@ const Home = () => {
       ? recFallback[0].recommendation
       : recFallback.recommendation;
     for (var i = 0; i < rec.length; i++) {
-      if (isExpired(rec[i].endProgram)) {
+      if (rec[i].warningMessage !== '') {
         isExpiredFlag = 1;
       }
     }
@@ -70,7 +69,7 @@ const Home = () => {
           {alertFallback === 1 && (
             <TabIcon
               data-test="fallback-nav-tab"
-              icon={<Warning />}
+              icon={<Warning data-testid="warning-fallback"/>}
               iconPosition="end"
               label="Fallback"
             />
