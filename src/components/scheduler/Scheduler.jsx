@@ -13,9 +13,15 @@ import { mapForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import './style.css';
 
+/**
+ * Component to handle the scheduling of the recommendations.
+ */
+
 const Scheduler = () => {
-  // isloading is handled here in order to avoid infinite loop
-  // https://github.com/fullcalendar/fullcalendar-react/issues/97
+  /**
+   * isloading is handled here in order to avoid infinite loop
+   * https://github.com/fullcalendar/fullcalendar-react/issues/97
+   * */
   const [recIsLoading, setRecIsLoading] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
   const [isEditing, setIsEditing] = React.useState(false);
@@ -55,6 +61,7 @@ const Scheduler = () => {
           id: Date.now(),
         });
         error(err);
+        console.log(error);
       }
     },
     [addAlert],
@@ -104,7 +111,7 @@ const Scheduler = () => {
       <Hidden isLoading={recIsLoading}>
         <FullCalendar
           ref={CalendarRef}
-          schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
+          schedulerLicenseKey={process.env.REACT_APP_SCHEDULER_LICENSE_KEY}
           plugins={[resourceTimelinePlugin]}
           initialView="month"
           height="700px"
@@ -112,7 +119,7 @@ const Scheduler = () => {
           resourceAreaHeaderContent="Clusters"
           resources={resources}
           headerToolbar={{
-            left: `today,resourceTimelineDay,resourceTimelineWeek,month`,
+            left: `resourceTimelineDay,resourceTimelineWeek,month`,
             center: 'title',
             right: 'newVod newLin',
           }}
