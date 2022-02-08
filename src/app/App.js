@@ -12,6 +12,10 @@ import { AlertContextProvider } from '../notifications/AlertProvider';
 import Notification from '../notifications/Notification';
 import Home from '../pages/home/Home';
 
+/**
+ * The entry point component of the application.
+ */
+
 const App = () => {
   return (
     <Router>

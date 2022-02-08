@@ -13,9 +13,16 @@ import { mapForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import './style.css';
 
+/**
+ * Component to handle the scheduling of the recommendations.
+ */
+
 const Scheduler = () => {
-  // isloading is handled here in order to avoid infinite loop
-  // https://github.com/fullcalendar/fullcalendar-react/issues/97
+  /**
+   * isloading is handled here in order to avoid infinite loop
+   * @see https://github.com/fullcalendar/fullcalendar-react/issues/97
+   * */
+
   const [recIsLoading, setRecIsLoading] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
   const [isEditing, setIsEditing] = React.useState(false);
@@ -98,21 +105,33 @@ const Scheduler = () => {
     );
   };
 
+  const createCustomView = (currentDate) => {
+    // Generate a new date for manipulating in the next step
+    var startDate = new Date(currentDate.valueOf());
+    var endDate = new Date(currentDate.valueOf());
+
+    // Adjust the start & end dates, respectively
+    startDate.setDate(startDate.getDate() - 7); // 7 day in the past
+    endDate.setDate(endDate.getDate() + 21); // 21 days into the future
+
+    return { start: startDate, end: endDate };
+  };
+
   return (
     <>
       {recIsLoading && <Spinner height="65vh" />}
       <Hidden isLoading={recIsLoading}>
         <FullCalendar
           ref={CalendarRef}
-          schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
+          schedulerLicenseKey={process.env.REACT_APP_SCHEDULER_LICENSE_KEY}
           plugins={[resourceTimelinePlugin]}
-          initialView="resourceTimelineMonth"
+          initialView="month"
           height="700px"
           resourceAreaWidth="180px"
           resourceAreaHeaderContent="Clusters"
           resources={resources}
           headerToolbar={{
-            left: `prev,next,today,resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth`,
+            left: `resourceTimelineDay,resourceTimelineWeek,month`,
             center: 'title',
             right: 'newVod newLin',
           }}
@@ -124,6 +143,12 @@ const Scheduler = () => {
             newLin: {
               text: 'NEW LIN',
               click: () => handleRecCreate(recTypes.lin),
+            },
+          }}
+          views={{
+            month: {
+              type: 'resourceTimeline',
+              visibleRange: createCustomView,
             },
           }}
           nowIndicator
@@ -138,6 +163,7 @@ const Scheduler = () => {
           title={modalTitle}
           open={openModal}
           handleClose={handleCloseModal}
+          data_test="scheduler-modal"
         >
           {!isEditing && recType === recTypes.vod && (
             <UpsertVodRec onSuccess={handleCRUDSuccess} />

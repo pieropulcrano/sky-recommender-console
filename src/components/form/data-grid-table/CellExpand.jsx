@@ -5,6 +5,10 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 
+/**
+ * Tooltip for a field of the DataGridTable.
+ */
+
 function isOverflown(element) {
   return (
     element.scrollHeight > element.clientHeight ||
