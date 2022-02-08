@@ -20,8 +20,9 @@ import './style.css';
 const Scheduler = () => {
   /**
    * isloading is handled here in order to avoid infinite loop
-   * https://github.com/fullcalendar/fullcalendar-react/issues/97
+   * @see https://github.com/fullcalendar/fullcalendar-react/issues/97
    * */
+
   const [recIsLoading, setRecIsLoading] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
   const [isEditing, setIsEditing] = React.useState(false);
@@ -61,7 +62,6 @@ const Scheduler = () => {
           id: Date.now(),
         });
         error(err);
-        console.log(error);
       }
     },
     [addAlert],
@@ -105,6 +105,18 @@ const Scheduler = () => {
     );
   };
 
+  const createCustomView = (currentDate) => {
+    // Generate a new date for manipulating in the next step
+    var startDate = new Date(currentDate.valueOf());
+    var endDate = new Date(currentDate.valueOf());
+
+    // Adjust the start & end dates, respectively
+    startDate.setDate(startDate.getDate() - 7); // 7 day in the past
+    endDate.setDate(endDate.getDate() + 21); // 21 days into the future
+
+    return { start: startDate, end: endDate };
+  };
+
   return (
     <>
       {recIsLoading && <Spinner height="65vh" />}
@@ -136,17 +148,7 @@ const Scheduler = () => {
           views={{
             month: {
               type: 'resourceTimeline',
-              visibleRange: function (currentDate) {
-                // Generate a new date for manipulating in the next step
-                var startDate = new Date(currentDate.valueOf());
-                var endDate = new Date(currentDate.valueOf());
-
-                // Adjust the start & end dates, respectively
-                startDate.setDate(startDate.getDate() - 7); // One day in the past
-                endDate.setDate(endDate.getDate() + 21); // Two days into the future
-
-                return { start: startDate, end: endDate };
-              },
+              visibleRange: createCustomView,
             },
           }}
           nowIndicator
@@ -161,6 +163,7 @@ const Scheduler = () => {
           title={modalTitle}
           open={openModal}
           handleClose={handleCloseModal}
+          data_test="scheduler-modal"
         >
           {!isEditing && recType === recTypes.vod && (
             <UpsertVodRec onSuccess={handleCRUDSuccess} />

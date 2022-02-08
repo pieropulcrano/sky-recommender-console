@@ -11,7 +11,7 @@ export const recTypes = {
 export const resources = [
   {
     id: 'cluster-1',
-    title: 'CLUSTER 1',
+    title: 'CINEMA',
     children: [
       {
         id: 'vod-1',
@@ -27,7 +27,7 @@ export const resources = [
   },
   {
     id: 'cluster-2',
-    title: 'CLUSTER 2',
+    title: 'NO CINEMA',
     children: [
       {
         id: 'vod-2',
