@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render 1`] = `
+HTMLCollection [
+  <header
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
+    data-test="app-bar"
+  >
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular css-1cndkqf-MuiToolbar-root"
+      >
+        <div
+          class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-1083xa6-MuiTypography-root"
+        >
+          SKY Recommender Console
+        </div>
+      </div>
+    </div>
+  </header>,
+  <div
+    class="MuiBox-root css-1c5ij41"
+  />,
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+  >
+    <span
+      class="css-yviemf"
+      direction="horizontal"
+      margin="10"
+    />
+    <div
+      class="MuiTabs-root css-1ujnqem-MuiTabs-root"
+      data-test="nav-tabs"
+    >
+      <div
+        class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+        style="overflow: hidden; margin-bottom: 0px;"
+      >
+        <div
+          class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
+          role="tablist"
+        >
+          <button
+            aria-selected="true"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            Schedule
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+            data-test="fallback-nav-tab"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Fallback
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <span
+          class="MuiTabs-indicator css-1aquho2-MuiTabs-indicator"
+          style="left: 0px; width: 0px;"
+        />
+      </div>
+    </div>
+    <div />
+  </div>,
+]
+`;
