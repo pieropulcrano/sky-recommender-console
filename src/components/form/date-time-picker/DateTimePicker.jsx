@@ -4,13 +4,20 @@ import { useField, useFormikContext } from 'formik';
 import TextField from '@mui/material/TextField';
 import DateTimePickerComp from '@mui/lab/DateTimePicker';
 
+/**
+ * Component to pick a date and a time, connected with Formik state by the param "name".
+ */
+
 const DateTimePicker = ({ name, label, data_test, ...props }) => {
   const [field, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
 
   const errors = {};
 
-  // https://github.com/jaredpalmer/formik/issues/3051
+  /**
+   * @see https://github.com/jaredpalmer/formik/issues/3051
+   * */
+
   if (meta && meta.touched && meta.error) {
     errors.error = true;
     errors.helperText = meta.error;
@@ -41,7 +48,13 @@ const DateTimePicker = ({ name, label, data_test, ...props }) => {
 };
 
 DateTimePicker.propTypes = {
+  /**
+   * The field name that connects the table with the form state.
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * The label shown to the user
+   */
   label: PropTypes.string.isRequired,
 };
 

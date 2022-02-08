@@ -4,6 +4,10 @@ import { useField, useFormikContext } from 'formik';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
+/**
+ * Component to select an option among multiple, connected with Formik state by the param "name".
+ */
+
 const Select = ({ name, options, ...props }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
@@ -41,7 +45,13 @@ const Select = ({ name, options, ...props }) => {
 };
 
 Select.propTypes = {
+  /**
+   * The field name that connects the table with the Formik state.
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * Option provided to the component.
+   */
   options: PropTypes.object.isRequired,
 };
 

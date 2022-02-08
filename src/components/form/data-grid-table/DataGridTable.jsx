@@ -6,7 +6,7 @@ import { DataGridTableWrapper } from './DataGridTable.styled';
 import { ErrorMsg } from '../error-msg/ErrorMsg.styled';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     '& .MuiDataGrid-columnHeaderCheckbox .MuiDataGrid-columnHeaderTitleContainer':
       {
@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
       },
   },
 }));
+
+/**
+ * Table (connected with Formik state by the param "name") to display data.
+ */
 
 const DataGridTable = ({ name, rows, columns, ...props }) => {
   const [selectionModel, setSelectionModel] = React.useState([]);
@@ -58,8 +62,17 @@ const DataGridTable = ({ name, rows, columns, ...props }) => {
 };
 
 DataGridTable.propTypes = {
+  /**
+   * The field name that connects the table with the form state.
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * The data displayed by the table.
+   */
   rows: PropTypes.array.isRequired,
+  /**
+   * The configuration of all the columns of the table.
+   */
   columns: PropTypes.array.isRequired,
 };
 

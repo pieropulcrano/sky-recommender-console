@@ -18,6 +18,10 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Tooltip } from '@material-ui/core';
 
+/**
+ * Component to display an assigned event or select a new one, connected with Formik state by the param "name"
+ */
+
 const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
@@ -74,14 +78,26 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
 };
 
 EventSlot.defaultProps = {
-  hd: false,
+  type: undefined,
   disabled: false,
 };
 
 EventSlot.propTypes = {
+  /**
+   * The field name that connects the table with the Formik state.
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * Gets called when the user click on the add button.
+   */
   handleOpen: PropTypes.func.isRequired,
-  hd: PropTypes.bool,
+  /**
+   * Indicates the type of the event assigned to the slot.
+   */
+  type: PropTypes.oneOf(['sd', 'hd']),
+  /**
+   * Disable all possible interaction with the component (add / remove event).
+   */
   disabled: PropTypes.bool,
 };
 
