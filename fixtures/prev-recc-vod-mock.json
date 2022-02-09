@@ -1,7 +1,7 @@
-[
-  {
+{
+  "items": {
     "id": "24",
-    "cluster": "C1",
+    "cluster": "CL_CIN",
     "type": "VOD",
     "validFrom": "",
     "validTo": "",
@@ -72,5 +72,7 @@
         "warningMessage": ""
       }
     ]
-  }
-]
+  },
+  "status": "",
+  "message": ""
+}

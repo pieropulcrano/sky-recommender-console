@@ -1,5 +1,5 @@
-[
-  {
+{
+  "items": {
     "id": "5",
     "type": "FALLBACK",
     "recommendation": [
@@ -124,5 +124,7 @@
         "warningMessage": ""
       }
     ]
-  }
-]
+  },
+  "status": "",
+  "message": ""
+}

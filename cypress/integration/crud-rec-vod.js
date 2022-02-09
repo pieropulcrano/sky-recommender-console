@@ -1,8 +1,8 @@
-let randomIndexClusterVal = 'C1';
+let randomIndexClusterVal = 'CL_CIN';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
-let mockData = [];
+let mockData;
 
 describe('Testing crud vod raccomandation', () => {
   beforeEach(() => {
@@ -15,22 +15,19 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForSearchVod();
     //parsing fixture
     cy.fixture('prev-recc-vod-mock').then((val) => {
-      val[0].validFrom = cy.generatePastDate(1, 'month');
-      mockData.push(val[0]);
+      val.items.validFrom = cy.generatePastDate(1, 'month');
+      mockData = val;
     });
-    cy.intercept(
-      { method: 'GET', path: '/recommendations?cluster=C1&type=VOD&*' },
-      (req) => {
-        req.reply({
-          statusCode: 201,
-          body: mockData,
-          delay: 10, // milliseconds
-        });
-      },
-    ).as('searchRequest');
+    cy.intercept({ method: 'GET', path: '/recommendation/*' }, (req) => {
+      req.reply({
+        statusCode: 201,
+        body: mockData,
+        delay: 10, // milliseconds
+      });
+    }).as('searchRequest');
     cy.fixture('vod-recc-mock').then((recc) => {
-      recc[0].validFrom = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendations?id=' + vodId, recc);
+      recc.items.validFrom = cy.generateFutureDate(1);
+      cy.intercept('GET', '**/recommendation/' + vodId, recc);
     });
     cy.useMockDataForCreate();
     cy.useMockDataForUpdate();
@@ -108,19 +105,15 @@ describe('Testing crud vod raccomandation', () => {
     //check if contains correct parameter validFrom_lte
     cy.get('@searchRequest')
       .its('request.url')
-      .should('to.match', new RegExp('validFrom_lte=' + dateToSend));
-    //check type on request
-    cy.get('@searchRequest')
-      .its('request.url')
-      .should('to.match', new RegExp('type=VOD'));
+      .should('to.match', new RegExp('validFrom=' + dateToSend));
     //intercetto la get search e verifico che i dati siano correti
 
     cy.wait('@searchRequest').should(({ req, response }) => {
-      let body = response.body[0];
+      let body = response.body;
       //check render tutti i vod
       cy.get('[data-test-slot="prev-vod-slot"]').should(
         'have.length',
-        body.recommendation.length,
+        body.items.recommendation.length,
       );
     });
     //elimino gli slot esistenti e ne ricreo

@@ -10,16 +10,10 @@ describe('Testing Fallback Page', () => {
     cy.useMockDataForSchedule();
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
-    cy.intercept({ method: 'PUT', path: '/fallback-vod-recommendation/*' }, (req) => {
-      req.reply({
-        statusCode: 201,
-        body: req.body,
-        delay: 10, // milliseconds
-      });
-    });
+    cy.useMockDataForUpdate();
     //parsing fixture
     cy.fixture('fallback-recc-mock').then((val) => {
-      fallbackData = val[0].recommendation;
+      fallbackData = val.items.recommendation;
     });
     cy.visit('http://localhost:3000');
     cy.wait(2000);

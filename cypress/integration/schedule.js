@@ -12,15 +12,15 @@ describe('Testing Schedule Page', () => {
       //se non è tornato 304
       if (interception.response.statusCode == 200) {
         let reccArr = interception.response.body;
-        for (var i = 0; i < reccArr.length; i++) {
+        for (var i = 0; i < reccArr.items.length; i++) {
           //controlle che abbia renderizzato tutti gli elementi
-          cy.get('[data-testId="eventId-' + reccArr[i].id + '"]').should(
+          cy.get('[data-testId="eventId-' + reccArr.items[i].id + '"]').should(
             'have.length',
             1,
           );
           //open the modal
-          cy.get('[data-testId="eventId-' + reccArr[i].id + '"]')
-            .contains(reccArr[i].type)
+          cy.get('[data-testId="eventId-' + reccArr.items[i].id + '"]')
+            .contains(reccArr.items[i].type)
             .trigger('mouseover', { force: true });
         }
       }
