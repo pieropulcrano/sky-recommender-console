@@ -50,8 +50,8 @@ describe('UpsertLinRec', () => {
   });
 
   it('should handle delete recommendation success correctly', async () => {
-    linRec[0].validFrom = '2998-12-14T15:00:00Z';
-    linRec[0].validTo = '2999-12-14T15:00:00Z';
+    linRec[0].validFrom = '2098-12-14T15:00:00Z';
+    linRec[0].validTo = '2099-12-14T15:00:00Z';
 
     const mockedDeleteLinRec = jest.fn(() => {
       return { deletedItem: linRec };

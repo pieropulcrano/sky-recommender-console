@@ -8,7 +8,9 @@ export function isExpired(date) {
     const now = new Date();
     const zoned = utcToZonedTime(date, timeZone);
     return now >= zoned;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function formatToHumanReadable(date) {
