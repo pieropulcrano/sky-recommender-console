@@ -3,6 +3,12 @@ import { format, utcToZonedTime } from 'date-fns-tz';
 const timeZone = 'Europe/Rome';
 const pattern = 'd.M.yyyy HH:mm';
 
+/**
+ * Check if date has Expired.
+ * @param {String} date - The date as ISO String.
+ * @returns {Boolean}
+ */
+
 export function isExpired(date) {
   try {
     const now = new Date();
@@ -18,14 +24,18 @@ export function formatToHumanReadable(date) {
     const zonedDate = utcToZonedTime(date, timeZone);
     const formatted = format(zonedDate, pattern, { timeZone });
     return formatted;
-  } catch (err) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function resetSecondsToZero(date) {
   try {
     let resetSeconds = new Date(date);
     return new Date(resetSeconds.setSeconds(0));
-  } catch (err) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function nowIsBetweenTwoDates(startDate, endDate) {
@@ -34,5 +44,7 @@ export function nowIsBetweenTwoDates(startDate, endDate) {
     const startDateTime = utcToZonedTime(startDate, timeZone);
     const endDateTime = utcToZonedTime(endDate, timeZone);
     return now >= startDateTime && now < endDateTime;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }

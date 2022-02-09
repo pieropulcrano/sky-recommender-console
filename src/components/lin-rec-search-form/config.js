@@ -8,14 +8,16 @@ export const columns = [
     headerName: 'Start Date',
     type: 'dateTime',
     width: '180',
-    valueFormatter: (params) => formatToHumanReadable(params.value),
+    valueFormatter: (params) =>
+      params.value && formatToHumanReadable(params.value),
   },
   {
     field: 'endProgram',
     headerName: 'End Date',
     type: 'dateTime',
     width: '180',
-    valueFormatter: (params) => formatToHumanReadable(params.value),
+    valueFormatter: (params) =>
+      params.value && formatToHumanReadable(params.value),
   },
   {
     field: 'linearSummaryLong',
