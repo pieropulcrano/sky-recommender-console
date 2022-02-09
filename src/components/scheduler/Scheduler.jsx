@@ -92,8 +92,8 @@ const Scheduler = () => {
         data-test-tooltip-id={arg.event.extendedProps.extraProps.id}
         title={arg.event.title}
         recommendation={arg.event.extendedProps.extraProps.recommendation}
-        startDateTime={arg.event.start}
-        endDateTime={arg.event.end}
+        startDateTime={arg.event.extendedProps.extraProps.validFrom}
+        endDateTime={arg.event.extendedProps.extraProps.validTo}
       />
     );
   };
