@@ -11,6 +11,7 @@ import { Hidden } from './Scheduler.styled';
 import { resources, recTypes } from './config';
 import { mapForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
+import { formatToISO8601 } from '../../utils/date';
 import './style.css';
 
 /**
@@ -49,8 +50,8 @@ const Scheduler = () => {
     async (info, success, error) => {
       try {
         const res = await getRec({
-          validFrom: info.startStr,
-          validTo: info.endStr,
+          validFrom: formatToISO8601(info.startStr),
+          validTo: formatToISO8601(info.endStr),
         });
         const data = mapForScheduler(res);
         success(data);

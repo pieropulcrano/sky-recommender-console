@@ -3,6 +3,7 @@ import {
   formatToHumanReadable,
   resetSecondsToZero,
   nowIsBetweenTwoDates,
+  formatToISO8601,
 } from './date';
 
 describe('date utils', () => {
@@ -23,6 +24,10 @@ describe('date utils', () => {
     endDateInRange: '2999-02-25T16:47:00.000Z',
     startDateNotInRange: '2999-02-25T16:47:00.000Z',
     endDateNotInRange: '3000-02-25T16:47:00.000Z',
+  };
+  const formatToISO8601Data = {
+    input: '2022-02-03T00:00:00+01:00',
+    output: '2022-02-02T23:00:00Z',
   };
 
   describe('isExpired', () => {
@@ -63,6 +68,13 @@ describe('date utils', () => {
           nowIsBetweenTwoDatesoData.endDateNotInRange,
         ),
       ).toEqual(false);
+    });
+  });
+  describe('formatToISO8601', () => {
+    it('should return a date formatted To iso8601', () => {
+      expect(formatToISO8601(formatToISO8601Data.input)).toEqual(
+        formatToISO8601Data.output,
+      );
     });
   });
 });
