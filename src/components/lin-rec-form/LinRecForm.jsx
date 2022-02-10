@@ -8,7 +8,8 @@ import ClearBtn from '../form/clear-btn/ClearBtn';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SearchLinRec from '../../containers/search-lin-rec/SearchLinRec';
 import Modal from '../modal/Modal';
-import { isEditingValidationSchema, validationSchema } from './validation';
+import { isEditingPresentRecSchema, validationSchema } from './validation';
+import { isExpired, nowIsBetweenTwoDates } from '../../utils/date';
 import {
   SlotsRowWrapper,
   LinRecFormWrapper,
@@ -19,7 +20,6 @@ import Marginer from '../marginer/Marginer';
 import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import { clusters, DEFAULT_VALUES } from './config';
 import { slotTypes } from '../form/event-slot/EventSlot.types';
-import { isExpired, nowIsBetweenTwoDates } from '../../utils/date';
 
 const LinRecForm = ({
   recId,
@@ -31,6 +31,17 @@ const LinRecForm = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
+  const [isEditingFutureRec, setIsEditingFutureRec] = React.useState(false);
+  const [isEditingPresentRec, setIsEditingPresentRec] = React.useState(false);
+
+  React.useEffect(() => {
+    if (recId) {
+      const { startDateTime, endDateTime } = initialValues;
+      if (!isExpired(startDateTime)) setIsEditingFutureRec(true);
+      else if (nowIsBetweenTwoDates(startDateTime, endDateTime))
+        setIsEditingPresentRec(true);
+    }
+  }, [recId, initialValues]);
 
   const mergedInitialValues = React.useMemo(
     () => ({
@@ -68,7 +79,7 @@ const LinRecForm = ({
     });
   };
 
-  const createRow = (slotType, startDateTime) => {
+  const createRow = (slotType) => {
     const rows = [];
     for (let i = 1; i <= 5; i++) {
       rows.push(
@@ -77,7 +88,7 @@ const LinRecForm = ({
           handleOpen={handleOpen}
           name={`recommendation.${i}.${slotType}`}
           type={slotType}
-          disabled={recId && isExpired(startDateTime)}
+          disabled={recId && !isEditingFutureRec}
         />,
       );
     }
@@ -90,15 +101,19 @@ const LinRecForm = ({
     <LinRecFormWrapper>
       <Formik
         initialValues={mergedInitialValues}
-        validationSchema={recId ? isEditingValidationSchema : validationSchema}
+        validationSchema={
+          recId && isEditingPresentRec
+            ? isEditingPresentRecSchema
+            : validationSchema
+        }
         onSubmit={handleSubmit}
         enableReinitialize
       >
         {({ setFieldValue, values, resetForm }) => (
           <Form data-testid="form-upsert-rec-lin">
             <Grid container spacing={1.5}>
-              {/* The LIN is still editable (not in the past) or we are creating new one */}
-              {((recId && !isExpired(values.startDateTime)) || !recId) && (
+              {/*Render only if we are creating a new recommendation or we are editing a recommendation scheduled for the future */}
+              {(!recId || isEditingFutureRec) && (
                 <>
                   <Grid item xs={4}>
                     <Select
@@ -118,14 +133,8 @@ const LinRecForm = ({
                   </Grid>
                 </>
               )}
-
-              {((recId &&
-                nowIsBetweenTwoDates(
-                  values.startDateTime,
-                  values.endDateTime,
-                )) ||
-                (recId && !isExpired(values.endDateTime)) ||
-                !recId) && (
+              {/*Render only if we are creating a new recommendation or we are editing a recommendation scheduled for the present/future */}
+              {(!recId || isEditingPresentRec || isEditingFutureRec) && (
                 <Grid item xs={4}>
                   <DateTimePicker
                     name="endDateTime"
@@ -150,7 +159,7 @@ const LinRecForm = ({
 
               <Grid item xs={12}>
                 <ButtonsWrapper>
-                  {((recId && !isExpired(values.startDateTime)) || !recId) && (
+                  {(!recId || isEditingFutureRec) && (
                     <LeftButtons>
                       <ClearBtn onClick={() => clearSlots(resetForm, values)}>
                         Clear
@@ -169,13 +178,7 @@ const LinRecForm = ({
                     </LeftButtons>
                   )}
 
-                  {((recId &&
-                    nowIsBetweenTwoDates(
-                      values.startDateTime,
-                      values.endDateTime,
-                    )) ||
-                    (recId && !isExpired(values.endDateTime)) ||
-                    !recId) && (
+                  {(!recId || isEditingPresentRec || isEditingFutureRec) && (
                     <LoadingButton
                       type="submit"
                       variant="contained"

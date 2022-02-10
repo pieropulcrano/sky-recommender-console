@@ -137,30 +137,34 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       {id && !vodRec && !vodRecError ? (
         <Spinner height="300px" width="700px" />
       ) : (
-        <VodRecForm
-          recId={id}
-          onSubmit={onSubmit}
-          onDelete={onDelete}
-          isDeleting={isDeleting}
-          isSubmitting={isSubmitting}
-          prevVodRecIsLoading={prevVodRecIsLoading}
-          loadPrevVodRec={loadPrevVodRec}
-          initialValues={
-            vodRec
-              ? {
-                  cluster: vodRec[0].cluster,
-                  startDateTime: vodRec[0].validFrom,
-                  recommendation: normalizeVodRec(vodRec[0].recommendation),
-                }
-              : prevVodRec.length > 0
-              ? {
-                  cluster: prevVodRec[0].cluster,
-                  startDateTime: searchedDate.current,
-                  recommendation: normalizeVodRec(prevVodRec[0].recommendation),
-                }
-              : {}
-          }
-        />
+        !vodRecError && (
+          <VodRecForm
+            recId={id}
+            onSubmit={onSubmit}
+            onDelete={onDelete}
+            isDeleting={isDeleting}
+            isSubmitting={isSubmitting}
+            prevVodRecIsLoading={prevVodRecIsLoading}
+            loadPrevVodRec={loadPrevVodRec}
+            initialValues={
+              vodRec
+                ? {
+                    cluster: vodRec[0].cluster,
+                    startDateTime: vodRec[0].validFrom,
+                    recommendation: normalizeVodRec(vodRec[0].recommendation),
+                  }
+                : prevVodRec.length > 0
+                ? {
+                    cluster: prevVodRec[0].cluster,
+                    startDateTime: searchedDate.current,
+                    recommendation: normalizeVodRec(
+                      prevVodRec[0].recommendation,
+                    ),
+                  }
+                : {}
+            }
+          />
+        )
       )}
     </>
   );

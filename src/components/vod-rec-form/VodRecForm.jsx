@@ -32,6 +32,14 @@ const VocRecForm = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
+  const [isEditingFutureRec, setIsEditingFutureRec] = React.useState(false);
+
+  React.useEffect(() => {
+    if (recId) {
+      const { startDateTime } = initialValues;
+      if (!isExpired(startDateTime)) setIsEditingFutureRec(true);
+    }
+  }, [recId, initialValues]);
 
   const mergedInitialValues = React.useMemo(
     () => ({
@@ -70,7 +78,6 @@ const VocRecForm = ({
 
   const handleSubmit = (values) => onSubmit(values);
 
-
   const createRow = (startIndex, endIndex, values, recId) => {
     const rows = [];
     for (let i = startIndex; i <= endIndex; i++) {
@@ -80,7 +87,7 @@ const VocRecForm = ({
           key={i}
           name={`recommendation.${i}`}
           handleOpen={handleOpen}
-          disabled={recId && isExpired(values.startDateTime)}
+          disabled={recId && !isEditingFutureRec}
         />,
       );
     }
@@ -99,7 +106,7 @@ const VocRecForm = ({
           <Form data-test="form-upsert-rec-vod">
             <Grid container spacing={1.5}>
               {/* The VOD is still editable (not in the past) or we are creating new one */}
-              {((recId && !isExpired(values.startDateTime)) || !recId) && (
+              {(isEditingFutureRec || !recId) && (
                 <>
                   <Grid item xs={4}>
                     <Select
@@ -144,7 +151,7 @@ const VocRecForm = ({
               </Grid>
 
               {/* The VOD is still editable (not in the past) or we are creating new one */}
-              {((recId && !isExpired(values.startDateTime)) || !recId) && (
+              {(isEditingFutureRec || !recId) && (
                 <Grid item xs={12}>
                   <ButtonsWrapper>
                     <LeftButtons>

@@ -97,23 +97,25 @@ const UpsertLinRec = ({ id, onSuccess }) => {
       {id && !linRec && !linRecError ? (
         <Spinner height="300px" width="700px" />
       ) : (
-        <LinRecForm
-          recId={id}
-          onSubmit={onSubmit}
-          onDelete={onDelete}
-          isDeleting={isDeleting}
-          isSubmitting={isSubmitting}
-          initialValues={
-            linRec
-              ? {
-                  cluster: linRec[0].cluster,
-                  startDateTime: linRec[0].validFrom,
-                  endDateTime: linRec[0].validTo,
-                  recommendation: normalizeLinRec(linRec[0].recommendation),
-                }
-              : {}
-          }
-        />
+        !linRecError && (
+          <LinRecForm
+            recId={id}
+            onSubmit={onSubmit}
+            onDelete={onDelete}
+            isDeleting={isDeleting}
+            isSubmitting={isSubmitting}
+            initialValues={
+              linRec
+                ? {
+                    cluster: linRec[0].cluster,
+                    startDateTime: linRec[0].validFrom,
+                    endDateTime: linRec[0].validTo,
+                    recommendation: normalizeLinRec(linRec[0].recommendation),
+                  }
+                : {}
+            }
+          />
+        )
       )}
     </>
   );

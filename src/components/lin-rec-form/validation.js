@@ -80,9 +80,10 @@ export const validationSchema = Yup.object().shape({
   startDateTime: Yup.date()
     .typeError('Invalid date')
     .min(new Date(), 'Date cannot be in the past')
-    .required(),
+    .required('Required'),
   endDateTime: Yup.date()
     .typeError('Invalid date')
+    .min(new Date(), 'Date cannot be in the past')
     .test(
       'endDateTime',
       'End date should be after initial date',
@@ -92,11 +93,12 @@ export const validationSchema = Yup.object().shape({
   recommendation: recommendationShape,
 });
 
-export const isEditingValidationSchema = Yup.object().shape({
+export const isEditingPresentRecSchema = Yup.object().shape({
   cluster: Yup.string().required('Required'),
-  startDateTime: Yup.date().typeError('Invalid date').required(),
+  startDateTime: Yup.date().required('Required'),
   endDateTime: Yup.date()
     .typeError('Invalid date')
+    .min(new Date(), 'Date cannot be in the past')
     .test(
       'endDateTime',
       'End date should be after initial date',
