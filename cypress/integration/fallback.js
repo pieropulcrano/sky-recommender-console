@@ -1,40 +1,51 @@
 /// <reference types="cypress" />
-import fallbackRec from '../fixtures/fallback-reccomendation';
-
 describe('Testing Fallback Page', () => {
+  let fallbackData;
+  let eventToSearch = "L'isola che non c'è";
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
+    cy.useMockDataForSchedule();
+    cy.useMockDataForFallback();
+    cy.useMockDataForSearchVod();
+    cy.intercept({ method: 'PUT', path: '/fallback-vod-recommendation/*' }, (req) => {
+      req.reply({
+        statusCode: 201,
+        body: req.body,
+        delay: 10, // milliseconds
+      });
+    });
+    //parsing fixture
+    cy.fixture('fallback-recc-mock').then((val) => {
+      fallbackData = val[0].recommendation;
+    });
     cy.visit('http://localhost:3000');
     cy.wait(2000);
     cy.get('[data-test="fallback-nav-tab"]').click();
   });
 
   it('Check All fallbacks', () => {
-    cy.request('GET', 'http://localhost:3001/fallback-vod-recommendation').then(
-      (response) => {
-        //per prima cosa mi salvo la response
-        let fallbacks = response.body[0].recommendation;
-        //verifico che siano visibili tutti
-        cy.get('.fallback-slot').should('have.length', fallbacks.length);
-        //loop fallback response
-        for (var i = 0; i < fallbacks.length; i++) {
-          //single event
-          cy.get('[data-test="' + fallbacks[i].id + '"]').as('event');
-          cy.get('@event')
-            .find('[data-test="event-title"]')
-            .should('have.text', fallbacks[i].title);
-          cy.get('@event')
-            .find('[data-test="event-startProgram"]')
-            .should('not.be.empty');
-          cy.get('@event')
-            .find('[data-test="event-endProgram"]')
-            .should('not.be.empty');
-        }
-      },
+    //verifico che siano visibili tutti
+    cy.get('[data-test-slot="fallback-slot"]').should(
+      'have.length',
+      fallbackData.length,
     );
+    //loop fallback response
+    for (var i = 0; i < fallbackData.length; i++) {
+      //single event
+      cy.get('[data-test="' + fallbackData[i].id + '"]').as('event');
+      cy.get('@event')
+        .find('[data-test="event-title"]')
+        .should('have.text', fallbackData[i].title);
+      cy.get('@event')
+        .find('[data-test="event-startProgram"]')
+        .should('not.be.empty');
+      cy.get('@event')
+        .find('[data-test="event-endProgram"]')
+        .should('not.be.empty');
+    }
   });
 
   it('Check fallback events', () => {
@@ -48,18 +59,9 @@ describe('Testing Fallback Page', () => {
       .should('have.length', 1)
       .click({ force: true });
     //testing search Vod Modal
-    cy.testSearchVodModal();
+    cy.testSearchVodModal(eventToSearch);
     //risave
     cy.get('.MuiLoadingButton-root').click({ force: true });
-    /*cy.request({
-      method: 'PUT',
-      url: 'http://localhost:3001/fallback-vod-recommendation/1',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: fallbackRec,
-    });*/
-    //cy.wait(2000);
     //dovrebbe esser comparsa la  notifica di ok
     cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 1);
   });

@@ -1,54 +1,79 @@
 import * as Yup from 'yup';
 import { isAfter } from 'date-fns';
 
-const allSelectedEventsAreCoupleHdSd = (slotsObj) => {
-  let coupled = true;
-  for (let key in slotsObj) {
-    if (
-      (Object.keys(slotsObj[key].hd).length === 0 &&
-        Object.keys(slotsObj[key].sd).length !== 0) ||
-      (Object.keys(slotsObj[key].hd).length !== 0 &&
-        Object.keys(slotsObj[key].sd).length === 0)
-    ) {
-      coupled = false;
-      break;
-    }
-  }
-  return coupled;
-};
-
-Yup.addMethod(Yup.object, 'allSelectedEventsAreCoupleHdSd', function () {
-  return this.test({
-    name: 'allSelectedEventsAreCoupleHdSd',
-    message: 'Each event pair must have one HD event and one SD event',
-    exclusive: true,
-    test: (slotsObj) => allSelectedEventsAreCoupleHdSd(slotsObj),
-  });
-});
-
 const eventShape = {
-  id: Yup.string().required(),
   position: Yup.string().required(),
   title: Yup.string().required(),
 };
 
-const slotShape = {
-  sd: Yup.object(eventShape).required(),
-  hd: Yup.object(eventShape).required(),
+const slotCoupleWithValidation = Yup.object().shape(
+  {
+    sd: Yup.object().when('hd', {
+      is: (hd) => hd && Object.keys(hd).length === 0,
+      then: () => Yup.object().shape(eventShape).required(),
+    }),
+    hd: Yup.object().when('sd', {
+      is: (sd) => sd && Object.keys(sd).length === 0,
+      then: () => Yup.object().shape(eventShape).required(),
+    }),
+  },
+  ['sd', 'hd'],
+);
+
+const slotCoupleWithoutValidation = Yup.object().shape({
+  sd: Yup.object(),
+  hd: Yup.object(),
+});
+
+const atLeastOneSlotCoupleAtPositionNHaveEventHdOrSdSelected = (
+  arraySlotCouples = [],
+) => {
+  return arraySlotCouples.some((arraySlotCoupleAtPositionN) => {
+    const hdSdSlotsAtPositionN = Object.values(arraySlotCoupleAtPositionN);
+    return hdSdSlotsAtPositionN.some(
+      (slot) => Object.values(slot).length !== 0,
+    );
+  });
 };
 
-const emptySlotShape = {
-  sd: Yup.object().required(),
-  hd: Yup.object().required(),
+const checkEndDateTime = function checkEnd(endDateTime) {
+  const { startDateTime } = this.parent;
+  const { path, createError } = this;
+  try {
+    let startDateResetted = startDateTime.setSeconds(0);
+    let endDateResetted = endDateTime.setSeconds(0);
+    return isAfter(endDateResetted, startDateResetted);
+  } catch (error) {
+    return createError({ path, message: 'Invalid startDate' });
+  }
 };
 
-const slotsShape = {
-  1: Yup.object().shape(slotShape).required(),
-  2: Yup.object().shape(emptySlotShape).required(),
-  3: Yup.object().shape(emptySlotShape).required(),
-  4: Yup.object().shape(emptySlotShape).required(),
-  5: Yup.object().shape(emptySlotShape).required(),
-};
+const recommendationShape = Yup.object().shape(
+  {
+    1: slotCoupleWithValidation,
+    2: slotCoupleWithoutValidation.when(['3', '4', '5'], {
+      is: (third, fourth, fifth) =>
+        atLeastOneSlotCoupleAtPositionNHaveEventHdOrSdSelected([
+          third,
+          fourth,
+          fifth,
+        ]),
+      then: () => slotCoupleWithValidation,
+    }),
+    3: slotCoupleWithoutValidation.when(['4', '5'], {
+      is: (fourth, fifth) =>
+        atLeastOneSlotCoupleAtPositionNHaveEventHdOrSdSelected([fourth, fifth]),
+      then: () => slotCoupleWithValidation,
+    }),
+    4: slotCoupleWithoutValidation.when(['5'], {
+      is: (fifth) =>
+        atLeastOneSlotCoupleAtPositionNHaveEventHdOrSdSelected([fifth]),
+      then: () => slotCoupleWithValidation,
+    }),
+    5: slotCoupleWithoutValidation,
+  },
+  ['1', '2', '3', '4', '5'],
+);
 
 export const validationSchema = Yup.object().shape({
   cluster: Yup.string().required('Required'),
@@ -61,18 +86,10 @@ export const validationSchema = Yup.object().shape({
     .test(
       'endDateTime',
       'End date should be after initial date',
-      function checkEnd(endDateTime) {
-        const { startDateTime } = this.parent;
-        let startDateResetted = startDateTime.setSeconds(0);
-        let endDateResetted = endDateTime.setSeconds(0);
-        return isAfter(endDateResetted, startDateResetted);
-      },
+      checkEndDateTime,
     )
     .required('End date required'),
-  recommendation: Yup.object()
-    .shape(slotsShape)
-    .allSelectedEventsAreCoupleHdSd(['1', '2', '3', '4', '5'])
-    .required(),
+  recommendation: recommendationShape,
 });
 
 export const isEditingValidationSchema = Yup.object().shape({
@@ -83,16 +100,8 @@ export const isEditingValidationSchema = Yup.object().shape({
     .test(
       'endDateTime',
       'End date should be after initial date',
-      function checkEnd(endDateTime) {
-        const { startDateTime } = this.parent;
-        let startDateResetted = startDateTime.setSeconds(0);
-        let endDateResetted = endDateTime.setSeconds(0);
-        return isAfter(endDateResetted, startDateResetted);
-      },
+      checkEndDateTime,
     )
     .required('End date required'),
-  recommendation: Yup.object()
-    .shape(slotsShape)
-    .allSelectedEventsAreCoupleHdSd(['1', '2', '3', '4', '5'])
-    .required(),
+  recommendation: recommendationShape,
 });

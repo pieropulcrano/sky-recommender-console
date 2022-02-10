@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event Slot empty should render 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <div
+        class="MuiBox-root css-1agjfwn"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            data-testid="AddCircleIcon"
+            focusable="false"
+            style="color: blue;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Event Slot empty should render a disabled slot 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <div
+        class="MuiBox-root css-1agjfwn"
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Event Slot empty should render an hd disabled slot 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root css-4npp56"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 12H9.5v-2h-2v2H6V9h1.5v2.5h2V9H11v6zm2-6h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1h-4V9zm1.5 4.5h2v-3h-2v3z"
+        />
+      </svg>
+      <div
+        class="MuiBox-root css-1agjfwn"
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Event Slot empty should render an hd slot 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root css-4npp56"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 12H9.5v-2h-2v2H6V9h1.5v2.5h2V9H11v6zm2-6h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1h-4V9zm1.5 4.5h2v-3h-2v3z"
+        />
+      </svg>
+      <div
+        class="MuiBox-root css-1agjfwn"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            data-testid="AddCircleIcon"
+            focusable="false"
+            style="color: blue;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Event Slot empty should render an sd slot 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4nf99-MuiSvgIcon-root"
+        data-testid="SdIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 6h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1h-4V9zm-3.5 4.5v-1H7c-.55 0-1-.45-1-1V10c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1H9.5v-.5h-2v1H10c.55 0 1 .45 1 1V14c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-1h1.5v.5h2zm5 0h2v-3h-2v3z"
+        />
+      </svg>
+      <div
+        class="MuiBox-root css-1agjfwn"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            data-testid="AddCircleIcon"
+            focusable="false"
+            style="color: blue;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Event Slot not empty should remove the assigned event 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <div
+        class="MuiBox-root css-1agjfwn"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            data-testid="AddCircleIcon"
+            focusable="false"
+            style="color: blue;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Event Slot not empty should render 1`] = `
+HTMLCollection [
+  <div
+    class="css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1ci55s3-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-colorError MuiSvgIcon-fontSizeSmall css-1efkf0c-MuiSvgIcon-root"
+          data-testid="ClearIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root  css-181tbxo"
+        focusable="false"
+        title="out of date"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+        />
+      </svg>
+      <div
+        class="css-1l1eupa"
+      />
+    </div>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-title"
+    >
+      <span>
+        <b>
+          event-title
+        </b>
+      </span>
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-startProgram"
+    >
+      24.12.2021 13:00
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-endProgram"
+    >
+      24.12.2022 13:00
+    </p>
+  </div>,
+]
+`;
+
+exports[`Event Slot not empty should render a disabled slot 1`] = `
+HTMLCollection [
+  <div
+    class="css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root  css-181tbxo"
+        focusable="false"
+        title="out of date"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+        />
+      </svg>
+      <div
+        class="css-1l1eupa"
+      />
+    </div>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-title"
+    >
+      <span>
+        <b>
+          event-title
+        </b>
+      </span>
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-startProgram"
+    >
+      24.12.2021 13:00
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-endProgram"
+    >
+      24.12.2022 13:00
+    </p>
+  </div>,
+]
+`;
+
+exports[`Event Slot not empty should render an hd slot 1`] = `
+HTMLCollection [
+  <div
+    class="css-lccpzd"
+  >
+    <div
+      class="MuiBox-root css-1c6wt7s"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root css-4npp56"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 12H9.5v-2h-2v2H6V9h1.5v2.5h2V9H11v6zm2-6h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1h-4V9zm1.5 4.5h2v-3h-2v3z"
+        />
+      </svg>
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1ci55s3-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-colorError MuiSvgIcon-fontSizeSmall css-1efkf0c-MuiSvgIcon-root"
+          data-testid="ClearIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root  css-181tbxo"
+        focusable="false"
+        title="out of date"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+        />
+      </svg>
+      <div
+        class="css-1l1eupa"
+      />
+    </div>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-title"
+    >
+      <span>
+        <b>
+          event-title
+        </b>
+      </span>
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-startProgram"
+    >
+      24.12.2021 13:00
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      data-test="event-endProgram"
+    >
+      24.12.2022 13:00
+    </p>
+  </div>,
+]
+`;

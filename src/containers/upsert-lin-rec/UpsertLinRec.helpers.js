@@ -1,6 +1,9 @@
 import { resetSecondsToZero } from '../../utils/date';
 
-const extractEventsToArray = (recommendation) => {
+const positions = ['1', '2', '3', '4', '5'];
+
+export const extractEventsToArray = (recommendation) => {
+  if (!recommendation) throw new Error('No recommendation provided');
   const eventsObj = Object.values(recommendation);
   const reduced = eventsObj.reduce((acc, curr) => {
     // remove empty objects
@@ -9,7 +12,8 @@ const extractEventsToArray = (recommendation) => {
     );
     return [...acc, ...events];
   }, []);
-  return reduced;
+  const ordered = reduced.sort((prev, next) => prev.position - next.position);
+  return ordered;
 };
 
 export const prepareLinRec = (
@@ -27,8 +31,6 @@ export const prepareLinRec = (
 };
 
 export const normalizeLinRec = (linRec) => {
-  const positions = ['1', '2', '3', '4', '5'];
-
   const reduced = positions.reduce((acc, curr) => {
     const currentSlotEvents = linRec.filter((event) => event.position === curr);
 

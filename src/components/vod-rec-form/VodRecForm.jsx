@@ -68,12 +68,15 @@ const VocRecForm = ({
     });
   };
 
+  const handleSubmit = (values) => onSubmit(values);
+
+
   const createRow = (startIndex, endIndex, values, recId) => {
     const rows = [];
     for (let i = startIndex; i <= endIndex; i++) {
       rows.push(
         <EventSlot
-          customClass="prev-vod-slot"
+          data_test_slot="prev-vod-slot"
           key={i}
           name={`recommendation.${i}`}
           handleOpen={handleOpen}
@@ -87,7 +90,7 @@ const VocRecForm = ({
   return (
     <VocRecFormWrapper>
       <Formik
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         initialValues={mergedInitialValues}
         validationSchema={validationSchema}
         enableReinitialize

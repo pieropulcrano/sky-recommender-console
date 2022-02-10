@@ -14,8 +14,9 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
 import './utils'
+import './commands'
+
 //https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/blogs__dayjs
 const dayjs = require('dayjs')
 // https://day.js.org/docs/en/plugin/utc

@@ -5,6 +5,8 @@ describe('Testing Home Page', () => {
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
+    cy.useMockDataForSchedule();
+    cy.useMockDataForFallback();
     cy.visit('http://localhost:3000/');
   });
 
@@ -16,6 +18,11 @@ describe('Testing Home Page', () => {
   it('Check AppBar', () => {
     //check exist appbar
     cy.get('[data-test="app-bar"]');
+  });
+
+  it('Check alert fallbac', () => {
+    cy.get('[data-test="fallback-nav-tab"]').should('have.class','MuiTab-labelIcon');
+
   });
 
   it('Check navigation Tabs', () => {
@@ -70,50 +77,3 @@ describe('Testing Home Page', () => {
     });
   });
 });
-/*it('Search By title', () => {
-//Find the element with content Tmp searchBox to open modal with form'
-cy.contains('Tmp searchBox').click();
-//inside form
-cy.get('form').within(() => {
-//click input by id and type
-cy.get('#title').type('The', { force: true })
-//click on search button
-cy.get('#search_line_btn').click();
-//la tabellina dei risultati:
-cy.get('.MuiDataGrid-virtualScroller.css-1pans1z-MuiDataGrid-virtualScroller').within(() => {
-    //dovrebbe trovare uno solo
-     cy.get('div[role="row"]').should('have.length', 1);//il div = tr
-});
-//submit the form
-cy.get('button[type="submit"]').click();
-
-})
-
-})
-
-it('Search By Date', () => {
-const dateToSelect = "Jan 7, 2022";
-//Find the element with content Tmp searchBox to open modal with form'
-cy.contains('Tmp searchBox').click();
-//inside form
-cy.get('form').within(() => {
-//insert a date
-cy.get('#mui-7').type('07/01/2022 12:24 PM', { force: true })
-//click on search button
-cy.get('#search_line_btn').click();
-//la tabellina dei risultati:
-cy.get('.MuiDataGrid-virtualScroller.css-1pans1z-MuiDataGrid-virtualScroller').within(() => {
-  //dovrebbe trovare uno solo
-  cy.get('div[role="row"]').should('have.length', 3);//il div = tr
-});
-//submit the form
-cy.get('button[type="submit"]').click();
-//
-})
-
-})
-
-/*  it('renders learn react link', () => {
-mount(<App />);
-cy.get('a').contains('Learn React');
-});*/

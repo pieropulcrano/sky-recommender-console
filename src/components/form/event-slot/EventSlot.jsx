@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
-import { isExpired, formatToHumanReadable } from '../../../utils/date';
+import { formatToHumanReadable } from '../../../utils/date';
 import {
   SlotWrapper,
   EventImageWrapper,
@@ -9,14 +9,20 @@ import {
   EventImage,
   EmptyEventWrapper,
   HD,
+  SD,
   Warning,
 } from './EventSlot.styled';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Tooltip } from '@material-ui/core';
 
-const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
+/**
+ * Component to display an assigned event or select a new one, connected with Formik state by the param "name"
+ */
+
+const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
   const { value } = field;
@@ -26,15 +32,19 @@ const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
   const handleOpenModal = () => handleOpen(name);
 
   return value && Object.keys(value).length !== 0 ? (
-    <SlotWrapper className={customClass} data-test={value.id}>
+    <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
       <EventImageWrapper>
-        {hd && <HD />}
+        {type && type === 'sd' ? <SD /> : type === 'hd' ? <HD /> : null}
         {!disabled && (
           <XButton onClick={rmvEvent}>
             <ClearIcon color="error" fontSize="small" />
           </XButton>
         )}
-        {value.endProgram && isExpired(value.endProgram) && <Warning />}
+        {value.warningMessage && (
+          <Tooltip title={value.warningMessage}>
+            <Warning />
+          </Tooltip>
+        )}
         <EventImage />
       </EventImageWrapper>
       <Typography data-test="event-title" noWrap sx={{ fontSize: '12px' }}>
@@ -54,7 +64,7 @@ const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
   ) : (
     <SlotWrapper className="empity-slot">
       <EventImageWrapper error={meta && meta.touched && meta.error}>
-        {hd && <HD />}
+        {type && type === 'sd' ? <SD /> : type === 'hd' ? <HD /> : null}
         <EmptyEventWrapper error={meta && meta.touched && meta.error}>
           {!disabled && (
             <IconButton onClick={handleOpenModal}>
@@ -68,14 +78,26 @@ const EventSlot = ({ name, handleOpen, hd, disabled, customClass }) => {
 };
 
 EventSlot.defaultProps = {
-  hd: false,
+  type: undefined,
   disabled: false,
 };
 
 EventSlot.propTypes = {
+  /**
+   * The field name that connects the table with the Formik state.
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * Gets called when the user click on the add button.
+   */
   handleOpen: PropTypes.func.isRequired,
-  hd: PropTypes.bool,
+  /**
+   * Indicates the type of the event assigned to the slot.
+   */
+  type: PropTypes.oneOf(['sd', 'hd']),
+  /**
+   * Disable all possible interaction with the component (add / remove event).
+   */
   disabled: PropTypes.bool,
 };
 

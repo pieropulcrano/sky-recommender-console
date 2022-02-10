@@ -76,7 +76,7 @@ const LinRecForm = ({
           key={i}
           handleOpen={handleOpen}
           name={`recommendation.${i}.${slotType}`}
-          hd={slotType === slotTypes.HD}
+          type={slotType}
           disabled={recId && isExpired(startDateTime)}
         />,
       );
@@ -84,12 +84,14 @@ const LinRecForm = ({
     return rows;
   };
 
+  const handleSubmit = (values) => onSubmit(values);
+
   return (
     <LinRecFormWrapper>
       <Formik
         initialValues={mergedInitialValues}
         validationSchema={recId ? isEditingValidationSchema : validationSchema}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         enableReinitialize
       >
         {({ setFieldValue, values, resetForm }) => (

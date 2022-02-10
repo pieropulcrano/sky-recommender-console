@@ -7,24 +7,36 @@ import {
 } from './RecTooltipInfo.styled';
 import { formatToHumanReadable } from '../../../utils/date';
 
+/**
+ * Component that renders the content of the provided recommendation
+ */
+
 const TooltipContent = ({ recommendation, startDateTime, endDateTime }) => {
   const sorted = recommendation.sort(
     (prev, next) => prev.position - next.position,
   );
+
   return (
     <TooltipContentWrapper>
-      <span>Start: {formatToHumanReadable(startDateTime)}</span>
-      <span>End: {formatToHumanReadable(endDateTime)}</span>
+      <span>
+        Start: {startDateTime && formatToHumanReadable(startDateTime)}
+      </span>
+      <span>End: {endDateTime && formatToHumanReadable(endDateTime)}</span>
       <br />
       {sorted.map((event, index) => (
         <span key={index}>
           {`${event.position}. `}
-          {event.resolution === 'HD' && '[HD]'} {event.title}
+          {event.resolution && event.resolution === 'HD' && '[HD]'}{' '}
+          {event.title}
         </span>
       ))}
     </TooltipContentWrapper>
   );
 };
+
+/**
+ * Tooltip component that display informations about the provided recommendation.
+ */
 
 const RecTooltipInfo = ({
   title,
@@ -50,10 +62,22 @@ const RecTooltipInfo = ({
 };
 
 RecTooltipInfo.propTypes = {
+  /**
+   * text visualized by the user
+   */
   title: PropTypes.string.isRequired,
+  /**
+   *  array containing the recommendation events
+   */
   recommendation: PropTypes.array.isRequired,
-  startDateTime: PropTypes.instanceOf(Date).isRequired,
-  endDateTime: PropTypes.instanceOf(Date),
+  /**
+   *  the start date time of the recommendation
+   */
+  startDateTime: PropTypes.string.isRequired,
+  /**
+   *  the end date time of the recommendation
+   */
+  endDateTime: PropTypes.string,
 };
 
 export default RecTooltipInfo;

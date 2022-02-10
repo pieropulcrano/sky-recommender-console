@@ -8,10 +8,11 @@ import { validationSchema } from './validation';
 import { initialValues } from './config';
 
 const VodEventSearchForm = ({ onSubmit }) => {
+  const handleSubmit = (values) => onSubmit(values);
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
       <Form>

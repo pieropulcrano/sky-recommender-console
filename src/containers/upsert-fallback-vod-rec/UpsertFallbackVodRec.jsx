@@ -34,8 +34,8 @@ const UpsertFallbackVodRec = ({
       await updateFallbackVodRec(data);
       handleAlertFallback(data);
       addAlert({
-        text: 'Vod Fallback was successfully created.',
-        title: ` Vod Fallback created`,
+        text: 'Vod Fallback was successfully updated.',
+        title: ` Vod Fallback updated`,
         type: 'success',
         data_test: 'vod-fallback-ok-not',
         id: Date.now(),
