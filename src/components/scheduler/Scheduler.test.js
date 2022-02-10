@@ -18,8 +18,7 @@ jest.mock('../../hooks/useNotification', () => () => ({
 
 describe('Scheduler', () => {
   let mockedGetRec;
-
-  const recommendationsForCurrentMonth = recommendations.map(
+  const recommendationsForCurrentMonth = recommendations.items.map(
     (recommendation) => {
       const date = new Date();
       recommendation.validFrom = date.toUTCString();
@@ -33,10 +32,10 @@ describe('Scheduler', () => {
   });
 
   it('should display an error notification if an error occurs during the fetching of recommendations', async () => {
-    mockedGetRec = jest.fn(() => new Error('error'));
+    mockedGetRec = jest.fn(() => {
+      throw new Error('error');
+    });
     jest.spyOn(recProvider, 'getRec').mockImplementation(mockedGetRec);
-    /** mock useless console.warn */
-    jest.spyOn(global.console, 'warn').mockImplementation();
 
     render(<Scheduler />);
 

@@ -49,8 +49,8 @@ const Scheduler = () => {
     async (info, success, error) => {
       try {
         const res = await getRec({
-          validFrom_gte: info.startStr,
-          validTo_lte: info.endStr,
+          validFrom: info.startStr,
+          validTo: info.endStr,
         });
         const data = mapForScheduler(res);
         success(data);
@@ -61,7 +61,7 @@ const Scheduler = () => {
           type: 'error',
           id: Date.now(),
         });
-        error(err);
+        error();
       }
     },
     [addAlert],

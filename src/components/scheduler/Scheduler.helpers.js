@@ -22,7 +22,7 @@ function getResourceId(cluster, type) {
 
 export function mapForScheduler(recommendations) {
   if (!recommendations) throw new Error('No recommendations provided.');
-  return recommendations.map((rec) => ({
+  return recommendations.items.map((rec) => ({
     id: rec.id,
     title: rec.type,
     resourceId: getResourceId(rec.cluster, rec.type),
