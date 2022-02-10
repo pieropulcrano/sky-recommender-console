@@ -113,7 +113,7 @@ const LinRecForm = ({
           <Form data-testid="form-upsert-rec-lin">
             <Grid container spacing={1.5}>
               {/*Render only if we are creating a new recommendation or we are editing a recommendation scheduled for the future */}
-              {(!recId || (recId && isEditingFutureRec)) && (
+              {(!recId || isEditingFutureRec) && (
                 <>
                   <Grid item xs={4}>
                     <Select
@@ -134,8 +134,7 @@ const LinRecForm = ({
                 </>
               )}
               {/*Render only if we are creating a new recommendation or we are editing a recommendation scheduled for the present/future */}
-              {(!recId ||
-                (recId && (isEditingPresentRec || isEditingFutureRec))) && (
+              {(!recId || isEditingPresentRec || isEditingFutureRec) && (
                 <Grid item xs={4}>
                   <DateTimePicker
                     name="endDateTime"
@@ -160,7 +159,7 @@ const LinRecForm = ({
 
               <Grid item xs={12}>
                 <ButtonsWrapper>
-                  {(!recId || (recId && isEditingFutureRec)) && (
+                  {(!recId || isEditingFutureRec) && (
                     <LeftButtons>
                       <ClearBtn onClick={() => clearSlots(resetForm, values)}>
                         Clear
@@ -179,8 +178,7 @@ const LinRecForm = ({
                     </LeftButtons>
                   )}
 
-                  {(!recId ||
-                    (recId && (isEditingPresentRec || isEditingFutureRec))) && (
+                  {(!recId || isEditingPresentRec || isEditingFutureRec) && (
                     <LoadingButton
                       type="submit"
                       variant="contained"
