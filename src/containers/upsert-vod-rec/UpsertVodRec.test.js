@@ -100,7 +100,7 @@ describe('UpsertLinRec', () => {
     });
 
     it('if an error during the delete', async () => {
-      vodRecFixture[0].validFrom = '2999-12-14T15:00:00Z';
+      vodRecFixture.item[0].validFrom = '2999-12-14T15:00:00Z';
       const mockedDeleteVodRec = jest.fn(() => {
         throw new Error('error');
       });
@@ -129,7 +129,7 @@ describe('UpsertLinRec', () => {
     });
 
     it('if an error during update', async () => {
-      vodRec[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRec.item[0].validFrom = '2100-12-14T15:00:00Z';
 
       const mockedUpdateVodRec = jest.fn(() => {
         throw new Error('error');
@@ -148,14 +148,17 @@ describe('UpsertLinRec', () => {
       const updateButton = screen.queryByText(updateBtn);
       await waitFor(() => {
         fireEvent.click(updateButton);
-        expect(mockedUpdateVodRec).toHaveBeenCalledTimes(1);
       });
-
-      vodRec[0].validFrom = new Date(vodRec[0].validFrom);
-
-      await waitFor(() => {
-        expect(mockedUpdateVodRec).toHaveBeenCalledWith(props.id, vodRec[0]);
-      });
+      expect(mockedUpdateVodRec).toHaveBeenCalledTimes(1);
+      expect(mockedUpdateVodRec).toHaveBeenCalledWith(
+        vodRecFixture.item[0].id,
+        {
+          id: vodRecFixture.item[0].id,
+          item: [vodRecFixture.item[0]],
+          message: '',
+          status: '',
+        },
+      );
 
       await waitFor(() => {
         expect(props.onSuccess).not.toHaveBeenCalled();
@@ -230,7 +233,7 @@ describe('UpsertLinRec', () => {
 
   describe('Dysplay ok notification', () => {
     it('if delete is ok', async () => {
-      vodRecFixture[0].validFrom = '2998-12-14T15:00:00Z';
+      vodRecFixture.item[0].validFrom = '2998-12-14T15:00:00Z';
 
       const mockedDeleteVodRec = jest.fn(() => {
         return { deletedItem: vodRecFixture };
@@ -249,7 +252,7 @@ describe('UpsertLinRec', () => {
       await waitFor(() => {
         fireEvent.click(deleteButton);
         expect(mockedDeleteVodRec).toHaveBeenCalledTimes(1);
-        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec[0].id);
+        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec.item[0].id);
       });
 
       await waitFor(() => {
@@ -258,11 +261,11 @@ describe('UpsertLinRec', () => {
       });
     });
     it('if update is ok', async () => {
-      vodRecFixture[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRecFixture.item[0].validFrom = '2100-12-14T15:00:00Z';
 
       const mockedUpdateVodRec = jest.fn(() => {
         return {
-          updatedRecommendation: vodRecFixture[0],
+          updatedRecommendation: vodRecFixture.item[0],
         };
       });
       jest
@@ -281,12 +284,15 @@ describe('UpsertLinRec', () => {
         expect(mockedUpdateVodRec).toHaveBeenCalledTimes(1);
       });
 
-      vodRecFixture[0].validFrom = new Date(vodRecFixture[0].validFrom);
-
       await waitFor(() => {
         expect(mockedUpdateVodRec).toHaveBeenCalledWith(
-          vodRecFixture[0].id,
-          vodRecFixture[0],
+          vodRecFixture.item[0].id,
+          {
+            id: vodRecFixture.item[0].id,
+            item: [vodRecFixture.item[0]],
+            message: '',
+            status: '',
+          },
         );
       });
 
@@ -298,7 +304,7 @@ describe('UpsertLinRec', () => {
   });
 
   it('should display loading spinner', async () => {
-    vodRecFixture[0].validFrom = '2100-12-14T15:00:00Z';
+    vodRecFixture.item[0].validFrom = '2100-12-14T15:00:00Z';
 
     jest
       .spyOn(useVodRec, 'default')

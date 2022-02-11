@@ -1,16 +1,24 @@
-import { resetSecondsToZero } from '../../utils/date';
+import { resetSecondsToZero, formatToISO8601 } from '../../utils/date';
 
 export const prepareVodRec = (
   id,
   { cluster, startDateTime, recommendation },
 ) => {
+  let randomId = id ?? Math.floor(Math.random() * 10001); //TODO togliere
   return {
-    id: id ?? Math.floor(Math.random() * 10001),
-    cluster,
-    type: 'VOD',
-    validFrom: resetSecondsToZero(startDateTime),
-    validTo: '',
-    recommendation: Object.values(recommendation),
+    id: randomId.toString(), //TODO togliere
+    status: '', //TODO togliere
+    message: '', //TODO togliere
+    item: [
+      {
+        id: randomId.toString(),
+        cluster,
+        type: 'VOD',
+        validFrom: formatToISO8601(resetSecondsToZero(startDateTime)),
+        validTo: '',
+        recommendation: Object.values(recommendation),
+      },
+    ],
   };
 };
 
