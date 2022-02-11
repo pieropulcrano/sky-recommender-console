@@ -259,7 +259,7 @@ HTMLCollection [
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-lusxqg-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-pipma-MuiSvgIcon-root"
           data-testid="ImageNotSupportedIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -320,7 +320,7 @@ HTMLCollection [
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-lusxqg-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-pipma-MuiSvgIcon-root"
           data-testid="ImageNotSupportedIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -411,7 +411,7 @@ HTMLCollection [
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-lusxqg-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-pipma-MuiSvgIcon-root"
           data-testid="ImageNotSupportedIcon"
           focusable="false"
           viewBox="0 0 24 24"

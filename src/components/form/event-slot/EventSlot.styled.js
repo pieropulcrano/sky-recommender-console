@@ -46,7 +46,6 @@ export const ImageNotAvailable = styled(ImageNotSupportedIcon)({
   left: '0',
   top: '0',
   color: '#D3D3D3',
-  fontSize: 'small',
 });
 
 export const XButton = styled(IconButton)({
