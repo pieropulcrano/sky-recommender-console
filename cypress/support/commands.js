@@ -82,7 +82,7 @@ Cypress.Commands.add('useMockDataForSearchVod', () => {
 });
 
 Cypress.Commands.add('useMockDataForCreate', () => {
-  cy.intercept({ method: 'POST', path: '/recommendations' }, (req) => {
+  cy.intercept({ method: 'POST', path: '/recommendation' }, (req) => {
     req.reply({
       statusCode: 201,
       body: req.body,
@@ -92,7 +92,7 @@ Cypress.Commands.add('useMockDataForCreate', () => {
 });
 
 Cypress.Commands.add('useMockDataForUpdate', () => {
-  cy.intercept({ method: 'PUT', path: '/recommendations/*' }, (req) => {
+  cy.intercept({ method: 'PUT', path: '/recommendation/*' }, (req) => {
     req.reply({
       statusCode: 201,
       body: req.body,
@@ -102,7 +102,7 @@ Cypress.Commands.add('useMockDataForUpdate', () => {
 });
 
 Cypress.Commands.add('useMockDataForDelete', () => {
-  cy.intercept({ method: 'DELETE', path: '/recommendations/*' }, (req) => {
+  cy.intercept({ method: 'DELETE', path: '/recommendation/*' }, (req) => {
     req.reply({
       statusCode: 201,
       body: {},

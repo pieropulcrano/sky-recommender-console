@@ -1,4 +1,4 @@
-import { resetSecondsToZero } from '../../utils/date';
+import { resetSecondsToZero, formatToISO8601 } from '../../utils/date';
 
 const positions = ['1', '2', '3', '4', '5'];
 
@@ -20,13 +20,21 @@ export const prepareLinRec = (
   id,
   { cluster, startDateTime, endDateTime, recommendation },
 ) => {
+  let randomId = id ?? Math.floor(Math.random() * 10001); //TODO togliere
   return {
-    id: id ?? Math.floor(Math.random() * 10001),
-    cluster,
-    type: 'LIN',
-    validFrom: resetSecondsToZero(startDateTime),
-    validTo: resetSecondsToZero(endDateTime),
-    recommendation: extractEventsToArray(recommendation),
+    id: randomId.toString(), //TODO togliere
+    status: '', //TODO togliere
+    message: '', //TODO togliere
+    item: [
+      {
+        id: randomId.toString(), //TODO togliere
+        cluster,
+        type: 'LIN',
+        validFrom: formatToISO8601(resetSecondsToZero(startDateTime)),
+        validTo: formatToISO8601(resetSecondsToZero(endDateTime)),
+        recommendation: extractEventsToArray(recommendation),
+      },
+    ],
   };
 };
 

@@ -43,7 +43,7 @@ export async function deleteVodRec(id) {
 
 export async function searchVodRec(params) {
   const query = createUrlQuery(params);
-  const url = encodeURI(`${process.env.REACT_APP_API_EVENT_URL}?${query}`);
+  const url = `${process.env.REACT_APP_API_EVENT_URL}?${query}`;
 
   const res = await axios.get(url);
   return res.data;

@@ -50,8 +50,8 @@ describe('UpsertLinRec', () => {
   });
 
   it('should handle delete recommendation success correctly', async () => {
-    linRec[0].validFrom = '2098-12-14T15:00:00Z';
-    linRec[0].validTo = '2099-12-14T15:00:00Z';
+    linRec.item[0].validFrom = '2098-12-14T15:00:00Z';
+    linRec.item[0].validTo = '2099-12-14T15:00:00Z';
 
     const mockedDeleteLinRec = jest.fn(() => {
       return { deletedItem: linRec };
@@ -67,7 +67,7 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec id={linRec.item[0].id} onSuccess={onSuccess} />
       </LocalizationProvider>,
     );
 
@@ -78,7 +78,7 @@ describe('UpsertLinRec', () => {
     await waitFor(() => {
       fireEvent.click(deleteButton);
       expect(mockedDeleteLinRec).toHaveBeenCalledTimes(1);
-      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec[0].id);
+      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec.item[0].id);
     });
 
     await waitFor(() => {
@@ -88,8 +88,8 @@ describe('UpsertLinRec', () => {
   });
 
   it('should handle delete recommendation error correctly', async () => {
-    linRec[0].validFrom = '2998-12-14T15:00:00Z';
-    linRec[0].validTo = '2999-12-15T15:00:00Z';
+    linRec.item[0].validFrom = '2998-12-14T15:00:00Z';
+    linRec.item[0].validTo = '2999-12-15T15:00:00Z';
 
     const mockedDeleteLinRec = jest.fn(() => {
       throw new Error('error');
@@ -105,7 +105,7 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec id={linRec.item[0].id} onSuccess={onSuccess} />
       </LocalizationProvider>,
     );
 
@@ -116,7 +116,7 @@ describe('UpsertLinRec', () => {
     await waitFor(() => {
       fireEvent.click(deleteButton);
       expect(mockedDeleteLinRec).toHaveBeenCalledTimes(1);
-      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec[0].id);
+      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec.item[0].id);
     });
 
     await waitFor(() => {
@@ -131,12 +131,12 @@ describe('UpsertLinRec', () => {
   });
 
   it('should handle update recommendation success correctly', async () => {
-    linRec[0].validFrom = '2100-12-14T15:00:00Z';
-    linRec[0].validTo = '2101-12-15T15:00:00Z';
+    linRec.item[0].validFrom = '2100-12-14T15:00:00Z';
+    linRec.item[0].validTo = '2101-12-15T15:00:00Z';
 
     const mockedUpdateLinRec = jest.fn(() => {
       return {
-        updatedRecommendation: linRec[0],
+        updatedRecommendation: linRec.item[0],
       };
     });
 
@@ -150,7 +150,7 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec id={linRec.item[0].id} onSuccess={onSuccess} />
       </LocalizationProvider>,
     );
 
@@ -160,14 +160,14 @@ describe('UpsertLinRec', () => {
 
     await waitFor(() => {
       fireEvent.click(updateButton);
-      expect(mockedUpdateLinRec).toHaveBeenCalledTimes(1);
     });
 
-    linRec[0].validFrom = new Date(linRec[0].validFrom);
-    linRec[0].validTo = new Date(linRec[0].validTo);
-
-    await waitFor(() => {
-      expect(mockedUpdateLinRec).toHaveBeenCalledWith(linRec[0].id, linRec[0]);
+    expect(mockedUpdateLinRec).toHaveBeenCalledTimes(1);
+    expect(mockedUpdateLinRec).toHaveBeenCalledWith(linRec.item[0].id, {
+      id: linRec.item[0].id,
+      item: [linRec.item[0]],
+      message: '',
+      status: '',
     });
 
     await waitFor(() => {
@@ -182,8 +182,8 @@ describe('UpsertLinRec', () => {
   });
 
   it('should handle update recommendation delete correctly', async () => {
-    linRec[0].validFrom = '2100-12-14T15:00:00Z';
-    linRec[0].validTo = '2101-12-15T15:00:00Z';
+    linRec.item[0].validFrom = '2100-12-14T15:00:00Z';
+    linRec.item[0].validTo = '2101-12-15T15:00:00Z';
 
     const mockedUpdateLinRec = jest.fn(() => {
       throw new Error('error');
@@ -199,24 +199,23 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec id={linRec.item[0].id} onSuccess={onSuccess} />
       </LocalizationProvider>,
     );
 
     await waitFor(() => expect(mockedAddAlert).not.toHaveBeenCalled());
 
     const updateButton = screen.queryByText('Update');
-
     await waitFor(() => {
       fireEvent.click(updateButton);
-      expect(mockedUpdateLinRec).toHaveBeenCalledTimes(1);
     });
 
-    linRec[0].validFrom = new Date(linRec[0].validFrom);
-    linRec[0].validTo = new Date(linRec[0].validTo);
-
-    await waitFor(() => {
-      expect(mockedUpdateLinRec).toHaveBeenCalledWith(linRec[0].id, linRec[0]);
+    expect(mockedUpdateLinRec).toHaveBeenCalledTimes(1);
+    expect(mockedUpdateLinRec).toHaveBeenCalledWith(linRec.item[0].id, {
+      id: linRec.item[0].id,
+      item: [linRec.item[0]],
+      message: '',
+      status: '',
     });
 
     await waitFor(() => {
@@ -231,8 +230,8 @@ describe('UpsertLinRec', () => {
   });
 
   it('should display loading spinner', async () => {
-    linRec[0].validFrom = '2100-12-14T15:00:00Z';
-    linRec[0].validTo = '2101-12-15T15:00:00Z';
+    linRec.item[0].validFrom = '2100-12-14T15:00:00Z';
+    linRec.item[0].validTo = '2101-12-15T15:00:00Z';
 
     jest
       .spyOn(useLinRec, 'default')
@@ -242,7 +241,7 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec id={linRec.item[0].id} onSuccess={onSuccess} />
       </LocalizationProvider>,
     );
 

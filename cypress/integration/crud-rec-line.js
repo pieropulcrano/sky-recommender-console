@@ -24,14 +24,14 @@ describe('Testing crud Line raccomandation', () => {
       fixture: 'lin-hd-mock',
     });
     cy.fixture('lin-rec-future-mock').then((recc) => {
-      recc[0].validFrom = cy.generateFutureDate(1);
-      recc[0].validTo = cy.generateFutureDate(2);
-      cy.intercept('GET', '**/recommendations?id=' + idFutureLine, recc);
+      recc.item[0].validFrom = cy.generateFutureDate(1);
+      recc.item[0].validTo = cy.generateFutureDate(2);
+      cy.intercept('GET', '**/recommendation/' + idFutureLine, recc);
     });
     cy.fixture('lin-rec-present-mock').then((recc) => {
-      recc[0].validFrom = cy.setDay(1);
-      recc[0].validTo = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendations?id=' + idPresentLine, recc);
+      recc.item[0].validFrom = cy.setDay(1);
+      recc.item[0].validTo = cy.generateFutureDate(1);
+      cy.intercept('GET', '**/recommendation/' + idPresentLine, recc);
     });
     cy.visit('http://localhost:3000/');
   });
@@ -69,7 +69,7 @@ describe('Testing crud Line raccomandation', () => {
 
     // invia
     cy.contains('Create').click();
-        // check for notification
+    // check for notification
     cy.contains('Lin Created');
   });
 

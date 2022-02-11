@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchForm';
 import useNotification from '../../hooks/useNotification';
+import { formatToISO8601 } from '../../utils/date';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
 
 const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
@@ -14,9 +15,9 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
       setSearchResult([]);
       setIsSearching(true);
       const toSearch = {
-        ...values,
-        startProgram_gte: values.startDateTime.toISOString(),
+        title: values.title,
         type: 'LIN',
+        startDate: formatToISO8601(values.startDateTime),
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
