@@ -11,6 +11,7 @@ import {
   HD,
   SD,
   Warning,
+  ImageNotAvailable,
 } from './EventSlot.styled';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Typography from '@mui/material/Typography';
@@ -45,7 +46,13 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
             <Warning />
           </Tooltip>
         )}
-        <EventImage />
+        {(value.verticalImageUrl && (
+          <EventImage src={value.verticalImageUrl} />
+        )) || (
+          <EmptyEventWrapper>
+            <ImageNotAvailable />
+          </EmptyEventWrapper>
+        )}
       </EventImageWrapper>
       <Typography data-test="event-title" noWrap sx={{ fontSize: '12px' }}>
         {value.title && <span>{<b>{value.title}</b>}</span>}
