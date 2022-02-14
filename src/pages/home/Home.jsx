@@ -15,8 +15,7 @@ import useFallbackVodRec from '../../hooks/useFallbackVodRec';
 const Home = () => {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [alertFallback, setAlertFallback] = React.useState(0);
-  const { data: fallbackVodRec, error: fallbackVodRecError } =
-    useFallbackVodRec();
+  const { data: fallbackVodRec } = useFallbackVodRec();
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -69,7 +68,7 @@ const Home = () => {
           {alertFallback === 1 && (
             <TabIcon
               data-test="fallback-nav-tab"
-              icon={<Warning data-testid="warning-fallback"/>}
+              icon={<Warning data-testid="warning-fallback" />}
               iconPosition="end"
               label="Fallback"
             />
@@ -78,11 +77,7 @@ const Home = () => {
 
         {selectedTab === 0 && <Schedule />}
         {selectedTab === 1 && (
-          <Fallback
-            fallbackVodRec={fallbackVodRec}
-            fallbackVodRecError={fallbackVodRecError}
-            handleAlertFallback={handleAlertFallback}
-          />
+          <Fallback handleAlertFallback={handleAlertFallback} />
         )}
       </Container>
     </>
