@@ -17,7 +17,7 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
       const toSearch = {
         title: values.title,
         type: 'LIN',
-        startDate: formatToISO8601(values.startDateTime),
+        startDate_lte: formatToISO8601(values.startDateTime), //TODO remove _lte
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {

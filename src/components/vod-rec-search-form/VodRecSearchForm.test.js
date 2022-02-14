@@ -30,7 +30,7 @@ describe('Vod Rec Search Form', () => {
 
   //integration test of dataGridTable
   it('should display result', () => {
-    props.searchResult = vodRecToSearch;
+    props.searchResult = vodRecToSearch[0].items;
 
     render(<VodRecSearchForm {...props} />);
     expect(screen.queryByText(vodRecToSearch[0].title)).toBeInTheDocument();
@@ -50,7 +50,7 @@ describe('Vod Rec Search Form', () => {
   describe('Should submit', () => {
     //integration test of dataGridTable
     it('if a value is checked', async () => {
-      props.searchResult = vodRecToSearch;
+      props.searchResult = vodRecToSearch[0].items;
 
       render(<VodRecSearchForm {...props} />);
 

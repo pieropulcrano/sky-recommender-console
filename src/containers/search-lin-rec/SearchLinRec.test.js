@@ -96,8 +96,9 @@ describe('SearchLinRec', () => {
   });
 
   it('should handle onSubmit correctly', async () => {
-    const mockedSearchVodRec = jest.fn(() => Promise.resolve([linEvent]));
-
+    const mockedSearchVodRec = jest.fn(() => {
+      return linEvent[0].items;
+    });
     jest
       .spyOn(VodRecProvider, 'searchVodRec')
       .mockImplementation(mockedSearchVodRec);
