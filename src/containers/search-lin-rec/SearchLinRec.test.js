@@ -56,14 +56,15 @@ describe('SearchLinRec', () => {
 
     await waitFor(() => {
       fireEvent.click(searchButton);
-      expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedAddAlert).toHaveBeenCalledTimes(1);
-      expect(mockedAddAlert).toHaveBeenCalledWith({
-        title: 'Vod search error',
-        text: 'An error occured during the search process.',
-        type: 'error',
-        id: expect.anything(),
-      });
+    });
+
+    expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
+    expect(mockedAddAlert).toHaveBeenCalledTimes(1);
+    expect(mockedAddAlert).toHaveBeenCalledWith({
+      title: 'Vod search error',
+      text: 'An error occured during the search process.',
+      type: 'error',
+      id: expect.anything(),
     });
   });
 
@@ -92,9 +93,10 @@ describe('SearchLinRec', () => {
 
     await waitFor(() => {
       fireEvent.click(searchButton);
-      expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedAddAlert).not.toHaveBeenCalled();
     });
+
+    expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
+    expect(mockedAddAlert).not.toHaveBeenCalled();
   });
 
   it('should handle onSubmit correctly', async () => {

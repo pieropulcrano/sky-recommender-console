@@ -5,7 +5,7 @@ import useNotification from '../../hooks/useNotification';
 import { formatToISO8601 } from '../../utils/date';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
 
-const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
+const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
   const { addAlert } = useNotification();
@@ -53,10 +53,10 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
   );
 };
 
-SearchVodRec.propTypes = {
+SearchLinRec.propTypes = {
   addEvent: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
   resolution: PropTypes.oneOf(['HD', 'SD']),
 };
 
-export default SearchVodRec;
+export default SearchLinRec;
