@@ -70,7 +70,7 @@ Cypress.Commands.add('useMockDataForSchedule', () => {
 });
 
 Cypress.Commands.add('useMockDataForFallback', () => {
-  cy.intercept('GET', '**/fallback-vod-recommendation', {
+  cy.intercept('GET', '**/recommendation/9999', {
     fixture: 'fallback-recc-mock',
   });
 });

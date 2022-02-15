@@ -46,7 +46,7 @@ describe('Search Vod Rec', () => {
   describe('Testing Search Method', () => {
     it('Search ok', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch;
+        return vodToSearch.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')
@@ -133,7 +133,7 @@ describe('Search Vod Rec', () => {
 
     it('Should not submit', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch;
+        return vodToSearch.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')

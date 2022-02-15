@@ -26,7 +26,7 @@ const Home = () => {
     let isExpiredFlag = 0;
     let rec = Array.isArray(recFallback)
       ? recFallback[0].recommendation
-      : recFallback.recommendation;
+      : recFallback.item[0].recommendation;
     for (var i = 0; i < rec.length; i++) {
       if (rec[i].warningMessage !== '') {
         isExpiredFlag = 1;

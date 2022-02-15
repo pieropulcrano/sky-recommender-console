@@ -56,7 +56,7 @@ export async function getFallbackVodRec(url) {
 
 export async function updateFallbackVodRec(fallbackVodRec) {
   const res = await axios.put(
-    `${process.env.REACT_APP_API_FALLBACK_RECOMMENDATION_URL}/1`,
+    `${process.env.REACT_APP_API_FALLBACK_RECOMMENDATION_URL}`,
     fallbackVodRec,
   );
   return res.data;

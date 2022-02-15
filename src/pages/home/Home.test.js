@@ -48,13 +48,17 @@ describe('Home', () => {
     it('should appear an warning icon if vod has warning message if rec array', async () => {
       const mockedUseFallbackVodRec = jest.fn(() => {
         return {
-          data: [
-            {
-              id: '',
-              type: 'FALLBACK',
-              recommendation: [{ warningMessage: 'out of date' }],
-            },
-          ],
+          data: {
+            id: '',
+            item: [
+              {
+                id: '',
+                type: 'FALLBACK',
+                recommendation: [{ warningMessage: 'out of date' }],
+              },
+            ],
+          },
+
           error: undefined,
         };
       });
@@ -79,8 +83,13 @@ describe('Home', () => {
         return {
           data: {
             id: '',
-            type: 'FALLBACK',
-            recommendation: [{ warningMessage: 'out of date' }],
+            item: [
+              {
+                id: '',
+                type: 'FALLBACK',
+                recommendation: [{ warningMessage: 'out of date' }],
+              },
+            ],
           },
 
           error: undefined,
@@ -107,8 +116,13 @@ describe('Home', () => {
         return {
           data: {
             id: '',
-            type: 'FALLBACK',
-            recommendation: [{ warningMessage: '' }],
+            item: [
+              {
+                id: '',
+                type: 'FALLBACK',
+                recommendation: [{ warningMessage: '' }],
+              },
+            ],
           },
 
           error: undefined,

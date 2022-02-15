@@ -5,8 +5,9 @@ export const prepareFallbackVodRec = (id, { recommendation }) => {
   });
   return {
     id,
-    type: 'FALLBACK',
-    recommendation: noPositionIndexes,
+    item: [{ id, type: 'FALLBACK', recommendation: noPositionIndexes }],
+    status: '',
+    message: '',
   };
 };
 

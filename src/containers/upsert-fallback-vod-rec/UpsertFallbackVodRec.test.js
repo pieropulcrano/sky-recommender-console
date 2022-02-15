@@ -85,7 +85,10 @@ describe('Upsert Fallback Vod Rec', () => {
 
       await waitFor(() => {
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledWith(
-          prepareFallbackVodRec(fallbackReccMock[0].id, fallbackReccMock[0]),
+          prepareFallbackVodRec(
+            fallbackReccMock.item[0].id,
+            fallbackReccMock.item[0],
+          ),
         );
       });
 
@@ -115,7 +118,7 @@ describe('Upsert Fallback Vod Rec', () => {
 
       const mockedUpdateFallbackVodRec = jest.fn(() => {
         return {
-          updatedFallbackRecommendation: fallbackReccMock[0],
+          updatedFallbackRecommendation: fallbackReccMock.item,
         };
       });
 
@@ -134,7 +137,10 @@ describe('Upsert Fallback Vod Rec', () => {
       await waitFor(() => {
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledTimes(1);
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledWith(
-          prepareFallbackVodRec(fallbackReccMock[0].id, fallbackReccMock[0]),
+          prepareFallbackVodRec(
+            fallbackReccMock.item[0].id,
+            fallbackReccMock.item[0],
+          ),
         );
       });
 
