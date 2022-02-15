@@ -124,7 +124,7 @@ describe('Lin Rec Form', () => {
 
     it('if start date is invalid', async () => {
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: 'some-invalid-date',
         endDateTime: '2999-12-14T15:00:00Z',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),
@@ -145,7 +145,7 @@ describe('Lin Rec Form', () => {
 
     it('if end date is invalid', async () => {
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2012-12-14T15:00:00Z',
         endDateTime: 'some-invalid-date',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),
@@ -166,7 +166,7 @@ describe('Lin Rec Form', () => {
 
     it('if start date is in the past', async () => {
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2012-12-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),
@@ -189,7 +189,7 @@ describe('Lin Rec Form', () => {
 
     it('if end date is not later than the start date', async () => {
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2999-12-14T15:00:00Z',
         endDateTime: '2998-12-14T15:00:00Z',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),
@@ -214,7 +214,7 @@ describe('Lin Rec Form', () => {
   describe('should submit', () => {
     it('when the user create a new recommendation correctly', async () => {
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2998-12-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),
@@ -244,7 +244,7 @@ describe('Lin Rec Form', () => {
     it('when the user update a recommendation correctly', async () => {
       props.recId = 'test-id';
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2999-11-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),
@@ -274,7 +274,7 @@ describe('Lin Rec Form', () => {
     it('when the user want to delete recommendation', async () => {
       props.recId = 'test-id';
       props.initialValues = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2999-11-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
         recommendation: normalizeLinRec(pastLinRec.item[0].recommendation),

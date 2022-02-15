@@ -8,10 +8,10 @@ import { recTypes } from './config';
  */
 
 function getResourceId(cluster, type) {
-  if (cluster === 'C1' && type === recTypes.vod) return 'vod-1';
-  if (cluster === 'C1' && type === recTypes.lin) return 'lin-1';
-  if (cluster === 'C2' && type === recTypes.vod) return 'vod-2';
-  if (cluster === 'C2' && type === recTypes.lin) return 'lin-2';
+  if (cluster === 'CL_CIN' && type === recTypes.vod) return 'vod-1';
+  if (cluster === 'CL_CIN' && type === recTypes.lin) return 'lin-1';
+  if (cluster === 'CL_NOT_CIN' && type === recTypes.vod) return 'vod-2';
+  if (cluster === 'CL_NOT_CIN' && type === recTypes.lin) return 'lin-2';
 }
 
 /**

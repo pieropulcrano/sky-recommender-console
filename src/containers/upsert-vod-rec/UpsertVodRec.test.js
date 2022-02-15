@@ -187,7 +187,7 @@ describe('UpsertLinRec', () => {
 
       userEvent.selectOptions(
         screen.getByRole('listbox'),
-        screen.getByRole('option', { name: 'Cluster 1' }),
+        screen.getByRole('option', { name: 'Cinema' }),
       );
 
       const loadButton = screen.queryByText(loadBtn);
@@ -219,7 +219,7 @@ describe('UpsertLinRec', () => {
 
       userEvent.selectOptions(
         screen.getByRole('listbox'),
-        screen.getByRole('option', { name: 'Cluster 1' }),
+        screen.getByRole('option', { name: 'Cinema' }),
       );
 
       const loadButton = screen.queryByText(loadBtn);

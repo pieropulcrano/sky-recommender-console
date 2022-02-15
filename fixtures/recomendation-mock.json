@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "4",
-      "cluster": "C1",
+      "cluster": "CL_CIN",
       "type": "LIN",
       "validFrom": "",
       "validTo": "",
@@ -59,7 +59,7 @@
     },
     {
       "id": "50",
-      "cluster": "C1",
+      "cluster": "CL_CIN",
       "type": "LIN",
       "validFrom": "",
       "validTo": "",
@@ -116,7 +116,7 @@
     },
     {
       "id": "35",
-      "cluster": "C2",
+      "cluster": "CL_NOT_CIN",
       "type": "VOD",
       "validFrom": "",
       "validTo": "",
@@ -185,7 +185,7 @@
     },
     {
       "id": "166",
-      "cluster": "C2",
+      "cluster": "CL_NOT_CIN",
       "type": "VOD",
       "validFrom": "",
       "validTo": "",

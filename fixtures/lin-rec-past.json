@@ -3,7 +3,7 @@
   "item": [
     {
       "id": "50",
-      "cluster": "C1",
+      "cluster": "CL_CIN",
       "type": "LIN",
       "validFrom": "2021-12-27T15:00:00Z",
       "validTo": "2021-12-26T15:00:00Z",

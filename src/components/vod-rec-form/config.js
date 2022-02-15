@@ -1,6 +1,6 @@
 export const clusters = {
-  C1: 'Cluster 1',
-  C2: 'Cluster 2',
+  CL_CIN: 'Cinema',
+  CL_NOT_CIN: 'No Cinema',
 };
 
 export const DEFAULT_VALUES = {

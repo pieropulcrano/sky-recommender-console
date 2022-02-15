@@ -21,7 +21,7 @@ describe('UpsertVodRec component helpers', () => {
     it('should transform data collected from the form in to the required shape', () => {
       const id = '1';
       const collectedData = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2021-12-27T15:00:00Z',
         recommendation: recommendationEvents,
       };
@@ -31,7 +31,7 @@ describe('UpsertVodRec component helpers', () => {
         item: [
           {
             id,
-            cluster: 'C1',
+            cluster: 'CL_CIN',
             type: 'VOD',
             validFrom: collectedData.startDateTime,
             validTo: '',

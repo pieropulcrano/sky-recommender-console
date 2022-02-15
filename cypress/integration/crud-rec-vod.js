@@ -1,4 +1,4 @@
-let randomIndexClusterVal = 'C1';
+let randomIndexClusterVal = 'CL_CIN';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";

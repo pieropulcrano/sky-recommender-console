@@ -3,7 +3,7 @@
     "items": [
       {
         "id": "3",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "LIN",
         "validFrom": "2021-12-24T12:00:00Z",
         "validTo": "2021-12-26T15:00:00Z",
@@ -64,7 +64,7 @@
       },
       {
         "id": "4",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "LIN",
         "validFrom": "2022-02-07T12:00:00Z",
         "validTo": "2022-02-20T16:26:00Z",
@@ -125,7 +125,7 @@
       },
       {
         "id": "21",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2021-12-22T13:50:00Z",
         "validTo": "",
@@ -199,7 +199,7 @@
       },
       {
         "id": "24",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2021-12-28T13:00:00Z",
         "validTo": "",
@@ -273,7 +273,7 @@
       },
       {
         "id": "166",
-        "cluster": "C2",
+        "cluster": "CL_NOT_CIN",
         "type": "VOD",
         "validFrom": "2022-02-21T17:24:00.000Z",
         "validTo": "",
@@ -347,7 +347,7 @@
       },
       {
         "id": "3129",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2022-02-25T16:47:00.000Z",
         "validTo": "",
@@ -416,7 +416,7 @@
       },
       {
         "id": "1753",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2022-02-25T16:57:00.000Z",
         "validTo": "",
@@ -485,7 +485,7 @@
       },
       {
         "id": "2803",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2022-02-03T01:10:00.000Z",
         "validTo": "",
@@ -559,7 +559,7 @@
       },
       {
         "id": "185",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2022-02-04T13:10:00.000Z",
         "validTo": "",
@@ -633,7 +633,7 @@
       },
       {
         "id": "7156",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2022-02-01T19:41:00.000Z",
         "validTo": "",
@@ -707,7 +707,7 @@
       },
       {
         "id": "7657",
-        "cluster": "C1",
+        "cluster": "CL_CIN",
         "type": "VOD",
         "validFrom": "2022-02-02T11:01:00.000Z",
         "validTo": "",
@@ -1312,7 +1312,7 @@
       "item": [
         {
           "id": "3",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "LIN",
           "validFrom": "2021-12-24T12:00:00Z",
           "validTo": "2021-12-26T15:00:00Z",
@@ -1380,7 +1380,7 @@
       "item": [
         {
           "id": "4",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "LIN",
           "validFrom": "2022-02-07T12:00:00.000Z",
           "validTo": "2022-02-20T16:26:00.000Z",
@@ -1448,7 +1448,7 @@
       "item": [
         {
           "id": "21",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2021-12-22T13:50:00Z",
           "validTo": "",
@@ -1529,7 +1529,7 @@
       "item": [
         {
           "id": "24",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2021-12-28T13:00:00Z",
           "validTo": "",
@@ -1610,7 +1610,7 @@
       "item": [
         {
           "id": "166",
-          "cluster": "C2",
+          "cluster": "CL_NOT_CIN",
           "type": "VOD",
           "validFrom": "2022-02-21T17:24:00.000Z",
           "validTo": "",
@@ -1691,7 +1691,7 @@
       "item": [
         {
           "id": "3129",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2022-02-25T16:47:00.000Z",
           "validTo": "",
@@ -1767,7 +1767,7 @@
       "item": [
         {
           "id": "1753",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2022-02-25T16:57:00.000Z",
           "validTo": "",
@@ -1843,7 +1843,7 @@
       "item": [
         {
           "id": "2803",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2022-02-03T01:10:00.000Z",
           "validTo": "",
@@ -1924,7 +1924,7 @@
       "item": [
         {
           "id": "185",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2022-02-04T13:10:00.000Z",
           "validTo": "",
@@ -2005,7 +2005,7 @@
       "item": [
         {
           "id": "7156",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2022-02-01T19:41:00.000Z",
           "validTo": "",
@@ -2086,7 +2086,7 @@
       "item": [
         {
           "id": "7657",
-          "cluster": "C1",
+          "cluster": "CL_CIN",
           "type": "VOD",
           "validFrom": "2022-02-02T11:01:00.000Z",
           "validTo": "",
@@ -2169,7 +2169,7 @@
       "item": [
         {
           "id": "7017",
-          "cluster": "C2",
+          "cluster": "CL_NOT_CIN",
           "type": "LIN",
           "validFrom": "2022-02-15T18:34:00Z",
           "validTo": "2022-02-23T17:30:00Z",
