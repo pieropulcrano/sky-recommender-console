@@ -2,6 +2,7 @@
   "name": "new-recommender",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://10.170.12.5:8080/RecsEditorialConsole/",
   "dependencies": {
     "@emotion/react": "11.7.0",
     "@emotion/styled": "11.6.0",
