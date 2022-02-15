@@ -3,6 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import * as vodRecProvider from '../../providers/vod-rec-provider/VodRecProvider';
+import * as useFallbackVodRec from '../../hooks/useFallbackVodRec';
 import UpsertFallbackVodRec from './UpsertFallbackVodRec';
 import { prepareFallbackVodRec } from './UpsertFallbackVodRec.helpers';
 import fallbackReccMock from '../../../fixtures/fallback-recc-mock.json';
@@ -45,7 +46,6 @@ describe('Upsert Fallback Vod Rec', () => {
 
   beforeEach(() => {
     props = {
-      fallbackVodRec: undefined,
       handleAlertFallback: jest.fn(),
     };
   });
@@ -62,9 +62,12 @@ describe('Upsert Fallback Vod Rec', () => {
 
   describe('It should display error notification', () => {
     it('if an error returnig after update', async () => {
-      props.fallbackVodRec = fallbackReccMock;
       const mockedUpdateFallbackVodRec = jest.fn(() => {
         throw new Error('error');
+      });
+
+      jest.spyOn(useFallbackVodRec, 'default').mockImplementation(() => {
+        return { data: fallbackReccMock, error: undefined };
       });
 
       jest
@@ -92,7 +95,9 @@ describe('Upsert Fallback Vod Rec', () => {
     });
 
     it('if an error returnig during load', async () => {
-      props.fallbackVodRecError = {};
+      jest.spyOn(useFallbackVodRec, 'default').mockImplementation(() => {
+        return { data: undefined, error: 'error' };
+      });
 
       render(<MockUpsertFallbackVodRec {...props} />);
 
@@ -104,7 +109,10 @@ describe('Upsert Fallback Vod Rec', () => {
 
   describe('It should display ok notification', () => {
     it('if update correctly', async () => {
-      props.fallbackVodRec = fallbackReccMock;
+      jest.spyOn(useFallbackVodRec, 'default').mockImplementation(() => {
+        return { data: fallbackReccMock, error: undefined };
+      });
+
       const mockedUpdateFallbackVodRec = jest.fn(() => {
         return {
           updatedFallbackRecommendation: fallbackReccMock[0],
@@ -121,10 +129,10 @@ describe('Upsert Fallback Vod Rec', () => {
 
       await waitFor(() => {
         fireEvent.click(updateButton);
-        expect(mockedUpdateFallbackVodRec).toHaveBeenCalledTimes(1);
       });
 
       await waitFor(() => {
+        expect(mockedUpdateFallbackVodRec).toHaveBeenCalledTimes(1);
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledWith(
           prepareFallbackVodRec(fallbackReccMock[0].id, fallbackReccMock[0]),
         );

@@ -3,6 +3,7 @@ import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 import IconButton from '@mui/material/IconButton';
 import HdIcon from '@material-ui/icons/Hd';
 import SdIcon from '@mui/icons-material/Sd';
+import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
 import Box from '@mui/material/Box';
 
 export const SlotWrapper = styled('div')({
@@ -21,27 +22,30 @@ export const EventImageWrapper = styled(Box)(({ error }) => ({
   position: 'relative',
 }));
 
-export const EventImage = styled('div')(({ url }) => ({
-  height: '100%',
+export const EventImage = styled('img')({
   width: '100%',
-  border: '1px solid #ccc',
-  backgroundImage: url
-    ? `url(${url})`
-    : `url(https://via.placeholder.com/100x140)`,
-}));
+  height: '100%',
+});
 
 export const HD = styled(HdIcon)({
   position: 'absolute',
   left: '0',
-  top: '0',
+  bottom: '0',
   color: 'blue',
 });
 
 export const SD = styled(SdIcon)({
   position: 'absolute',
   left: '0',
-  top: '0',
+  bottom: '0',
   color: 'black',
+});
+
+export const ImageNotAvailable = styled(ImageNotSupportedIcon)({
+  position: 'absolute',
+  left: '0',
+  top: '0',
+  color: '#D3D3D3',
 });
 
 export const XButton = styled(IconButton)({
