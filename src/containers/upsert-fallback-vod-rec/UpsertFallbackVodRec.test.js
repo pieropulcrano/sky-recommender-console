@@ -55,6 +55,10 @@ describe('Upsert Fallback Vod Rec', () => {
   });
 
   it('should display loading spinner', async () => {
+    jest.spyOn(useFallbackVodRec, 'default').mockImplementation(() => {
+      return { data: undefined, error: undefined };
+    });
+
     render(<MockUpsertFallbackVodRec {...props} />);
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
