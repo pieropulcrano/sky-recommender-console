@@ -65,48 +65,61 @@ Cypress.Commands.add('useMockDataForSchedule', () => {
     //Secondo Vod
     //nel Futuro
     recc.items[3].validFrom = cy.generateFutureDate(1);
-    cy.intercept('GET', '/recommendations?validFrom=*', recc);
+    cy.intercept(
+      'GET',
+      Cypress.env().recommendationsUrl + '?validFrom=*',
+      recc,
+    );
   });
 });
 
 Cypress.Commands.add('useMockDataForFallback', () => {
-  cy.intercept('GET', '**/recommendation/9999', {
+  cy.intercept('GET', Cypress.env().fallbackRecommendationUrl, {
     fixture: 'fallback-recc-mock',
   });
 });
 
 Cypress.Commands.add('useMockDataForSearchVod', () => {
-  cy.intercept('**/event?title=*', {
+  cy.intercept(Cypress.env().eventUrl + '?title=*', {
     fixture: 'vod-to-search-mock',
   });
 });
 
 Cypress.Commands.add('useMockDataForCreate', () => {
-  cy.intercept({ method: 'POST', path: '/recommendation' }, (req) => {
-    req.reply({
-      statusCode: 201,
-      body: req.body,
-      delay: 10, // milliseconds
-    });
-  });
+  cy.intercept(
+    { method: 'POST', url: Cypress.env().recommendationUrl },
+    (req) => {
+      req.reply({
+        statusCode: 201,
+        body: req.body,
+        delay: 10, // milliseconds
+      });
+    },
+  );
 });
 
 Cypress.Commands.add('useMockDataForUpdate', () => {
-  cy.intercept({ method: 'PUT', path: '/recommendation/*' }, (req) => {
-    req.reply({
-      statusCode: 201,
-      body: req.body,
-      delay: 10, // milliseconds
-    });
-  });
+  cy.intercept(
+    { method: 'PUT', url: Cypress.env().recommendationUrl + '/*' },
+    (req) => {
+      req.reply({
+        statusCode: 201,
+        body: req.body,
+        delay: 10, // milliseconds
+      });
+    },
+  );
 });
 
 Cypress.Commands.add('useMockDataForDelete', () => {
-  cy.intercept({ method: 'DELETE', path: '/recommendation/*' }, (req) => {
-    req.reply({
-      statusCode: 201,
-      body: {},
-      delay: 10, // milliseconds
-    });
-  });
+  cy.intercept(
+    { method: 'DELETE', url: Cypress.env().recommendationUrl + '/*' },
+    (req) => {
+      req.reply({
+        statusCode: 201,
+        body: {},
+        delay: 10, // milliseconds
+      });
+    },
+  );
 });

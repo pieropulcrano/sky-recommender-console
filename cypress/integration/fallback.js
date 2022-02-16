@@ -10,18 +10,21 @@ describe('Testing Fallback Page', () => {
     cy.useMockDataForSchedule();
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
-    cy.intercept({ method: 'PUT', path: '/recommendation/9999' }, (req) => {
-      req.reply({
-        statusCode: 201,
-        body: req.body,
-        delay: 10, // milliseconds
-      });
-    });
+    cy.intercept(
+      { method: 'PUT', url: Cypress.env().fallbackRecommendationUrl },
+      (req) => {
+        req.reply({
+          statusCode: 201,
+          body: req.body,
+          delay: 10, // milliseconds
+        });
+      },
+    );
     //parsing fixture
     cy.fixture('fallback-recc-mock').then((val) => {
       fallbackData = val.item[0].recommendation;
     });
-    cy.visit('http://localhost:3000');
+    cy.visit(Cypress.env().baseUrl);
     cy.wait(2000);
     cy.get('[data-test="fallback-nav-tab"]').click();
   });
