@@ -17,7 +17,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       const toSearch = {
         title: values.title,
         type: 'LIN',
-        startDate_lte: formatToISO8601(values.startDateTime), //TODO remove _lte
+        startDate: formatToISO8601(values.startDateTime),
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {

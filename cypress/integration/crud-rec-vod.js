@@ -21,7 +21,11 @@ describe('Testing crud vod raccomandation', () => {
     cy.intercept(
       {
         method: 'GET',
-        path: '/recommendation?cluster=' + randomIndexClusterVal + '*',
+        url:
+          Cypress.env().recommendationUrl +
+          '?cluster=' +
+          randomIndexClusterVal +
+          '*',
       },
       (req) => {
         req.reply({
@@ -33,12 +37,12 @@ describe('Testing crud vod raccomandation', () => {
     ).as('searchRequest');
     cy.fixture('vod-recc-mock').then((recc) => {
       recc.item[0].validFrom = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendation/' + vodId, recc);
+      cy.intercept('GET', Cypress.env().recommendationUrl + '/' + vodId, recc);
     });
     cy.useMockDataForCreate();
     cy.useMockDataForUpdate();
     cy.useMockDataForDelete();
-    cy.visit('http://localhost:3000/');
+    cy.visit(Cypress.env().baseUrl);
   });
 
   /************************************CREATE******************************************************************************************************** */

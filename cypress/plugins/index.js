@@ -1,3 +1,4 @@
+require('dotenv').config();
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -16,7 +17,17 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+// cypress/plugins/index.js
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+  // modify env value
+  config.env = process.env;
+  config.env.baseUrl = process.env.REACT_APP_BASE_URL;
+  config.env.recommendationsUrl = process.env.REACT_APP_API_RECOMMENDATIONS_URL;
+  config.env.recommendationUrl = process.env.REACT_APP_API_RECOMMENDATION_URL;
+  config.env.eventUrl = process.env.REACT_APP_API_EVENT_URL;
+  config.env.fallbackRecommendationUrl =
+    process.env.REACT_APP_API_FALLBACK_RECOMMENDATION_URL;
+
+  // return config
+  return config;
+};

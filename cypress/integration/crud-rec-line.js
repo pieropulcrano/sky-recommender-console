@@ -16,24 +16,35 @@ describe('Testing crud Line raccomandation', () => {
     cy.useMockDataForDelete();
 
     //intercept sd search
-    cy.intercept('**/event?title=' + sdEvent.replace(/'/g, '%27') + '*', {
-      fixture: 'lin-sd-mock',
-    });
+    cy.intercept(
+      Cypress.env().eventUrl + '?title=' + sdEvent.replace(/'/g, '%27') + '*',
+      {
+        fixture: 'lin-sd-mock',
+      },
+    );
     //intercept hd search
-    cy.intercept('**/event?title=' + hdEvent + '*', {
+    cy.intercept(Cypress.env().eventUrl + '?title=' + hdEvent + '*', {
       fixture: 'lin-hd-mock',
     });
     cy.fixture('lin-rec-future-mock').then((recc) => {
       recc.item[0].validFrom = cy.generateFutureDate(1);
       recc.item[0].validTo = cy.generateFutureDate(2);
-      cy.intercept('GET', '**/recommendation/' + idFutureLine, recc);
+      cy.intercept(
+        'GET',
+        Cypress.env().recommendationUrl + '/' + idFutureLine,
+        recc,
+      );
     });
     cy.fixture('lin-rec-present-mock').then((recc) => {
       recc.item[0].validFrom = cy.setDay(1);
       recc.item[0].validTo = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendation/' + idPresentLine, recc);
+      cy.intercept(
+        'GET',
+        Cypress.env().recommendationUrl + '/' + idPresentLine,
+        recc,
+      );
     });
-    cy.visit('http://localhost:3000/');
+    cy.visit(Cypress.env().baseUrl);
   });
 
   /************************************CREATE******************************************************************************************************** */

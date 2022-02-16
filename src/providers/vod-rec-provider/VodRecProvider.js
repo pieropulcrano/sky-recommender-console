@@ -46,7 +46,7 @@ export async function searchVodRec(params) {
   const url = `${process.env.REACT_APP_API_EVENT_URL}?${query}`;
 
   const res = await axios.get(url);
-  return res.data[0].items;
+  return res.data.items;
 }
 
 export async function getFallbackVodRec(url) {

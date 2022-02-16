@@ -7,7 +7,7 @@ describe('Testing Home Page', () => {
     // we include it in our beforeEach function so that it runs before each test
     cy.useMockDataForSchedule();
     cy.useMockDataForFallback();
-    cy.visit('http://localhost:3000/');
+    cy.visit(Cypress.env().baseUrl);
   });
 
   it('Correct redirect', () => {
@@ -21,8 +21,10 @@ describe('Testing Home Page', () => {
   });
 
   it('Check alert fallbac', () => {
-    cy.get('[data-test="fallback-nav-tab"]').should('have.class','MuiTab-labelIcon');
-
+    cy.get('[data-test="fallback-nav-tab"]').should(
+      'have.class',
+      'MuiTab-labelIcon',
+    );
   });
 
   it('Check navigation Tabs', () => {

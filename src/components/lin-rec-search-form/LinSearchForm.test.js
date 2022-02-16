@@ -53,7 +53,7 @@ describe('LinSearchForm', () => {
 
     describe('should submit', () => {
       it("if the user selected an event from the result's list", async () => {
-        props.searchResult = linEvent[0].items;
+        props.searchResult = linEvent.items;
         render(
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <LinSearchForm {...props} />
