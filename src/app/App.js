@@ -18,7 +18,7 @@ import Home from '../pages/home/Home';
 
 const App = () => {
   return (
-    <Router basename="RecsEditorialConsole">
+    <Router basename={`${process.env.REACT_APP_BASENAME}`}>
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <AlertContextProvider>
