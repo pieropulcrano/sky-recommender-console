@@ -56,19 +56,22 @@ describe('SearchLinRec', () => {
 
     await waitFor(() => {
       fireEvent.click(searchButton);
-      expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedAddAlert).toHaveBeenCalledTimes(1);
-      expect(mockedAddAlert).toHaveBeenCalledWith({
-        title: 'Vod search error',
-        text: 'An error occured during the search process.',
-        type: 'error',
-        id: expect.anything(),
-      });
+    });
+
+    expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
+    expect(mockedAddAlert).toHaveBeenCalledTimes(1);
+    expect(mockedAddAlert).toHaveBeenCalledWith({
+      title: 'Vod search error',
+      text: 'An error occured during the search process.',
+      type: 'error',
+      id: expect.anything(),
     });
   });
 
   it('should handle onSearch success correctly', async () => {
-    const mockedSearchVodRec = jest.fn(() => [linEvent]);
+    const mockedSearchVodRec = jest.fn(() => {
+      return linEvent[0].items;
+    });
 
     jest
       .spyOn(VodRecProvider, 'searchVodRec')
@@ -90,14 +93,16 @@ describe('SearchLinRec', () => {
 
     await waitFor(() => {
       fireEvent.click(searchButton);
-      expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedAddAlert).not.toHaveBeenCalled();
     });
+
+    expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
+    expect(mockedAddAlert).not.toHaveBeenCalled();
   });
 
   it('should handle onSubmit correctly', async () => {
-    const mockedSearchVodRec = jest.fn(() => Promise.resolve([linEvent]));
-
+    const mockedSearchVodRec = jest.fn(() => {
+      return linEvent[0].items;
+    });
     jest
       .spyOn(VodRecProvider, 'searchVodRec')
       .mockImplementation(mockedSearchVodRec);

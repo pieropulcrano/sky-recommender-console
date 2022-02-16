@@ -46,7 +46,7 @@ describe('Search Vod Rec', () => {
   describe('Testing Search Method', () => {
     it('Search ok', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch;
+        return vodToSearch.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')
@@ -101,7 +101,7 @@ describe('Search Vod Rec', () => {
   describe('Testing Submit Method', () => {
     it('Should submit', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch;
+        return vodToSearch[0].items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')
@@ -126,14 +126,14 @@ describe('Search Vod Rec', () => {
       const selectButton = screen.queryByText(selectBtn);
       await waitFor(() => {
         fireEvent.click(selectButton);
-        expect(props.addEvent).toHaveBeenCalledWith(vodToSearch[0]);
+        expect(props.addEvent).toHaveBeenCalledWith(vodToSearch[0].items[0]);
         expect(props.handleClose).toHaveBeenCalled();
       });
     });
 
     it('Should not submit', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch;
+        return vodToSearch.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')

@@ -11,7 +11,7 @@ describe('Testing Schedule Page', () => {
     cy.wait('@searchRequest').then((interception) => {
       //se non è tornato 304
       if (interception.response.statusCode == 200) {
-        let reccArr = interception.response.body;
+        let reccArr = interception.response.body.items;
         for (var i = 0; i < reccArr.length; i++) {
           //controlle che abbia renderizzato tutti gli elementi
           cy.get('[data-testId="eventId-' + reccArr[i].id + '"]').should(

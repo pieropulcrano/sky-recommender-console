@@ -53,7 +53,7 @@ describe('UpsertLinRec component helpers', () => {
     it('should transform data collected from the form in to the required shape', () => {
       const id = '1';
       const collectedData = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2021-12-27T15:00:00Z',
         endDateTime: '2021-12-28T15:00:00Z',
         recommendation: recommendationEvents,
@@ -61,11 +61,18 @@ describe('UpsertLinRec component helpers', () => {
 
       expect(prepareLinRec(id, collectedData)).toEqual({
         id,
-        cluster: 'C1',
-        type: 'LIN',
-        validFrom: new Date(collectedData.startDateTime),
-        validTo: new Date(collectedData.endDateTime),
-        recommendation: arrayOfExtractedEvents,
+        item: [
+          {
+            id,
+            cluster: 'CL_CIN',
+            type: 'LIN',
+            validFrom: collectedData.startDateTime,
+            validTo: collectedData.endDateTime,
+            recommendation: arrayOfExtractedEvents,
+          },
+        ],
+        message: '',
+        status: '',
       });
     });
   });

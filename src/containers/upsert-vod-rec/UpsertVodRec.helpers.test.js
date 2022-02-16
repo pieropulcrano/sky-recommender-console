@@ -21,18 +21,25 @@ describe('UpsertVodRec component helpers', () => {
     it('should transform data collected from the form in to the required shape', () => {
       const id = '1';
       const collectedData = {
-        cluster: 'C1',
+        cluster: 'CL_CIN',
         startDateTime: '2021-12-27T15:00:00Z',
         recommendation: recommendationEvents,
       };
 
       expect(prepareVodRec(id, collectedData)).toEqual({
         id,
-        cluster: 'C1',
-        type: 'VOD',
-        validFrom: new Date(collectedData.startDateTime),
-        validTo: '',
-        recommendation: arrayOfExtractedEvents,
+        item: [
+          {
+            id,
+            cluster: 'CL_CIN',
+            type: 'VOD',
+            validFrom: collectedData.startDateTime,
+            validTo: '',
+            recommendation: arrayOfExtractedEvents,
+          },
+        ],
+        message: '',
+        status: '',
       });
     });
   });

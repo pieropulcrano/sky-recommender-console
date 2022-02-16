@@ -29,8 +29,15 @@ describe('UpsertFallbackVodRec component helpers', () => {
 
       expect(prepareFallbackVodRec(id, collectedData)).toEqual({
         id,
-        type: 'FALLBACK',
-        recommendation: arrayOfExtractedEvents,
+        item: [
+          {
+            id,
+            type: 'FALLBACK',
+            recommendation: arrayOfExtractedEvents,
+          },
+        ],
+        status: '',
+        message: '',
       });
     });
   });

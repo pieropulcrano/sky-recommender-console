@@ -3,7 +3,7 @@ import { validationSchema } from './validation';
 describe('Rec lin form validation', () => {
   it('should warn the user if the end date of the recommendation is not later than the start date', async () => {
     const formData = {
-      cluster: 'Cluster 1',
+      cluster: 'Cinema',
       startDateTime: '2999-12-28T08:00:00Z',
       endDateTime: '2999-12-28T08:00:00Z',
       recommendation: {
@@ -24,7 +24,7 @@ describe('Rec lin form validation', () => {
 
   it('should warn the user if at least one event Hd or Sd is not provided at position 1', async () => {
     const formData = {
-      cluster: 'Cluster 1',
+      cluster: 'Cinema',
       startDateTime: '2999-12-28T08:00:00Z',
       endDateTime: '2999-12-28T08:00:00Z',
       recommendation: {
@@ -45,7 +45,7 @@ describe('Rec lin form validation', () => {
 
   it('should warn the user if he has not filled all previous slots (before the last filled) with at least one hd / sd event', async () => {
     const formData = {
-      cluster: 'Cluster 1',
+      cluster: 'Cinema',
       startDateTime: '2999-12-28T08:00:00Z',
       endDateTime: '2999-12-31T08:00:00Z',
       recommendation: {

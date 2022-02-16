@@ -10,6 +10,7 @@ import { prepareVodRec, normalizeVodRec } from './UpsertVodRec.helpers';
 import Spinner from '../../components/spinner/Spinner';
 import VodRecForm from '../../components/vod-rec-form/VodRecForm';
 import useVodRec from '../../hooks/useVodRec';
+import { formatToISO8601 } from '../../utils/date';
 import useNotification from '../../hooks/useNotification';
 
 const UpsertVodRec = ({ id, onSuccess }) => {
@@ -42,8 +43,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         setPrevVodRecIsLoading(true);
         const res = await getPrevVodRec({
           cluster,
-          type: 'VOD',
-          validFrom_lte: startDateTime,
+          validFrom: formatToISO8601(startDateTime),
         });
 
         if (res.length === 0)
@@ -146,19 +146,22 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             isSubmitting={isSubmitting}
             prevVodRecIsLoading={prevVodRecIsLoading}
             loadPrevVodRec={loadPrevVodRec}
+            //TODO leave  prevVodRec[0]
             initialValues={
               vodRec
                 ? {
-                    cluster: vodRec[0].cluster,
-                    startDateTime: vodRec[0].validFrom,
-                    recommendation: normalizeVodRec(vodRec[0].recommendation),
+                    cluster: vodRec.item[0].cluster,
+                    startDateTime: vodRec.item[0].validFrom,
+                    recommendation: normalizeVodRec(
+                      vodRec.item[0].recommendation,
+                    ),
                   }
                 : prevVodRec.length > 0
                 ? {
-                    cluster: prevVodRec[0].cluster,
+                    cluster: prevVodRec[0].item[0].cluster,
                     startDateTime: searchedDate.current,
                     recommendation: normalizeVodRec(
-                      prevVodRec[0].recommendation,
+                      prevVodRec[0].item[0].recommendation,
                     ),
                   }
                 : {}

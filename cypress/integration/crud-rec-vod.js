@@ -1,4 +1,4 @@
-let randomIndexClusterVal = 'C1';
+let randomIndexClusterVal = 'CL_CIN';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
@@ -15,11 +15,14 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForSearchVod();
     //parsing fixture
     cy.fixture('prev-recc-vod-mock').then((val) => {
-      val[0].validFrom = cy.generatePastDate(1, 'month');
+      val[0].item[0].validFrom = cy.generatePastDate(1, 'month');
       mockData.push(val[0]);
     });
     cy.intercept(
-      { method: 'GET', path: '/recommendations?cluster=C1&type=VOD&*' },
+      {
+        method: 'GET',
+        path: '/recommendation?cluster=' + randomIndexClusterVal + '*',
+      },
       (req) => {
         req.reply({
           statusCode: 201,
@@ -29,8 +32,8 @@ describe('Testing crud vod raccomandation', () => {
       },
     ).as('searchRequest');
     cy.fixture('vod-recc-mock').then((recc) => {
-      recc[0].validFrom = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendations?id=' + vodId, recc);
+      recc.item[0].validFrom = cy.generateFutureDate(1);
+      cy.intercept('GET', '**/recommendation/' + vodId, recc);
     });
     cy.useMockDataForCreate();
     cy.useMockDataForUpdate();
@@ -88,11 +91,6 @@ describe('Testing crud vod raccomandation', () => {
   });
 
   it('Check creation VOD using prev data', () => {
-    let dateToSend = encodeURIComponent(
-      Cypress.dayjs(dateToSearch, 'DD/MM/YYYY h:mm A').format(
-        'ddd MMM DD YYYY',
-      ),
-    );
     //opena modal
     cy.contains('NEW VOD').click();
 
@@ -101,26 +99,14 @@ describe('Testing crud vod raccomandation', () => {
     cy.get('input[type="text"]').type(dateToSearch);
     //click on load
     cy.get('.css-piwweb-MuiGrid-root > .MuiLoadingButton-root').click();
-    //check if contains correct parameter cluster
-    cy.get('@searchRequest')
-      .its('request.url')
-      .should('to.match', new RegExp('cluster=' + randomIndexClusterVal));
-    //check if contains correct parameter validFrom_lte
-    cy.get('@searchRequest')
-      .its('request.url')
-      .should('to.match', new RegExp('validFrom_lte=' + dateToSend));
-    //check type on request
-    cy.get('@searchRequest')
-      .its('request.url')
-      .should('to.match', new RegExp('type=VOD'));
     //intercetto la get search e verifico che i dati siano correti
 
     cy.wait('@searchRequest').should(({ req, response }) => {
-      let body = response.body[0];
+      let body = response.body;
       //check render tutti i vod
       cy.get('[data-test-slot="prev-vod-slot"]').should(
         'have.length',
-        body.recommendation.length,
+        body[0].item[0].recommendation.length,
       );
     });
     //elimino gli slot esistenti e ne ricreo

@@ -2,7 +2,7 @@ const sdEvent = "L'immortale"; // SD event to search
 const hdEvent = 'Avatar'; // HD event to search
 const idPresentLine = '4';
 const idFutureLine = '50';
-const indexClusterVal = 'C1'; // pick a random cluster
+const indexClusterVal = 'CL_CIN'; // pick a random cluster
 const startDateTime = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A'); // create tomorrow date as startDateTime
 const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A'); // create a date five days after tomorrow date as endDateTime
 const startDateEvent = cy.generatePastDate(7, 'day', 'DD/MM/YYYY h:mm A'); //'19/01/2022 6:29 PM'; // start date of the event to search
@@ -24,14 +24,14 @@ describe('Testing crud Line raccomandation', () => {
       fixture: 'lin-hd-mock',
     });
     cy.fixture('lin-rec-future-mock').then((recc) => {
-      recc[0].validFrom = cy.generateFutureDate(1);
-      recc[0].validTo = cy.generateFutureDate(2);
-      cy.intercept('GET', '**/recommendations?id=' + idFutureLine, recc);
+      recc.item[0].validFrom = cy.generateFutureDate(1);
+      recc.item[0].validTo = cy.generateFutureDate(2);
+      cy.intercept('GET', '**/recommendation/' + idFutureLine, recc);
     });
     cy.fixture('lin-rec-present-mock').then((recc) => {
-      recc[0].validFrom = cy.setDay(1);
-      recc[0].validTo = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendations?id=' + idPresentLine, recc);
+      recc.item[0].validFrom = cy.setDay(1);
+      recc.item[0].validTo = cy.generateFutureDate(1);
+      cy.intercept('GET', '**/recommendation/' + idPresentLine, recc);
     });
     cy.visit('http://localhost:3000/');
   });
@@ -69,7 +69,7 @@ describe('Testing crud Line raccomandation', () => {
 
     // invia
     cy.contains('Create').click();
-        // check for notification
+    // check for notification
     cy.contains('Lin Created');
   });
 

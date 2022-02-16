@@ -5,7 +5,7 @@ Array [
   Object {
     "end": "",
     "extraProps": Object {
-      "cluster": "C1",
+      "cluster": "CL_CIN",
       "id": "4",
       "recommendation": Array [
         Object {
@@ -69,7 +69,7 @@ Array [
   Object {
     "end": "",
     "extraProps": Object {
-      "cluster": "C1",
+      "cluster": "CL_CIN",
       "id": "50",
       "recommendation": Array [
         Object {
@@ -133,7 +133,7 @@ Array [
   Object {
     "end": "",
     "extraProps": Object {
-      "cluster": "C2",
+      "cluster": "CL_NOT_CIN",
       "id": "35",
       "recommendation": Array [
         Object {
@@ -209,7 +209,7 @@ Array [
   Object {
     "end": "",
     "extraProps": Object {
-      "cluster": "C2",
+      "cluster": "CL_NOT_CIN",
       "id": "166",
       "recommendation": Array [
         Object {

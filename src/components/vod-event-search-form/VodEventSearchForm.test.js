@@ -1,8 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import VodEventSearchForm from './VodEventSearchForm';
-//import vodRecToSearch from '../../../fixtures/vod-to-search-mock.json';
-//import { initialValues } from './config';
 
 describe('Vod Event Search Form', () => {
   let props;

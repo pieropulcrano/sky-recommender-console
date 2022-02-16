@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchForm';
 import useNotification from '../../hooks/useNotification';
+import { formatToISO8601 } from '../../utils/date';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
 
-const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
+const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
   const { addAlert } = useNotification();
@@ -14,9 +15,9 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
       setSearchResult([]);
       setIsSearching(true);
       const toSearch = {
-        ...values,
-        startProgram_gte: values.startDateTime.toISOString(),
+        title: values.title,
         type: 'LIN',
+        startDate_lte: formatToISO8601(values.startDateTime), //TODO remove _lte
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
@@ -52,10 +53,10 @@ const SearchVodRec = ({ addEvent, handleClose, resolution }) => {
   );
 };
 
-SearchVodRec.propTypes = {
+SearchLinRec.propTypes = {
   addEvent: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
   resolution: PropTypes.oneOf(['HD', 'SD']),
 };
 
-export default SearchVodRec;
+export default SearchLinRec;

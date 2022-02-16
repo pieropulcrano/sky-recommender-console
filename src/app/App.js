@@ -18,7 +18,7 @@ import Home from '../pages/home/Home';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="RecsEditorialConsole">
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <AlertContextProvider>

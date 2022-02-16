@@ -1,4 +1,4 @@
-import { format, utcToZonedTime } from 'date-fns-tz';
+import { format, utcToZonedTime, toDate } from 'date-fns-tz';
 
 const timeZone = 'Europe/Rome';
 const pattern = 'd.M.yyyy HH:mm';
@@ -50,4 +50,15 @@ export function nowIsBetweenTwoDates(startDateTime, endDateTime) {
   const zonedStartDateTime = utcToZonedTime(startDateTime, timeZone);
   const zonedEndDateTime = utcToZonedTime(endDateTime, timeZone);
   return now >= zonedStartDateTime && now < zonedEndDateTime;
+}
+
+/**
+ *parse date to ISO8601 Format without milliseconds
+ * @param {String} dateTime - The date time in UTC
+ * @returns {String} -ISO8601
+ */
+
+export function formatToISO8601(dateTime) {
+  const zonedDate = utcToZonedTime(dateTime, timeZone);
+  return toDate(zonedDate).toISOString().split('.')[0] + 'Z';
 }

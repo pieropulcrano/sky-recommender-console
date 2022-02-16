@@ -5,11 +5,11 @@ describe('url utils', () => {
     it('should return query', () => {
       expect(
         createUrlQuery({
-          validFrom_gte: '2022-02-01T00:00:00+01:00',
-          validTo_lte: '2022-03-01T00:00:00+01:00',
+          validFrom: '2022-02-02T23:00:00Z',
+          validTo: '2022-03-03T23:00:00Z',
         }),
       ).toEqual(
-        'validFrom_gte=2022-02-01T00:00:00+01:00&validTo_lte=2022-03-01T00:00:00+01:00',
+        'validFrom=2022-02-02T23%3A00%3A00Z&validTo=2022-03-03T23%3A00%3A00Z',
       );
     });
   });
