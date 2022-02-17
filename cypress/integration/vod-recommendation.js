@@ -75,18 +75,16 @@ describe('Testing crud vod raccomandation', () => {
     //opena modal
     cy.contains('NEW VOD').click();
     //devono esserci sempre 5 slot
-    cy.get('.empity-slot').should('have.length', 5);
+    cy.get('[data-testid="AddCircleIcon"]').should('have.length', 5);
     cy.selectRandomCluster(randomIndexClusterVal);
     //type the date in the start date input
     cy.get('input[type="text"]').type(dateToSearch);
     //ciclo e popolo gli slot
-    cy.get('.empity-slot').each(($el, index, $list) => {
+    cy.get('[data-testid="AddCircleIcon"]').each(($el, index, $list) => {
       //click on create
       cy.get('[data-test="submit-upsert-btn"]').click();
       //click on plus icon to add a new vod
-      cy.wrap($el)
-        .find('[data-testid="AddCircleIcon"] > path')
-        .click({ force: true });
+      cy.wrap($el).find('path').click({ force: true });
       cy.testSearchVodModal(eventToSearch);
     });
     //click on create
@@ -105,7 +103,7 @@ describe('Testing crud vod raccomandation', () => {
     //type the date in the start date input
     cy.get('input[type="text"]').type(dateToSearch);
     //click on load
-    cy.get('.css-piwweb-MuiGrid-root > .MuiLoadingButton-root').click();
+    cy.contains('Load').click();
     //intercetto la get search e verifico che i dati siano correti
 
     cy.wait('@searchRequest').should(({ req, response }) => {
@@ -120,7 +118,7 @@ describe('Testing crud vod raccomandation', () => {
     cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, $list) => {
       // $el is a wrapped jQuery element
       cy.wrap($el).within(() => {
-        cy.get('button').click();
+        cy.get('[data-testid="ClearIcon"]').click();
       });
 
       //click on create
@@ -154,7 +152,7 @@ describe('Testing crud vod raccomandation', () => {
     cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, list) => {
       // for each slot
       // click on delete button
-      cy.wrap($el).find('button').click({ force: true });
+      cy.wrap($el).find('[data-testid="ClearIcon"]').click({ force: true });
       //click update
       cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
       //click on plus icon to add a new vod

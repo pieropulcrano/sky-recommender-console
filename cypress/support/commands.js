@@ -4,16 +4,16 @@ Cypress.Commands.add('testSearchVodModal', (event) => {
 
   cy.get('[data-test="search-vod-modal"]').within(() => {
     //dovrebbe esserci scritto "no rows", il che vuol dire che non sono partite cose strane
-    cy.get('.MuiDataGrid-overlay').should('have.text', 'No rows');
+    cy.contains('No rows');
     cy.get('input[type="text"]').type(event);
     //clicco sul search
-    cy.get(':nth-child(2) > .MuiButton-root').click();
+    cy.contains('Search').click();
     //dovrebbe aver trovato almeno 1 riga
-    cy.get('.MuiDataGrid-row').its('length').should('be.gt', 0);
+    cy.get('No rows').should('not.exist');
     //clicco la prima riga
-    cy.get('.MuiDataGrid-row').first().click();
+    cy.get(`[aria-label="Select Row checkbox"]`).click();
     //submit
-    cy.get('.css-1bvc4cc > .MuiButton-root').click();
+    cy.contains('Select').click();
     //controllo che abbia chiuso
     cy.get('[data-test="search-vod-modal"]').should('have.length', 0);
   });
@@ -29,9 +29,9 @@ Cypress.Commands.add('selecetNewLine', (event, startDateEvent) => {
     // click on search button
     cy.contains('Search').click();
     // it should be at least one result
-    cy.get('.MuiDataGrid-row').its('length').should('be.gt', 0);
+    cy.get('No rows').should('not.exist');
     // click on first row
-    cy.get('.MuiDataGrid-row').first().click();
+    cy.get(`[aria-label="Select Row checkbox"]`).click();
     // click on submit
     cy.contains('Select').click();
   });

@@ -21,10 +21,7 @@ describe('Testing Home Page', () => {
   });
 
   it('Check alert fallbac', () => {
-    cy.get('[data-test="fallback-nav-tab"]').should(
-      'have.class',
-      'MuiTab-labelIcon',
-    );
+    cy.get('[data-testid="warning-fallback"]');
   });
 
   it('Check navigation Tabs', () => {
