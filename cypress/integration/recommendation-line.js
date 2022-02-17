@@ -16,28 +16,43 @@ describe('Testing crud Line raccomandation', () => {
     cy.useMockDataForDelete();
 
     //intercept sd search
-    cy.intercept(
-      Cypress.env().eventUrl + '?title=' + sdEvent.replace(/'/g, '%27') + '*',
-      {
-        fixture: 'lin-sd-mock',
-      },
-    );
-    //intercept hd search
-    cy.intercept(Cypress.env().eventUrl + '?title=' + hdEvent + '*', {
-      fixture: 'lin-hd-mock',
+    cy.fixture('linear-event').then((recc) => {
+      recc.items[0].title = sdEvent;
+      recc.items[0].resolution = 'SD';
+      cy.intercept(
+        'GET',
+        Cypress.env().eventUrl + '?title=' + sdEvent.replace(/'/g, '%27') + '*',
+        recc,
+      );
     });
-    cy.fixture('lin-rec-future-mock').then((recc) => {
-      recc.item[0].validFrom = cy.generateFutureDate(1);
-      recc.item[0].validTo = cy.generateFutureDate(2);
+    //intercept hd search
+    cy.fixture('linear-event').then((recc) => {
+      recc.items[0].title = hdEvent;
+      recc.items[0].resolution = 'HD';
+      cy.intercept(
+        'GET',
+        Cypress.env().eventUrl + '?title=' + hdEvent + '*',
+        recc,
+      );
+    });
+    //intercept future linear
+    cy.fixture('linear-recommendation').then((recc) => {
+      recc[0].item[0].validFrom = cy.generateFutureDate(1);
+      recc[0].item[0].validTo = cy.generateFutureDate(2);
+      recc[0].item[0].id = idFutureLine; //todo togliere con
+      recc[0].id = idFutureLine; //todo togliere con be
       cy.intercept(
         'GET',
         Cypress.env().recommendationUrl + '/' + idFutureLine,
         recc,
       );
     });
-    cy.fixture('lin-rec-present-mock').then((recc) => {
-      recc.item[0].validFrom = cy.setDay(1);
-      recc.item[0].validTo = cy.generateFutureDate(1);
+    //intercept present linear
+    cy.fixture('linear-recommendation').then((recc) => {
+      recc[0].item[0].validFrom = cy.setDay(1);
+      recc[0].item[0].validTo = cy.generateFutureDate(1);
+      recc[0].item[0].id = idPresentLine;
+      recc[0].id = idPresentLine; //todo togliere con be
       cy.intercept(
         'GET',
         Cypress.env().recommendationUrl + '/' + idPresentLine,

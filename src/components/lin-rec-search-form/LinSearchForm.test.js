@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import LinSearchForm from './LinRecSearchForm';
-import linEvent from '../../../fixtures/lin-event.json';
+import linEvent from '../../../fixtures/linear-event';
 
 describe('LinSearchForm', () => {
   const onSubmit = jest.fn();

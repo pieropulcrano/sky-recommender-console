@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, act, screen } from '@testing-library/react';
 import VodRecFallbackForm from './VodRecFallbackForm';
-import fallbackRecMock from '../../../fixtures/fallback-recc-mock.json';
+import fallbackRecommendationFixture from '../../../fixtures/fallback-recommendation';
 
 describe('VodRecFallbackForm', () => {
   let props;
@@ -10,7 +10,7 @@ describe('VodRecFallbackForm', () => {
   it('should render', () => {
     props = {
       onSubmit: onSubitMock,
-      initialValues: fallbackRecMock.item[0],
+      initialValues: fallbackRecommendationFixture.item[0],
       isSubmitting: false,
     };
 
@@ -21,7 +21,7 @@ describe('VodRecFallbackForm', () => {
   it('should not save if empty', async () => {
     props = {
       onSubmit: onSubitMock,
-      initialValues: { id: '5', type: 'FALLBACK', recommendation: [] },
+      initialValues: { id: '9999', type: 'FALLBACK', recommendation: [] },
       isSubmitting: false,
     };
 

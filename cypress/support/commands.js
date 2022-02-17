@@ -50,7 +50,7 @@ Cypress.Commands.add('selectRandomCluster', (randomIndexClusterVal) => {
 });
 
 Cypress.Commands.add('useMockDataForSchedule', () => {
-  cy.fixture('recomendation-mock').then((recc) => {
+  cy.fixture('recommendations').then((recc) => {
     //LIN PRESENT;
     //dal 1 del mese corrente
     recc.items[0].validFrom = cy.setDay(1);
@@ -75,13 +75,13 @@ Cypress.Commands.add('useMockDataForSchedule', () => {
 
 Cypress.Commands.add('useMockDataForFallback', () => {
   cy.intercept('GET', Cypress.env().fallbackRecommendationUrl, {
-    fixture: 'fallback-recc-mock',
+    fixture: 'fallback-recommendation',
   });
 });
 
 Cypress.Commands.add('useMockDataForSearchVod', () => {
   cy.intercept(Cypress.env().eventUrl + '?title=*', {
-    fixture: 'vod-to-search-mock',
+    fixture: 'vod-event',
   });
 });
 

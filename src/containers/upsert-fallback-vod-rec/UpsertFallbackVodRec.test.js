@@ -6,7 +6,7 @@ import * as vodRecProvider from '../../providers/vod-rec-provider/VodRecProvider
 import * as useFallbackVodRec from '../../hooks/useFallbackVodRec';
 import UpsertFallbackVodRec from './UpsertFallbackVodRec';
 import { prepareFallbackVodRec } from './UpsertFallbackVodRec.helpers';
-import fallbackReccMock from '../../../fixtures/fallback-recc-mock.json';
+import fallbackReccMock from '../../../fixtures/fallback-recommendation';
 
 const MockUpsertFallbackVodRec = ({ ...props }) => {
   return (

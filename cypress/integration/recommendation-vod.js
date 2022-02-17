@@ -14,8 +14,11 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
     //parsing fixture
-    cy.fixture('prev-recc-vod-mock').then((val) => {
+    cy.fixture('vod-recommendation').then((val) => {
       val[0].item[0].validFrom = cy.generatePastDate(1, 'month');
+      val[0].item[0].id = vodId;
+      val[0].id = vodId;
+
       mockData.push(val[0]);
     });
     cy.intercept(
@@ -35,8 +38,8 @@ describe('Testing crud vod raccomandation', () => {
         });
       },
     ).as('searchRequest');
-    cy.fixture('vod-recc-mock').then((recc) => {
-      recc.item[0].validFrom = cy.generateFutureDate(1);
+    cy.fixture('vod-recommendation').then((recc) => {
+      recc[0].item[0].validFrom = cy.generateFutureDate(1);
       cy.intercept('GET', Cypress.env().recommendationUrl + '/' + vodId, recc);
     });
     cy.useMockDataForCreate();
@@ -123,7 +126,6 @@ describe('Testing crud vod raccomandation', () => {
       //click on create
       cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
       //el non dovrebbe avere + la classe di un event pieno
-      // cy.wrap($el).should('not.have.class', 'prev-vod-slot');
       //click on plus icon to add a new vod
       cy.wrap($el)
         .find('[data-testid="AddCircleIcon"] > path')

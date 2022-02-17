@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, waitFor, screen, fireEvent } from '@testing-library/react';
 import * as recProvider from '../../providers/rec-provider/RecProvider';
-import recommendations from '../../../fixtures/recomendation-mock.json';
+import recommendations from '../../../fixtures/recommendations';
 import Scheduler from './Scheduler';
 
 /**

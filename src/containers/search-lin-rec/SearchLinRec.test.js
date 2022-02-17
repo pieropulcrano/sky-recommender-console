@@ -4,7 +4,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as VodRecProvider from '../../providers/vod-rec-provider/VodRecProvider';
-import linEvent from '../../../fixtures/lin-event.json';
+import linEventFixture from '../../../fixtures/linear-event';
 import SearchLinRec from './SearchLinRec';
 
 let mockedAddAlert = jest.fn();
@@ -70,7 +70,7 @@ describe('SearchLinRec', () => {
 
   it('should handle onSearch success correctly', async () => {
     const mockedSearchVodRec = jest.fn(() => {
-      return linEvent.items;
+      return linEventFixture.items;
     });
 
     jest
@@ -101,7 +101,7 @@ describe('SearchLinRec', () => {
 
   it('should handle onSubmit correctly', async () => {
     const mockedSearchVodRec = jest.fn(() => {
-      return linEvent.items;
+      return linEventFixture.items;
     });
     jest
       .spyOn(VodRecProvider, 'searchVodRec')

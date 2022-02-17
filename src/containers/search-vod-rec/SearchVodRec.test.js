@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import * as vodRecProvider from '../../providers/vod-rec-provider/VodRecProvider';
-import vodToSearch from '../../../fixtures/vod-to-search-mock.json';
+import vodEventFixture from '../../../fixtures/vod-event';
 import SearchVodRec from './SearchVodRec';
 
 const MockSearchVodRec = ({ ...props }) => {
@@ -46,7 +46,7 @@ describe('Search Vod Rec', () => {
   describe('Testing Search Method', () => {
     it('Search ok', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch.items;
+        return vodEventFixture.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')
@@ -101,7 +101,7 @@ describe('Search Vod Rec', () => {
   describe('Testing Submit Method', () => {
     it('Should submit', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch.items;
+        return vodEventFixture.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')
@@ -126,14 +126,14 @@ describe('Search Vod Rec', () => {
       const selectButton = screen.queryByText(selectBtn);
       await waitFor(() => {
         fireEvent.click(selectButton);
-        expect(props.addEvent).toHaveBeenCalledWith(vodToSearch.items[0]);
+        expect(props.addEvent).toHaveBeenCalledWith(vodEventFixture.items[0]);
         expect(props.handleClose).toHaveBeenCalled();
       });
     });
 
     it('Should not submit', async () => {
       const mockedSearchVodRec = jest.fn(() => {
-        return vodToSearch.items;
+        return vodEventFixture.items;
       });
       jest
         .spyOn(vodRecProvider, 'searchVodRec')

@@ -107,11 +107,11 @@ const UpsertLinRec = ({ id, onSuccess }) => {
             initialValues={
               linRec
                 ? {
-                    cluster: linRec.item[0].cluster,
-                    startDateTime: linRec.item[0].validFrom,
-                    endDateTime: linRec.item[0].validTo,
+                    cluster: linRec[0].item[0].cluster,
+                    startDateTime: linRec[0].item[0].validFrom,
+                    endDateTime: linRec[0].item[0].validTo,
                     recommendation: normalizeLinRec(
-                      linRec.item[0].recommendation,
+                      linRec[0].item[0].recommendation,
                     ),
                   }
                 : {}

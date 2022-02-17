@@ -21,7 +21,7 @@ describe('Testing Fallback Page', () => {
       },
     );
     //parsing fixture
-    cy.fixture('fallback-recc-mock').then((val) => {
+    cy.fixture('fallback-recommendation').then((val) => {
       fallbackData = val.item[0].recommendation;
     });
     cy.visit(Cypress.env().baseUrl);

@@ -1,5 +1,5 @@
 import { mapForScheduler } from './Scheduler.helpers';
-import recommendation from '../../../fixtures/recomendation-mock.json';
+import recommendation from '../../../fixtures/recommendations';
 
 describe('Scheduler helpers', () => {
   it('should transform the given recommendations in the shape accepted by the scheduler', () => {
