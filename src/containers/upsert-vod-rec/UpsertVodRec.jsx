@@ -43,9 +43,8 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         setPrevVodRecIsLoading(true);
         const res = await getPrevVodRec({
           cluster,
-          validFrom: formatToISO8601(startDateTime),
+          startDate: formatToISO8601(startDateTime),
         });
-
         if (res.length === 0)
           addAlert({
             text: 'There are no recommendations prior to the date entered.',
@@ -146,22 +145,21 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             isSubmitting={isSubmitting}
             prevVodRecIsLoading={prevVodRecIsLoading}
             loadPrevVodRec={loadPrevVodRec}
-            //TODO leave  prevVodRec[0]
             initialValues={
               vodRec
                 ? {
-                    cluster: vodRec[0].item[0].cluster,
-                    startDateTime: vodRec[0].item[0].validFrom,
+                    cluster: vodRec.items[0].cluster,
+                    startDateTime: vodRec.items[0].validFrom,
                     recommendation: normalizeVodRec(
-                      vodRec[0].item[0].recommendation,
+                      vodRec.items[0].recommendation,
                     ),
                   }
-                : prevVodRec.length > 0
+                : prevVodRec?.item?.recommendation?.length > 0
                 ? {
-                    cluster: prevVodRec[0].item[0].cluster,
+                    cluster: prevVodRec.item.cluster,
                     startDateTime: searchedDate.current,
                     recommendation: normalizeVodRec(
-                      prevVodRec[0].item[0].recommendation,
+                      prevVodRec.item.recommendation,
                     ),
                   }
                 : {}

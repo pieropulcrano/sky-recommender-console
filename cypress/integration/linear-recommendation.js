@@ -37,10 +37,8 @@ describe('Testing crud Line raccomandation', () => {
     });
     //intercept future linear
     cy.fixture('linear-recommendation').then((recc) => {
-      recc[0].item[0].validFrom = cy.generateFutureDate(1);
-      recc[0].item[0].validTo = cy.generateFutureDate(2);
-      recc[0].item[0].id = idFutureLine; //todo togliere con
-      recc[0].id = idFutureLine; //todo togliere con be
+      recc.items[0].validFrom = cy.generateFutureDate(1);
+      recc.items[0].validTo = cy.generateFutureDate(2);
       cy.intercept(
         'GET',
         Cypress.env().recommendationUrl + '/' + idFutureLine,
@@ -49,10 +47,9 @@ describe('Testing crud Line raccomandation', () => {
     });
     //intercept present linear
     cy.fixture('linear-recommendation').then((recc) => {
-      recc[0].item[0].validFrom = cy.setDay(1);
-      recc[0].item[0].validTo = cy.generateFutureDate(1);
-      recc[0].item[0].id = idPresentLine;
-      recc[0].id = idPresentLine; //todo togliere con be
+      recc.items[0].validFrom = cy.setDay(1);
+      recc.items[0].validTo = cy.generateFutureDate(1);
+      recc.items[0].id = idPresentLine;
       cy.intercept(
         'GET',
         Cypress.env().recommendationUrl + '/' + idPresentLine,

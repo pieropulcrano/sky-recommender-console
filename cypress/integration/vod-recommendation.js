@@ -2,7 +2,7 @@ let randomIndexClusterVal = 'CL_CIN';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
-let mockData = [];
+let mockData;
 
 describe('Testing crud vod raccomandation', () => {
   beforeEach(() => {
@@ -14,12 +14,12 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
     //parsing fixture
-    cy.fixture('vod-recommendation').then((val) => {
-      val[0].item[0].validFrom = cy.generatePastDate(1, 'month');
-      val[0].item[0].id = vodId;
-      val[0].id = vodId;
+    cy.fixture('previous-vod-recommendation').then((val) => {
+      val.item.validFrom = cy.generatePastDate(1, 'month');
+      val.item.id = vodId;
+      val.id = vodId;
 
-      mockData.push(val[0]);
+      mockData = val;
     });
     cy.intercept(
       {
@@ -39,7 +39,7 @@ describe('Testing crud vod raccomandation', () => {
       },
     ).as('searchRequest');
     cy.fixture('vod-recommendation').then((recc) => {
-      recc[0].item[0].validFrom = cy.generateFutureDate(1);
+      recc.items[0].validFrom = cy.generateFutureDate(1);
       cy.intercept('GET', Cypress.env().recommendationUrl + '/' + vodId, recc);
     });
     cy.useMockDataForCreate();
@@ -111,7 +111,7 @@ describe('Testing crud vod raccomandation', () => {
       //check render tutti i vod
       cy.get('[data-test-slot="prev-vod-slot"]').should(
         'have.length',
-        body[0].item[0].recommendation.length,
+        body.item.recommendation.length,
       );
     });
     //elimino gli slot esistenti e ne ricreo

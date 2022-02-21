@@ -10,7 +10,7 @@ describe('VodRecFallbackForm', () => {
   it('should render', () => {
     props = {
       onSubmit: onSubitMock,
-      initialValues: fallbackRecommendationFixture.item[0],
+      initialValues: fallbackRecommendationFixture.items[0],
       isSubmitting: false,
     };
 

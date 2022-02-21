@@ -74,7 +74,7 @@ Cypress.Commands.add('useMockDataForSchedule', () => {
 });
 
 Cypress.Commands.add('useMockDataForFallback', () => {
-  cy.intercept('GET', Cypress.env().fallbackRecommendationUrl, {
+  cy.intercept('GET', Cypress.env().fallbackRecommendationUrl + '*', {
     fixture: 'fallback-recommendation',
   });
 });

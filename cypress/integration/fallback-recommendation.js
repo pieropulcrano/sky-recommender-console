@@ -22,7 +22,7 @@ describe('Testing Fallback Page', () => {
     );
     //parsing fixture
     cy.fixture('fallback-recommendation').then((val) => {
-      fallbackData = val.item[0].recommendation;
+      fallbackData = val.items[0].recommendation;
     });
     cy.visit(Cypress.env().baseUrl);
     cy.wait(2000);

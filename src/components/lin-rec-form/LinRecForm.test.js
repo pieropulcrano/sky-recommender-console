@@ -37,14 +37,14 @@ describe('Lin Rec Form', () => {
   });
 
   it('should render correctly whit a past recommendation', async () => {
-    linRec[0].item[0].validFrom = '1970-12-27T15:00:00Z';
-    linRec[0].item[0].validTo = '1972-12-27T15:00:00Z';
+    linRec.items[0].validFrom = '1970-12-27T15:00:00Z';
+    linRec.items[0].validTo = '1972-12-27T15:00:00Z';
     props.recId = 'test-id';
     props.initialValues = {
-      cluster: linRec[0].item[0].cluster,
-      startDateTime: linRec[0].item[0].validFrom,
-      endDateTime: linRec[0].item[0].validTo,
-      recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+      cluster: linRec.items[0].cluster,
+      startDateTime: linRec.items[0].validFrom,
+      endDateTime: linRec.items[0].validTo,
+      recommendation: normalizeLinRec(linRec.items[0].recommendation),
     };
 
     render(
@@ -65,10 +65,10 @@ describe('Lin Rec Form', () => {
   it('should render correctly whit a recommendation scheduled for the present', () => {
     props.recId = 'test-id';
     props.initialValues = {
-      cluster: linRec[0].item[0].cluster,
+      cluster: linRec.items[0].cluster,
       startDateTime: '2021-12-14T15:00:00Z',
       endDateTime: '2999-12-14T15:00:00Z',
-      recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+      recommendation: normalizeLinRec(linRec.items[0].recommendation),
     };
 
     render(
@@ -89,10 +89,10 @@ describe('Lin Rec Form', () => {
   it('should render correctly whit a recommendation scheduled for the future', () => {
     props.recId = 'test-id';
     props.initialValues = {
-      cluster: linRec[0].item[0].cluster,
+      cluster: linRec.items[0].cluster,
       startDateTime: '2999-11-14T15:00:00Z',
       endDateTime: '2999-12-14T15:00:00Z',
-      recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+      recommendation: normalizeLinRec(linRec.items[0].recommendation),
     };
 
     render(
@@ -129,7 +129,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: 'some-invalid-date',
         endDateTime: '2999-12-14T15:00:00Z',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
       const { container } = render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -150,7 +150,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: '2012-12-14T15:00:00Z',
         endDateTime: 'some-invalid-date',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
       const { container } = render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -171,7 +171,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: '2012-12-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
       const { container } = render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -194,7 +194,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: '2999-12-14T15:00:00Z',
         endDateTime: '2998-12-14T15:00:00Z',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
       const { container } = render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -219,7 +219,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: '2998-12-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
 
       render(
@@ -249,7 +249,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: '2999-11-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
 
       render(
@@ -279,7 +279,7 @@ describe('Lin Rec Form', () => {
         cluster: 'CL_CIN',
         startDateTime: '2999-11-14T15:00:00Z',
         endDateTime: '2999-12-14T15:00:00Z',
-        recommendation: normalizeLinRec(linRec[0].item[0].recommendation),
+        recommendation: normalizeLinRec(linRec.items[0].recommendation),
       };
 
       render(

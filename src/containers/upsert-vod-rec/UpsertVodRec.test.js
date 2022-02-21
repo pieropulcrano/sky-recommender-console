@@ -100,8 +100,8 @@ describe('UpsertVodRec', () => {
     });
 
     it('if an error during the delete', async () => {
-      vodRec[0].item[0].validFrom = '2999-12-14T15:00:00Z';
-      vodRec[0].item[0].id = props.id;
+      vodRec.items[0].validFrom = '2999-12-14T15:00:00Z';
+      vodRec.items[0].id = props.id;
       const mockedDeleteVodRec = jest.fn(() => {
         throw new Error('error');
       });
@@ -130,7 +130,7 @@ describe('UpsertVodRec', () => {
     });
 
     it('if an error during update', async () => {
-      vodRec[0].item[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRec.items[0].validFrom = '2100-12-14T15:00:00Z';
 
       const mockedUpdateVodRec = jest.fn(() => {
         throw new Error('error');
@@ -151,11 +151,12 @@ describe('UpsertVodRec', () => {
         fireEvent.click(updateButton);
       });
       expect(mockedUpdateVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec[0].item[0].id, {
-        id: vodRec[0].item[0].id,
-        item: [vodRec[0].item[0]],
-        message: '',
-        status: '',
+      expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec.items[0].id, {
+        cluster: vodRec.items[0].cluster,
+        recommendation: vodRec.items[0].recommendation,
+        type: vodRec.items[0].type,
+        validFrom: vodRec.items[0].validFrom,
+        validTo: '',
       });
 
       await waitFor(() => {
@@ -164,7 +165,7 @@ describe('UpsertVodRec', () => {
       });
     });
 
-    it('if an error occurs during the loading previus rec', async () => {
+    it('if an error occurs during the loading previous rec', async () => {
       delete props['id'];
       const mockedGetPrevVodRec = jest.fn(() => {
         throw new Error('error');
@@ -196,7 +197,7 @@ describe('UpsertVodRec', () => {
       });
     });
 
-    it('if the loading previus rec no return values', async () => {
+    it('if the loading previous rec no return values', async () => {
       delete props['id'];
       const mockedGetPrevVodRec = jest.fn(() => {
         return [];
@@ -231,8 +232,8 @@ describe('UpsertVodRec', () => {
 
   describe('Dysplay ok notification', () => {
     it('if delete is ok', async () => {
-      vodRec[0].item[0].validFrom = '2998-12-14T15:00:00Z';
-      vodRec[0].item[0].id = props.id;
+      vodRec.items[0].validFrom = '2998-12-14T15:00:00Z';
+      vodRec.items[0].id = props.id;
 
       const mockedDeleteVodRec = jest.fn(() => {
         return { deletedItem: vodRec };
@@ -251,7 +252,7 @@ describe('UpsertVodRec', () => {
       await waitFor(() => {
         fireEvent.click(deleteButton);
         expect(mockedDeleteVodRec).toHaveBeenCalledTimes(1);
-        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec[0].item[0].id);
+        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec.items[0].id);
       });
 
       await waitFor(() => {
@@ -261,12 +262,12 @@ describe('UpsertVodRec', () => {
     });
 
     it('if update is ok', async () => {
-      vodRec[0].item[0].validFrom = '2100-12-14T15:00:00Z';
-      vodRec[0].item[0].id = props.id;
+      vodRec.items[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRec.items[0].id = props.id;
 
       const mockedUpdateVodRec = jest.fn(() => {
         return {
-          updatedRecommendation: vodRec[0].item[0],
+          updatedRecommendation: vodRec.items[0],
         };
       });
       jest
@@ -286,11 +287,12 @@ describe('UpsertVodRec', () => {
       });
 
       await waitFor(() => {
-        expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec[0].item[0].id, {
-          id: vodRec[0].item[0].id,
-          item: [vodRec[0].item[0]],
-          message: '',
-          status: '',
+        expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec.items[0].id, {
+          cluster: vodRec.items[0].cluster,
+          recommendation: vodRec.items[0].recommendation,
+          type: vodRec.items[0].type,
+          validFrom: vodRec.items[0].validFrom,
+          validTo: '',
         });
       });
 
@@ -302,7 +304,7 @@ describe('UpsertVodRec', () => {
   });
 
   it('should display loading spinner', async () => {
-    vodRec[0].item[0].validFrom = '2100-12-14T15:00:00Z';
+    vodRec.items[0].validFrom = '2100-12-14T15:00:00Z';
 
     jest
       .spyOn(useVodRec, 'default')

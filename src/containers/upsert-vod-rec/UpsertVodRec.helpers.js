@@ -4,21 +4,12 @@ export const prepareVodRec = (
   id,
   { cluster, startDateTime, recommendation },
 ) => {
-  let randomId = id ?? Math.floor(Math.random() * 10001); //TODO togliere
   return {
-    id: randomId.toString(), //TODO togliere
-    status: '', //TODO togliere
-    message: '', //TODO togliere
-    item: [
-      {
-        id: randomId.toString(),
-        cluster,
-        type: 'VOD',
-        validFrom: formatToISO8601(resetSecondsToZero(startDateTime)),
-        validTo: '',
-        recommendation: Object.values(recommendation),
-      },
-    ],
+    cluster,
+    type: 'VOD',
+    validFrom: formatToISO8601(resetSecondsToZero(startDateTime)),
+    validTo: '',
+    recommendation: Object.values(recommendation),
   };
 };
 

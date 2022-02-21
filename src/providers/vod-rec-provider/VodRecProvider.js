@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createUrlQuery } from '../../utils/url';
 
 export async function getVodRec(id) {
+  id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
   const res = await axios.get(url);
   return res.data;
@@ -28,6 +29,7 @@ export async function createVodRec(recVod) {
 }
 
 export async function updateVodRec(id, recVod) {
+  id = encodeURIComponent(id);
   const res = await axios.put(
     `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`,
     recVod,
@@ -36,6 +38,7 @@ export async function updateVodRec(id, recVod) {
 }
 
 export async function deleteVodRec(id) {
+  id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
   const res = await axios.delete(url);
   return res.data;

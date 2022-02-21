@@ -25,8 +25,8 @@ const Home = () => {
     //todo quando ci sarà il BE da rivedere
     let isExpiredFlag = 0;
     let rec = Array.isArray(recFallback)
-      ? recFallback[0].recommendation
-      : recFallback.item[0].recommendation;
+      ? recFallback[0].items[0].recommendation
+      : recFallback.items[0].recommendation;
     for (var i = 0; i < rec.length; i++) {
       if (rec[i].warningMessage !== '') {
         isExpiredFlag = 1;
