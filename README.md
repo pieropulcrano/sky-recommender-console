@@ -9,11 +9,21 @@
 
 ### Scopo del progetto
 
-Fornire agli operatori SKY uno strumento che consenta la creazione di gruppi schedulati di raccomandazioni.
+Fornire agli editori SKY uno strumento che consenta la creazione di gruppi schedulati di raccomandazioni.
+
+### Termini ricorrenti
+
+- Utente: editore SKY che crea e gestisce le raccomandazioni
+- Cluster: gruppo di clienti SKY che hanno sottoscritto una specifica offerta (CINEMA, NO_CINEMA)
+- Evento: titolo che andrà in onda
+- Tipologia Evento: lineare o vod (titolo on demand)
+- Raccomandazione: insieme di eventi della stessa tipologia
+- Raccomandazione lineare: insieme di eventi lineari, per cui è prevista una data di inizio e di fine
+- Raccomandazione vod: insieme di eventi vod, per cui è prevista una data di inizio
 
 ### Come funziona?
 
-L'operatore SKY dispone di un'interfaccia web che consente di:
+L'editore SKY dispone di un'interfaccia web che consente di:
 
 - visualizzare tutte le raccomandazioni all'interno di un un intervallo di giorni -7, +21 a partire dal giorno corrente
   - es: supponendo la data odierna sia 16/02/22, si visualizzeranno nello scheduler tutte le raccomandanzioni nell'intervallo 9/02 - 9/03
@@ -31,7 +41,7 @@ L'operatore SKY dispone di un'interfaccia web che consente di:
 - editare raccomandazioni vod:
   - se schedulata in una data futura, sarà possibile editare tutti i campi;
 
-## Come eseguire il progetto
+## Come avviare il progetto
 
 ### Pre-requisiti
 
@@ -39,7 +49,7 @@ L'operatore SKY dispone di un'interfaccia web che consente di:
 
 ### Requisiti
 
-node >= v.16.13.0
+- node >= v.16.13.0
 
 ### Installazione dipendenze progetto
 
@@ -60,7 +70,7 @@ yarn
 #### backend
 
 ```
-json-server --watch db.json --port 3001 --delay 1000
+npm run apis
 ```
 
 #### frontend
@@ -81,13 +91,13 @@ npm test
 
 ```
 npm start
-yarn run cypress open
+npm test-e2e
 ```
 
 #### coverage
 
 ```
-yarn test --coverage .
+npm run coverage
 ```
 
 ## Come contribuire

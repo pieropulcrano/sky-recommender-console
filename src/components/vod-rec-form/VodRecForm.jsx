@@ -20,6 +20,10 @@ import { validationSchema } from './validation';
 import { clusters, DEFAULT_VALUES } from './config';
 import { isExpired } from '../../utils/date';
 
+/**
+ * Form to create / edit a vod recommendation
+ */
+
 const VocRecForm = ({
   recId,
   onSubmit,
@@ -203,13 +207,37 @@ const VocRecForm = ({
 };
 
 VocRecForm.propTypes = {
+  /**
+   * The id of the vod recommendation.
+   */
   recId: PropTypes.string,
+  /**
+   * Function to load the recommendation immediately preceding the date provided by the user
+   */
   loadPrevVodRec: PropTypes.func.isRequired,
+  /**
+   * Initial values provided to the form
+   */
   initialValues: PropTypes.object.isRequired,
+  /**
+   * The form is performing a deleting operation
+   */
   isDeleting: PropTypes.bool.isRequired,
+  /**
+   * The form is performing a submitting operation
+   */
   isSubmitting: PropTypes.bool.isRequired,
+  /**
+   * The form is performing a fetching operation to retrieve the previous recommendation
+   */
   prevVodRecIsLoading: PropTypes.bool.isRequired,
+  /**
+   * Called when the user clicks on the create / update button
+   */
   onSubmit: PropTypes.func.isRequired,
+  /**
+   * Called when the user click on the delete button
+   */
   onDelete: PropTypes.func.isRequired,
 };
 

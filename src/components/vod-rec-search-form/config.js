@@ -1,4 +1,4 @@
-import CellExpand from '../form/data-grid-table/CellExpand';
+import CellExpand from '../form/data-grid-table/cell-expand/CellExpand';
 import { formatToHumanReadable } from '../../utils/date';
 
 export const columns = [

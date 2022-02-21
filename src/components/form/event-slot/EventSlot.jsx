@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
 import { formatToHumanReadable } from '../../../utils/date';
+import IconButton from '@mui/material/IconButton';
+import ClearIcon from '@mui/icons-material/Clear';
+import { Tooltip } from '@material-ui/core';
 import {
   SlotWrapper,
   EventImageWrapper,
@@ -12,16 +15,17 @@ import {
   SD,
   Warning,
   ImageNotAvailable,
+  EventTitle,
+  EventDateTime,
+  AddIcon,
 } from './EventSlot.styled';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import ClearIcon from '@mui/icons-material/Clear';
-import { Tooltip } from '@material-ui/core';
 
 /**
  * Component to display an assigned event or select a new one, connected with Formik state by the param "name"
  */
+
+const SLOT_TYPE_HD = 'hd';
+const SLOT_TYPE_SD = 'sd';
 
 const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
   const [field, meta] = useField(name);
@@ -35,7 +39,7 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
   return value && Object.keys(value).length !== 0 ? (
     <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
       <EventImageWrapper>
-        {type && type === 'sd' ? <SD /> : type === 'hd' ? <HD /> : null}
+        {type === SLOT_TYPE_SD ? <SD /> : type === SLOT_TYPE_HD && <HD />}
         {!disabled && (
           <XButton onClick={rmvEvent}>
             <ClearIcon color="error" fontSize="small" />
@@ -54,28 +58,24 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </EmptyEventWrapper>
         )}
       </EventImageWrapper>
-      <Typography data-test="event-title" noWrap sx={{ fontSize: '12px' }}>
-        {value.title && <span>{<b>{value.title}</b>}</span>}
-      </Typography>
-      <Typography
-        data-test="event-startProgram"
-        noWrap
-        sx={{ fontSize: '12px' }}
-      >
+      <EventTitle data-test="event-title" noWrap>
+        {value.title}
+      </EventTitle>
+      <EventDateTime data-test="event-startProgram" noWrap>
         {value.startProgram && formatToHumanReadable(value.startProgram)}
-      </Typography>
-      <Typography data-test="event-endProgram" noWrap sx={{ fontSize: '12px' }}>
+      </EventDateTime>
+      <EventDateTime data-test="event-endProgram" noWrap>
         {value.endProgram && formatToHumanReadable(value.endProgram)}
-      </Typography>
+      </EventDateTime>
     </SlotWrapper>
   ) : (
     <SlotWrapper className="empity-slot">
       <EventImageWrapper error={meta && meta.touched && meta.error}>
-        {type && type === 'sd' ? <SD /> : type === 'hd' ? <HD /> : null}
+        {type === SLOT_TYPE_SD ? <SD /> : type === SLOT_TYPE_HD && <HD />}
         <EmptyEventWrapper error={meta && meta.touched && meta.error}>
           {!disabled && (
             <IconButton onClick={handleOpenModal}>
-              <AddCircleIcon style={{ color: 'blue' }} fontSize="large" />
+              <AddIcon fontSize="large" />
             </IconButton>
           )}
         </EmptyEventWrapper>
@@ -101,7 +101,7 @@ EventSlot.propTypes = {
   /**
    * Indicates the type of the event assigned to the slot.
    */
-  type: PropTypes.oneOf(['sd', 'hd']),
+  type: PropTypes.oneOf([SLOT_TYPE_SD, SLOT_TYPE_HD]),
   /**
    * Disable all possible interaction with the component (add / remove event).
    */

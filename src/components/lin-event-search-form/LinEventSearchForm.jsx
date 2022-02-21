@@ -9,6 +9,10 @@ import TextInput from '../form/text-input/TextInput';
 import { validationSchema } from './validation';
 import { initialValues } from './config';
 
+/**
+ * Form to search a linear event.
+ */
+
 const LinEventSearchForm = ({ onSubmit }) => {
   return (
     <Formik
@@ -37,6 +41,9 @@ const LinEventSearchForm = ({ onSubmit }) => {
 };
 
 LinEventSearchForm.propTypes = {
+  /**
+   * Callback function called when the user click on the onSubmit button
+   */
   onSubmit: PropTypes.func.isRequired,
 };
 

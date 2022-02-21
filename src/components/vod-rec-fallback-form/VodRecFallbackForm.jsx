@@ -15,6 +15,10 @@ import {
 import { validationSchema } from './validation';
 import { DEFAULT_VALUES } from './config';
 
+/**
+ * Form to add / edit the fallback vod recommendation
+ */
+
 const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(null);
@@ -118,8 +122,17 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
 };
 
 VocRecFallbackForm.propTypes = {
+  /**
+   * Called when the user click on the add / update button
+   */
   onSubmit: PropTypes.func.isRequired,
+  /**
+   * Initial values provided to the form state
+   */
   initialValues: PropTypes.object.isRequired,
+  /**
+   * The form is performing a submit operation
+   */
   isSubmitting: PropTypes.bool.isRequired,
 };
 

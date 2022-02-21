@@ -1,5 +1,9 @@
 import React, { createContext, useReducer } from 'react';
 
+/**
+ * Notification provider.
+ */
+
 const AlertContext = createContext([{}, () => {}]);
 AlertContext.displayName = 'AlertContext';
 

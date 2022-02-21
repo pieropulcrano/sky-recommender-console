@@ -7,6 +7,10 @@ import TextInput from '../form/text-input/TextInput';
 import { validationSchema } from './validation';
 import { initialValues } from './config';
 
+/**
+ * Form to search a vod event.
+ */
+
 const VodEventSearchForm = ({ onSubmit }) => {
   const handleSubmit = (values) => onSubmit(values);
   return (
@@ -32,6 +36,9 @@ const VodEventSearchForm = ({ onSubmit }) => {
 };
 
 VodEventSearchForm.propTypes = {
+  /**
+   * Called when the user clicks on the search button.
+   */
   onSubmit: PropTypes.func.isRequired,
 };
 

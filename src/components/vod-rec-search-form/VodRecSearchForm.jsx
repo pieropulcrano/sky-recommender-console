@@ -13,6 +13,10 @@ import {
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
 
+/**
+ * Component to search and fill a slot of the vod recommendation form with a vod event.
+ */
+
 const VodRecSearchForm = ({
   onSubmit,
   onSearch,
@@ -58,9 +62,21 @@ VodRecSearchForm.defaultProps = {
 };
 
 VodRecSearchForm.propTypes = {
+  /**
+   * Result of the research
+   */
   searchResult: PropTypes.array,
+  /**
+   * The form is performing a search operation
+   */
   isSearching: PropTypes.bool.isRequired,
+  /**
+   * Called when the user clicks on create / update button
+   */
   onSubmit: PropTypes.func.isRequired,
+  /**
+   * Called when the user clicks on search button
+   */
   onSearch: PropTypes.func.isRequired,
 };
 

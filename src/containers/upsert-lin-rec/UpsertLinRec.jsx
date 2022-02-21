@@ -11,6 +11,10 @@ import LinRecForm from '../../components/lin-rec-form/LinRecForm';
 import useLinRec from '../../hooks/useLinRec';
 import useNotification from '../../hooks/useNotification';
 
+/**
+ * Container component that handle the logic to create / edit a linear recommendation.
+ */
+
 const UpsertLinRec = ({ id, onSuccess }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
@@ -128,7 +132,13 @@ UpsertLinRec.defaultProps = {
 };
 
 UpsertLinRec.propTypes = {
+  /**
+   * The id of the linear recommendation to retrieve.
+   */
   id: PropTypes.string,
+  /**
+   * The callback function called if the create / edit request was successful-
+   */
   onSuccess: PropTypes.func.isRequired,
 };
 

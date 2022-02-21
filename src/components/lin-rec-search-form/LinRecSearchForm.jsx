@@ -13,6 +13,10 @@ import {
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
 
+/**
+ * Component to search and fill a slot of the lin recommendation form with a lin event.
+ */
+
 const LinRecSearchForm = ({
   onSubmit,
   onSearch,
@@ -58,8 +62,17 @@ LinRecSearchForm.defaultProps = {
 
 LinRecSearchForm.propTypes = {
   searchResult: PropTypes.array,
+  /**
+   * The form is performing a search operation
+   */
   isSearching: PropTypes.bool.isRequired,
+  /**
+   * Callback function called when the user clicks on the submit button.
+   */
   onSubmit: PropTypes.func.isRequired,
+  /**
+   * allback function called when the user clicks on the search button.
+   */
   onSearch: PropTypes.func.isRequired,
 };
 

@@ -1,7 +1,7 @@
-import { styled } from '@mui/system';
+import styled from '@emotion/styled';
 
-export const ErrorMsg = styled('div')({
-  fontSize: '12px',
-  paddingTop: '5px',
-  color: '#d32f2f',
-});
+export const ErrorMsg = styled.div`
+  font-size: 12px;
+  padding-top: 5px;
+  color: #d32f2f;
+`;

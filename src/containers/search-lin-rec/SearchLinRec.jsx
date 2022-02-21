@@ -5,6 +5,10 @@ import useNotification from '../../hooks/useNotification';
 import { formatToISO8601 } from '../../utils/date';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
 
+/**
+ * Container component that handle the logic to search a linear event.
+ */
+
 const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
@@ -54,8 +58,17 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
 };
 
 SearchLinRec.propTypes = {
+  /**
+   *  Callback function to associate an event to one of the slots of the form for the linear recommendation.
+   */
   addEvent: PropTypes.func.isRequired,
+  /**
+   *  Callback function to close the modal that contains the form.
+   */
   handleClose: PropTypes.func.isRequired,
+  /**
+   *  Resolution of the event to search.
+   */
   resolution: PropTypes.oneOf(['HD', 'SD']),
 };
 

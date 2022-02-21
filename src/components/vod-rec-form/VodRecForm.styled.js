@@ -1,20 +1,24 @@
-import { styled } from '@mui/material';
+import styled from '@emotion/styled';
 
-const shared = {
-  display: 'flex',
-  justifyContent: 'space-between',
-};
+export const VocRecFormWrapper = styled.div`
+  max-width: 100%;
+  width: 700px;
+  height: 100%;
+  maxheight: 600px;
+  paddingtop: 10px;
+`;
 
-export const VocRecFormWrapper = styled('div')({
-  maxWidth: '100%',
-  width: '700px',
-  height: '100%',
-  maxHeight: '600px',
-  paddingTop: '10px',
-});
+export const SlotsRowWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-export const SlotsRowWrapper = styled('div')(shared);
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-export const ButtonsWrapper = styled('div')(shared);
-
-export const LeftButtons = styled('div')(shared);
+export const LeftButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

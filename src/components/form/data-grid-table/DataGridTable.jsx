@@ -1,32 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
-import { DataGrid } from '@mui/x-data-grid';
-import { DataGridTableWrapper } from './DataGridTable.styled';
+import { DataGridTableWrapper, DataGridT } from './DataGridTable.styled';
 import { ErrorMsg } from '../error-msg/ErrorMsg.styled';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(() => ({
-  root: {
-    '& .MuiDataGrid-columnHeaderCheckbox .MuiDataGrid-columnHeaderTitleContainer':
-      {
-        display: 'none',
-      },
-  },
-}));
 
 /**
  * Table (connected with Formik state by the param "name") to display data.
  */
 
+const MIN_ROWS = 25;
+const MAX_ROWS = 50;
+
 const DataGridTable = ({ name, rows, columns, ...props }) => {
   const [selectionModel, setSelectionModel] = React.useState([]);
-  const [pageSize, setPageSize] = React.useState(25);
-  // eslint-disable-next-line no-unused-vars
-  const [_, meta] = useField(name);
+  const [pageSize, setPageSize] = React.useState(MIN_ROWS);
   const { setFieldValue } = useFormikContext();
-
-  const classes = useStyles();
+  const [, meta] = useField(name);
 
   const handlePageSizeChange = (newPageSize) => setPageSize(newPageSize);
 
@@ -43,12 +32,11 @@ const DataGridTable = ({ name, rows, columns, ...props }) => {
 
   return (
     <DataGridTableWrapper>
-      <DataGrid
-        className={classes.root}
+      <DataGridT
         rows={rows}
         columns={columns}
         pageSize={pageSize}
-        rowsPerPageOptions={[25, 50]}
+        rowsPerPageOptions={[MIN_ROWS, MAX_ROWS]}
         checkboxSelection
         hideFooterSelectedRowCount
         onPageSizeChange={handlePageSizeChange}

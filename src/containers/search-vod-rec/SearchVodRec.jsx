@@ -4,6 +4,10 @@ import VodRecSearchForm from '../../components/vod-rec-search-form/VodRecSearchF
 import useNotification from '../../hooks/useNotification';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
 
+/**
+ * Container component that handle the logic to search a vod event.
+ */
+
 const SearchVodRec = ({ addEvent, handleClose }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
@@ -46,7 +50,13 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
 };
 
 SearchVodRec.propTypes = {
+  /**
+   *  Callback function to associate an event to one of the slots of the form for the vod recommendation.
+   */
   addEvent: PropTypes.func.isRequired,
+  /**
+   *  Callback function to close the modal that contains the form.
+   */
   handleClose: PropTypes.func.isRequired,
 };
 

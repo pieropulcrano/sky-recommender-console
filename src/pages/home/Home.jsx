@@ -12,6 +12,10 @@ import Tab from '@mui/material/Tab';
 import { TabIcon, Warning } from './Home.styled';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
 
+/**
+ * Component rendered when the user lands on the site homepage.
+ */
+
 const Home = () => {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [alertFallback, setAlertFallback] = React.useState(0);
@@ -46,12 +50,7 @@ const Home = () => {
       <AppBar data-test="app-bar" position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-            >
+            <Typography variant="h6" component="div">
               SKY Recommender Console
             </Typography>
           </Toolbar>
