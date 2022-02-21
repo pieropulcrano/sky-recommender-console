@@ -1,13 +1,13 @@
-import { styled } from '@mui/system';
+import styled from '@emotion/styled';
 
-export const NotificationWrapper = styled('div')({
-  position: 'fixed',
-  right: '4px',
-  bottom: '4px',
-  zIndex: '2000',
-});
+export const NotificationWrapper = styled.div`
+  position: fixed;
+  right: 4px;
+  bottom: 4px;
+  z-index: 2000;
+`;
 
-export const AlertWrapper = styled('div')({
-  marginBottom: '4px',
-  width: '400px',
-});
+export const AlertWrapper = styled.div`
+  margin-bottom: 4px;
+  width: 400px;
+`;

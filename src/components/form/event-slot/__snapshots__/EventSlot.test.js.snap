@@ -3,13 +3,13 @@
 exports[`Event Slot empty should render 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-lccpzd"
+    class="empity-slot css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -18,10 +18,9 @@ HTMLCollection [
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
             data-testid="AddCircleIcon"
             focusable="false"
-            style="color: blue;"
             viewBox="0 0 24 24"
           >
             <path
@@ -41,13 +40,13 @@ HTMLCollection [
 exports[`Event Slot empty should render a disabled slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-lccpzd"
+    class="empity-slot css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       />
     </div>
   </div>,
@@ -57,14 +56,14 @@ HTMLCollection [
 exports[`Event Slot empty should render an hd disabled slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-lccpzd"
+    class="empity-slot css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root css-1j84qwh"
+        class="MuiSvgIcon-root css-1kosrk6"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -73,7 +72,7 @@ HTMLCollection [
         />
       </svg>
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       />
     </div>
   </div>,
@@ -83,14 +82,14 @@ HTMLCollection [
 exports[`Event Slot empty should render an hd slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-lccpzd"
+    class="empity-slot css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root css-1j84qwh"
+        class="MuiSvgIcon-root css-1kosrk6"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -99,7 +98,7 @@ HTMLCollection [
         />
       </svg>
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -108,10 +107,9 @@ HTMLCollection [
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
             data-testid="AddCircleIcon"
             focusable="false"
-            style="color: blue;"
             viewBox="0 0 24 24"
           >
             <path
@@ -131,14 +129,14 @@ HTMLCollection [
 exports[`Event Slot empty should render an sd slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-lccpzd"
+    class="empity-slot css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ot06pt-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1arzi5p-MuiSvgIcon-root"
         data-testid="SdIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -148,7 +146,7 @@ HTMLCollection [
         />
       </svg>
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -157,10 +155,9 @@ HTMLCollection [
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
             data-testid="AddCircleIcon"
             focusable="false"
-            style="color: blue;"
             viewBox="0 0 24 24"
           >
             <path
@@ -180,13 +177,13 @@ HTMLCollection [
 exports[`Event Slot not empty should remove the assigned event 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-lccpzd"
+    class="empity-slot css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -195,10 +192,9 @@ HTMLCollection [
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
             data-testid="AddCircleIcon"
             focusable="false"
-            style="color: blue;"
             viewBox="0 0 24 24"
           >
             <path
@@ -218,13 +214,13 @@ HTMLCollection [
 exports[`Event Slot not empty should render 1`] = `
 HTMLCollection [
   <div
-    class="css-lccpzd"
+    class="css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1ci55s3-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -245,7 +241,7 @@ HTMLCollection [
       </button>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root  css-181tbxo"
+        class="MuiSvgIcon-root  css-14eav6w"
         focusable="false"
         title="out of date"
         viewBox="0 0 24 24"
@@ -255,11 +251,11 @@ HTMLCollection [
         />
       </svg>
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-pipma-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1j8dm2n-MuiSvgIcon-root"
           data-testid="ImageNotSupportedIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -271,23 +267,19 @@ HTMLCollection [
       </div>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
       data-test="event-title"
     >
-      <span>
-        <b>
-          event-title
-        </b>
-      </span>
+      event-title
     </p>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
       data-test="event-startProgram"
     >
       24.12.2021 13:00
     </p>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
       data-test="event-endProgram"
     >
       24.12.2022 13:00
@@ -299,14 +291,14 @@ HTMLCollection [
 exports[`Event Slot not empty should render a disabled slot 1`] = `
 HTMLCollection [
   <div
-    class="css-lccpzd"
+    class="css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root  css-181tbxo"
+        class="MuiSvgIcon-root  css-14eav6w"
         focusable="false"
         title="out of date"
         viewBox="0 0 24 24"
@@ -316,11 +308,11 @@ HTMLCollection [
         />
       </svg>
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-pipma-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1j8dm2n-MuiSvgIcon-root"
           data-testid="ImageNotSupportedIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -332,23 +324,19 @@ HTMLCollection [
       </div>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
       data-test="event-title"
     >
-      <span>
-        <b>
-          event-title
-        </b>
-      </span>
+      event-title
     </p>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
       data-test="event-startProgram"
     >
       24.12.2021 13:00
     </p>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
       data-test="event-endProgram"
     >
       24.12.2022 13:00
@@ -360,14 +348,14 @@ HTMLCollection [
 exports[`Event Slot not empty should render an hd slot 1`] = `
 HTMLCollection [
   <div
-    class="css-lccpzd"
+    class="css-hnxnia"
   >
     <div
-      class="MuiBox-root css-1c6wt7s"
+      class="MuiBox-root css-nm1vv8"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root css-1j84qwh"
+        class="MuiSvgIcon-root css-1kosrk6"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -376,7 +364,7 @@ HTMLCollection [
         />
       </svg>
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1ci55s3-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -397,7 +385,7 @@ HTMLCollection [
       </button>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root  css-181tbxo"
+        class="MuiSvgIcon-root  css-14eav6w"
         focusable="false"
         title="out of date"
         viewBox="0 0 24 24"
@@ -407,11 +395,11 @@ HTMLCollection [
         />
       </svg>
       <div
-        class="MuiBox-root css-1agjfwn"
+        class="MuiBox-root css-1sifg3v"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-pipma-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1j8dm2n-MuiSvgIcon-root"
           data-testid="ImageNotSupportedIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -423,23 +411,19 @@ HTMLCollection [
       </div>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
       data-test="event-title"
     >
-      <span>
-        <b>
-          event-title
-        </b>
-      </span>
+      event-title
     </p>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
       data-test="event-startProgram"
     >
       24.12.2021 13:00
     </p>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-zy8lap-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
       data-test="event-endProgram"
     >
       24.12.2022 13:00

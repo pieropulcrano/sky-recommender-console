@@ -3,7 +3,7 @@
 exports[`Vod Rec Form should render 1`] = `
 HTMLCollection [
   <div
-    class="css-b33b91"
+    class="css-s0k7q1"
   >
     <form
       action="#"
@@ -143,16 +143,16 @@ HTMLCollection [
             margin="10"
           />
           <div
-            class="css-gg4vpm"
+            class="css-uf1ume"
           >
             <div
-              class="empity-slot css-lccpzd"
+              class="empity-slot css-hnxnia"
             >
               <div
-                class="MuiBox-root css-1c6wt7s"
+                class="MuiBox-root css-nm1vv8"
               >
                 <div
-                  class="MuiBox-root css-1agjfwn"
+                  class="MuiBox-root css-1sifg3v"
                 >
                   <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -161,10 +161,9 @@ HTMLCollection [
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
                       data-testid="AddCircleIcon"
                       focusable="false"
-                      style="color: blue;"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -179,13 +178,13 @@ HTMLCollection [
               </div>
             </div>
             <div
-              class="empity-slot css-lccpzd"
+              class="empity-slot css-hnxnia"
             >
               <div
-                class="MuiBox-root css-1c6wt7s"
+                class="MuiBox-root css-nm1vv8"
               >
                 <div
-                  class="MuiBox-root css-1agjfwn"
+                  class="MuiBox-root css-1sifg3v"
                 >
                   <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -194,10 +193,9 @@ HTMLCollection [
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
                       data-testid="AddCircleIcon"
                       focusable="false"
-                      style="color: blue;"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -212,13 +210,13 @@ HTMLCollection [
               </div>
             </div>
             <div
-              class="empity-slot css-lccpzd"
+              class="empity-slot css-hnxnia"
             >
               <div
-                class="MuiBox-root css-1c6wt7s"
+                class="MuiBox-root css-nm1vv8"
               >
                 <div
-                  class="MuiBox-root css-1agjfwn"
+                  class="MuiBox-root css-1sifg3v"
                 >
                   <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -227,10 +225,9 @@ HTMLCollection [
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
                       data-testid="AddCircleIcon"
                       focusable="false"
-                      style="color: blue;"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -245,13 +242,13 @@ HTMLCollection [
               </div>
             </div>
             <div
-              class="empity-slot css-lccpzd"
+              class="empity-slot css-hnxnia"
             >
               <div
-                class="MuiBox-root css-1c6wt7s"
+                class="MuiBox-root css-nm1vv8"
               >
                 <div
-                  class="MuiBox-root css-1agjfwn"
+                  class="MuiBox-root css-1sifg3v"
                 >
                   <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -260,10 +257,9 @@ HTMLCollection [
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
                       data-testid="AddCircleIcon"
                       focusable="false"
-                      style="color: blue;"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -278,13 +274,13 @@ HTMLCollection [
               </div>
             </div>
             <div
-              class="empity-slot css-lccpzd"
+              class="empity-slot css-hnxnia"
             >
               <div
-                class="MuiBox-root css-1c6wt7s"
+                class="MuiBox-root css-nm1vv8"
               >
                 <div
-                  class="MuiBox-root css-1agjfwn"
+                  class="MuiBox-root css-1sifg3v"
                 >
                   <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -293,10 +289,9 @@ HTMLCollection [
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-1fyogec-MuiSvgIcon-root"
                       data-testid="AddCircleIcon"
                       focusable="false"
-                      style="color: blue;"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -321,10 +316,10 @@ HTMLCollection [
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1em9ut6-MuiGrid-root"
         >
           <div
-            class="css-gg4vpm"
+            class="css-uf1ume"
           >
             <div
-              class="css-gg4vpm"
+              class="css-uf1ume"
             >
               <button
                 class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"

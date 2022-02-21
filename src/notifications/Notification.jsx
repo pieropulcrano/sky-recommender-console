@@ -4,6 +4,11 @@ import AlertTitle from '@mui/material/AlertTitle';
 import useNotification from '../hooks/useNotification';
 import { AlertWrapper, NotificationWrapper } from './Notification.styled';
 
+/**
+ * SnackBack component to display error to the user.
+ * @param {String}
+ * @returns
+ */
 function SnackbarProvider({ duration = 6000, alert, handleClose }) {
   React.useEffect(() => {
     const timer = setTimeout(() => handleClose(alert), duration);
@@ -27,6 +32,10 @@ function SnackbarProvider({ duration = 6000, alert, handleClose }) {
     </AlertWrapper>
   );
 }
+
+/**
+ * Notification component to display system message to the user.
+ */
 
 export default function Notification(props) {
   const { state, removeAlert } = useNotification();

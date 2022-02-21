@@ -33,7 +33,7 @@ describe('Upsert Fallback Vod Rec', () => {
   const alertErrorLoading = {
     text: 'An error occured during the loading of the fallback vod rec.',
     title: 'Vod Fallback loading failed',
-    type: 'warning',
+    type: 'error',
     id: expect.anything(),
   };
   const alertOkSaving = {

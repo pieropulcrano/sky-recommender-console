@@ -13,6 +13,10 @@ import useVodRec from '../../hooks/useVodRec';
 import { formatToISO8601 } from '../../utils/date';
 import useNotification from '../../hooks/useNotification';
 
+/**
+ * Container component that handle the logic to create / edit a vod recommendation.
+ */
+
 const UpsertVodRec = ({ id, onSuccess }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
@@ -176,7 +180,13 @@ UpsertVodRec.defaultProps = {
 };
 
 UpsertVodRec.propTypes = {
+  /**
+   * The id of the vod recommendation to retrieve.
+   */
   id: PropTypes.string,
+  /**
+   * The callback function called if the create / edit request was successful-
+   */
   onSuccess: PropTypes.func.isRequired,
 };
 

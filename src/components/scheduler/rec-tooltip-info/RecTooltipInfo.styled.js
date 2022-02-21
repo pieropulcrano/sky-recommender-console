@@ -1,17 +1,16 @@
-import { styled } from '@mui/material';
+import styled from '@emotion/styled';
 
-const shared = {
-  display: 'flex',
-  flexDirection: 'column',
-  widh: '100%',
-};
+export const TooltipContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const TooltipContentWrapper = styled('div')(shared);
+export const RecInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const RecInfoWrapper = styled('div')(shared);
-
-export const TooltipWrapper = styled('div')({
-  display: 'flex',
-  justifyContent: 'flex-start',
-  widh: '100%',
-});
+export const TooltipWrapper = styled.div`
+  display: flex;
+  flex-direction: flex-start;
+`;

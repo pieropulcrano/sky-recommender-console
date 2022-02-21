@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
+/**
+ * Spinner component.
+ */
+
 const Spinner = ({ height, width }) => (
   <Box
     sx={{
@@ -25,7 +29,13 @@ Spinner.defaultProps = {
 };
 
 Spinner.propTypes = {
+  /**
+   * Height relative to the spinner container.
+   */
   height: PropTypes.string,
+  /**
+   * Width relative to the spinner container.
+   */
   width: PropTypes.string,
 };
 

@@ -5,7 +5,7 @@ export const recTypes = {
 
 /**
  * Configuration for the rows dysplayed by the scheduler.
- * Children are the sub-row of each row.
+ * Children are the sub-row of each scheduler row.
  */
 
 export const resources = [

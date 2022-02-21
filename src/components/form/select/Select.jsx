@@ -21,7 +21,6 @@ const Select = ({ name, options, ...props }) => {
     ...field,
     ...props,
     select: true,
-    variant: 'outlined',
     fullWidth: true,
     onChange: handleChange,
   };
@@ -42,6 +41,10 @@ const Select = ({ name, options, ...props }) => {
       })}
     </TextField>
   );
+};
+
+Select.defaultProps = {
+  variant: 'outlined',
 };
 
 Select.propTypes = {

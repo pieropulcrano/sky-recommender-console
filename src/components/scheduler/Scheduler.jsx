@@ -7,12 +7,11 @@ import useNotification from '../../hooks/useNotification';
 import Spinner from '../spinner/Spinner';
 import Modal from '../../components/modal/Modal';
 import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
-import { Hidden } from './Scheduler.styled';
+import { Hidden, StyleWrapper } from './Scheduler.styled';
 import { resources, recTypes } from './config';
 import { mapForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
-import './style.css';
 
 /**
  * Component to handle the scheduling of the recommendations.
@@ -122,44 +121,47 @@ const Scheduler = () => {
     <>
       {recIsLoading && <Spinner height="65vh" />}
       <Hidden isLoading={recIsLoading}>
-        <FullCalendar
-          ref={CalendarRef}
-          schedulerLicenseKey={process.env.REACT_APP_SCHEDULER_LICENSE_KEY}
-          plugins={[resourceTimelinePlugin]}
-          initialView="month"
-          height="700px"
-          resourceAreaWidth="180px"
-          resourceAreaHeaderContent="Clusters"
-          resources={resources}
-          headerToolbar={{
-            left: `resourceTimelineDay,resourceTimelineWeek,month`,
-            center: 'title',
-            right: 'newVod newLin',
-          }}
-          customButtons={{
-            newVod: {
-              text: 'NEW VOD',
-              click: () => handleRecCreate(recTypes.vod),
-            },
-            newLin: {
-              text: 'NEW LIN',
-              click: () => handleRecCreate(recTypes.lin),
-            },
-          }}
-          views={{
-            month: {
-              type: 'resourceTimeline',
-              visibleRange: createCustomView,
-            },
-          }}
-          nowIndicator
-          eventContent={renderRecContent}
-          expandRows
-          eventDidMount={renderEvent}
-          events={loadRec}
-          eventClick={handleRecEdit}
-          loading={handleRecLoading}
-        />
+        <StyleWrapper>
+          <FullCalendar
+            ref={CalendarRef}
+            schedulerLicenseKey={process.env.REACT_APP_SCHEDULER_LICENSE_KEY}
+            plugins={[resourceTimelinePlugin]}
+            initialView="month"
+            height="700px"
+            resourceAreaWidth="180px"
+            resourceAreaHeaderContent="Clusters"
+            resources={resources}
+            headerToolbar={{
+              left: `resourceTimelineDay,resourceTimelineWeek,month`,
+              center: 'title',
+              right: 'newVod newLin',
+            }}
+            customButtons={{
+              newVod: {
+                text: 'NEW VOD',
+                click: () => handleRecCreate(recTypes.vod),
+              },
+              newLin: {
+                text: 'NEW LIN',
+                click: () => handleRecCreate(recTypes.lin),
+              },
+            }}
+            views={{
+              month: {
+                type: 'resourceTimeline',
+                visibleRange: createCustomView,
+              },
+            }}
+            nowIndicator
+            eventContent={renderRecContent}
+            expandRows
+            eventDidMount={renderEvent}
+            events={loadRec}
+            eventClick={handleRecEdit}
+            loading={handleRecLoading}
+          />
+        </StyleWrapper>
+
         <Modal
           title={modalTitle}
           open={openModal}

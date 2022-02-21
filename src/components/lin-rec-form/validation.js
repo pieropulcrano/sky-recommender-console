@@ -1,11 +1,18 @@
 import * as Yup from 'yup';
 import { isAfter } from 'date-fns';
 
+/**
+ * The shape of the event that populates the form.
+ */
 const eventShape = {
   position: Yup.string().required(),
   title: Yup.string().required(),
 };
 
+/**
+ * Validation rule for a couple of hd / sd event slots.
+ * When active, the user must fill at least one between the current HD and the SD slot.
+ */
 const slotCoupleWithValidation = Yup.object().shape(
   {
     sd: Yup.object().when('hd', {
@@ -25,6 +32,10 @@ const slotCoupleWithoutValidation = Yup.object().shape({
   hd: Yup.object(),
 });
 
+/**
+ * Validation rule to force user to fill one of the current SD / HD slot, if at least one of next slots is filled.
+ */
+
 const atLeastOneSlotCoupleAtPositionNHaveEventHdOrSdSelected = (
   arraySlotCouples = [],
 ) => {
@@ -35,6 +46,10 @@ const atLeastOneSlotCoupleAtPositionNHaveEventHdOrSdSelected = (
     );
   });
 };
+
+/**
+ * Validation rule to check that the end date entered by the user is valid and after the start date.
+ */
 
 const checkEndDateTime = function checkEnd(endDateTime) {
   const { startDateTime } = this.parent;
@@ -47,6 +62,10 @@ const checkEndDateTime = function checkEnd(endDateTime) {
     return createError({ path, message: 'Invalid startDate' });
   }
 };
+
+/**
+ * The shape of the recommendation that populates the form.
+ */
 
 const recommendationShape = Yup.object().shape(
   {
@@ -75,6 +94,10 @@ const recommendationShape = Yup.object().shape(
   ['1', '2', '3', '4', '5'],
 );
 
+/**
+ * validation schema passed to the form when in creation mode
+ */
+
 export const validationSchema = Yup.object().shape({
   cluster: Yup.string().required('Required'),
   startDateTime: Yup.date()
@@ -92,6 +115,10 @@ export const validationSchema = Yup.object().shape({
     .required('End date required'),
   recommendation: recommendationShape,
 });
+
+/**
+ * validation schema passed to the form when is in edit mode
+ */
 
 export const isEditingPresentRecSchema = Yup.object().shape({
   cluster: Yup.string().required('Required'),

@@ -24,7 +24,7 @@ const App = () => {
         <AlertContextProvider>
           <Switch>
             <Route exact from="/" component={Home} />
-            <Redirect from="*" to={'/'} />
+            <Redirect from="*" to="/" />
           </Switch>
           <Notification />
         </AlertContextProvider>

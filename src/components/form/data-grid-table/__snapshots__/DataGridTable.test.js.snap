@@ -3,13 +3,13 @@
 exports[`DataGridTable should render 1`] = `
 HTMLCollection [
   <div
-    class="css-1chss2b"
+    class="css-1qliwbv"
   >
     <div
       aria-colcount="4"
       aria-multiselectable="false"
       aria-rowcount="1"
-      class="makeStyles-root-1 MuiDataGrid-root css-1nytev6-MuiDataGrid-root"
+      class="MuiDataGrid-root css-w4jlra-MuiDataGrid-root"
       role="grid"
     >
       <div>

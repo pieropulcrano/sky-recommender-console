@@ -7,17 +7,16 @@ import Button from '@mui/material/Button';
  */
 
 const ClearBtn = ({ children, onClick, ...props }) => {
-  const configButton = {
-    variant: 'contained',
-    onClick: onClick,
-    size: 'medium',
-  };
-
   return (
-    <Button {...configButton} {...props}>
+    <Button onClick={onClick} {...props}>
       {children}
     </Button>
   );
+};
+
+ClearBtn.defaultProps = {
+  size: 'medium',
+  variant: 'contained',
 };
 
 ClearBtn.propTypes = {

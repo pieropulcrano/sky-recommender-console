@@ -4,11 +4,11 @@ exports[`RecTooltipInfo should appears when the user hover on it 1`] = `
 NodeList [
   <div>
     <div
-      class="css-1dqpmy1"
+      class="css-teerh"
     >
       <div
         aria-labelledby="mui-2"
-        class=" css-1idi5ti"
+        class=" css-1iyoj2o"
         data-mui-internal-clone-element="true"
       >
         title
@@ -29,7 +29,7 @@ NodeList [
       style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
     >
       <div
-        class="css-1idi5ti"
+        class="css-1iyoj2o"
       >
         <span>
           Start: 
@@ -59,10 +59,10 @@ NodeList [
 exports[`RecTooltipInfo should render the text 1`] = `
 HTMLCollection [
   <div
-    class="css-1dqpmy1"
+    class="css-teerh"
   >
     <div
-      class=" css-1idi5ti"
+      class=" css-1iyoj2o"
       data-mui-internal-clone-element="true"
     >
       title

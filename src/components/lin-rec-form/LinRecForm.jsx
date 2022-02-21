@@ -21,6 +21,10 @@ import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import { clusters, DEFAULT_VALUES } from './config';
 import { slotTypes } from '../form/event-slot/EventSlot.types';
 
+/**
+ * Component to create / edit a linear recommendation.
+ */
+
 const LinRecForm = ({
   recId,
   onSubmit,
@@ -211,11 +215,29 @@ const LinRecForm = ({
 };
 
 LinRecForm.propTypes = {
+  /**
+   * The id of the lineare recommendation to retrieve.
+   */
   recId: PropTypes.string,
+  /**
+   * The initial values passed the form state.
+   */
   initialValues: PropTypes.object.isRequired,
+  /**
+   * The form is performing a delete operation.
+   */
   isDeleting: PropTypes.bool.isRequired,
+  /**
+   * The form is performing a submit operation
+   */
   isSubmitting: PropTypes.bool.isRequired,
+  /**
+   * Callback function called when the user clicks on the submit button.
+   */
   onSubmit: PropTypes.func.isRequired,
+  /**
+   * Callback function called when the user clicks on the delete button.
+   */
   onDelete: PropTypes.func.isRequired,
 };
 

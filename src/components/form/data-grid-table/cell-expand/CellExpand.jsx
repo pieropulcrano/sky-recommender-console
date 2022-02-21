@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
+import {
+  CellDiv,
+  CellValue,
+  CellPopper,
+  PopperContent,
+  PopperValue,
+  GridCellExpandWrapper,
+} from './CellExpand.styled';
 
 /**
  * Tooltip for a field of the DataGridTable.
@@ -55,10 +59,11 @@ const GridCellExpand = React.memo(({ width, value }) => {
   }, [setShowFullCell, showFullCell]);
 
   return (
-    <Box
+    <GridCellExpandWrapper
       ref={wrapper}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      /** @todo remove */
       sx={{
         alignItems: 'center',
         lineHeight: '24px',
@@ -68,46 +73,20 @@ const GridCellExpand = React.memo(({ width, value }) => {
         display: 'flex',
       }}
     >
-      <Box
-        ref={cellDiv}
-        sx={{
-          height: 1,
-          width,
-          display: 'block',
-          position: 'absolute',
-          top: 0,
-          left: '-200%',
-        }}
-      />
-      <Box
-        ref={cellValue}
-        sx={{
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-        }}
-      >
-        {value}
-      </Box>
+      <CellDiv ref={cellDiv} width={width} />
+      <CellValue ref={cellValue}>{value}</CellValue>
+
       {showPopper && (
-        <Popper
+        <CellPopper
           open={showFullCell && anchorEl !== null}
           anchorEl={anchorEl}
-          style={{ width, zIndex: 2000 }}
         >
-          <Paper
-            elevation={1}
-            style={{
-              width: '500px',
-            }}
-          >
-            <Typography variant="body2" style={{ padding: 8 }}>
-              {value}
-            </Typography>
-          </Paper>
-        </Popper>
+          <PopperContent elevation={1}>
+            <PopperValue variant="body2">{value}</PopperValue>
+          </PopperContent>
+        </CellPopper>
       )}
-    </Box>
+    </GridCellExpandWrapper>
   );
 });
 
