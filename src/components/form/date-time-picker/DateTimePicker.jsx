@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
 import TextField from '@mui/material/TextField';
-import DateTimeP from '@mui/lab/DateTimePicker';
+import Picker from '@mui/lab/DateTimePicker';
 
 /**
  * Component to pick a date and a time, connected with Formik state by the param "name".
@@ -33,7 +33,7 @@ const DateTimePicker = ({ name, label, data_test, ...props }) => {
   );
 
   return (
-    <DateTimeP
+    <Picker
       inputFormat={INPUT_FORMAT}
       renderInput={renderInput}
       label={label}

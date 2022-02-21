@@ -15,8 +15,8 @@ const Fallback = ({ handleAlertFallback }) => {
       <Marginer direction="horizontal" margin={80} />
       <FallbackWrapper>
         <UpsertFallbackVodRec handleAlertFallback={handleAlertFallback} />
-        <Marginer direction="horizontal" margin={80} />
       </FallbackWrapper>
+      <Marginer direction="horizontal" margin={80} />
     </Container>
   );
 };

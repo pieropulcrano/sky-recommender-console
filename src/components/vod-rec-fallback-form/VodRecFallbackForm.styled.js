@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const VocRecFallbackFormWrapper = styled.div`
   max-width: 100%;
-  width: 700px;
+  width: 800px;
   height: 100%;
   max-height: 600px;
   padding-top: 10px;

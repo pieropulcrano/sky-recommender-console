@@ -36,7 +36,24 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
 
   const handleOpenModal = () => handleOpen(name);
 
-  return value && Object.keys(value).length !== 0 ? (
+  if (!value || Object.keys(value).length === 0) {
+    return (
+      <SlotWrapper className="empity-slot">
+        <EventImageWrapper error={meta && meta.touched && meta.error}>
+          {type === SLOT_TYPE_SD ? <SD /> : type === SLOT_TYPE_HD && <HD />}
+          <EmptyEventWrapper error={meta && meta.touched && meta.error}>
+            {!disabled && (
+              <IconButton onClick={handleOpenModal}>
+                <AddIcon fontSize="large" />
+              </IconButton>
+            )}
+          </EmptyEventWrapper>
+        </EventImageWrapper>
+      </SlotWrapper>
+    );
+  }
+
+  return (
     <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
       <EventImageWrapper>
         {type === SLOT_TYPE_SD ? <SD /> : type === SLOT_TYPE_HD && <HD />}
@@ -58,28 +75,19 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </EmptyEventWrapper>
         )}
       </EventImageWrapper>
-      <EventTitle data-test="event-title" noWrap>
-        {value.title}
-      </EventTitle>
+      {value.title && (
+        <Tooltip title={value.title}>
+          <EventTitle data-test="event-title" noWrap>
+            {value.title}
+          </EventTitle>
+        </Tooltip>
+      )}
       <EventDateTime data-test="event-startProgram" noWrap>
         {value.startProgram && formatToHumanReadable(value.startProgram)}
       </EventDateTime>
       <EventDateTime data-test="event-endProgram" noWrap>
         {value.endProgram && formatToHumanReadable(value.endProgram)}
       </EventDateTime>
-    </SlotWrapper>
-  ) : (
-    <SlotWrapper className="empity-slot">
-      <EventImageWrapper error={meta && meta.touched && meta.error}>
-        {type === SLOT_TYPE_SD ? <SD /> : type === SLOT_TYPE_HD && <HD />}
-        <EmptyEventWrapper error={meta && meta.touched && meta.error}>
-          {!disabled && (
-            <IconButton onClick={handleOpenModal}>
-              <AddIcon fontSize="large" />
-            </IconButton>
-          )}
-        </EmptyEventWrapper>
-      </EventImageWrapper>
     </SlotWrapper>
   );
 };

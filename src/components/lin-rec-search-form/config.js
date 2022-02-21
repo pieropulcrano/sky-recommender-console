@@ -6,12 +6,12 @@ import { formatToHumanReadable } from '../../utils/date';
  */
 
 export const columns = [
-  { field: 'title', headerName: 'Title', width: '150', renderCell: CellExpand },
+  { field: 'title', headerName: 'Title', width: '200', renderCell: CellExpand },
   {
     field: 'startProgram',
     headerName: 'Start Date',
     type: 'dateTime',
-    width: '180',
+    width: '150',
     valueFormatter: (params) =>
       params.value && formatToHumanReadable(params.value),
   },
@@ -19,20 +19,25 @@ export const columns = [
     field: 'endProgram',
     headerName: 'End Date',
     type: 'dateTime',
-    width: '180',
+    width: '150',
     valueFormatter: (params) =>
       params.value && formatToHumanReadable(params.value),
   },
   {
     field: 'linearSummaryLong',
     headerName: 'Summary',
-    width: '180',
+    width: '200',
     renderCell: CellExpand,
   },
-  { field: 'channel', headerName: 'Channel', width: '180' },
-  { field: 'resolution', headerName: 'Resolution', width: '180' },
-  { field: 'thumbnailType', headerName: 'Thumbnail Type', width: '180' },
-  { field: 'verticalImageUrl', headerName: 'Vertical Image Url', width: '180' },
+  { field: 'channel', headerName: 'Channel', width: '100' },
+  { field: 'resolution', headerName: 'Resolution', width: '100' },
+  { field: 'thumbnailType', headerName: 'Thumbnail Type', width: '150' },
+  {
+    field: 'verticalImageUrl',
+    headerName: 'Vertical Image Url',
+    width: '150',
+    renderCell: CellExpand,
+  },
 ];
 
 /**

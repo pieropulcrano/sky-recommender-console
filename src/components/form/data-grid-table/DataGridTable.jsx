@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
-import { DataGridTableWrapper, DataGridT } from './DataGridTable.styled';
+import { DataGridTableWrapper, DataTable } from './DataGridTable.styled';
 import { ErrorMsg } from '../error-msg/ErrorMsg.styled';
 
 /**
@@ -32,7 +32,7 @@ const DataGridTable = ({ name, rows, columns, ...props }) => {
 
   return (
     <DataGridTableWrapper>
-      <DataGridT
+      <DataTable
         rows={rows}
         columns={columns}
         pageSize={pageSize}

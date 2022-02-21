@@ -267,8 +267,9 @@ HTMLCollection [
       </div>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
       data-test="event-title"
+      title="event-title"
     >
       event-title
     </p>
@@ -324,8 +325,9 @@ HTMLCollection [
       </div>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
       data-test="event-title"
+      title="event-title"
     >
       event-title
     </p>
@@ -411,8 +413,9 @@ HTMLCollection [
       </div>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
       data-test="event-title"
+      title="event-title"
     >
       event-title
     </p>

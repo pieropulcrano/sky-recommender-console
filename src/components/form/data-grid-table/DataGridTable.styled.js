@@ -7,7 +7,7 @@ export const DataGridTableWrapper = styled.div`
   width: 1000px;
 `;
 
-export const DataGridT = styled(DataGrid)`
+export const DataTable = styled(DataGrid)`
   .MuiDataGrid-columnHeaderCheckbox .MuiDataGrid-columnHeaderTitleContainer {
     display: none;
   }
