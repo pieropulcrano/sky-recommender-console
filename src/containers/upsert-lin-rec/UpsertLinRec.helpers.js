@@ -5,7 +5,14 @@ const positions = ['1', '2', '3', '4', '5'];
 export const extractEventsToArray = (recommendation) => {
   if (!recommendation) throw new Error('No recommendation provided');
   const eventsObj = Object.values(recommendation);
+
   const reduced = eventsObj.reduce((acc, curr) => {
+    if (Object.keys(curr.hd).length > 0) {
+      curr.hd.resolution = 'HD';
+    }
+    if (Object.keys(curr.sd).length > 0) {
+      curr.sd.resolution = 'SD';
+    }
     // remove empty objects
     const events = Object.values(curr).filter(
       (value) => Object.keys(value).length !== 0,
@@ -20,21 +27,12 @@ export const prepareLinRec = (
   id,
   { cluster, startDateTime, endDateTime, recommendation },
 ) => {
-  let randomId = id ?? Math.floor(Math.random() * 10001); //TODO togliere
   return {
-    id: randomId.toString(), //TODO togliere
-    status: '', //TODO togliere
-    message: '', //TODO togliere
-    item: [
-      {
-        id: randomId.toString(), //TODO togliere
-        cluster,
-        type: 'LIN',
-        validFrom: formatToISO8601(resetSecondsToZero(startDateTime)),
-        validTo: formatToISO8601(resetSecondsToZero(endDateTime)),
-        recommendation: extractEventsToArray(recommendation),
-      },
-    ],
+    cluster,
+    type: 'LIN',
+    validFrom: formatToISO8601(resetSecondsToZero(startDateTime)),
+    validTo: formatToISO8601(resetSecondsToZero(endDateTime)),
+    recommendation: extractEventsToArray(recommendation),
   };
 };
 

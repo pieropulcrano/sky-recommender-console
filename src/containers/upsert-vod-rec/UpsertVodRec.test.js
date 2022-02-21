@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import * as vodRecProvider from '../../providers/vod-rec-provider/VodRecProvider';
 import * as useVodRec from '../../hooks/useVodRec';
 import UpsertVodRec from './UpsertVodRec';
-import vodRecFixture from '../../../fixtures/vod-recc-mock.json';
+import vodRecFixture from '../../../fixtures/vod-recommendation';
 
 /**
  * @TODO OnSubmit success / error testata solo tramite e2e: capire come testarla anche qui
@@ -23,7 +23,7 @@ jest.mock('../../hooks/useNotification', () => () => ({
   addAlert: mockedAddAlert,
 }));
 
-describe('UpsertLinRec', () => {
+describe('UpsertVodRec', () => {
   let props;
   let vodRec;
 
@@ -100,7 +100,8 @@ describe('UpsertLinRec', () => {
     });
 
     it('if an error during the delete', async () => {
-      vodRecFixture.item[0].validFrom = '2999-12-14T15:00:00Z';
+      vodRec.items[0].validFrom = '2999-12-14T15:00:00Z';
+      vodRec.items[0].id = props.id;
       const mockedDeleteVodRec = jest.fn(() => {
         throw new Error('error');
       });
@@ -109,7 +110,7 @@ describe('UpsertLinRec', () => {
         .mockImplementation(mockedDeleteVodRec);
 
       jest.spyOn(useVodRec, 'default').mockImplementation(() => {
-        return { data: vodRecFixture, error: undefined };
+        return { data: vodRec, error: undefined };
       });
 
       render(<MockUpsertVodRec {...props} />);
@@ -129,7 +130,7 @@ describe('UpsertLinRec', () => {
     });
 
     it('if an error during update', async () => {
-      vodRec.item[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRec.items[0].validFrom = '2100-12-14T15:00:00Z';
 
       const mockedUpdateVodRec = jest.fn(() => {
         throw new Error('error');
@@ -150,15 +151,13 @@ describe('UpsertLinRec', () => {
         fireEvent.click(updateButton);
       });
       expect(mockedUpdateVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedUpdateVodRec).toHaveBeenCalledWith(
-        vodRecFixture.item[0].id,
-        {
-          id: vodRecFixture.item[0].id,
-          item: [vodRecFixture.item[0]],
-          message: '',
-          status: '',
-        },
-      );
+      expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec.items[0].id, {
+        cluster: vodRec.items[0].cluster,
+        recommendation: vodRec.items[0].recommendation,
+        type: vodRec.items[0].type,
+        validFrom: vodRec.items[0].validFrom,
+        validTo: '',
+      });
 
       await waitFor(() => {
         expect(props.onSuccess).not.toHaveBeenCalled();
@@ -166,7 +165,7 @@ describe('UpsertLinRec', () => {
       });
     });
 
-    it('if an error occurs during the loading previus rec', async () => {
+    it('if an error occurs during the loading previous rec', async () => {
       delete props['id'];
       const mockedGetPrevVodRec = jest.fn(() => {
         throw new Error('error');
@@ -198,7 +197,7 @@ describe('UpsertLinRec', () => {
       });
     });
 
-    it('if the loading previus rec no return values', async () => {
+    it('if the loading previous rec no return values', async () => {
       delete props['id'];
       const mockedGetPrevVodRec = jest.fn(() => {
         return [];
@@ -233,17 +232,18 @@ describe('UpsertLinRec', () => {
 
   describe('Dysplay ok notification', () => {
     it('if delete is ok', async () => {
-      vodRecFixture.item[0].validFrom = '2998-12-14T15:00:00Z';
+      vodRec.items[0].validFrom = '2998-12-14T15:00:00Z';
+      vodRec.items[0].id = props.id;
 
       const mockedDeleteVodRec = jest.fn(() => {
-        return { deletedItem: vodRecFixture };
+        return { deletedItem: vodRec };
       });
       jest
         .spyOn(vodRecProvider, 'deleteVodRec')
         .mockImplementation(mockedDeleteVodRec);
 
       jest.spyOn(useVodRec, 'default').mockImplementation(() => {
-        return { data: vodRecFixture, error: undefined };
+        return { data: vodRec, error: undefined };
       });
 
       render(<MockUpsertVodRec {...props} />);
@@ -252,7 +252,7 @@ describe('UpsertLinRec', () => {
       await waitFor(() => {
         fireEvent.click(deleteButton);
         expect(mockedDeleteVodRec).toHaveBeenCalledTimes(1);
-        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec.item[0].id);
+        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec.items[0].id);
       });
 
       await waitFor(() => {
@@ -260,12 +260,14 @@ describe('UpsertLinRec', () => {
         expect(props.onSuccess).toHaveBeenCalledTimes(1);
       });
     });
+
     it('if update is ok', async () => {
-      vodRecFixture.item[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRec.items[0].validFrom = '2100-12-14T15:00:00Z';
+      vodRec.items[0].id = props.id;
 
       const mockedUpdateVodRec = jest.fn(() => {
         return {
-          updatedRecommendation: vodRecFixture.item[0],
+          updatedRecommendation: vodRec.items[0],
         };
       });
       jest
@@ -273,7 +275,7 @@ describe('UpsertLinRec', () => {
         .mockImplementation(mockedUpdateVodRec);
 
       jest.spyOn(useVodRec, 'default').mockImplementation(() => {
-        return { data: vodRecFixture, error: undefined };
+        return { data: vodRec, error: undefined };
       });
 
       render(<MockUpsertVodRec {...props} />);
@@ -285,15 +287,13 @@ describe('UpsertLinRec', () => {
       });
 
       await waitFor(() => {
-        expect(mockedUpdateVodRec).toHaveBeenCalledWith(
-          vodRecFixture.item[0].id,
-          {
-            id: vodRecFixture.item[0].id,
-            item: [vodRecFixture.item[0]],
-            message: '',
-            status: '',
-          },
-        );
+        expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec.items[0].id, {
+          cluster: vodRec.items[0].cluster,
+          recommendation: vodRec.items[0].recommendation,
+          type: vodRec.items[0].type,
+          validFrom: vodRec.items[0].validFrom,
+          validTo: '',
+        });
       });
 
       await waitFor(() => {
@@ -304,12 +304,12 @@ describe('UpsertLinRec', () => {
   });
 
   it('should display loading spinner', async () => {
-    vodRecFixture.item[0].validFrom = '2100-12-14T15:00:00Z';
+    vodRec.items[0].validFrom = '2100-12-14T15:00:00Z';
 
     jest
       .spyOn(useVodRec, 'default')
       .mockImplementation(() =>
-        Promise.resolve({ data: vodRecFixture, error: undefined }),
+        Promise.resolve({ data: vodRec, error: undefined }),
       );
 
     render(<MockUpsertVodRec {...props} />);

@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import LinSearchForm from './LinRecSearchForm';
-import linEvent from '../../../fixtures/lin-event.json';
+import linEvent from '../../../fixtures/linear-event';
 
 describe('LinSearchForm', () => {
   const onSubmit = jest.fn();
@@ -53,7 +53,7 @@ describe('LinSearchForm', () => {
 
     describe('should submit', () => {
       it("if the user selected an event from the result's list", async () => {
-        props.searchResult = linEvent[0].items;
+        props.searchResult = linEvent.items;
         render(
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <LinSearchForm {...props} />

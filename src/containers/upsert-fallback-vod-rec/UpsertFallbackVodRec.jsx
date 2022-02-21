@@ -30,9 +30,10 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
   const onSubmit = async (values) => {
     try {
       setIsSubmitting(true);
-      const data = prepareFallbackVodRec(fallbackVodRec.item[0].id, values);
+
+      const data = prepareFallbackVodRec(fallbackVodRec.items[0].id, values);
       await updateFallbackVodRec(data);
-      handleAlertFallback(data);
+      handleAlertFallback({ items: [data] });
       addAlert({
         text: 'Vod Fallback was successfully updated.',
         title: ` Vod Fallback updated`,
@@ -63,7 +64,7 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
             fallbackVodRec
               ? {
                   recommendation: normalizeFallbackVodRec(
-                    fallbackVodRec.item[0].recommendation,
+                    fallbackVodRec.items[0].recommendation,
                   ),
                 }
               : { recommendation: {} }

@@ -28,16 +28,10 @@ describe('UpsertFallbackVodRec component helpers', () => {
       };
 
       expect(prepareFallbackVodRec(id, collectedData)).toEqual({
-        id,
-        item: [
-          {
-            id,
-            type: 'FALLBACK',
-            recommendation: arrayOfExtractedEvents,
-          },
-        ],
-        status: '',
-        message: '',
+        type: 'FALLBACK',
+        recommendation: arrayOfExtractedEvents,
+        validFrom: '1970-10-01T00:00:00Z',
+        validTo: '2099-12-31T23:59:59Z',
       });
     });
   });

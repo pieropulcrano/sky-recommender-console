@@ -10,20 +10,23 @@ describe('Testing Fallback Page', () => {
     cy.useMockDataForSchedule();
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
-    cy.intercept({ method: 'PUT', path: '/recommendation/9999' }, (req) => {
-      req.reply({
-        statusCode: 201,
-        body: req.body,
-        delay: 10, // milliseconds
-      });
-    });
+    cy.intercept(
+      { method: 'PUT', url: Cypress.env().fallbackRecommendationUrl },
+      (req) => {
+        req.reply({
+          statusCode: 201,
+          body: req.body,
+          delay: 10, // milliseconds
+        });
+      },
+    );
     //parsing fixture
-    cy.fixture('fallback-recc-mock').then((val) => {
-      fallbackData = val.item[0].recommendation;
+    cy.fixture('fallback-recommendation').then((val) => {
+      fallbackData = val.items[0].recommendation;
     });
-    cy.visit('http://localhost:3000');
+    cy.visit(Cypress.env().baseUrl);
     cy.wait(2000);
-    cy.get('[data-test="fallback-nav-tab"]').click();
+    cy.contains('Fallback').click();
   });
 
   it('Check All fallbacks', () => {
@@ -36,9 +39,7 @@ describe('Testing Fallback Page', () => {
     for (var i = 0; i < fallbackData.length; i++) {
       //single event
       cy.get('[data-test="' + fallbackData[i].id + '"]').as('event');
-      cy.get('@event')
-        .find('[data-test="event-title"]')
-        .should('have.text', fallbackData[i].title);
+      cy.contains(fallbackData[i].title);
       cy.get('@event')
         .find('[data-test="event-startProgram"]')
         .should('not.be.empty');
@@ -49,9 +50,9 @@ describe('Testing Fallback Page', () => {
   });
 
   it('Check fallback events', () => {
-    cy.get('.MuiSvgIcon-colorError').first().click({ force: true });
+    cy.get('[data-testid="ClearIcon"]').first().click({ force: true });
     //click update senza un'elemnto dovrebbe dare errore
-    cy.get('.MuiLoadingButton-root').click({ force: true });
+    cy.contains('Update').click({ force: true });
     //non dovrebbe comparire notifica ok
     cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 0);
     //dovrebbe esserci un solo + svg
@@ -61,21 +62,21 @@ describe('Testing Fallback Page', () => {
     //testing search Vod Modal
     cy.testSearchVodModal(eventToSearch);
     //risave
-    cy.get('.MuiLoadingButton-root').click({ force: true });
+    cy.contains('Update').click({ force: true });
     //dovrebbe esser comparsa la  notifica di ok
     cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 1);
   });
 
   it('Check clear button', () => {
     //check exist
-    cy.get('.MuiButton-containedPrimary')
+    cy.contains('Clear')
       .as('clearButton')
       .should('have.length', 1)
       .click({ force: true });
     //dovrebbe aver eliminato tutti i vod event, quindi dovrebbero esserci 10 +
     cy.get('[data-testid="AddCircleIcon"]').should('have.length', 10);
     //click update senza elementi dovrebbe dare errore
-    cy.get('.MuiLoadingButton-root').click({ force: true });
+    cy.contains('Update').click({ force: true });
     //non dovrebbe comparire notifica ok
     cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 0);
   });

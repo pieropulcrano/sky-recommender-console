@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createUrlQuery } from '../../utils/url';
 
 export async function getLinRec(id) {
+  id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
   const res = await axios.get(url);
   return res.data;
@@ -16,6 +17,7 @@ export async function createLinRec(recVod) {
 }
 
 export async function updateLinRec(id, recVod) {
+  id = encodeURIComponent(id);
   const res = await axios.put(
     `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`,
     recVod,
@@ -24,6 +26,7 @@ export async function updateLinRec(id, recVod) {
 }
 
 export async function deleteLinRec(id) {
+  id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
   const res = await axios.delete(url);
   return res.data;

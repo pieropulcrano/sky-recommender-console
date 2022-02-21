@@ -6,7 +6,7 @@ import * as vodRecProvider from '../../providers/vod-rec-provider/VodRecProvider
 import * as useFallbackVodRec from '../../hooks/useFallbackVodRec';
 import UpsertFallbackVodRec from './UpsertFallbackVodRec';
 import { prepareFallbackVodRec } from './UpsertFallbackVodRec.helpers';
-import fallbackReccMock from '../../../fixtures/fallback-recc-mock.json';
+import fallbackReccMock from '../../../fixtures/fallback-recommendation';
 
 const MockUpsertFallbackVodRec = ({ ...props }) => {
   return (
@@ -90,8 +90,8 @@ describe('Upsert Fallback Vod Rec', () => {
       await waitFor(() => {
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledWith(
           prepareFallbackVodRec(
-            fallbackReccMock.item[0].id,
-            fallbackReccMock.item[0],
+            fallbackReccMock.items[0].id,
+            fallbackReccMock.items[0],
           ),
         );
       });
@@ -122,7 +122,7 @@ describe('Upsert Fallback Vod Rec', () => {
 
       const mockedUpdateFallbackVodRec = jest.fn(() => {
         return {
-          updatedFallbackRecommendation: fallbackReccMock.item,
+          updatedFallbackRecommendation: fallbackReccMock.items,
         };
       });
 
@@ -142,8 +142,8 @@ describe('Upsert Fallback Vod Rec', () => {
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledTimes(1);
         expect(mockedUpdateFallbackVodRec).toHaveBeenCalledWith(
           prepareFallbackVodRec(
-            fallbackReccMock.item[0].id,
-            fallbackReccMock.item[0],
+            fallbackReccMock.items[0].id,
+            fallbackReccMock.items[0],
           ),
         );
       });

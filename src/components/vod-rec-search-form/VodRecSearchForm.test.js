@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import VodRecSearchForm from './VodRecSearchForm';
-import vodRecToSearch from '../../../fixtures/vod-to-search-mock.json';
+import vodEventFixture from '../../../fixtures/vod-event';
 import { initialValues } from './config';
 
 describe('Vod Rec Search Form', () => {
@@ -30,10 +30,12 @@ describe('Vod Rec Search Form', () => {
 
   //integration test of dataGridTable
   it('should display result', () => {
-    props.searchResult = vodRecToSearch[0].items;
+    props.searchResult = vodEventFixture.items;
 
     render(<VodRecSearchForm {...props} />);
-    expect(screen.queryByText(vodRecToSearch[0].title)).toBeInTheDocument();
+    expect(
+      screen.queryByText(vodEventFixture.items[0].title),
+    ).toBeInTheDocument();
   });
 
   describe('Should not submit', () => {
@@ -50,7 +52,7 @@ describe('Vod Rec Search Form', () => {
   describe('Should submit', () => {
     //integration test of dataGridTable
     it('if a value is checked', async () => {
-      props.searchResult = vodRecToSearch[0].items;
+      props.searchResult = vodEventFixture.items;
 
       render(<VodRecSearchForm {...props} />);
 

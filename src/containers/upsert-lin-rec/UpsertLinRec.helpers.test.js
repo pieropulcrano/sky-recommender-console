@@ -60,19 +60,11 @@ describe('UpsertLinRec component helpers', () => {
       };
 
       expect(prepareLinRec(id, collectedData)).toEqual({
-        id,
-        item: [
-          {
-            id,
-            cluster: 'CL_CIN',
-            type: 'LIN',
-            validFrom: collectedData.startDateTime,
-            validTo: collectedData.endDateTime,
-            recommendation: arrayOfExtractedEvents,
-          },
-        ],
-        message: '',
-        status: '',
+        cluster: 'CL_CIN',
+        type: 'LIN',
+        validFrom: collectedData.startDateTime,
+        validTo: collectedData.endDateTime,
+        recommendation: arrayOfExtractedEvents,
       });
     });
   });

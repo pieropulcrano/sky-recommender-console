@@ -1,12 +1,11 @@
 {
-  "id": "50",
-  "item": [
+  "items": [
     {
-      "id": "50",
+      "id": "",
       "cluster": "CL_CIN",
       "type": "LIN",
-      "validFrom": "2021-12-27T15:00:00Z",
-      "validTo": "2021-12-26T15:00:00Z",
+      "validFrom": "",
+      "validTo": "",
       "recommendation": [
         {
           "id": "61GA",

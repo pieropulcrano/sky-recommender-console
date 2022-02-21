@@ -27,19 +27,11 @@ describe('UpsertVodRec component helpers', () => {
       };
 
       expect(prepareVodRec(id, collectedData)).toEqual({
-        id,
-        item: [
-          {
-            id,
-            cluster: 'CL_CIN',
-            type: 'VOD',
-            validFrom: collectedData.startDateTime,
-            validTo: '',
-            recommendation: arrayOfExtractedEvents,
-          },
-        ],
-        message: '',
-        status: '',
+        cluster: 'CL_CIN',
+        type: 'VOD',
+        validFrom: collectedData.startDateTime,
+        validTo: '',
+        recommendation: arrayOfExtractedEvents,
       });
     });
   });

@@ -2,7 +2,7 @@ let randomIndexClusterVal = 'CL_CIN';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
-let mockData = [];
+let mockData;
 
 describe('Testing crud vod raccomandation', () => {
   beforeEach(() => {
@@ -14,14 +14,21 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForFallback();
     cy.useMockDataForSearchVod();
     //parsing fixture
-    cy.fixture('prev-recc-vod-mock').then((val) => {
-      val[0].item[0].validFrom = cy.generatePastDate(1, 'month');
-      mockData.push(val[0]);
+    cy.fixture('previous-vod-recommendation').then((val) => {
+      val.item.validFrom = cy.generatePastDate(1, 'month');
+      val.item.id = vodId;
+      val.id = vodId;
+
+      mockData = val;
     });
     cy.intercept(
       {
         method: 'GET',
-        path: '/recommendation?cluster=' + randomIndexClusterVal + '*',
+        url:
+          Cypress.env().recommendationUrl +
+          '?cluster=' +
+          randomIndexClusterVal +
+          '*',
       },
       (req) => {
         req.reply({
@@ -31,14 +38,14 @@ describe('Testing crud vod raccomandation', () => {
         });
       },
     ).as('searchRequest');
-    cy.fixture('vod-recc-mock').then((recc) => {
-      recc.item[0].validFrom = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendation/' + vodId, recc);
+    cy.fixture('vod-recommendation').then((recc) => {
+      recc.items[0].validFrom = cy.generateFutureDate(1);
+      cy.intercept('GET', Cypress.env().recommendationUrl + '/' + vodId, recc);
     });
     cy.useMockDataForCreate();
     cy.useMockDataForUpdate();
     cy.useMockDataForDelete();
-    cy.visit('http://localhost:3000/');
+    cy.visit(Cypress.env().baseUrl);
   });
 
   /************************************CREATE******************************************************************************************************** */
@@ -68,18 +75,16 @@ describe('Testing crud vod raccomandation', () => {
     //opena modal
     cy.contains('NEW VOD').click();
     //devono esserci sempre 5 slot
-    cy.get('.empity-slot').should('have.length', 5);
+    cy.get('[data-testid="AddCircleIcon"]').should('have.length', 5);
     cy.selectRandomCluster(randomIndexClusterVal);
     //type the date in the start date input
     cy.get('input[type="text"]').type(dateToSearch);
     //ciclo e popolo gli slot
-    cy.get('.empity-slot').each(($el, index, $list) => {
+    cy.get('[data-testid="AddCircleIcon"]').each(($el, index, $list) => {
       //click on create
       cy.get('[data-test="submit-upsert-btn"]').click();
       //click on plus icon to add a new vod
-      cy.wrap($el)
-        .find('[data-testid="AddCircleIcon"] > path')
-        .click({ force: true });
+      cy.wrap($el).find('path').click({ force: true });
       cy.testSearchVodModal(eventToSearch);
     });
     //click on create
@@ -98,7 +103,7 @@ describe('Testing crud vod raccomandation', () => {
     //type the date in the start date input
     cy.get('input[type="text"]').type(dateToSearch);
     //click on load
-    cy.get('.css-piwweb-MuiGrid-root > .MuiLoadingButton-root').click();
+    cy.contains('Load').click();
     //intercetto la get search e verifico che i dati siano correti
 
     cy.wait('@searchRequest').should(({ req, response }) => {
@@ -106,20 +111,19 @@ describe('Testing crud vod raccomandation', () => {
       //check render tutti i vod
       cy.get('[data-test-slot="prev-vod-slot"]').should(
         'have.length',
-        body[0].item[0].recommendation.length,
+        body.item.recommendation.length,
       );
     });
     //elimino gli slot esistenti e ne ricreo
     cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, $list) => {
       // $el is a wrapped jQuery element
       cy.wrap($el).within(() => {
-        cy.get('button').click();
+        cy.get('[data-testid="ClearIcon"]').click();
       });
 
       //click on create
       cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
       //el non dovrebbe avere + la classe di un event pieno
-      // cy.wrap($el).should('not.have.class', 'prev-vod-slot');
       //click on plus icon to add a new vod
       cy.wrap($el)
         .find('[data-testid="AddCircleIcon"] > path')
@@ -148,7 +152,7 @@ describe('Testing crud vod raccomandation', () => {
     cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, list) => {
       // for each slot
       // click on delete button
-      cy.wrap($el).find('button').click({ force: true });
+      cy.wrap($el).find('[data-testid="ClearIcon"]').click({ force: true });
       //click update
       cy.get('[data-test="submit-upsert-btn"]').click({ force: true });
       //click on plus icon to add a new vod

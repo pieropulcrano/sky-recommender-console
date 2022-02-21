@@ -2,8 +2,8 @@ import React from 'react';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import { normalizeVodRec } from '../../containers/upsert-vod-rec/UpsertVodRec.helpers';
-import vodRec from '../../../fixtures/vod-recc-mock.json';
+import { normalizeVodRec } from '../../containers/upsert-vod-rec/UpsertvodRec.helpers';
+import vodRec from '../../../fixtures/vod-recommendation';
 import { DEFAULT_VALUES } from './config';
 import VodRecForm from './VodRecForm';
 
@@ -52,9 +52,9 @@ describe('Vod Rec Form', () => {
   it('should render correctly with a past recommendation', () => {
     props.recId = 'test-id';
     props.initialValues = {
-      cluster: vodRec.item[0].cluster,
+      cluster: vodRec.items[0].cluster,
       startDateTime: '1970-12-14T15:00:00Z',
-      recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+      recommendation: normalizeVodRec(vodRec.items[0].recommendation),
     };
     render(<MockVodRecForm {...props} />);
 
@@ -72,9 +72,9 @@ describe('Vod Rec Form', () => {
   it('should render correctly with a recommendation scheduled for the future', () => {
     props.recId = 'test-id';
     props.initialValues = {
-      cluster: vodRec.item[0].cluster,
+      cluster: vodRec.items[0].cluster,
       startDateTime: '2999-11-14T15:00:00Z',
-      recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+      recommendation: normalizeVodRec(vodRec.items[0].recommendation),
     };
 
     render(<MockVodRecForm {...props} />);
@@ -100,9 +100,9 @@ describe('Vod Rec Form', () => {
 
     it('if start date is invalid', async () => {
       props.initialValues = {
-        cluster: vodRec.item[0].cluster,
+        cluster: vodRec.items[0].cluster,
         startDateTime: 'some-invalid-date',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
       const { container } = render(<MockVodRecForm {...props} />);
 
@@ -116,9 +116,9 @@ describe('Vod Rec Form', () => {
 
     it('if start date is in the past', async () => {
       props.initialValues = {
-        cluster: vodRec.item[0].cluster,
+        cluster: vodRec.items[0].cluster,
         startDateTime: '1970-12-14T15:00:00Z',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
       const { container } = render(<MockVodRecForm {...props} />);
 
@@ -136,7 +136,7 @@ describe('Vod Rec Form', () => {
       props.initialValues = {
         cluster: '',
         startDateTime: '2999-12-14T15:00:00Z',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
       const { container } = render(<MockVodRecForm {...props} />);
 
@@ -152,9 +152,9 @@ describe('Vod Rec Form', () => {
   describe('should submit', () => {
     it('when the user create a new recommendation correctly', async () => {
       props.initialValues = {
-        cluster: vodRec.item[0].cluster,
+        cluster: vodRec.items[0].cluster,
         startDateTime: '2999-02-02T15:00:00Z',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
 
       render(<MockVodRecForm {...props} />);
@@ -177,9 +177,9 @@ describe('Vod Rec Form', () => {
     it('when the user update a recommendation correctly', async () => {
       props.recId = 'test-id';
       props.initialValues = {
-        cluster: vodRec.item[0].cluster,
+        cluster: vodRec.items[0].cluster,
         startDateTime: '2999-11-14T15:00:00Z',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
 
       render(<MockVodRecForm {...props} />);
@@ -202,9 +202,9 @@ describe('Vod Rec Form', () => {
     it('when the user want to delete recommendation', async () => {
       props.recId = 'test-id';
       props.initialValues = {
-        cluster: vodRec.item[0].cluster,
+        cluster: vodRec.items[0].cluster,
         startDateTime: '2999-11-14T15:00:00Z',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
 
       render(<MockVodRecForm {...props} />);
@@ -219,12 +219,12 @@ describe('Vod Rec Form', () => {
     });
   });
 
-  describe('Loading previus vod rec', () => {
+  describe('Loading previous vod rec', () => {
     it('should load', async () => {
       props.initialValues = {
-        cluster: vodRec.item[0].cluster,
+        cluster: vodRec.items[0].cluster,
         startDateTime: '2999-11-14T15:00:00Z',
-        recommendation: normalizeVodRec(vodRec.item[0].recommendation),
+        recommendation: normalizeVodRec(vodRec.items[0].recommendation),
       };
       render(<MockVodRecForm {...props} />);
 

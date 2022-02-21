@@ -16,24 +16,47 @@ describe('Testing crud Line raccomandation', () => {
     cy.useMockDataForDelete();
 
     //intercept sd search
-    cy.intercept('**/event?title=' + sdEvent.replace(/'/g, '%27') + '*', {
-      fixture: 'lin-sd-mock',
+    cy.fixture('linear-event').then((recc) => {
+      recc.items[0].title = sdEvent;
+      recc.items[0].resolution = 'SD';
+      cy.intercept(
+        'GET',
+        Cypress.env().eventUrl + '?title=' + sdEvent.replace(/'/g, '%27') + '*',
+        recc,
+      );
     });
     //intercept hd search
-    cy.intercept('**/event?title=' + hdEvent + '*', {
-      fixture: 'lin-hd-mock',
+    cy.fixture('linear-event').then((recc) => {
+      recc.items[0].title = hdEvent;
+      recc.items[0].resolution = 'HD';
+      cy.intercept(
+        'GET',
+        Cypress.env().eventUrl + '?title=' + hdEvent + '*',
+        recc,
+      );
     });
-    cy.fixture('lin-rec-future-mock').then((recc) => {
-      recc.item[0].validFrom = cy.generateFutureDate(1);
-      recc.item[0].validTo = cy.generateFutureDate(2);
-      cy.intercept('GET', '**/recommendation/' + idFutureLine, recc);
+    //intercept future linear
+    cy.fixture('linear-recommendation').then((recc) => {
+      recc.items[0].validFrom = cy.generateFutureDate(1);
+      recc.items[0].validTo = cy.generateFutureDate(2);
+      cy.intercept(
+        'GET',
+        Cypress.env().recommendationUrl + '/' + idFutureLine,
+        recc,
+      );
     });
-    cy.fixture('lin-rec-present-mock').then((recc) => {
-      recc.item[0].validFrom = cy.setDay(1);
-      recc.item[0].validTo = cy.generateFutureDate(1);
-      cy.intercept('GET', '**/recommendation/' + idPresentLine, recc);
+    //intercept present linear
+    cy.fixture('linear-recommendation').then((recc) => {
+      recc.items[0].validFrom = cy.setDay(1);
+      recc.items[0].validTo = cy.generateFutureDate(1);
+      recc.items[0].id = idPresentLine;
+      cy.intercept(
+        'GET',
+        Cypress.env().recommendationUrl + '/' + idPresentLine,
+        recc,
+      );
     });
-    cy.visit('http://localhost:3000/');
+    cy.visit(Cypress.env().baseUrl);
   });
 
   /************************************CREATE******************************************************************************************************** */

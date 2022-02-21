@@ -21,7 +21,7 @@ describe('Home', () => {
   it('should render', async () => {
     const mockedUseFallbackVodRec = jest.fn(() => {
       return {
-        data: [{ id: '', type: 'FALLBACK', recommendation: [] }],
+        data: [{ items: [{ id: '', type: 'FALLBACK', recommendation: [] }] }],
         error: undefined,
       };
     });
@@ -38,19 +38,12 @@ describe('Home', () => {
     expect(document.body.childNodes[0].children).toMatchSnapshot();
   });
 
-  // describe('Navigation Tab', () => {
-  //   // it('should be default on schedule page', async () => {})
-  //   it('should navigate to schedule page', async () => {});
-  //   it('should navigate to fallback page', async () => {});
-  // });
-
   describe('Alert fallback icon', () => {
     it('should appear an warning icon if vod has warning message if rec array', async () => {
       const mockedUseFallbackVodRec = jest.fn(() => {
         return {
           data: {
-            id: '',
-            item: [
+            items: [
               {
                 id: '',
                 type: 'FALLBACK',
@@ -82,8 +75,7 @@ describe('Home', () => {
       const mockedUseFallbackVodRec = jest.fn(() => {
         return {
           data: {
-            id: '',
-            item: [
+            items: [
               {
                 id: '',
                 type: 'FALLBACK',
@@ -115,8 +107,7 @@ describe('Home', () => {
       const mockedUseFallbackVodRec = jest.fn(() => {
         return {
           data: {
-            id: '',
-            item: [
+            items: [
               {
                 id: '',
                 type: 'FALLBACK',
@@ -147,13 +138,15 @@ describe('Home', () => {
     it('should not appear an warning icon if vod has not warning message if rec array', async () => {
       const mockedUseFallbackVodRec = jest.fn(() => {
         return {
-          data: [
-            {
-              id: '',
-              type: 'FALLBACK',
-              recommendation: [{ warningMessage: '' }],
-            },
-          ],
+          data: {
+            items: [
+              {
+                type: 'FALLBACK',
+                recommendation: [{ warningMessage: '' }],
+              },
+            ],
+          },
+
           error: undefined,
         };
       });
