@@ -15,7 +15,6 @@ import Home from '../pages/home/Home';
 /**
  * The entry point component of the application.
  */
-
 const App = () => {
   return (
     <Router basename={`${process.env.REACT_APP_BASENAME}`}>

@@ -24,6 +24,7 @@
     "date-fns-tz": "1.2.2",
     "dayjs": "1.10.7",
     "dotenv": "14.2.0",
+    "env-cmd": "^10.1.0",
     "formik": "2.2.9",
     "prop-types": "15.8.0",
     "react": "17.0.2",
@@ -31,6 +32,7 @@
     "react-router-dom": "5.3.0",
     "react-scripts": "4.0.3",
     "react-test-renderer": "17.0.2",
+    "save-dev": "^0.0.1-security",
     "swr": "1.1.1",
     "yup": "0.32.11"
   },
@@ -38,10 +40,11 @@
     "node": "^16.13.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:dev": "env-cmd -f ./.env.development react-scripts start",
+    "start:localdev": "env-cmd -f ./.env.development.local react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-e2e": "yarn run cypress open",
+    "test:e2e": "yarn run cypress open",
     "coverage": "yarn test --coverage .",
     "apis": "json-server --watch db.json --port 3001 --delay 1000",
     "eject": "react-scripts eject"
