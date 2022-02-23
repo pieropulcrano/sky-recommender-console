@@ -23,7 +23,7 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
       } catch (error) {
         addAlert({
           title: 'Vod search error',
-          text: 'An error occured during the search process.',
+          text: error.message,
           type: 'error',
           id: Date.now(),
         });

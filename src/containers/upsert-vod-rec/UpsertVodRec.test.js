@@ -32,25 +32,25 @@ describe('UpsertVodRec', () => {
   const loadBtn = 'Load';
 
   const alertErrorLoading = {
-    text: 'An error occured during the loading of the vod rec.',
+    text: expect.anything(),
     title: 'Vod loading failed',
     type: 'error',
     id: expect.anything(),
   };
   const alertErrorDelete = {
-    text: 'An error occurred while deleting the Vod recommendation.',
+    text: expect.anything(),
     title: 'Vod deleting error',
     type: 'error',
     id: expect.anything(),
   };
   const errorAlertSaving = {
-    text: 'An error occurred while saving the Vod recommendation.',
+    text: expect.anything(),
     title: `Vod saving error`,
     type: 'error',
     id: expect.anything(),
   };
   const alertErrorLoadPrevVod = {
-    text: 'An error occured during the loading of the previous vod rec.',
+    text: expect.anything(),
     title: 'Vod loading failed',
     type: 'warning',
     id: expect.anything(),
@@ -200,7 +200,7 @@ describe('UpsertVodRec', () => {
     it('if the loading previous rec no return values', async () => {
       delete props['id'];
       const mockedGetPrevVodRec = jest.fn(() => {
-        return [];
+        return { item: {} };
       });
       jest
         .spyOn(vodRecProvider, 'getPrevVodRec')

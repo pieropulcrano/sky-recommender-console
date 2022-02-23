@@ -62,7 +62,7 @@ describe('SearchLinRec', () => {
     expect(mockedAddAlert).toHaveBeenCalledTimes(1);
     expect(mockedAddAlert).toHaveBeenCalledWith({
       title: 'Vod search error',
-      text: 'An error occured during the search process.',
+      text: expect.anything(),
       type: 'error',
       id: expect.anything(),
     });

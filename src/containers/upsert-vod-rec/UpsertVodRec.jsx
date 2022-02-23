@@ -49,7 +49,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
           cluster,
           startDate: formatToISO8601(startDateTime),
         });
-        if (res.length === 0)
+        if (Object.keys(res.item).length === 0)
           addAlert({
             text: 'There are no recommendations prior to the date entered.',
             title: 'Previous Vod Not Found',
@@ -62,7 +62,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       } catch (error) {
         setPrevVodRecIsLoading(false);
         addAlert({
-          text: 'An error occured during the loading of the previous vod rec.',
+          text: error.message,
           title: 'Vod loading failed',
           type: 'warning',
           id: Date.now(),
@@ -84,10 +84,10 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       });
       setIsDeleting(false);
       onSuccess();
-    } catch {
+    } catch (error) {
       setIsDeleting(false);
       addAlert({
-        text: 'An error occurred while deleting the Vod recommendation.',
+        text: error.message,
         title: `Vod deleting error`,
         type: 'error',
         id: Date.now(),
@@ -125,7 +125,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       } catch (error) {
         setIsSubmitting(false);
         addAlert({
-          text: 'An error occurred while saving the Vod recommendation.',
+          text: error.message,
           title: `Vod saving error`,
           type: 'error',
           id: Date.now(),

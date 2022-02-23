@@ -46,9 +46,9 @@ const UpsertLinRec = ({ id, onSuccess }) => {
       });
       setIsDeleting(false);
       onSuccess();
-    } catch {
+    } catch (error) {
       addAlert({
-        text: 'An error occurred while deleting the Lin recommendation.',
+        text: error.message,
         title: `Lin deleting error`,
         type: 'error',
         id: Date.now(),
@@ -86,7 +86,7 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         }
       } catch (error) {
         addAlert({
-          text: 'An error occurred while saving the Lin recommendation.',
+          text: error.message,
           title: 'Lin saving error',
           type: 'error',
           id: Date.now(),

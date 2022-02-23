@@ -49,7 +49,7 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
     } catch (error) {
       setIsSubmitting(false);
       addAlert({
-        text: 'An error occurred while saving the Vod Fallback recommendation.',
+        text: error.message,
         title: `Vod Fallback saving error`,
         type: 'error',
         id: Date.now(),

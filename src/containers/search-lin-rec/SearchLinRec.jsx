@@ -30,7 +30,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       } catch (error) {
         addAlert({
           title: 'Vod search error',
-          text: 'An error occured during the search process.',
+          text: error.message,
           type: 'error',
           id: Date.now(),
         });
