@@ -42,7 +42,7 @@ describe('Scheduler', () => {
     await waitFor(() => {
       expect(mockedAddAlert).toHaveBeenCalledTimes(1);
       expect(mockedAddAlert).toHaveBeenCalledWith({
-        text: 'An error occured during the loading of the scheduled recommendations.',
+        text: expect.anything(),
         title: 'Recommendations loading failed',
         type: 'error',
         id: expect.anything(),

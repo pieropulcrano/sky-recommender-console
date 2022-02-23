@@ -56,7 +56,7 @@ const Scheduler = () => {
         success(data);
       } catch (err) {
         addAlert({
-          text: 'An error occured during the loading of the scheduled recommendations.',
+          text: err.message,
           title: 'Recommendations loading failed',
           type: 'error',
           id: Date.now(),

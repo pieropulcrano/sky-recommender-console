@@ -25,13 +25,13 @@ describe('Upsert Fallback Vod Rec', () => {
   let props;
   const updateBtn = 'Update';
   const alertErrorSaving = {
-    text: 'An error occurred while saving the Vod Fallback recommendation.',
+    text: expect.anything(),
     title: 'Vod Fallback saving error',
     type: 'error',
     id: expect.anything(),
   };
   const alertErrorLoading = {
-    text: 'An error occured during the loading of the fallback vod rec.',
+    text: expect.anything(),
     title: 'Vod Fallback loading failed',
     type: 'error',
     id: expect.anything(),

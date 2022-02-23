@@ -124,7 +124,7 @@ describe('UpsertLinRec', () => {
     await waitFor(() => {
       expect(mockedAddAlert).toHaveBeenCalledTimes(1);
       expect(mockedAddAlert).toHaveBeenCalledWith({
-        text: 'An error occurred while deleting the Lin recommendation.',
+        text: expect.anything(),
         title: `Lin deleting error`,
         type: 'error',
         id: expect.anything(),
@@ -227,7 +227,7 @@ describe('UpsertLinRec', () => {
     await waitFor(() => {
       expect(onSuccess).not.toHaveBeenCalled();
       expect(mockedAddAlert).toHaveBeenCalledWith({
-        text: 'An error occurred while saving the Lin recommendation.',
+        text: expect.anything(),
         title: 'Lin saving error',
         type: 'error',
         id: expect.anything(),

@@ -27,7 +27,7 @@ describe('Search Vod Rec', () => {
   const selectBtn = 'Select';
   const alertSearchError = {
     title: 'Vod search error',
-    text: 'An error occured during the search process.',
+    text: expect.anything(),
     type: 'error',
     id: expect.anything(),
   };

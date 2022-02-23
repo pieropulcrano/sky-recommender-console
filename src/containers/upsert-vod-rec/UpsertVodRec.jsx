@@ -49,7 +49,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
           cluster,
           startDate: formatToISO8601(startDateTime),
         });
-        if (res.length === 0)
+        if (Object.keys(res.item).length === 0)
           addAlert({
             text: 'There are no recommendations prior to the date entered.',
             title: 'Previous Vod Not Found',
@@ -57,16 +57,16 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             id: Date.now(),
           });
         searchedDate.current = startDateTime;
+        setPrevVodRecIsLoading(false);
         setPrevRecVod(res);
       } catch (error) {
+        setPrevVodRecIsLoading(false);
         addAlert({
-          text: 'An error occured during the loading of the previous vod rec.',
+          text: error.message,
           title: 'Vod loading failed',
           type: 'warning',
           id: Date.now(),
         });
-      } finally {
-        setPrevVodRecIsLoading(false);
       }
     },
     [addAlert],
@@ -82,16 +82,16 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         type: 'success',
         id: Date.now(),
       });
+      setIsDeleting(false);
       onSuccess();
-    } catch {
+    } catch (error) {
+      setIsDeleting(false);
       addAlert({
-        text: 'An error occurred while deleting the Vod recommendation.',
+        text: error.message,
         title: `Vod deleting error`,
         type: 'error',
         id: Date.now(),
       });
-    } finally {
-      setIsDeleting(false);
     }
   };
 
@@ -102,17 +102,17 @@ const UpsertVodRec = ({ id, onSuccess }) => {
         if (id) {
           const updated = prepareVodRec(id, values);
           await updateVodRec(id, updated);
-          onSuccess();
           addAlert({
             text: 'Vod was successfully updated.',
             title: ` Vod Updated`,
             type: 'success',
             id: Date.now(),
           });
+          setIsSubmitting(false);
+          onSuccess();
         } else {
           const vodRec = prepareVodRec(null, values);
           await createVodRec(vodRec);
-          onSuccess();
           addAlert({
             text: 'Vod was successfully created.',
             title: ` Vod Created`,
@@ -120,16 +120,16 @@ const UpsertVodRec = ({ id, onSuccess }) => {
             data_test: 'vod-update-ok-not',
             id: Date.now(),
           });
+          onSuccess();
         }
       } catch (error) {
+        setIsSubmitting(false);
         addAlert({
-          text: 'An error occurred while saving the Vod recommendation.',
+          text: error.message,
           title: `Vod saving error`,
           type: 'error',
           id: Date.now(),
         });
-      } finally {
-        setIsSubmitting(false);
       }
     },
     [id, onSuccess, addAlert],
