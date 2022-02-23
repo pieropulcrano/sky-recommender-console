@@ -44,7 +44,7 @@
     "start:localdev": "env-cmd -f ./.env.development.local react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:e2e": "yarn run cypress open",
+    "test:e2e": "env-cmd -f ./.env.development yarn run cypress open",
     "coverage": "yarn test --coverage .",
     "apis": "json-server --watch db.json --port 3001 --delay 1000",
     "eject": "react-scripts eject"
