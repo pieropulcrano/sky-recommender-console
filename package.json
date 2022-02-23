@@ -23,7 +23,6 @@
     "date-fns": "2.27.0",
     "date-fns-tz": "1.2.2",
     "dayjs": "1.10.7",
-    "dotenv": "14.2.0",
     "env-cmd": "10.1.0",
     "formik": "2.2.9",
     "prop-types": "15.8.0",
