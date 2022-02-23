@@ -3,7 +3,7 @@
 exports[`Vod Rec Search Form should render 1`] = `
 HTMLCollection [
   <div
-    class="css-a5xh2k"
+    class="css-fjocwo"
   >
     <form
       action="#"
@@ -176,7 +176,7 @@ HTMLCollection [
                       class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                       data-field="title"
                       role="columnheader"
-                      style="width: 150px; min-width: 150px; max-width: 150px;"
+                      style="width: 200px; min-width: 200px; max-width: 200px;"
                       tabindex="-1"
                     >
                       <div
@@ -272,7 +272,7 @@ HTMLCollection [
                       class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
                       data-field="startProgram"
                       role="columnheader"
-                      style="width: 180px; min-width: 180px; max-width: 180px;"
+                      style="width: 150px; min-width: 150px; max-width: 150px;"
                       tabindex="-1"
                     >
                       <div
@@ -509,7 +509,7 @@ HTMLCollection [
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1em9ut6-MuiGrid-root"
         >
           <div
-            class="css-5w6psm"
+            class="css-1diyz6t"
           >
             <button
               class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-ke5b6m-MuiButtonBase-root-MuiButton-root"

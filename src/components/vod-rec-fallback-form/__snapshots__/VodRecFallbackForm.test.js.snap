@@ -3,7 +3,7 @@
 exports[`VodRecFallbackForm should render 1`] = `
 HTMLCollection [
   <div
-    class="css-q8p6ya"
+    class="css-16o29ok"
   >
     <form
       action="#"
@@ -63,8 +63,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="La valle incantata"
               >
                 La valle incantata
               </p>
@@ -127,8 +128,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="The Truman Show 2"
               >
                 The Truman Show 2
               </p>
@@ -191,8 +193,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="I mercenari"
               >
                 I mercenari
               </p>
@@ -255,8 +258,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="Rogue one"
               >
                 Rogue one
               </p>
@@ -319,8 +323,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="Doom"
               >
                 Doom
               </p>
@@ -391,8 +396,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="La valle incantata 2"
               >
                 La valle incantata 2
               </p>
@@ -455,8 +461,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="Se mi lasci ti cancello"
               >
                 Se mi lasci ti cancello
               </p>
@@ -519,8 +526,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="I mercenari 2"
               >
                 I mercenari 2
               </p>
@@ -583,8 +591,9 @@ HTMLCollection [
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-14y2rlv-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
                 data-test="event-title"
+                title="VOD Scaduto"
               >
                 VOD Scaduto
               </p>

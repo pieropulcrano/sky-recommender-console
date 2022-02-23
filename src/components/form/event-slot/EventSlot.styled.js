@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
@@ -77,7 +78,11 @@ export const EmptyEventWrapper = styled(Box)`
   border: ${({ error }) => !error && '1px solid #ccc'};
 `;
 
-export const EventTitle = styled((props) => <Typography {...props} />)`
+const Title = React.forwardRef((props, ref) => (
+  <Typography {...props} ref={ref} />
+));
+
+export const EventTitle = styled(Title)`
   font-size: 12px;
   font-weight: bold;
 `;
