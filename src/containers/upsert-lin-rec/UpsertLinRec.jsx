@@ -38,13 +38,14 @@ const UpsertLinRec = ({ id, onSuccess }) => {
     try {
       setIsDeleting(true);
       await deleteLinRec(id);
-      onSuccess();
       addAlert({
         text: 'Lin was successfully deleted.',
         title: ` Lin Deleted`,
         type: 'success',
         id: Date.now(),
       });
+      setIsDeleting(false);
+      onSuccess();
     } catch {
       addAlert({
         text: 'An error occurred while deleting the Lin recommendation.',
@@ -52,7 +53,6 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         type: 'error',
         id: Date.now(),
       });
-    } finally {
       setIsDeleting(false);
     }
   };
@@ -64,23 +64,25 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         if (id) {
           const updated = prepareLinRec(id, values);
           await updateLinRec(id, updated);
-          onSuccess();
           addAlert({
             text: 'Lin was successfully updated.',
             title: ` Lin Updated`,
             type: 'success',
             id: Date.now(),
           });
+          setIsSubmitting(false);
+          onSuccess();
         } else {
           const linRec = prepareLinRec(null, values);
           await createLinRec(linRec);
-          onSuccess();
           addAlert({
             text: 'Lin was successfully created.',
             title: 'Lin Created',
             type: 'success',
             id: Date.now(),
           });
+          setIsSubmitting(false);
+          onSuccess();
         }
       } catch (error) {
         addAlert({
@@ -89,7 +91,6 @@ const UpsertLinRec = ({ id, onSuccess }) => {
           type: 'error',
           id: Date.now(),
         });
-      } finally {
         setIsSubmitting(false);
       }
     },

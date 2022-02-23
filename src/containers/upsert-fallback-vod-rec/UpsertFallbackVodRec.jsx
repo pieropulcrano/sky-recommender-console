@@ -38,6 +38,7 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
       const data = prepareFallbackVodRec(fallbackVodRec.items[0].id, values);
       await updateFallbackVodRec(data);
       handleAlertFallback({ items: [data] });
+      setIsSubmitting(false);
       addAlert({
         text: 'Vod Fallback was successfully updated.',
         title: ` Vod Fallback updated`,
@@ -46,14 +47,13 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
         id: Date.now(),
       });
     } catch (error) {
+      setIsSubmitting(false);
       addAlert({
         text: 'An error occurred while saving the Vod Fallback recommendation.',
         title: `Vod Fallback saving error`,
         type: 'error',
         id: Date.now(),
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
