@@ -12,6 +12,7 @@ import VodRecForm from '../../components/vod-rec-form/VodRecForm';
 import useVodRec from '../../hooks/useVodRec';
 import { formatToISO8601 } from '../../utils/date';
 import useNotification from '../../hooks/useNotification';
+import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to create / edit a vod recommendation.
@@ -62,7 +63,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       } catch (error) {
         setPrevVodRecIsLoading(false);
         addAlert({
-          text: error.message,
+          text: getMessageError(error),
           title: 'Vod loading failed',
           type: 'warning',
           id: Date.now(),
@@ -87,7 +88,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
     } catch (error) {
       setIsDeleting(false);
       addAlert({
-        text: error.message,
+        text: getMessageError(error),
         title: `Vod deleting error`,
         type: 'error',
         id: Date.now(),
@@ -125,7 +126,7 @@ const UpsertVodRec = ({ id, onSuccess }) => {
       } catch (error) {
         setIsSubmitting(false);
         addAlert({
-          text: error.message,
+          text: getMessageError(error),
           title: `Vod saving error`,
           type: 'error',
           id: Date.now(),

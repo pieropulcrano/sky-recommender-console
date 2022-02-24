@@ -4,6 +4,7 @@ import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchF
 import useNotification from '../../hooks/useNotification';
 import { formatToISO8601 } from '../../utils/date';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
+import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to search a linear event.
@@ -30,7 +31,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       } catch (error) {
         addAlert({
           title: 'Vod search error',
-          text: error.message,
+          text: getMessageError(error),
           type: 'error',
           id: Date.now(),
         });

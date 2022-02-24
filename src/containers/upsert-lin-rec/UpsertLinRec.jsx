@@ -10,6 +10,7 @@ import Spinner from '../../components/spinner/Spinner';
 import LinRecForm from '../../components/lin-rec-form/LinRecForm';
 import useLinRec from '../../hooks/useLinRec';
 import useNotification from '../../hooks/useNotification';
+import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to create / edit a linear recommendation.
@@ -48,7 +49,7 @@ const UpsertLinRec = ({ id, onSuccess }) => {
       onSuccess();
     } catch (error) {
       addAlert({
-        text: error.message,
+        text: getMessageError(error),
         title: `Lin deleting error`,
         type: 'error',
         id: Date.now(),
@@ -86,7 +87,7 @@ const UpsertLinRec = ({ id, onSuccess }) => {
         }
       } catch (error) {
         addAlert({
-          text: error.message,
+          text: getMessageError(error),
           title: 'Lin saving error',
           type: 'error',
           id: Date.now(),
