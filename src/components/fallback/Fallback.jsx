@@ -12,7 +12,7 @@ import { FallbackWrapper } from './Fallback.styled';
 const Fallback = ({ handleAlertFallback }) => {
   return (
     <Container maxWidth="xl">
-      <Marginer direction="horizontal" margin={80} />
+      <Marginer direction="horizontal" margin={60} />
       <FallbackWrapper>
         <UpsertFallbackVodRec handleAlertFallback={handleAlertFallback} />
       </FallbackWrapper>
