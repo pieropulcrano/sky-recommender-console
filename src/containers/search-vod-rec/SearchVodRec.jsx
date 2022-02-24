@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import VodRecSearchForm from '../../components/vod-rec-search-form/VodRecSearchForm';
 import useNotification from '../../hooks/useNotification';
 import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
+import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to search a vod event.
@@ -23,7 +24,7 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
       } catch (error) {
         addAlert({
           title: 'Vod search error',
-          text: error.message,
+          text: getMessageError(error),
           type: 'error',
           id: Date.now(),
         });

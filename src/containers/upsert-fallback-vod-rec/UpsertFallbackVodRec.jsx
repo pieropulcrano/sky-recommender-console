@@ -8,6 +8,7 @@ import {
 import useNotification from '../../hooks/useNotification';
 import VodRecFallbackForm from '../../components/vod-rec-fallback-form/VodRecFallbackForm';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
+import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to create / edit a fallback vod recommendation.
@@ -49,7 +50,7 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
     } catch (error) {
       setIsSubmitting(false);
       addAlert({
-        text: error.message,
+        text: getMessageError(error),
         title: `Vod Fallback saving error`,
         type: 'error',
         id: Date.now(),
