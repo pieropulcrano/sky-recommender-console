@@ -17,7 +17,7 @@ export const LeftButtons = styled.div`
 
 export const LinRecFormWrapper = styled.div`
   max-width: 100%;
-  width: 800px;
+  width: 700px;
   height: 100%;
   maxheight: 600px;
   paddingtop: 10px;
