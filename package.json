@@ -2,6 +2,7 @@
   "name": "new-recommender",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "11.7.0",
     "@emotion/styled": "11.6.0",
@@ -42,7 +43,7 @@
   "scripts": {
     "start:dev": "env-cmd -f ./.env.development react-scripts start",
     "start:localdev": "env-cmd -f ./.env.development.local react-scripts start",
-    "build": "react-scripts build",
+    "build:test": "env-cmd -f ./.env.test react-scripts build",
     "test": "react-scripts test",
     "test:e2e": "env-cmd -f ./.env.development yarn run cypress open",
     "coverage": "yarn test --coverage .",
