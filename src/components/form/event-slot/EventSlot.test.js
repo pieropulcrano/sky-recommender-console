@@ -204,5 +204,39 @@ describe('Event Slot', () => {
 
       expect(tooltipText).toBeInTheDocument();
     });
+
+    it('should display the start date tooltip', async () => {
+      render(
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+        >
+          <EventSlot {...props} />
+        </Formik>,
+      );
+
+      let startDate = screen.getByTestId(/EventAvailableIcon/);
+      await userEvent.hover(startDate);
+      const tooltipText = await screen.findByText(/Start Program/);
+
+      expect(tooltipText).toBeInTheDocument();
+    });
+
+    it('should display the start date tooltip', async () => {
+      render(
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+        >
+          <EventSlot {...props} />
+        </Formik>,
+      );
+
+      let startDate = screen.getByTestId(/EventBusyIcon/);
+      await userEvent.hover(startDate);
+      const tooltipText = await screen.findByText(/End Program/);
+
+      expect(tooltipText).toBeInTheDocument();
+    });
   });
 });

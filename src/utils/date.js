@@ -1,7 +1,7 @@
 import { format, utcToZonedTime, toDate } from 'date-fns-tz';
 
 const timeZone = 'Europe/Rome';
-const pattern = 'd.M.yyyy HH:mm';
+const pattern = 'dd.MM.yyyy HH:mm';
 
 /**
  * Check if date (in UTC format) is Expired.
