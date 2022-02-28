@@ -21,7 +21,7 @@ describe('Home', () => {
   it('should render', async () => {
     const mockedUseFallbackVodRec = jest.fn(() => {
       return {
-        data: [{ items: [{ id: '', type: 'FALLBACK', recommendation: [] }] }],
+        data: { items: [{ id: '', type: 'FALLBACK', recommendation: [] }] },
         error: undefined,
       };
     });
@@ -39,38 +39,6 @@ describe('Home', () => {
   });
 
   describe('Alert fallback icon', () => {
-    it('should appear an warning icon if vod has warning message if rec array', async () => {
-      const mockedUseFallbackVodRec = jest.fn(() => {
-        return {
-          data: {
-            items: [
-              {
-                id: '',
-                type: 'FALLBACK',
-                recommendation: [{ warningMessage: 'out of date' }],
-              },
-            ],
-          },
-
-          error: undefined,
-        };
-      });
-      jest
-        .spyOn(useFallbackVodRec, 'default')
-        .mockImplementation(mockedUseFallbackVodRec);
-
-      render(
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Home />
-        </LocalizationProvider>,
-      );
-
-      await waitFor(() => {
-        const warningIcon = screen.queryByTestId('warning-fallback');
-        expect(warningIcon).toBeInTheDocument();
-      });
-    });
-
     it('should appear an warning icon if vod has warning message if rec object', async () => {
       const mockedUseFallbackVodRec = jest.fn(() => {
         return {
@@ -110,37 +78,6 @@ describe('Home', () => {
             items: [
               {
                 id: '',
-                type: 'FALLBACK',
-                recommendation: [{ warningMessage: '' }],
-              },
-            ],
-          },
-
-          error: undefined,
-        };
-      });
-      jest
-        .spyOn(useFallbackVodRec, 'default')
-        .mockImplementation(mockedUseFallbackVodRec);
-
-      render(
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Home />
-        </LocalizationProvider>,
-      );
-
-      await waitFor(() => {
-        const warningIcon = screen.queryByTestId('warning-fallback');
-        expect(warningIcon).not.toBeInTheDocument();
-      });
-    });
-
-    it('should not appear an warning icon if vod has not warning message if rec array', async () => {
-      const mockedUseFallbackVodRec = jest.fn(() => {
-        return {
-          data: {
-            items: [
-              {
                 type: 'FALLBACK',
                 recommendation: [{ warningMessage: '' }],
               },
