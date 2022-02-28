@@ -8,19 +8,21 @@ import IconButton from '@mui/material/IconButton';
 import HdIcon from '@material-ui/icons/Hd';
 import SdIcon from '@mui/icons-material/Sd';
 import Box from '@mui/material/Box';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import EventBusyIcon from '@mui/icons-material/EventBusy';
 
 export const SlotWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100px;
-  max-height: 200px;
+  width: 111px;
+  max-height: 216px;
   margin-right: 10px;
 `;
 
 export const EventImageWrapper = styled(Box)`
   position: relative;
-  width: 100px;
-  height: 140px;
+  width: 111px;
+  height: 163.79px;
   background-color: #fff;
   border: ${({ error }) => error && '1px solid #d32f2f'};
 `;
@@ -73,8 +75,8 @@ export const EmptyEventWrapper = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 140px;
+  width: 111px;
+  height: 163.79px;
   border: ${({ error }) => !error && '1px solid #ccc'};
 `;
 
@@ -88,5 +90,17 @@ export const EventTitle = styled(Title)`
 `;
 
 export const EventDateTime = styled((props) => <Typography {...props} />)`
-  font-size: 12px;
+  margin-left: 5px;
+  font-size: 11px;
+`;
+
+export const StartDateIcon = styled(EventAvailableIcon)`
+  font-size: 16px !important;
+  bottom: 0;
+  color: #2e7d32;
+`;
+export const EndDateIcon = styled(EventBusyIcon)`
+  font-size: 16px !important;
+  bottom: 0;
+  color: #d32f2f;
 `;

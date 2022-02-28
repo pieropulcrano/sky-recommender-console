@@ -4,6 +4,7 @@ import { useField, useFormikContext } from 'formik';
 import { formatToHumanReadable } from '../../../utils/date';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
+import Grid from '@mui/material/Grid';
 import { Tooltip } from '@material-ui/core';
 import {
   SlotWrapper,
@@ -18,6 +19,8 @@ import {
   EventTitle,
   EventDateTime,
   AddIcon,
+  StartDateIcon,
+  EndDateIcon,
 } from './EventSlot.styled';
 
 /**
@@ -82,12 +85,26 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </EventTitle>
         </Tooltip>
       )}
-      <EventDateTime data-test="event-startProgram" noWrap>
-        {value.startProgram && formatToHumanReadable(value.startProgram)}
-      </EventDateTime>
-      <EventDateTime data-test="event-endProgram" noWrap>
-        {value.endProgram && formatToHumanReadable(value.endProgram)}
-      </EventDateTime>
+      {value.startProgram && (
+        <Grid container justify="flex-end" alignItems="flex-end">
+          <Tooltip title="Start Program">
+            <StartDateIcon />
+          </Tooltip>
+          <EventDateTime data-test="event-startProgram" noWrap>
+            {value.startProgram && formatToHumanReadable(value.startProgram)}
+          </EventDateTime>
+        </Grid>
+      )}
+      {value.endProgram && (
+        <Grid container justify="flex-end" alignItems="flex-end">
+          <Tooltip title="End Program">
+            <EndDateIcon />
+          </Tooltip>
+          <EventDateTime data-test="event-endProgram" noWrap>
+            {value.endProgram && formatToHumanReadable(value.endProgram)}
+          </EventDateTime>
+        </Grid>
+      )}
     </SlotWrapper>
   );
 };

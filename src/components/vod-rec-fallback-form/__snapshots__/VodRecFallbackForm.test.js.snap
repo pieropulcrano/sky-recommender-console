@@ -18,12 +18,12 @@ HTMLCollection [
             class="css-uf1ume"
           >
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GU2"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -47,7 +47,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -69,26 +69,60 @@ HTMLCollection [
               >
                 La valle incantata
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GU3"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -112,7 +146,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -134,26 +168,60 @@ HTMLCollection [
               >
                 The Truman Show 2
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GU4"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -177,7 +245,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -199,26 +267,60 @@ HTMLCollection [
               >
                 I mercenari
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GU5"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -242,7 +344,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -264,26 +366,60 @@ HTMLCollection [
               >
                 Rogue one
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61P1"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -307,7 +443,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -329,18 +465,52 @@ HTMLCollection [
               >
                 Doom
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -351,12 +521,12 @@ HTMLCollection [
             class="css-uf1ume"
           >
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GP2"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -380,7 +550,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -402,26 +572,60 @@ HTMLCollection [
               >
                 La valle incantata 2
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GP3"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -445,7 +649,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -467,26 +671,60 @@ HTMLCollection [
               >
                 Se mi lasci ti cancello
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GP4"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -510,7 +748,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -532,26 +770,60 @@ HTMLCollection [
               >
                 I mercenari 2
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  24.12.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="css-hnxnia"
+              class="css-1t250by"
               data-test="61GP5"
               data-test-slot="fallback-slot"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
@@ -575,7 +847,7 @@ HTMLCollection [
                 </button>
                 
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <svg
                     aria-hidden="true"
@@ -597,27 +869,61 @@ HTMLCollection [
               >
                 VOD Scaduto
               </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-startProgram"
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                24.12.2021 13:00
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fxwdb4-MuiTypography-root"
-                data-test="event-endProgram"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1wr1quj-MuiSvgIcon-root"
+                  data-testid="EventAvailableIcon"
+                  focusable="false"
+                  title="Start Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.53 11.06 15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-startProgram"
+                >
+                  24.12.2021 13:00
+                </p>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
+                justify="flex-end"
               >
-                14.1.2022 16:00
-              </p>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-hkadye-MuiSvgIcon-root"
+                  data-testid="EventBusyIcon"
+                  focusable="false"
+                  title="End Program"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m9.31 17 2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-xwvvpn-MuiTypography-root"
+                  data-test="event-endProgram"
+                >
+                  14.01.2022 16:00
+                </p>
+              </div>
             </div>
             <div
-              class="empity-slot css-hnxnia"
+              class="empity-slot css-1t250by"
             >
               <div
-                class="MuiBox-root css-nm1vv8"
+                class="MuiBox-root css-1smxw4b"
               >
                 <div
-                  class="MuiBox-root css-1sifg3v"
+                  class="MuiBox-root css-1vwnyhv"
                 >
                   <button
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
