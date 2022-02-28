@@ -2,7 +2,7 @@ import React from 'react';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import * as vodRecProvider from '../../providers/vod-rec-provider/VodRecProvider';
+import * as EventProvider from '../../providers/event-provider/EventProvider';
 import vodEventFixture from '../../../fixtures/vod-event';
 import SearchVodRec from './SearchVodRec';
 
@@ -49,7 +49,7 @@ describe('Search Vod Rec', () => {
         return vodEventFixture.items;
       });
       jest
-        .spyOn(vodRecProvider, 'searchVodRec')
+        .spyOn(EventProvider, 'searchEvent')
         .mockImplementation(mockedSearchVodRec);
 
       render(<MockSearchVodRec {...props} />);
@@ -75,7 +75,7 @@ describe('Search Vod Rec', () => {
         throw new Error('error');
       });
       jest
-        .spyOn(vodRecProvider, 'searchVodRec')
+        .spyOn(EventProvider, 'searchEvent')
         .mockImplementation(mockedSearchVodRec);
 
       render(<MockSearchVodRec {...props} />);
@@ -104,7 +104,7 @@ describe('Search Vod Rec', () => {
         return vodEventFixture.items;
       });
       jest
-        .spyOn(vodRecProvider, 'searchVodRec')
+        .spyOn(EventProvider, 'searchEvent')
         .mockImplementation(mockedSearchVodRec);
 
       render(<MockSearchVodRec {...props} />);
@@ -136,7 +136,7 @@ describe('Search Vod Rec', () => {
         return vodEventFixture.items;
       });
       jest
-        .spyOn(vodRecProvider, 'searchVodRec')
+        .spyOn(EventProvider, 'searchEvent')
         .mockImplementation(mockedSearchVodRec);
 
       render(<MockSearchVodRec {...props} />);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchForm';
 import useNotification from '../../hooks/useNotification';
 import { formatToISO8601 } from '../../utils/date';
-import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
+import { searchEvent } from '../../providers/event-provider/EventProvider';
 import getMessageError from '../../utils/errorHandling';
 
 /**
@@ -26,7 +26,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
-        let res = await searchVodRec(toSearch);
+        let res = await searchEvent(toSearch);
         setSearchResult(res);
       } catch (error) {
         addAlert({
