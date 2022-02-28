@@ -9,7 +9,7 @@ import Modal from '../../components/modal/Modal';
 import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
 import { Hidden, StyleWrapper } from './Scheduler.styled';
 import { resources, recTypes } from './config';
-import { mapForScheduler } from './Scheduler.helpers';
+import { prepareForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
 
@@ -52,7 +52,7 @@ const Scheduler = () => {
           validFrom: formatToISO8601(info.startStr),
           validTo: formatToISO8601(info.endStr),
         });
-        const data = mapForScheduler(res);
+        const data = prepareForScheduler(res);
         success(data);
       } catch (err) {
         addAlert({
