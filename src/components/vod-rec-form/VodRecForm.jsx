@@ -11,11 +11,11 @@ import Select from '../form/select/Select';
 import ClearBtn from '../form/clear-btn/ClearBtn';
 import Modal from '../modal/Modal';
 import {
-  VocRecFormWrapper,
+  RecFormWrapper,
   SlotsRowWrapper,
   ButtonsWrapper,
   LeftButtons,
-} from './VodRecForm.styled';
+} from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { clusters, DEFAULT_VALUES } from './config';
 import { isExpired } from '../../utils/date';
@@ -99,7 +99,7 @@ const VocRecForm = ({
   };
 
   return (
-    <VocRecFormWrapper>
+    <RecFormWrapper>
       <Formik
         onSubmit={handleSubmit}
         initialValues={mergedInitialValues}
@@ -202,7 +202,7 @@ const VocRecForm = ({
           </Form>
         )}
       </Formik>
-    </VocRecFormWrapper>
+    </RecFormWrapper>
   );
 };
 
