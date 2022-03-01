@@ -12,10 +12,10 @@ import { isEditingPresentRecSchema, validationSchema } from './validation';
 import { isExpired, nowIsBetweenTwoDates } from '../../utils/date';
 import {
   SlotsRowWrapper,
-  LinRecFormWrapper,
+  RecFormWrapper,
   LeftButtons,
   ButtonsWrapper,
-} from './LinRecForm.styled';
+} from '../common/Common.styled';
 import Marginer from '../marginer/Marginer';
 import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import { clusters, DEFAULT_VALUES } from './config';
@@ -102,7 +102,7 @@ const LinRecForm = ({
   const handleSubmit = (values) => onSubmit(values);
 
   return (
-    <LinRecFormWrapper>
+    <RecFormWrapper>
       <Formik
         initialValues={mergedInitialValues}
         validationSchema={
@@ -210,7 +210,7 @@ const LinRecForm = ({
           </Form>
         )}
       </Formik>
-    </LinRecFormWrapper>
+    </RecFormWrapper>
   );
 };
 

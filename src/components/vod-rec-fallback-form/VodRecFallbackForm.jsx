@@ -7,11 +7,8 @@ import EventSlot from '../form/event-slot/EventSlot';
 import SearchVodRec from '../../containers/search-vod-rec/SearchVodRec';
 import ClearBtn from '../form/clear-btn/ClearBtn';
 import Modal from '../modal/Modal';
-import {
-  VocRecFallbackFormWrapper,
-  SlotsRowWrapper,
-  ButtonsWrapper,
-} from './VodRecFallbackForm.styled';
+import { VocRecFallbackFormWrapper } from './VodRecFallbackForm.styled';
+import { SlotsRowWrapper, ButtonsWrapper } from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { DEFAULT_VALUES } from './config';
 

@@ -7,9 +7,9 @@ import Marginer from '../marginer/Marginer';
 import DataGridTable from '../form/data-grid-table/DataGridTable';
 import LinEventSearchForm from '../lin-event-search-form/LinEventSearchForm';
 import {
-  LinRecSearchFormWrapper,
+  RecSearchFormWrapper,
   SelectButtonWrapper,
-} from './LinRecSearchForm.styled';
+} from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
 
@@ -24,7 +24,7 @@ const LinRecSearchForm = ({
   searchResult,
 }) => {
   return (
-    <LinRecSearchFormWrapper>
+    <RecSearchFormWrapper>
       <LinEventSearchForm onSubmit={onSearch} />
       <Formik
         initialValues={initialValues}
@@ -52,7 +52,7 @@ const LinRecSearchForm = ({
           </Grid>
         </Form>
       </Formik>
-    </LinRecSearchFormWrapper>
+    </RecSearchFormWrapper>
   );
 };
 

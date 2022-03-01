@@ -7,9 +7,9 @@ import VodEventSearchForm from '../vod-event-search-form/VodEventSearchForm';
 import Marginer from '../marginer/Marginer';
 import DataGridTable from '../form/data-grid-table/DataGridTable';
 import {
-  VodRecSearchFormWrapper,
+  RecSearchFormWrapper,
   SelectButtonWrapper,
-} from './VodRecSearchForm.styled';
+} from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
 
@@ -25,7 +25,7 @@ const VodRecSearchForm = ({
 }) => {
   const handleSubmit = (values) => onSubmit(values);
   return (
-    <VodRecSearchFormWrapper>
+    <RecSearchFormWrapper>
       <VodEventSearchForm onSubmit={onSearch} />
       <Formik
         initialValues={initialValues}
@@ -53,7 +53,7 @@ const VodRecSearchForm = ({
           </Grid>
         </Form>
       </Formik>
-    </VodRecSearchFormWrapper>
+    </RecSearchFormWrapper>
   );
 };
 

@@ -8,12 +8,12 @@ export const VocRecFallbackFormWrapper = styled.div`
   padding-top: 10px;
 `;
 
-export const SlotsRowWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+// export const SlotsRowWrapper = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `;
 
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+// export const ButtonsWrapper = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `;
