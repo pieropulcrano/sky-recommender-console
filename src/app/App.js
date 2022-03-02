@@ -19,19 +19,7 @@ import Login from '../pages/login/Login';
  */
 const App = () => {
   const { token, saveToken, removeToken } = useToken();
-  // if (!token) {
-  //   return (
-  //     <Router basename={`${process.env.REACT_APP_BASENAME}`}>
-  //       <CssBaseline />
-  //       <LocalizationProvider dateAdapter={AdapterDateFns}>
-  //         <AlertContextProvider>
-  //           <Login saveToken={saveToken} />
-  //           <Notification />
-  //         </AlertContextProvider>
-  //       </LocalizationProvider>
-  //     </Router>
-  //   );
-  // }
+
   return (
     <Router basename={`${process.env.REACT_APP_BASENAME}`}>
       <CssBaseline />

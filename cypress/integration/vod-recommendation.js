@@ -45,7 +45,9 @@ describe('Testing crud vod raccomandation', () => {
     cy.useMockDataForCreate();
     cy.useMockDataForUpdate();
     cy.useMockDataForDelete();
+    cy.mockLogin();
     cy.visit(Cypress.env().baseUrl);
+    cy.login();
   });
 
   /************************************CREATE******************************************************************************************************** */

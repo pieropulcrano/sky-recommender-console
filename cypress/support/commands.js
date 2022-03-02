@@ -19,6 +19,17 @@ Cypress.Commands.add('testSearchVodModal', (event) => {
   });
 });
 
+Cypress.Commands.add('login', () => {
+  let user = 'test';
+  let pwd = 'test';
+  // search lin event title
+  cy.get('input[type="text"]').type(user);
+  // insert startDate
+  cy.get('input[type="password"]').type(pwd);
+  //submit
+  cy.contains('Login').click();
+});
+
 Cypress.Commands.add('selecetNewLine', (event, startDateEvent) => {
   // get the opened modal
   cy.get('[data-test="search-lin-modal"]').within(() => {
@@ -122,4 +133,14 @@ Cypress.Commands.add('useMockDataForDelete', () => {
       });
     },
   );
+});
+
+Cypress.Commands.add('mockLogin', () => {
+  cy.intercept({ method: 'POST', url: Cypress.env().loginUrl }, (req) => {
+    req.reply({
+      statusCode: 201,
+      body: { stauts: '0', message: '' },
+      delay: 10, // milliseconds
+    });
+  });
 });

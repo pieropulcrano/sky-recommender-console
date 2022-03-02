@@ -4,6 +4,7 @@ describe('Testing Schedule Page', () => {
   it('Check render all reccomandation', () => {
     cy.useMockDataForSchedule();
     cy.useMockDataForFallback();
+    cy.mockLogin();
     cy.intercept(
       { method: 'GET', url: Cypress.env().recommendationsUrl + '*' },
       (req) => {
@@ -11,6 +12,7 @@ describe('Testing Schedule Page', () => {
       },
     ).as('searchRequest');
     cy.visit(Cypress.env().baseUrl);
+    cy.login();
     cy.wait('@searchRequest').then((interception) => {
       //se non è tornato 304
       if (interception.response.statusCode == 200) {

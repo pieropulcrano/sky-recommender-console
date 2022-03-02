@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useNotification from '../../hooks/useNotification';
-import LoginForm from '../../components/form/login-form/LoginForm';
+import LoginForm from '../../components/login-form/LoginForm';
 import { loginUser } from '../../providers/auth-provider/AuthProvider';
 
 const Login = ({ saveToken }) => {
