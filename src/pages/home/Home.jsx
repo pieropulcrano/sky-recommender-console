@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -9,14 +10,15 @@ import Marginer from '../../components/marginer/Marginer';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { TabIcon, Warning } from './Home.styled';
+import IconButton from '@mui/material/IconButton';
+import { TabIcon, Warning, LogoutIcon } from './Home.styled';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
 
 /**
  * Component rendered when the user lands on the site homepage.
  */
 
-const Home = () => {
+const Home = ({ removeToken }) => {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [alertFallback, setAlertFallback] = React.useState(0);
   const { data: fallbackVodRec } = useFallbackVodRec();
@@ -47,9 +49,12 @@ const Home = () => {
       <AppBar data-test="app-bar" position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" flexGrow="1">
               SKY Recommender Console
             </Typography>
+            <IconButton onClick={() => removeToken()}>
+              <LogoutIcon />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
@@ -78,5 +83,11 @@ const Home = () => {
       </Container>
     </>
   );
+};
+Home.propTypes = {
+  /**
+   * Callback function called when the user clicks on the Logout button.
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 export default Home;
