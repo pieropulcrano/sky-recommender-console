@@ -14,6 +14,7 @@ describe('Testing crud Line raccomandation', () => {
     cy.useMockDataForCreate();
     cy.useMockDataForUpdate();
     cy.useMockDataForDelete();
+    cy.mockLogin();
 
     //intercept sd search
     cy.fixture('linear-event').then((recc) => {
@@ -57,6 +58,7 @@ describe('Testing crud Line raccomandation', () => {
       );
     });
     cy.visit(Cypress.env().baseUrl);
+    cy.login();
   });
 
   /************************************CREATE******************************************************************************************************** */
