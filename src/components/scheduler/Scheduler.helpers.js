@@ -20,7 +20,7 @@ function getResourceId(cluster, type) {
  * @returns {Array} - The array containing the recommendations in the required shape.
  */
 
-export function mapForScheduler(recommendations) {
+export function prepareForScheduler(recommendations) {
   if (!recommendations) throw new Error('No recommendations provided.');
   return recommendations.items.map((rec) => ({
     id: rec.id,
