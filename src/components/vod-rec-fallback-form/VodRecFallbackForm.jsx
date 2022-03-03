@@ -101,7 +101,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
             </Grid>
 
             <Modal
-              title="SEARCH VOD"
+              title="Search VOD Event"
               data_test="search-vod-modal"
               open={open}
               handleClose={handleClose}

@@ -196,7 +196,9 @@ const LinRecForm = ({
               </Grid>
             </Grid>
             <Modal
-              title={`SEARCH LIN [${currentSlot?.split('.')[2].toUpperCase()}]`}
+              title={`Search Linear Event [${currentSlot
+                ?.split('.')[2]
+                .toUpperCase()}]`}
               open={open}
               handleClose={handleClose}
               data_test="search-lin-modal"

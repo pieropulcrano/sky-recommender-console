@@ -8,7 +8,7 @@ import Spinner from '../spinner/Spinner';
 import Modal from '../../components/modal/Modal';
 import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
 import { Hidden, StyleWrapper } from './Scheduler.styled';
-import { resources, recTypes } from './config';
+import { resources, recTypes, translateRecTypes } from './config';
 import { prepareForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
@@ -33,7 +33,11 @@ const Scheduler = () => {
 
   const CalendarRef = React.useRef();
 
-  const modalTitle = `${isEditing ? `EDIT ${recType}` : `NEW ${recType}`}`;
+  const modalTitle = `${
+    isEditing
+      ? `Edit ${translateRecTypes[recType]} Recommendation`
+      : `Create New ${translateRecTypes[recType]} Recommendation`
+  }`;
 
   const handleOpenModal = () => setOpenModal(true);
 

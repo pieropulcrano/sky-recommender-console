@@ -3,6 +3,10 @@ export const recTypes = {
   lin: 'LIN',
 };
 
+export const translateRecTypes = {
+  VOD: 'VOD',
+  LIN: 'Lienar',
+};
 /**
  * Configuration for the rows dysplayed by the scheduler.
  * Children are the sub-row of each scheduler row.
