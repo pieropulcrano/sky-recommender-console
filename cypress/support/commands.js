@@ -7,7 +7,7 @@ Cypress.Commands.add('testSearchVodModal', (event) => {
     cy.contains('No rows');
     cy.get('input[type="text"]').type(event);
     //clicco sul search
-    cy.contains('Search').click();
+    cy.contains('button', 'Search').click();
     //dovrebbe aver trovato almeno 1 riga
     cy.get('No rows').should('not.exist');
     //clicco la prima riga
@@ -38,7 +38,7 @@ Cypress.Commands.add('selecetNewLine', (event, startDateEvent) => {
     // insert startDate
     cy.get('input[type="text"]').last().type(startDateEvent);
     // click on search button
-    cy.contains('Search').click();
+    cy.contains('button', 'Search').click();
     // it should be at least one result
     cy.get('No rows').should('not.exist');
     // click on first row

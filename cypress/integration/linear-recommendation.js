@@ -93,7 +93,7 @@ describe('Testing crud Line raccomandation', () => {
       });
 
     // invia
-    cy.contains('Create').click();
+    cy.contains('button', 'Create').click();
     // check for notification
     cy.contains('Lin Created');
   });
