@@ -8,7 +8,12 @@ import Spinner from '../spinner/Spinner';
 import Modal from '../../components/modal/Modal';
 import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
 import { Hidden, StyleWrapper } from './Scheduler.styled';
-import { resources, recTypes, translateRecTypes } from './config';
+import {
+  resources,
+  recTypes,
+  translateRecTypes,
+  resourceAreaColumns,
+} from './config';
 import { prepareForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
@@ -133,8 +138,8 @@ const Scheduler = () => {
             initialView="month"
             height="700px"
             resourceAreaWidth="180px"
-            resourceAreaHeaderContent="Clusters"
             resources={resources}
+            resourceAreaColumns={resourceAreaColumns}
             headerToolbar={{
               left: `resourceTimelineDay,resourceTimelineWeek,month`,
               center: 'title',

@@ -14,35 +14,40 @@ export const translateRecTypes = {
 
 export const resources = [
   {
-    id: 'cluster-1',
-    title: 'CINEMA',
-    children: [
-      {
-        id: 'vod-1',
-        title: 'VOD',
-        eventColor: 'orange',
-      },
-      {
-        id: 'lin-1',
-        title: 'LIN',
-        eventColor: 'blue',
-      },
-    ],
+    cluster: 'Cinema',
+    id: 'vod-1',
+    title: 'VOD',
+    eventColor: 'orange',
   },
   {
-    id: 'cluster-2',
-    title: 'NO CINEMA',
-    children: [
-      {
-        id: 'vod-2',
-        title: 'VOD',
-        eventColor: 'orange',
-      },
-      {
-        id: 'lin-2',
-        title: 'LIN',
-        eventColor: 'blue',
-      },
-    ],
+    cluster: 'Cinema',
+    id: 'lin-1',
+    title: 'LIN',
+    eventColor: 'blue',
+  },
+
+  {
+    cluster: 'No Cinema',
+    id: 'vod-2',
+    title: 'VOD',
+    eventColor: 'orange',
+  },
+  {
+    cluster: 'No Cinema',
+    id: 'lin-2',
+    title: 'LIN',
+    eventColor: 'blue',
   },
 ];
+
+export const resourceAreaColumns=[
+  {
+    group: true,
+    field: 'cluster',
+    headerContent: 'Clusters',
+  },
+  {
+    field: 'title',
+    headerContent: 'Type',
+  },
+]
