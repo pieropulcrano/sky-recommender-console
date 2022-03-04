@@ -8,7 +8,7 @@ import DataGridTable from '../form/data-grid-table/DataGridTable';
 import LinEventSearchForm from '../lin-event-search-form/LinEventSearchForm';
 import {
   RecSearchFormWrapper,
-  SelectButtonWrapper,
+  RigthButtonWrapper,
 } from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
@@ -47,11 +47,11 @@ const LinRecSearchForm = ({
               />
             </Grid>
             <Grid item xs={12}>
-              <SelectButtonWrapper>
+              <RigthButtonWrapper>
                 <Button type="submit" variant="contained" color="success">
                   Select
                 </Button>
-              </SelectButtonWrapper>
+              </RigthButtonWrapper>
             </Grid>
           </Grid>
         </Form>
