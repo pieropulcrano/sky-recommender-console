@@ -120,82 +120,92 @@ const LinRecForm = ({
         {({ setFieldValue, values, resetForm }) => (
           <Form data-testid="form-upsert-rec-lin">
             <Grid container spacing={1.5}>
-              {/*Render only if we are creating a new recommendation or we are editing a recommendation scheduled for the future */}
-              {(!recId || isEditingFutureRec) && (
-                <>
-                  <Grid item xs={4}>
-                    <Select
-                      name="cluster"
-                      label="Cluster"
-                      size="medium"
-                      options={clusters}
-                      data-test="select-cluster"
-                    />
-                  </Grid>
-                  <Grid item xs={4}>
-                    <DateTimePicker
-                      name="startDateTime"
-                      label="Start Date"
-                      disablePast
-                    />
-                  </Grid>
-                </>
-              )}
-              {/*Render only if we are creating a new recommendation or we are editing a recommendation scheduled for the present/future */}
-              {(!recId || isEditingPresentRec || isEditingFutureRec) && (
-                <Grid item xs={4}>
-                  <DateTimePicker
-                    name="endDateTime"
-                    label="End Date"
-                    disablePast
-                  />
-                </Grid>
-              )}
-
+              {/*Able only if we are creating a new recommendation or we are editing a recommendation scheduled for the future */}
+              <Grid item xs={4}>
+                <Select
+                  name="cluster"
+                  label="Cluster"
+                  size="medium"
+                  options={clusters}
+                  data-test="select-cluster"
+                  disabled={!recId || isEditingFutureRec ? false : true}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <DateTimePicker
+                  name="startDateTime"
+                  label="Start Date"
+                  disablePast={!recId || isEditingFutureRec ? true : false}
+                  disabled={!recId || isEditingFutureRec ? false : true}
+                />
+              </Grid>
+              {/*Able only if we are creating a new recommendation or we are editing a recommendation scheduled for the present/future */}
+              <Grid item xs={4}>
+                <DateTimePicker
+                  name="endDateTime"
+                  label="End Date"
+                  disablePast={
+                    isEditingPresentRec || isEditingFutureRec || !recId
+                      ? true
+                      : false
+                  }
+                  disabled={
+                    isEditingPresentRec || isEditingFutureRec || !recId
+                      ? false
+                      : true
+                  }
+                />
+              </Grid>
               <Grid item xs={12} data-testid="sd-slot-row">
                 <Marginer direction="horizontal" margin={10} />
                 <SlotsRowWrapper>
                   {createRow(slotTypes.SD, values.startDateTime)}
                 </SlotsRowWrapper>
               </Grid>
-
               <Grid item xs={12} data-testid="hd-slot-row">
                 <SlotsRowWrapper>
                   {createRow(slotTypes.HD, values.startDateTime)}
                 </SlotsRowWrapper>
               </Grid>
-
               <Grid item xs={12}>
                 <ButtonsWrapper>
-                  {(!recId || isEditingFutureRec) && (
-                    <LeftButtons>
-                      <ClearBtn onClick={() => clearSlots(resetForm, values)}>
-                        Clear
-                      </ClearBtn>
-                      <Marginer direction="vertical" margin={10} />
-                      {recId && (
-                        <LoadingButton
-                          variant="contained"
-                          color="error"
-                          loading={isDeleting}
-                          onClick={() => onDelete(recId)}
-                        >
-                          Delete
-                        </LoadingButton>
-                      )}
-                    </LeftButtons>
-                  )}
-
-                  {(!recId || isEditingPresentRec || isEditingFutureRec) && (
-                    <LoadingButton
-                      type="submit"
-                      variant="contained"
-                      color="success"
-                      loading={isSubmitting}
+                  <LeftButtons>
+                    <ClearBtn
+                      disabled={!recId || isEditingFutureRec ? false : true}
+                      onClick={() => clearSlots(resetForm, values)}
                     >
-                      {recId ? 'Update' : 'Create'}
-                    </LoadingButton>
-                  )}
+                      Clear
+                    </ClearBtn>
+                    <Marginer direction="vertical" margin={10} />
+                    {recId && (
+                      <LoadingButton
+                        variant="contained"
+                        color="error"
+                        loading={isDeleting}
+                        onClick={() => onDelete(recId)}
+                        disabled={
+                          !isEditingPresentRec && isEditingFutureRec && recId
+                            ? false
+                            : true
+                        }
+                      >
+                        Delete
+                      </LoadingButton>
+                    )}
+                  </LeftButtons>
+                  <LoadingButton
+                    type="submit"
+                    variant="contained"
+                    color="success"
+                    loading={isSubmitting}
+                    disabled={
+                      !isEditingPresentRec && !isEditingFutureRec && recId
+                        ? true
+                        : false
+                    }
+                  >
+                    {recId ? 'Update' : 'Create'}
+                  </LoadingButton>
                 </ButtonsWrapper>
               </Grid>
             </Grid>
