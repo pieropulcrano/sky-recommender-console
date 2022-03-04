@@ -13,10 +13,17 @@ import { initialValues } from './config';
  * Form to search a linear event.
  */
 
-const LinEventSearchForm = ({ onSubmit }) => {
+const LinEventSearchForm = ({ onSubmit, initialStartDateTime }) => {
+  const mergedInitialValues = React.useMemo(
+    () => ({
+      ...initialValues,
+      startDateTime: initialStartDateTime,
+    }),
+    [initialStartDateTime],
+  );
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={mergedInitialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
@@ -45,6 +52,10 @@ LinEventSearchForm.propTypes = {
    * Callback function called when the user click on the onSubmit button
    */
   onSubmit: PropTypes.func.isRequired,
+  /**
+   *  Start date time selected for create Linear rec.
+   */
+  initialStartDateTime: PropTypes.string,
 };
 
 export default LinEventSearchForm;

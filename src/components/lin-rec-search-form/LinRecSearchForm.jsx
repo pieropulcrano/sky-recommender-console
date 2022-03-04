@@ -22,10 +22,14 @@ const LinRecSearchForm = ({
   onSearch,
   isSearching,
   searchResult,
+  initialStartDateTime,
 }) => {
   return (
     <RecSearchFormWrapper>
-      <LinEventSearchForm onSubmit={onSearch} />
+      <LinEventSearchForm
+        onSubmit={onSearch}
+        initialStartDateTime={initialStartDateTime}
+      />
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -74,6 +78,10 @@ LinRecSearchForm.propTypes = {
    * allback function called when the user clicks on the search button.
    */
   onSearch: PropTypes.func.isRequired,
+  /**
+   *   Start date time selected for create Linear rec.
+   */
+  initialStartDateTime: PropTypes.string,
 };
 
 export default LinRecSearchForm;

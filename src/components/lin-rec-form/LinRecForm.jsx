@@ -9,7 +9,11 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import SearchLinRec from '../../containers/search-lin-rec/SearchLinRec';
 import Modal from '../modal/Modal';
 import { isEditingPresentRecSchema, validationSchema } from './validation';
-import { isExpired, nowIsBetweenTwoDates } from '../../utils/date';
+import {
+  isExpired,
+  nowIsBetweenTwoDates,
+  formatToISO8601,
+} from '../../utils/date';
 import {
   SlotsRowWrapper,
   RecFormWrapper,
@@ -207,6 +211,12 @@ const LinRecForm = ({
                 addEvent={assignEventToSlot(setFieldValue)}
                 resolution={currentSlot?.split('.')[2].toUpperCase()}
                 handleClose={handleClose}
+                initialStartDateTime={
+                  values.startDateTime &&
+                  !isNaN(Date.parse(formatToISO8601(values.startDateTime)))
+                    ? formatToISO8601(values.startDateTime)
+                    : null
+                }
               />
             </Modal>
           </Form>

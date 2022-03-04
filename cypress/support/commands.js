@@ -36,6 +36,7 @@ Cypress.Commands.add('selecetNewLine', (event, startDateEvent) => {
     // search lin event title
     cy.get('input[type="text"]').first().type(event);
     // insert startDate
+    cy.get('input[type="text"]').last().clear();
     cy.get('input[type="text"]').last().type(startDateEvent);
     // click on search button
     cy.contains('button', 'Search').click();
