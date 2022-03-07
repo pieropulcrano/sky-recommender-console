@@ -59,6 +59,10 @@ export function nowIsBetweenTwoDates(startDateTime, endDateTime) {
  */
 
 export function formatToISO8601(dateTime) {
-  const zonedDate = utcToZonedTime(dateTime, timeZone);
-  return toDate(zonedDate).toISOString().split('.')[0] + 'Z';
+  try {
+    const zonedDate = utcToZonedTime(dateTime, timeZone);
+    return toDate(zonedDate).toISOString().split('.')[0] + 'Z';
+  } catch (error) {
+    return null;
+  }
 }

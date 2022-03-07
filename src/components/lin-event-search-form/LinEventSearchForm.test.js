@@ -15,7 +15,7 @@ describe('LinEventSearchForm', () => {
   it('should render', () => {
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <LinEventSearchForm onSubmit={onSubmit} />
+        <LinEventSearchForm onSubmit={onSubmit} initialStartDateTime={null} />
       </LocalizationProvider>,
     );
     expect(document.body.childNodes[0].children).toMatchSnapshot();
@@ -25,7 +25,7 @@ describe('LinEventSearchForm', () => {
     it('if is empty', async () => {
       render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <LinEventSearchForm onSubmit={onSubmit} />
+          <LinEventSearchForm onSubmit={onSubmit} initialStartDateTime={null} />
         </LocalizationProvider>,
       );
 
@@ -37,7 +37,7 @@ describe('LinEventSearchForm', () => {
     it('if endDate is not provided', async () => {
       const { container } = render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <LinEventSearchForm onSubmit={onSubmit} />
+          <LinEventSearchForm onSubmit={onSubmit} initialStartDateTime={null} />
         </LocalizationProvider>,
       );
 
@@ -54,7 +54,7 @@ describe('LinEventSearchForm', () => {
     it('if endDate is invalid', async () => {
       const { container } = render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <LinEventSearchForm onSubmit={onSubmit} />
+          <LinEventSearchForm onSubmit={onSubmit} initialStartDateTime={null} />
         </LocalizationProvider>,
       );
 
@@ -74,10 +74,10 @@ describe('LinEventSearchForm', () => {
   });
 
   describe('should submit', () => {
-    it('when the user fill the form', async () => {
+    it('when the user fill the form and the intialDate is empty', async () => {
       render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <LinEventSearchForm onSubmit={onSubmit} />
+          <LinEventSearchForm onSubmit={onSubmit} initialStartDateTime={null} />
         </LocalizationProvider>,
       );
 
@@ -86,6 +86,25 @@ describe('LinEventSearchForm', () => {
 
       const dateInput = screen.getByLabelText('Choose date');
       await userEvent.type(dateInput, '20/10/2022 6:00 PM', { delay: 1 });
+
+      const searchButton = screen.queryByText('Search');
+      await waitFor(() => fireEvent.click(searchButton));
+
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+    });
+
+    it('when the user fill the form and using the initalDate passed from upstairs', async () => {
+      render(
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <LinEventSearchForm
+            onSubmit={onSubmit}
+            initialStartDateTime={'2022-02-01T14:00:00Z'}
+          />
+        </LocalizationProvider>,
+      );
+
+      const titleInput = screen.queryByLabelText('Title');
+      userEvent.type(titleInput, 'title to search');
 
       const searchButton = screen.queryByText('Search');
       await waitFor(() => fireEvent.click(searchButton));

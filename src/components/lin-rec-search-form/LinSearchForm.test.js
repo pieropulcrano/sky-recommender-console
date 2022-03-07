@@ -13,6 +13,7 @@ describe('LinSearchForm', () => {
     onSubmit,
     onSearch,
     isSearching: false,
+    initialStartDateTime: null,
   };
 
   beforeEach(() => {

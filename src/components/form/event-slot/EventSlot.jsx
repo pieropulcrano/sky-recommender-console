@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import Grid from '@mui/material/Grid';
 import { Tooltip } from '@material-ui/core';
+import { ErrorMsg } from '../error-msg/ErrorMsg.styled';
 import {
   SlotWrapper,
   EventImageWrapper,
@@ -52,6 +53,9 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
             )}
           </EmptyEventWrapper>
         </EventImageWrapper>
+        {meta && meta.touched && meta.error && (
+          <ErrorMsg>This slot is required to continue saving</ErrorMsg>
+        )}
       </SlotWrapper>
     );
   }

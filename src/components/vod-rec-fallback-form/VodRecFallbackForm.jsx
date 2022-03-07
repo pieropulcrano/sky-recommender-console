@@ -5,10 +5,9 @@ import Grid from '@mui/material/Grid';
 import LoadingButton from '@mui/lab/LoadingButton';
 import EventSlot from '../form/event-slot/EventSlot';
 import SearchVodRec from '../../containers/search-vod-rec/SearchVodRec';
-import ClearBtn from '../form/clear-btn/ClearBtn';
 import Modal from '../modal/Modal';
 import { VocRecFallbackFormWrapper } from './VodRecFallbackForm.styled';
-import { SlotsRowWrapper, ButtonsWrapper } from '../common/Common.styled';
+import { SlotsRowWrapper, RigthButtonWrapper } from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { DEFAULT_VALUES } from './config';
 
@@ -42,13 +41,6 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
     });
   };
 
-  const clearSlots = (resetForm) =>
-    resetForm({
-      values: {
-        ...DEFAULT_VALUES,
-      },
-    });
-
   const createRow = (startIndex, endIndex) => {
     const rows = [];
     for (let i = startIndex; i <= endIndex; i++) {
@@ -72,7 +64,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
         validationSchema={validationSchema}
         enableReinitialize
       >
-        {({ setFieldValue, resetForm }) => (
+        {({ setFieldValue }) => (
           <Form>
             <Grid container spacing={1.5}>
               <Grid item xs={12}>
@@ -84,10 +76,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
               </Grid>
 
               <Grid item xs={12}>
-                <ButtonsWrapper>
-                  <ClearBtn onClick={() => clearSlots(resetForm)}>
-                    Clear
-                  </ClearBtn>
+                <RigthButtonWrapper>
                   <LoadingButton
                     type="submit"
                     variant="contained"
@@ -96,12 +85,12 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
                   >
                     Update
                   </LoadingButton>
-                </ButtonsWrapper>
+                </RigthButtonWrapper>
               </Grid>
             </Grid>
 
             <Modal
-              title="SEARCH VOD"
+              title="Search VOD Event"
               data_test="search-vod-modal"
               open={open}
               handleClose={handleClose}

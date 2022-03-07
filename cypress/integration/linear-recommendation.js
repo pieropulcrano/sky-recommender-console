@@ -93,7 +93,7 @@ describe('Testing crud Line raccomandation', () => {
       });
 
     // invia
-    cy.contains('Create').click();
+    cy.contains('button', 'Create').click();
     // check for notification
     cy.contains('Lin Created');
   });
@@ -139,7 +139,7 @@ describe('Testing crud Line raccomandation', () => {
     cy.get(`[data-testid="${eventId}"]`).click({ force: true });
     // pick a random cluster
     // fill recommendation endDateTime
-    cy.get('input[type="text"]').clear();
+    cy.get('input[type="text"]').last().clear();
     cy.get('input[type="text"]').last().type(endDateTime);
     // submit update
     cy.contains('Update').click();

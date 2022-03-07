@@ -68,18 +68,4 @@ describe('Testing Fallback Page', () => {
     //dovrebbe esser comparsa la  notifica di ok
     cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 1);
   });
-
-  it('Check clear button', () => {
-    //check exist
-    cy.contains('Clear')
-      .as('clearButton')
-      .should('have.length', 1)
-      .click({ force: true });
-    //dovrebbe aver eliminato tutti i vod event, quindi dovrebbero esserci 10 +
-    cy.get('[data-testid="AddCircleIcon"]').should('have.length', 10);
-    //click update senza elementi dovrebbe dare errore
-    cy.contains('Update').click({ force: true });
-    //non dovrebbe comparire notifica ok
-    cy.get('[data-test="vod-fallback-ok-not"]').should('have.length', 0);
-  });
 });

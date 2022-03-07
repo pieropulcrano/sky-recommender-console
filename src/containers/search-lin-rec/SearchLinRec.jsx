@@ -10,7 +10,12 @@ import getMessageError from '../../utils/errorHandling';
  * Container component that handle the logic to search a linear event.
  */
 
-const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
+const SearchLinRec = ({
+  addEvent,
+  handleClose,
+  resolution,
+  initialStartDateTime,
+}) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
   const { addAlert } = useNotification();
@@ -54,6 +59,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       isSearching={isSearching}
       searchResult={searchResult}
       resolution={resolution}
+      initialStartDateTime={initialStartDateTime}
     />
   );
 };
@@ -71,6 +77,10 @@ SearchLinRec.propTypes = {
    *  Resolution of the event to search.
    */
   resolution: PropTypes.oneOf(['HD', 'SD']),
+  /**
+   *   Start date time selected for create Linear rec.
+   */
+  initialStartDateTime: PropTypes.string,
 };
 
 export default SearchLinRec;

@@ -58,6 +58,7 @@ export const XButton = styled((props) => <IconButton {...props} />)`
   padding: 0;
   right: 0;
   top: 0;
+  background-color: #2c3e50;
 `;
 
 export const AddIcon = styled((props) => <AddCircleIcon {...props} />)`

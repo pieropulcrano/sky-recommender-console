@@ -11,5 +11,8 @@ export async function loginUser(credentials) {
     process.env.REACT_APP_API_LOGIN_URL,
     credentials,
   );
+  if (res.data.status === '999') {
+    throw new Error();
+  }
   return res.data;
 }
