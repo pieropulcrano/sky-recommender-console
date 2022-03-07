@@ -53,13 +53,13 @@ describe('Lin Rec Form', () => {
       </LocalizationProvider>,
     );
 
-    expect(screen.queryByLabelText('Cluster')).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('Start Date')).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('End Date')).not.toBeInTheDocument();
+    expect(screen.getByDisplayValue(linRec.items[0].cluster)).toBeDisabled();
+    expect(screen.queryByLabelText(/Dec 27, 1970/)).toBeDisabled();
+    expect(screen.queryByLabelText(/Dec 27, 1972/)).toBeDisabled();
     expect(screen.queryByText('Create')).not.toBeInTheDocument();
-    expect(screen.queryByText('Clear')).not.toBeInTheDocument();
-    expect(screen.queryByText('Update')).not.toBeInTheDocument();
-    expect(screen.queryByText('Delete')).not.toBeInTheDocument();
+    expect(screen.queryByText('Clear')).toBeDisabled();
+    expect(screen.queryByText('Update')).toBeDisabled();
+    expect(screen.queryByText('Delete')).toBeDisabled();
   });
 
   it('should render correctly whit a recommendation scheduled for the present', () => {
@@ -77,13 +77,13 @@ describe('Lin Rec Form', () => {
       </LocalizationProvider>,
     );
 
-    expect(screen.queryByLabelText('Cluster')).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('Start Date')).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('End Date')).toBeInTheDocument();
+    expect(screen.getByDisplayValue(linRec.items[0].cluster)).toBeDisabled();
+    expect(screen.queryByLabelText(/Dec 14, 2021/)).toBeDisabled();
+    expect(screen.queryByLabelText(/Dec 14, 2999/)).not.toBeDisabled();
     expect(screen.queryByText('Create')).not.toBeInTheDocument();
-    expect(screen.queryByText('Clear')).not.toBeInTheDocument();
-    expect(screen.queryByText('Update')).toBeInTheDocument();
-    expect(screen.queryByText('Delete')).not.toBeInTheDocument();
+    expect(screen.queryByText('Clear')).toBeDisabled();
+    expect(screen.queryByText('Update')).not.toBeDisabled();
+    expect(screen.queryByText('Delete')).toBeDisabled();
   });
 
   it('should render correctly whit a recommendation scheduled for the future', () => {
@@ -101,13 +101,15 @@ describe('Lin Rec Form', () => {
       </LocalizationProvider>,
     );
 
-    expect(screen.queryByLabelText('Cluster')).toBeInTheDocument();
-    expect(screen.queryByLabelText('Start Date')).toBeInTheDocument();
-    expect(screen.queryByLabelText('End Date')).toBeInTheDocument();
+    expect(
+      screen.getByDisplayValue(linRec.items[0].cluster),
+    ).not.toBeDisabled();
+    expect(screen.queryByLabelText(/Nov 14, 2999/)).not.toBeDisabled();
+    expect(screen.queryByLabelText(/Dec 14, 2999/)).not.toBeDisabled();
     expect(screen.queryByText('Create')).not.toBeInTheDocument();
-    expect(screen.queryByText('Clear')).toBeInTheDocument();
-    expect(screen.queryByText('Update')).toBeInTheDocument();
-    expect(screen.queryByText('Delete')).toBeInTheDocument();
+    expect(screen.queryByText('Clear')).not.toBeDisabled();
+    expect(screen.queryByText('Update')).not.toBeDisabled();
+    expect(screen.queryByText('Delete')).not.toBeDisabled();
   });
 
   describe('should not submit', () => {
