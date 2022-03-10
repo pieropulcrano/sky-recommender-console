@@ -9,54 +9,6 @@ const startDateEvent = cy.generatePastDate(7, 'day', 'DD/MM/YYYY h:mm A'); //'19
 
 describe('Testing crud Line raccomandation', () => {
   beforeEach(() => {
-    cy.useMockDataForSchedule();
-    cy.useMockDataForFallback();
-    cy.useMockDataForCreate();
-    cy.useMockDataForUpdate();
-    cy.useMockDataForDelete();
-    cy.mockLogin();
-
-    //intercept sd search
-    cy.fixture('linear-event').then((recc) => {
-      recc.items[0].title = sdEvent;
-      recc.items[0].resolution = 'SD';
-      cy.intercept(
-        'GET',
-        Cypress.env().eventUrl + '?title=' + sdEvent.replace(/'/g, '%27') + '*',
-        recc,
-      );
-    });
-    //intercept hd search
-    cy.fixture('linear-event').then((recc) => {
-      recc.items[0].title = hdEvent;
-      recc.items[0].resolution = 'HD';
-      cy.intercept(
-        'GET',
-        Cypress.env().eventUrl + '?title=' + hdEvent + '*',
-        recc,
-      );
-    });
-    //intercept future linear
-    cy.fixture('linear-recommendation').then((recc) => {
-      recc.items[0].validFrom = cy.generateFutureDate(1);
-      recc.items[0].validTo = cy.generateFutureDate(2);
-      cy.intercept(
-        'GET',
-        Cypress.env().recommendationUrl + '/' + idFutureLine,
-        recc,
-      );
-    });
-    //intercept present linear
-    cy.fixture('linear-recommendation').then((recc) => {
-      recc.items[0].validFrom = cy.setDay(1);
-      recc.items[0].validTo = cy.generateFutureDate(1);
-      recc.items[0].id = idPresentLine;
-      cy.intercept(
-        'GET',
-        Cypress.env().recommendationUrl + '/' + idPresentLine,
-        recc,
-      );
-    });
     cy.visit(Cypress.env().baseUrl);
     cy.login();
   });
