@@ -1,4 +1,4 @@
-let randomIndexClusterVal = 'CL_CIN';
+let randomIndexClusterVal = 'CL_NOT_CIN';
 let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
@@ -6,46 +6,6 @@ let mockData;
 
 describe('Testing crud vod raccomandation', () => {
   beforeEach(() => {
-    // Cypress starts out with a blank slate for each test
-    // so we must tell it to visit our website with the `cy.visit()` command.
-    // Since we want to visit the same URL at the start of all our tests,
-    // we include it in our beforeEach function so that it runs before each test
-    cy.useMockDataForSchedule();
-    cy.useMockDataForFallback();
-    cy.useMockDataForSearchVod();
-    //parsing fixture
-    cy.fixture('previous-vod-recommendation').then((val) => {
-      val.item.validFrom = cy.generatePastDate(1, 'month');
-      val.item.id = vodId;
-      val.id = vodId;
-
-      mockData = val;
-    });
-    cy.intercept(
-      {
-        method: 'GET',
-        url:
-          Cypress.env().recommendationUrl +
-          '?cluster=' +
-          randomIndexClusterVal +
-          '*',
-      },
-      (req) => {
-        req.reply({
-          statusCode: 201,
-          body: mockData,
-          delay: 10, // milliseconds
-        });
-      },
-    ).as('searchRequest');
-    cy.fixture('vod-recommendation').then((recc) => {
-      recc.items[0].validFrom = cy.generateFutureDate(1);
-      cy.intercept('GET', Cypress.env().recommendationUrl + '/' + vodId, recc);
-    });
-    cy.useMockDataForCreate();
-    cy.useMockDataForUpdate();
-    cy.useMockDataForDelete();
-    cy.mockLogin();
     cy.visit(Cypress.env().baseUrl);
     cy.login();
   });
@@ -107,15 +67,9 @@ describe('Testing crud vod raccomandation', () => {
     //click on load
     cy.contains('Load').click();
     //intercetto la get search e verifico che i dati siano correti
+    //check render tutti i vod
+    cy.get('[data-test-slot="prev-vod-slot"]').should('have.length', '5');
 
-    cy.wait('@searchRequest').should(({ req, response }) => {
-      let body = response.body;
-      //check render tutti i vod
-      cy.get('[data-test-slot="prev-vod-slot"]').should(
-        'have.length',
-        body.item.recommendation.length,
-      );
-    });
     //elimino gli slot esistenti e ne ricreo
     cy.get('[data-test-slot="prev-vod-slot"]').each(($el, index, $list) => {
       // $el is a wrapped jQuery element

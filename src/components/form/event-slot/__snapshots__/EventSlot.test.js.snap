@@ -266,13 +266,17 @@ HTMLCollection [
         </svg>
       </div>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-      data-test="event-title"
-      title="event-title"
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
     >
-      event-title
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+        data-test="event-title"
+        title="event-title"
+      >
+        event-title
+      </p>
+    </div>
     <div
       class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
       justify="flex-end"
@@ -358,13 +362,17 @@ HTMLCollection [
         </svg>
       </div>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-      data-test="event-title"
-      title="event-title"
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
     >
-      event-title
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+        data-test="event-title"
+        title="event-title"
+      >
+        event-title
+      </p>
+    </div>
     <div
       class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
       justify="flex-end"
@@ -480,13 +488,17 @@ HTMLCollection [
         </svg>
       </div>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-      data-test="event-title"
-      title="event-title"
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
     >
-      event-title
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+        data-test="event-title"
+        title="event-title"
+      >
+        event-title
+      </p>
+    </div>
     <div
       class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
       justify="flex-end"

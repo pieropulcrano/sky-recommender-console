@@ -15,7 +15,7 @@ export const SlotWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 111px;
-  max-height: 216px;
+  max-height: 223px;
   margin-right: 10px;
 `;
 
@@ -88,6 +88,10 @@ const Title = React.forwardRef((props, ref) => (
 export const EventTitle = styled(Title)`
   font-size: 12px;
   font-weight: bold;
+`;
+
+export const EventChannel = styled(Title)`
+  font-size: 12px;
 `;
 
 export const EventDateTime = styled((props) => <Typography {...props} />)`
