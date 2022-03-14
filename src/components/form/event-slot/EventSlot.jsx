@@ -61,6 +61,16 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
     );
   }
 
+  const renderTooltipWarning = (message) => {
+    const wariningMessages = message.split(/\r?\n/);
+    const listItems = wariningMessages.map((m, idx) => {
+      if (m !== '') {
+        return <li key={idx}>{m.trim()}</li>;
+      }
+    });
+    return listItems;
+  };
+
   return (
     <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
       <EventImageWrapper>
@@ -71,7 +81,7 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </XButton>
         )}
         {value.warningMessage && (
-          <Tooltip title={value.warningMessage}>
+          <Tooltip title={renderTooltipWarning(value.warningMessage)}>
             <Warning />
           </Tooltip>
         )}

@@ -162,12 +162,7 @@ const LinRecForm = ({
                   {createRow(slotTypes.SD, values.startDateTime)}
                 </SlotsRowWrapper>
               </Grid>
-              <Grid
-                sx={'padding-top: 18px;'}
-                item
-                xs={12}
-                data-testid="hd-slot-row"
-              >
+              <Grid item xs={12} data-testid="hd-slot-row">
                 <SlotsRowWrapper>
                   {createRow(slotTypes.HD, values.startDateTime)}
                 </SlotsRowWrapper>

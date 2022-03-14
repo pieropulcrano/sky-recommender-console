@@ -15,7 +15,7 @@ export const SlotWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 111px;
-  max-height: 216px;
+  max-height: 223px;
   margin-right: 10px;
 `;
 

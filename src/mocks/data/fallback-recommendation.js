@@ -14,7 +14,7 @@ const fallback = {
       resolution: '',
       verticalImageUrl:
         'http://media-now-test.skycdn.it//RM/mds/COL/64/1131584/8739895.jpg',
-      warningMessage: 'warning test',
+      warningMessage: 'warning test \n warning 2',
     },
     {
       id: '8XIL8',
