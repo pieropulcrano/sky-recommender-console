@@ -71,20 +71,6 @@ export async function deleteVodRec(id) {
 }
 
 /**
- * Search a vod event using the provided search keys.
- * @param {Object} params - Object contains the search keys.
- * @returns {Array} The result of the search.
- */
-
-export async function searchVodRec(params) {
-  const query = createUrlQuery(params);
-  const url = `${process.env.REACT_APP_API_EVENT_URL}?${query}`;
-
-  const res = await axios.get(url);
-  return res.data.items;
-}
-
-/**
  * Retrieve a fallback vod recommendation by using the provided id.
  * @param {String} id - The id of the vod recommendation
  * @returns {Object} The requested vod recommendation.

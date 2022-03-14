@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { createUrlQuery } from '../../utils/url';
 
 /**
  * Retrieve a linear recommendation by the provided id.
@@ -47,19 +46,5 @@ export async function deleteLinRec(id) {
   id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
   const res = await axios.delete(url);
-  return res.data;
-}
-
-/**
- * Search a linear event using the provided search keys.
- * @param {Object} params - Object contains the search keys.
- * @returns {Array} The result of the search.
- */
-
-export async function searchLinRec(params) {
-  const query = createUrlQuery(params);
-  const url = `${process.env.REACT_APP_API_EVENT_URL}?${query}`;
-
-  const res = await axios.get(url);
   return res.data;
 }

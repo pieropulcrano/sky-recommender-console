@@ -15,7 +15,7 @@ export const LeftButtons = styled.div`
   justify-content: space-between;
 `;
 
-export const SelectButtonWrapper = styled.div`
+export const RigthButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;

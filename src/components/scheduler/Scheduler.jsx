@@ -8,8 +8,13 @@ import Spinner from '../spinner/Spinner';
 import Modal from '../../components/modal/Modal';
 import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
 import { Hidden, StyleWrapper } from './Scheduler.styled';
-import { resources, recTypes } from './config';
-import { mapForScheduler } from './Scheduler.helpers';
+import {
+  resources,
+  recTypes,
+  translateRecTypes,
+  resourceAreaColumns,
+} from './config';
+import { prepareForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
 
@@ -33,7 +38,11 @@ const Scheduler = () => {
 
   const CalendarRef = React.useRef();
 
-  const modalTitle = `${isEditing ? `EDIT ${recType}` : `NEW ${recType}`}`;
+  const modalTitle = `${
+    isEditing
+      ? `Edit ${translateRecTypes[recType]} Recommendation`
+      : `Create New ${translateRecTypes[recType]} Recommendation`
+  }`;
 
   const handleOpenModal = () => setOpenModal(true);
 
@@ -52,7 +61,7 @@ const Scheduler = () => {
           validFrom: formatToISO8601(info.startStr),
           validTo: formatToISO8601(info.endStr),
         });
-        const data = mapForScheduler(res);
+        const data = prepareForScheduler(res);
         success(data);
       } catch (err) {
         addAlert({
@@ -129,8 +138,8 @@ const Scheduler = () => {
             initialView="month"
             height="700px"
             resourceAreaWidth="180px"
-            resourceAreaHeaderContent="Clusters"
             resources={resources}
+            resourceAreaColumns={resourceAreaColumns}
             headerToolbar={{
               left: `resourceTimelineDay,resourceTimelineWeek,month`,
               center: 'title',

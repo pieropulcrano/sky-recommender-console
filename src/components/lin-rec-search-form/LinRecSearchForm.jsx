@@ -8,7 +8,7 @@ import DataGridTable from '../form/data-grid-table/DataGridTable';
 import LinEventSearchForm from '../lin-event-search-form/LinEventSearchForm';
 import {
   RecSearchFormWrapper,
-  SelectButtonWrapper,
+  RigthButtonWrapper,
 } from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { initialValues, columns } from './config';
@@ -22,10 +22,14 @@ const LinRecSearchForm = ({
   onSearch,
   isSearching,
   searchResult,
+  initialStartDateTime,
 }) => {
   return (
     <RecSearchFormWrapper>
-      <LinEventSearchForm onSubmit={onSearch} />
+      <LinEventSearchForm
+        onSubmit={onSearch}
+        initialStartDateTime={initialStartDateTime}
+      />
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -43,11 +47,11 @@ const LinRecSearchForm = ({
               />
             </Grid>
             <Grid item xs={12}>
-              <SelectButtonWrapper>
+              <RigthButtonWrapper>
                 <Button type="submit" variant="contained" color="success">
                   Select
                 </Button>
-              </SelectButtonWrapper>
+              </RigthButtonWrapper>
             </Grid>
           </Grid>
         </Form>
@@ -74,6 +78,10 @@ LinRecSearchForm.propTypes = {
    * allback function called when the user clicks on the search button.
    */
   onSearch: PropTypes.func.isRequired,
+  /**
+   *   Start date time selected for create Linear rec.
+   */
+  initialStartDateTime: PropTypes.string,
 };
 
 export default LinRecSearchForm;

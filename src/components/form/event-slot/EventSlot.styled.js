@@ -15,7 +15,7 @@ export const SlotWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 111px;
-  max-height: 216px;
+  max-height: 223px;
   margin-right: 10px;
 `;
 
@@ -58,6 +58,7 @@ export const XButton = styled((props) => <IconButton {...props} />)`
   padding: 0;
   right: 0;
   top: 0;
+  background-color: #2c3e50;
 `;
 
 export const AddIcon = styled((props) => <AddCircleIcon {...props} />)`
@@ -87,6 +88,10 @@ const Title = React.forwardRef((props, ref) => (
 export const EventTitle = styled(Title)`
   font-size: 12px;
   font-weight: bold;
+`;
+
+export const EventChannel = styled(Title)`
+  font-size: 12px;
 `;
 
 export const EventDateTime = styled((props) => <Typography {...props} />)`

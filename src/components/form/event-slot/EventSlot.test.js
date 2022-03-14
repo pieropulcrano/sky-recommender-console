@@ -222,7 +222,7 @@ describe('Event Slot', () => {
       expect(tooltipText).toBeInTheDocument();
     });
 
-    it('should display the start date tooltip', async () => {
+    it('should display the end date tooltip', async () => {
       render(
         <Formik
           initialValues={initialValues}
@@ -232,8 +232,8 @@ describe('Event Slot', () => {
         </Formik>,
       );
 
-      let startDate = screen.getByTestId(/EventBusyIcon/);
-      await userEvent.hover(startDate);
+      let endDate = screen.getByTestId(/EventBusyIcon/);
+      await userEvent.hover(endDate);
       const tooltipText = await screen.findByText(/End Program/);
 
       expect(tooltipText).toBeInTheDocument();

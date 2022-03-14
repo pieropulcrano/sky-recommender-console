@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchForm';
 import useNotification from '../../hooks/useNotification';
 import { formatToISO8601 } from '../../utils/date';
-import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
+import { searchEvent } from '../../providers/event-provider/EventProvider';
 import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to search a linear event.
  */
 
-const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
+const SearchLinRec = ({
+  addEvent,
+  handleClose,
+  resolution,
+  initialStartDateTime,
+}) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
   const { addAlert } = useNotification();
@@ -26,7 +31,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
-        let res = await searchVodRec(toSearch);
+        let res = await searchEvent(toSearch);
         setSearchResult(res);
       } catch (error) {
         addAlert({
@@ -54,6 +59,7 @@ const SearchLinRec = ({ addEvent, handleClose, resolution }) => {
       isSearching={isSearching}
       searchResult={searchResult}
       resolution={resolution}
+      initialStartDateTime={initialStartDateTime}
     />
   );
 };
@@ -71,6 +77,10 @@ SearchLinRec.propTypes = {
    *  Resolution of the event to search.
    */
   resolution: PropTypes.oneOf(['HD', 'SD']),
+  /**
+   *   Start date time selected for create Linear rec.
+   */
+  initialStartDateTime: PropTypes.string,
 };
 
 export default SearchLinRec;

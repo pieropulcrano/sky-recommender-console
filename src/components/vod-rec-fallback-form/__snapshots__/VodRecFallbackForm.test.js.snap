@@ -26,7 +26,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -62,13 +62,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="La valle incantata"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                La valle incantata
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="La valle incantata"
+                >
+                  La valle incantata
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -125,7 +129,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -161,13 +165,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="The Truman Show 2"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                The Truman Show 2
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="The Truman Show 2"
+                >
+                  The Truman Show 2
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -224,7 +232,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -260,13 +268,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="I mercenari"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                I mercenari
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="I mercenari"
+                >
+                  I mercenari
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -323,7 +335,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -359,13 +371,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="Rogue one"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                Rogue one
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="Rogue one"
+                >
+                  Rogue one
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -422,7 +438,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -458,13 +474,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="Doom"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                Doom
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="Doom"
+                >
+                  Doom
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -529,7 +549,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -565,13 +585,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="La valle incantata 2"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                La valle incantata 2
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="La valle incantata 2"
+                >
+                  La valle incantata 2
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -628,7 +652,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -664,13 +688,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="Se mi lasci ti cancello"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                Se mi lasci ti cancello
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="Se mi lasci ti cancello"
+                >
+                  Se mi lasci ti cancello
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -727,7 +755,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -763,13 +791,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="I mercenari 2"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                I mercenari 2
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="I mercenari 2"
+                >
+                  I mercenari 2
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -826,7 +858,7 @@ HTMLCollection [
                 class="MuiBox-root css-1smxw4b"
               >
                 <button
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
                   tabindex="0"
                   type="button"
                 >
@@ -862,13 +894,17 @@ HTMLCollection [
                   </svg>
                 </div>
               </div>
-              <p
-                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-                data-test="event-title"
-                title="VOD Scaduto"
+              <div
+                class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
               >
-                VOD Scaduto
-              </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+                  data-test="event-title"
+                  title="VOD Scaduto"
+                >
+                  VOD Scaduto
+                </p>
+              </div>
               <div
                 class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
                 justify="flex-end"
@@ -954,18 +990,8 @@ HTMLCollection [
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1em9ut6-MuiGrid-root"
         >
           <div
-            class="css-uf1ume"
+            class="css-1diyz6t"
           >
-            <button
-              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
-              tabindex="0"
-              type="button"
-            >
-              Clear
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
             <button
               class="MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-13m85cd-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
               tabindex="0"

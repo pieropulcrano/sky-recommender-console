@@ -14,20 +14,26 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './utils'
-import './commands'
+import './utils';
+import './commands';
 
 //https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/blogs__dayjs
-const dayjs = require('dayjs')
+const dayjs = require('dayjs');
 // https://day.js.org/docs/en/plugin/utc
-const utc = require('dayjs/plugin/utc')
+const utc = require('dayjs/plugin/utc');
 // https://day.js.org/docs/en/plugin/custom-parse-format
-const customParseFormat = require('dayjs/plugin/customParseFormat')
+const customParseFormat = require('dayjs/plugin/customParseFormat');
 
-dayjs.extend(utc)
-dayjs.extend(customParseFormat)
+dayjs.extend(utc);
+dayjs.extend(customParseFormat);
 
-Cypress.dayjs = dayjs
+Cypress.dayjs = dayjs;
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // return false to prevent the error from
+  // failing this test
+  return false;
+});

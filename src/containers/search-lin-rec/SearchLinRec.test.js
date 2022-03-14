@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import * as VodRecProvider from '../../providers/vod-rec-provider/VodRecProvider';
+import * as EventProvider from '../../providers/event-provider/EventProvider';
 import linEventFixture from '../../../fixtures/linear-event';
 import SearchLinRec from './SearchLinRec';
 
@@ -32,13 +32,13 @@ describe('SearchLinRec', () => {
   });
 
   it('should handle onSearch error correctly', async () => {
-    const mockedSearchVodRec = jest.fn(() => {
+    const mockedSearchEvent = jest.fn(() => {
       throw new Error('error');
     });
 
     jest
-      .spyOn(VodRecProvider, 'searchVodRec')
-      .mockImplementation(mockedSearchVodRec);
+      .spyOn(EventProvider, 'searchEvent')
+      .mockImplementation(mockedSearchEvent);
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -58,7 +58,7 @@ describe('SearchLinRec', () => {
       fireEvent.click(searchButton);
     });
 
-    expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
+    expect(mockedSearchEvent).toHaveBeenCalledTimes(1);
     expect(mockedAddAlert).toHaveBeenCalledTimes(1);
     expect(mockedAddAlert).toHaveBeenCalledWith({
       title: 'Vod search error',
@@ -69,13 +69,13 @@ describe('SearchLinRec', () => {
   });
 
   it('should handle onSearch success correctly', async () => {
-    const mockedSearchVodRec = jest.fn(() => {
+    const mockedSearchEvent = jest.fn(() => {
       return linEventFixture.items;
     });
 
     jest
-      .spyOn(VodRecProvider, 'searchVodRec')
-      .mockImplementation(mockedSearchVodRec);
+      .spyOn(EventProvider, 'searchEvent')
+      .mockImplementation(mockedSearchEvent);
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -95,17 +95,17 @@ describe('SearchLinRec', () => {
       fireEvent.click(searchButton);
     });
 
-    expect(mockedSearchVodRec).toHaveBeenCalledTimes(1);
+    expect(mockedSearchEvent).toHaveBeenCalledTimes(1);
     expect(mockedAddAlert).not.toHaveBeenCalled();
   });
 
   it('should handle onSubmit correctly', async () => {
-    const mockedSearchVodRec = jest.fn(() => {
+    const mockedSearchEvent = jest.fn(() => {
       return linEventFixture.items;
     });
     jest
-      .spyOn(VodRecProvider, 'searchVodRec')
-      .mockImplementation(mockedSearchVodRec);
+      .spyOn(EventProvider, 'searchEvent')
+      .mockImplementation(mockedSearchEvent);
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>

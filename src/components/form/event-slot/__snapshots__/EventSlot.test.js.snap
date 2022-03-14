@@ -220,7 +220,7 @@ HTMLCollection [
       class="MuiBox-root css-1smxw4b"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -266,13 +266,17 @@ HTMLCollection [
         </svg>
       </div>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-      data-test="event-title"
-      title="event-title"
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
     >
-      event-title
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+        data-test="event-title"
+        title="event-title"
+      >
+        event-title
+      </p>
+    </div>
     <div
       class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
       justify="flex-end"
@@ -358,13 +362,17 @@ HTMLCollection [
         </svg>
       </div>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-      data-test="event-title"
-      title="event-title"
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
     >
-      event-title
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+        data-test="event-title"
+        title="event-title"
+      >
+        event-title
+      </p>
+    </div>
     <div
       class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
       justify="flex-end"
@@ -434,7 +442,7 @@ HTMLCollection [
         />
       </svg>
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1blqk6s-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gk29l9-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -480,13 +488,17 @@ HTMLCollection [
         </svg>
       </div>
     </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
-      data-test="event-title"
-      title="event-title"
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
     >
-      event-title
-    </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  css-14y2rlv-MuiTypography-root"
+        data-test="event-title"
+        title="event-title"
+      >
+        event-title
+      </p>
+    </div>
     <div
       class="MuiGrid-root MuiGrid-container css-19sicoy-MuiGrid-root"
       justify="flex-end"

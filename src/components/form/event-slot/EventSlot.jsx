@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import Grid from '@mui/material/Grid';
 import { Tooltip } from '@material-ui/core';
+import { ErrorMsg } from '../error-msg/ErrorMsg.styled';
 import {
   SlotWrapper,
   EventImageWrapper,
@@ -21,6 +22,7 @@ import {
   AddIcon,
   StartDateIcon,
   EndDateIcon,
+  EventChannel,
 } from './EventSlot.styled';
 
 /**
@@ -52,9 +54,22 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
             )}
           </EmptyEventWrapper>
         </EventImageWrapper>
+        {meta && meta.touched && meta.error && (
+          <ErrorMsg>This slot is required to continue saving</ErrorMsg>
+        )}
       </SlotWrapper>
     );
   }
+
+  const renderTooltipWarning = (message) => {
+    const wariningMessages = message.split(/\r?\n/);
+    const listItems = wariningMessages.map((m, idx) => {
+      if (m !== '') {
+        return <li key={idx}>{m.trim()}</li>;
+      }
+    });
+    return listItems;
+  };
 
   return (
     <SlotWrapper data-test-slot={data_test_slot} data-test={value.id}>
@@ -66,7 +81,7 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </XButton>
         )}
         {value.warningMessage && (
-          <Tooltip title={value.warningMessage}>
+          <Tooltip title={renderTooltipWarning(value.warningMessage)}>
             <Warning />
           </Tooltip>
         )}
@@ -79,11 +94,18 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
         )}
       </EventImageWrapper>
       {value.title && (
-        <Tooltip title={value.title}>
-          <EventTitle data-test="event-title" noWrap>
-            {value.title}
-          </EventTitle>
-        </Tooltip>
+        <Grid container>
+          <Tooltip title={value.title}>
+            <EventTitle data-test="event-title" noWrap>
+              {value.title}
+            </EventTitle>
+          </Tooltip>
+        </Grid>
+      )}
+      {value.channel && (
+        <Grid container>
+          <EventChannel noWrap>{value.channel}</EventChannel>
+        </Grid>
       )}
       {value.startProgram && (
         <Grid container justify="flex-end" alignItems="flex-end">

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VodRecSearchForm from '../../components/vod-rec-search-form/VodRecSearchForm';
 import useNotification from '../../hooks/useNotification';
-import { searchVodRec } from '../../providers/vod-rec-provider/VodRecProvider';
+import { searchEvent } from '../../providers/event-provider/EventProvider';
 import getMessageError from '../../utils/errorHandling';
 
 /**
@@ -19,7 +19,7 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
       setSearchResult([]);
       setIsSearching(true);
       try {
-        let res = await searchVodRec({ ...values, type: 'VOD' });
+        let res = await searchEvent({ ...values, type: 'VOD' });
         setSearchResult(res);
       } catch (error) {
         addAlert({

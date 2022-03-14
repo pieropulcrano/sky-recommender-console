@@ -20,10 +20,11 @@
 module.exports = (on, config) => {
   // modify env value
   config.env = process.env;
-  config.env.baseUrl = process.env.REACT_APP_BASE_URL;
+  config.env.baseUrl = process.env.PUBLIC_URL;
   config.env.recommendationsUrl = process.env.REACT_APP_API_RECOMMENDATIONS_URL;
   config.env.recommendationUrl = process.env.REACT_APP_API_RECOMMENDATION_URL;
   config.env.eventUrl = process.env.REACT_APP_API_EVENT_URL;
+  config.env.loginUrl = process.env.REACT_APP_API_LOGIN_URL;
   config.env.fallbackRecommendationUrl =
     process.env.REACT_APP_API_FALLBACK_RECOMMENDATION_URL;
 

@@ -11,7 +11,15 @@ import { ModalC, ModalHeader, ModalBody } from './Modal.styled';
 
 const Modal = ({ title, open, handleClose, children, data_test }) => {
   return (
-    <ModalC open={open} onClose={handleClose} data-test={data_test}>
+    <ModalC
+      open={open}
+      onClose={(_, reason) => {
+        if (reason !== 'backdropClick') {
+          handleClose();
+        }
+      }}
+      data-test={data_test}
+    >
       <ModalBody>
         <ModalHeader>
           <Typography variant="h6" component="h6">
