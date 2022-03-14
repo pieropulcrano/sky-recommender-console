@@ -81,7 +81,10 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </XButton>
         )}
         {value.warningMessage && (
-          <Tooltip title={renderTooltipWarning(value.warningMessage)}>
+          <Tooltip
+            data-testid="warningIcon"
+            title={renderTooltipWarning(value.warningMessage)}
+          >
             <Warning />
           </Tooltip>
         )}
