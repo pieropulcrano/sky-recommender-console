@@ -9,7 +9,8 @@ const linearEvents = [
     channelName: 'Sky Uno',
     linearSummaryLong:
       "Regia di S. Kubrick, con K.Dullea, G.Lockwood; USA/GBR 1968. Visionaria pellicola del maestro Kubrick. Nel 2001, un misterioso monolite viene scoperto sulla Luna. Ne fara' le spese un astronauta.",
-    warningMessage: 'Immagine verticale e/o orizzontale mancante\n',
+    warningMessage:
+      'Immagine verticale e/o orizzontale mancante\nImmagine verticale e/o orizzontale mancante\n',
   },
   {
     id: 'LIN_229811700',

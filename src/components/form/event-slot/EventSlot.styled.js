@@ -90,6 +90,10 @@ export const EventTitle = styled(Title)`
   font-weight: bold;
 `;
 
+export const EventChannel = styled(Title)`
+  font-size: 12px;
+`;
+
 export const EventDateTime = styled((props) => <Typography {...props} />)`
   margin-left: 5px;
   font-size: 11px;
