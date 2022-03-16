@@ -3,9 +3,9 @@ const hdEvent = 'Avatar'; // HD event to search
 const idPresentLine = '4';
 const idFutureLine = '50';
 const indexClusterVal = 'CL_CIN'; // pick a random cluster
-const startDateTime = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A'); // create tomorrow date as startDateTime
-const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A'); // create a date five days after tomorrow date as endDateTime
-const startDateEvent = cy.generatePastDate(7, 'day', 'DD/MM/YYYY h:mm A'); //'19/01/2022 6:29 PM'; // start date of the event to search
+const startDateTime = cy.generateFutureDate(1, 'DD/MM/YYYY HH:mm'); // create tomorrow date as startDateTime
+const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY HH:mm'); // create a date five days after tomorrow date as endDateTime
+const startDateEvent = cy.generatePastDate(7, 'day', 'DD/MM/YYYY HH:mm'); //'19/01/2022 6:29 PM'; // start date of the event to search
 
 describe('Testing crud Line raccomandation', () => {
   beforeEach(() => {
@@ -20,9 +20,9 @@ describe('Testing crud Line raccomandation', () => {
     // select user cluster
     cy.selectRandomCluster(indexClusterVal);
     // fill recommendation startDateTime
-    cy.get('input[type="text"]').first().type(startDateTime);
+    cy.get('input[type="tel"]').first().type(startDateTime);
     // fill recommendation endDateTime
-    cy.get('input[type="text"]').last().type(endDateTime);
+    cy.get('input[type="tel"]').last().type(endDateTime);
     // select sd slot row
     cy.get('[data-testid="sd-slot-row"]')
       .find('[data-testid="AddCircleIcon"] > path')
@@ -86,13 +86,13 @@ describe('Testing crud Line raccomandation', () => {
   it('Check update lin recommendation scheduled for the present', () => {
     let eventId = `eventId-${idPresentLine}`;
     // create a date five days after tomorrow date as endDateTime
-    const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY h:mm A');
+    const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY HH:mm');
     // get lin rec to update;
     cy.get(`[data-testid="${eventId}"]`).click({ force: true });
     // pick a random cluster
     // fill recommendation endDateTime
-    cy.get('input[type="text"]').last().clear();
-    cy.get('input[type="text"]').last().type(endDateTime);
+    cy.get('input[type="tel"]').last().clear();
+    cy.get('input[type="tel"]').last().type(endDateTime);
     // submit update
     cy.contains('Update').click();
     // check for notification

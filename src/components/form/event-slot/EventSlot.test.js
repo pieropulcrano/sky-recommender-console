@@ -197,8 +197,7 @@ describe('Event Slot', () => {
           <EventSlot {...props} />
         </Formik>,
       );
-
-      let warningIcon = screen.getByTitle('out of date');
+      let warningIcon = screen.getByTestId('warningIcon');
       await userEvent.hover(warningIcon);
       const tooltipText = await screen.findByText('out of date');
 
