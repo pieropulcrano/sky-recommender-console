@@ -8,7 +8,7 @@ import Picker from '@mui/lab/DateTimePicker';
  * Component to pick a date and a time, connected with Formik state by the param "name".
  */
 
-const INPUT_FORMAT = 'dd/MM/yyyy h:mm a';
+const INPUT_FORMAT = 'dd/MM/yyyy HH:mm';
 
 const DateTimePicker = ({ name, label, data_test, ...props }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -35,6 +35,7 @@ const DateTimePicker = ({ name, label, data_test, ...props }) => {
   return (
     <Picker
       inputFormat={INPUT_FORMAT}
+      ampm={false}
       renderInput={renderInput}
       label={label}
       value={field.value}

@@ -5,7 +5,7 @@ export const recTypes = {
 
 export const translateRecTypes = {
   VOD: 'VOD',
-  LIN: 'Lienar',
+  LIN: 'Linear',
 };
 /**
  * Configuration for the rows dysplayed by the scheduler.
@@ -40,7 +40,7 @@ export const resources = [
   },
 ];
 
-export const resourceAreaColumns=[
+export const resourceAreaColumns = [
   {
     group: true,
     field: 'cluster',
@@ -50,4 +50,4 @@ export const resourceAreaColumns=[
     field: 'title',
     headerContent: 'Type',
   },
-]
+];

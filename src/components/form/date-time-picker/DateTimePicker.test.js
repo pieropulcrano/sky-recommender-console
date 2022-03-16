@@ -72,9 +72,9 @@ describe('DateTimePicker', () => {
 
     const dateInput = await container.querySelector('input');
     userEvent.clear(dateInput);
-    await userEvent.type(dateInput, '20/10/2021 6:00 PM', { delay: 1 });
+    await userEvent.type(dateInput, '20/10/2021 18:00', { delay: 1 });
 
-    expect(dateInput).toHaveValue('20/10/2021 6:00 PM');
+    expect(dateInput).toHaveValue('20/10/2021 18:00');
   });
 
   it('should allow user to pick a date', async () => {
@@ -91,20 +91,6 @@ describe('DateTimePicker', () => {
 
     const dayButton = screen.getByText('15');
     await waitFor(() => fireEvent.click(dayButton));
-
-    const amButton = screen.getByText('AM');
-    await waitFor(() => fireEvent.click(amButton));
-
-    /**
-    *  userEvent.selectOptions(
-      screen.getByRole('listbox'),
-      screen.getByLabelText('1 hours'),
-    );
-    */
-
-    // const dateInput = await container.querySelector('input');
-
-    // expect(dateInput).toHaveValue('15/12/2021 13:00 AM');
   });
 
   it('should display validation error', async () => {
