@@ -29,7 +29,7 @@ export const columns = [
     width: '200',
     renderCell: CellExpand,
   },
-  { field: 'channel', headerName: 'Channel', width: '100' },
+  { field: 'channelName', headerName: 'Channel', width: '200' },
   { field: 'resolution', headerName: 'Resolution', width: '100' },
   { field: 'thumbnailType', headerName: 'Thumbnail Type', width: '150' },
   {
