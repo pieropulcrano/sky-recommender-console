@@ -1,5 +1,5 @@
 let randomIndexClusterVal = 'CL_NOT_CIN';
-let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY h:mm A');
+let dateToSearch = cy.generateFutureDate(1, 'DD/MM/YYYY HH:mm');
 let vodId = '166';
 let eventToSearch = "L'isola che non c'è";
 let mockData;
@@ -40,7 +40,7 @@ describe('Testing crud vod raccomandation', () => {
     cy.get('[data-testid="AddCircleIcon"]').should('have.length', 5);
     cy.selectRandomCluster(randomIndexClusterVal);
     //type the date in the start date input
-    cy.get('input[type="text"]').type(dateToSearch);
+    cy.get('input[type="tel"]').type(dateToSearch);
     //ciclo e popolo gli slot
     cy.get('[data-testid="AddCircleIcon"]').each(($el, index, $list) => {
       //click on create
@@ -63,7 +63,7 @@ describe('Testing crud vod raccomandation', () => {
 
     cy.selectRandomCluster(randomIndexClusterVal);
     //type the date in the start date input
-    cy.get('input[type="text"]').type(dateToSearch);
+    cy.get('input[type="tel"]').type(dateToSearch);
     //click on load
     cy.contains('Load').click();
     //intercetto la get search e verifico che i dati siano correti

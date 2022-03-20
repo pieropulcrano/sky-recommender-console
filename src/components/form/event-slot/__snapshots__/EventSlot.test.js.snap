@@ -3,7 +3,7 @@
 exports[`Event Slot empty should render 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-1t250by"
+    class="empity-slot css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -40,7 +40,7 @@ HTMLCollection [
 exports[`Event Slot empty should render a disabled slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-1t250by"
+    class="empity-slot css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -56,7 +56,7 @@ HTMLCollection [
 exports[`Event Slot empty should render an hd disabled slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-1t250by"
+    class="empity-slot css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -82,7 +82,7 @@ HTMLCollection [
 exports[`Event Slot empty should render an hd slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-1t250by"
+    class="empity-slot css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -129,7 +129,7 @@ HTMLCollection [
 exports[`Event Slot empty should render an sd slot 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-1t250by"
+    class="empity-slot css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -177,7 +177,7 @@ HTMLCollection [
 exports[`Event Slot not empty should remove the assigned event 1`] = `
 HTMLCollection [
   <div
-    class="empity-slot css-1t250by"
+    class="empity-slot css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -214,7 +214,7 @@ HTMLCollection [
 exports[`Event Slot not empty should render 1`] = `
 HTMLCollection [
   <div
-    class="css-1t250by"
+    class="css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -242,8 +242,8 @@ HTMLCollection [
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root  css-14eav6w"
+        data-testid="warningIcon"
         focusable="false"
-        title="out of date"
         viewBox="0 0 24 24"
       >
         <path
@@ -330,7 +330,7 @@ HTMLCollection [
 exports[`Event Slot not empty should render a disabled slot 1`] = `
 HTMLCollection [
   <div
-    class="css-1t250by"
+    class="css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -338,8 +338,8 @@ HTMLCollection [
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root  css-14eav6w"
+        data-testid="warningIcon"
         focusable="false"
-        title="out of date"
         viewBox="0 0 24 24"
       >
         <path
@@ -426,7 +426,7 @@ HTMLCollection [
 exports[`Event Slot not empty should render an hd slot 1`] = `
 HTMLCollection [
   <div
-    class="css-1t250by"
+    class="css-1fk8khu"
   >
     <div
       class="MuiBox-root css-1smxw4b"
@@ -464,8 +464,8 @@ HTMLCollection [
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root  css-14eav6w"
+        data-testid="warningIcon"
         focusable="false"
-        title="out of date"
         viewBox="0 0 24 24"
       >
         <path

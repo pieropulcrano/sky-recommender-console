@@ -81,7 +81,10 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </XButton>
         )}
         {value.warningMessage && (
-          <Tooltip title={renderTooltipWarning(value.warningMessage)}>
+          <Tooltip
+            data-testid="warningIcon"
+            title={renderTooltipWarning(value.warningMessage)}
+          >
             <Warning />
           </Tooltip>
         )}
@@ -102,7 +105,7 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </Tooltip>
         </Grid>
       )}
-      {value.channel && (
+      {value.channel && value.type === 'LIN' && (
         <Grid container>
           <EventChannel noWrap>{value.channel}</EventChannel>
         </Grid>

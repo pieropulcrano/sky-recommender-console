@@ -22,9 +22,9 @@ HTMLCollection [
           aria-invalid="true"
           class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input"
           id="mui-13"
-          placeholder="dd/mm/yyyy h:mm (a|p)m"
-          type="text"
-          value="14/12/2021 4:00 PM"
+          placeholder="dd/mm/yyyy hh:mm"
+          type="tel"
+          value="14/12/2021 16:00"
         />
         <div
           class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-1laqsz7-MuiInputAdornment-root"
@@ -96,9 +96,9 @@ HTMLCollection [
           aria-invalid="false"
           class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input"
           id="mui-3"
-          placeholder="dd/mm/yyyy h:mm (a|p)m"
-          type="text"
-          value="14/12/2021 4:00 PM"
+          placeholder="dd/mm/yyyy hh:mm"
+          type="tel"
+          value="14/12/2021 16:00"
         />
         <div
           class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-1laqsz7-MuiInputAdornment-root"
