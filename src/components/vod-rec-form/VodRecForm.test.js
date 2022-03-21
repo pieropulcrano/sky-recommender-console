@@ -37,6 +37,10 @@ describe('Vod Rec Form', () => {
       initialValues: DEFAULT_VALUES,
       prevVodRecIsLoading: false,
       loadPrevVodRec: jest.fn(),
+      modalTitle: '',
+      openModal: true,
+      handleOpenModalConfirm: jest.fn(),
+      handleCloseModal: jest.fn(),
     };
   });
 
@@ -110,7 +114,7 @@ describe('Vod Rec Form', () => {
       await waitFor(() => fireEvent.click(createButton));
 
       expect(screen.getByText('Invalid date')).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(screen.getByText('Invalid date')).toHaveClass('Mui-error');
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
 
@@ -128,7 +132,9 @@ describe('Vod Rec Form', () => {
       expect(
         screen.getByText('Date cannot be in the past'),
       ).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(screen.getByText('Date cannot be in the past')).toHaveClass(
+        'Mui-error',
+      );
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
 
@@ -144,7 +150,7 @@ describe('Vod Rec Form', () => {
       await waitFor(() => fireEvent.click(createButton));
 
       expect(screen.getByText('Required')).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(screen.getByText('Required')).toHaveClass('Mui-error');
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
   });

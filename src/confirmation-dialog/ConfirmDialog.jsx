@@ -22,9 +22,7 @@ const ConfirmDialog = ({ title, children, open, setOpen, onConfirm }) => {
       aria-labelledby="confirm-dialog"
       disableEnforceFocus
     >
-      <DialogTitle sx id="confirm-dialog">
-        {title}
-      </DialogTitle>
+      <DialogTitle id="confirm-dialog">{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
         <Grid item xs={12}>

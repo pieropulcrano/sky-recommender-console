@@ -5,7 +5,6 @@ import UpsertVodRec from '../../containers/upsert-vod-rec/UpsertVodRec';
 import RecTooltipInfo from './rec-tooltip-info/RecTooltipInfo';
 import useNotification from '../../hooks/useNotification';
 import Spinner from '../spinner/Spinner';
-import Modal from '../../components/modal/Modal';
 import UpsertLinRec from '../../containers/upsert-lin-rec/UpsertLinRec';
 import { Hidden, StyleWrapper } from './Scheduler.styled';
 import {
@@ -48,7 +47,9 @@ const Scheduler = () => {
 
   const handleOpenModal = () => setOpenModal(true);
 
-  const handleOpenModalConfirm = () => setConfirmOpen(true);
+  const handleOpenModalConfirm = () => {
+    setConfirmOpen(true);
+  };
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -183,26 +184,44 @@ const Scheduler = () => {
             loading={handleRecLoading}
           />
         </StyleWrapper>
-
-        <Modal
-          title={modalTitle}
-          open={openModal}
-          handleClose={handleOpenModalConfirm}
-          data_test="scheduler-modal"
-        >
-          {!isEditing && recType === recTypes.vod && (
-            <UpsertVodRec onSuccess={handleCRUDSuccess} />
-          )}
-          {!isEditing && recType === recTypes.lin && (
-            <UpsertLinRec onSuccess={handleCRUDSuccess} />
-          )}
-          {isEditing && recType === recTypes.vod && selectedRec?.id && (
-            <UpsertVodRec id={selectedRec?.id} onSuccess={handleCRUDSuccess} />
-          )}
-          {isEditing && recType === recTypes.lin && selectedRec?.id && (
-            <UpsertLinRec id={selectedRec?.id} onSuccess={handleCRUDSuccess} />
-          )}
-        </Modal>
+        {!isEditing && recType === recTypes.vod && (
+          <UpsertVodRec
+            onSuccess={handleCRUDSuccess}
+            modalTitle={modalTitle}
+            openModal={openModal}
+            handleOpenModalConfirm={handleOpenModalConfirm}
+            handleCloseModal={handleCloseModal}
+          />
+        )}
+        {isEditing && recType === recTypes.vod && selectedRec?.id && (
+          <UpsertVodRec
+            id={selectedRec?.id}
+            onSuccess={handleCRUDSuccess}
+            modalTitle={modalTitle}
+            openModal={openModal}
+            handleOpenModalConfirm={handleOpenModalConfirm}
+            handleCloseModal={handleCloseModal}
+          />
+        )}
+        {!isEditing && recType === recTypes.lin && (
+          <UpsertLinRec
+            onSuccess={handleCRUDSuccess}
+            modalTitle={modalTitle}
+            openModal={openModal}
+            handleOpenModalConfirm={handleOpenModalConfirm}
+            handleCloseModal={handleCloseModal}
+          />
+        )}
+        {isEditing && recType === recTypes.lin && selectedRec?.id && (
+          <UpsertLinRec
+            id={selectedRec?.id}
+            onSuccess={handleCRUDSuccess}
+            modalTitle={modalTitle}
+            openModal={openModal}
+            handleOpenModalConfirm={handleOpenModalConfirm}
+            handleCloseModal={handleCloseModal}
+          />
+        )}
       </Hidden>
     </>
   );

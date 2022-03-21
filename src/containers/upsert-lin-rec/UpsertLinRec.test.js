@@ -20,6 +20,10 @@ describe('UpsertLinRec', () => {
   let id = '1';
   let onSuccess = jest.fn();
   let linRec;
+  let modalTitle = '';
+  let openModal = true;
+  let handleOpenModalConfirm = jest.fn();
+  let handleCloseModal = jest.fn();
 
   beforeEach(() => {
     linRec = linRecFixture;
@@ -38,7 +42,14 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={id} onSuccess={onSuccess} />
+        <UpsertLinRec
+          id={id}
+          onSuccess={onSuccess}
+          modalTitle={modalTitle}
+          openModal={openModal}
+          handleOpenModalConfirm={handleOpenModalConfirm}
+          handleCloseModal={handleCloseModal}
+        />
       </LocalizationProvider>,
     );
 
@@ -68,7 +79,14 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec.items[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec
+          id={linRec.items[0].id}
+          onSuccess={onSuccess}
+          modalTitle={modalTitle}
+          openModal={openModal}
+          handleOpenModalConfirm={handleOpenModalConfirm}
+          handleCloseModal={handleCloseModal}
+        />
       </LocalizationProvider>,
     );
 
@@ -107,7 +125,14 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec.items[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec
+          id={linRec.items[0].id}
+          onSuccess={onSuccess}
+          modalTitle={modalTitle}
+          openModal={openModal}
+          handleOpenModalConfirm={handleOpenModalConfirm}
+          handleCloseModal={handleCloseModal}
+        />
       </LocalizationProvider>,
     );
 
@@ -153,7 +178,14 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec.items[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec
+          id={linRec.items[0].id}
+          onSuccess={onSuccess}
+          modalTitle={modalTitle}
+          openModal={openModal}
+          handleOpenModalConfirm={handleOpenModalConfirm}
+          handleCloseModal={handleCloseModal}
+        />
       </LocalizationProvider>,
     );
 
@@ -204,7 +236,14 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec.items[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec
+          id={linRec.items[0].id}
+          onSuccess={onSuccess}
+          modalTitle={modalTitle}
+          openModal={openModal}
+          handleOpenModalConfirm={handleOpenModalConfirm}
+          handleCloseModal={handleCloseModal}
+        />
       </LocalizationProvider>,
     );
 
@@ -248,7 +287,14 @@ describe('UpsertLinRec', () => {
 
     render(
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <UpsertLinRec id={linRec.items[0].id} onSuccess={onSuccess} />
+        <UpsertLinRec
+          id={linRec.items[0].id}
+          onSuccess={onSuccess}
+          modalTitle={modalTitle}
+          openModal={openModal}
+          handleOpenModalConfirm={handleOpenModalConfirm}
+          handleCloseModal={handleCloseModal}
+        />
       </LocalizationProvider>,
     );
 
