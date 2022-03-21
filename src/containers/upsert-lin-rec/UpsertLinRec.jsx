@@ -16,7 +16,14 @@ import getMessageError from '../../utils/errorHandling';
  * Container component that handle the logic to create / edit a linear recommendation.
  */
 
-const UpsertLinRec = ({ id, onSuccess }) => {
+const UpsertLinRec = ({
+  id,
+  onSuccess,
+  modalTitle,
+  openModal,
+  handleOpenModalConfirm,
+  handleCloseModal,
+}) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
 
@@ -110,6 +117,10 @@ const UpsertLinRec = ({ id, onSuccess }) => {
             onDelete={onDelete}
             isDeleting={isDeleting}
             isSubmitting={isSubmitting}
+            modalTitle={modalTitle}
+            openModal={openModal}
+            handleOpenModalConfirm={handleOpenModalConfirm}
+            handleCloseModal={handleCloseModal}
             initialValues={
               linRec
                 ? {
@@ -142,6 +153,22 @@ UpsertLinRec.propTypes = {
    * The callback function called if the create / edit request was successful-
    */
   onSuccess: PropTypes.func.isRequired,
+  /**
+   * The Title of the modal.
+   */
+  modalTitle: PropTypes.string.isRequired,
+  /**
+   * The callback function called for open the modal
+   */
+  openModal: PropTypes.bool,
+  /**
+   * The callback function called for open the modal of confirmation
+   */
+  handleOpenModalConfirm: PropTypes.func.isRequired,
+  /**
+   * The callback function called for Close the modal
+   */
+  handleCloseModal: PropTypes.func.isRequired,
 };
 
 export default UpsertLinRec;

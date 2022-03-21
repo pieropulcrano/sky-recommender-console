@@ -30,7 +30,6 @@ export const columns = [
     renderCell: CellExpand,
   },
   { field: 'channelName', headerName: 'Channel', width: '200' },
-  { field: 'resolution', headerName: 'Resolution', width: '100' },
   { field: 'thumbnailType', headerName: 'Thumbnail Type', width: '150' },
   {
     field: 'verticalImageUrl',

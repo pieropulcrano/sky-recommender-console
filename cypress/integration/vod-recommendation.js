@@ -117,7 +117,6 @@ describe('Testing crud vod raccomandation', () => {
         .click({ force: true });
       cy.testSearchVodModal(eventToSearch);
     });
-
     // submit update
     cy.contains('Update').click();
 

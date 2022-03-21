@@ -20,6 +20,10 @@ describe('Lin Rec Form', () => {
       isDeleting: false,
       isSubmitting: false,
       initialValues: DEFAULT_VALUES,
+      modalTitle: '',
+      openModal: true,
+      handleOpenModalConfirm: jest.fn(),
+      handleCloseModal: jest.fn(),
     };
   });
 
@@ -143,7 +147,7 @@ describe('Lin Rec Form', () => {
       await waitFor(() => fireEvent.click(createButton));
 
       expect(screen.getByText('Invalid date')).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(screen.getByText('Invalid date')).toHaveClass('Mui-error');
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
 
@@ -164,7 +168,7 @@ describe('Lin Rec Form', () => {
       await waitFor(() => fireEvent.click(createButton));
 
       expect(screen.getByText('Invalid date')).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(screen.getByText('Invalid date')).toHaveClass('Mui-error');
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
 
@@ -187,7 +191,9 @@ describe('Lin Rec Form', () => {
       expect(
         screen.getByText('Date cannot be in the past'),
       ).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(screen.getByText('Date cannot be in the past')).toHaveClass(
+        'Mui-error',
+      );
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
 
@@ -210,7 +216,9 @@ describe('Lin Rec Form', () => {
       expect(
         screen.getByText('End date should be after initial date'),
       ).toBeInTheDocument();
-      expect(container.querySelector('p')).toHaveClass('Mui-error');
+      expect(
+        screen.getByText('End date should be after initial date'),
+      ).toHaveClass('Mui-error');
       expect(props.onSubmit).not.toHaveBeenCalled();
     });
   });
