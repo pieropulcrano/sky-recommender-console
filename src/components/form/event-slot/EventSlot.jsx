@@ -105,9 +105,9 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
           </Tooltip>
         </Grid>
       )}
-      {value.channel && value.type === 'LIN' && (
+      {value.channelName && value.type === 'LIN' && (
         <Grid container>
-          <EventChannel noWrap>{value.channel}</EventChannel>
+          <EventChannel noWrap>{value.channelName}</EventChannel>
         </Grid>
       )}
       {value.startProgram && (
