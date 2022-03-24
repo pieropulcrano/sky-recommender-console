@@ -76,7 +76,14 @@ describe('UpsertVodRec', () => {
 
   beforeEach(() => {
     vodRec = vodRecFixture;
-    props = { id: '166', onSuccess: jest.fn() };
+    props = {
+      id: '166',
+      onSuccess: jest.fn(),
+      modalTitle: '',
+      openModal: true,
+      handleOpenModalConfirm: jest.fn(),
+      handleCloseModal: jest.fn(),
+    };
   });
 
   afterEach(() => {

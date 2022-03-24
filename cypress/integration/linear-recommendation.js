@@ -99,6 +99,21 @@ describe('Testing crud Line raccomandation', () => {
     cy.contains('Lin Updated');
   });
 
+  it('Check confirmation modal', () => {
+    let eventId = `eventId-${idPresentLine}`;
+    // create a date five days after tomorrow date as endDateTime
+    const endDateTime = cy.generateFutureDate(5, 'DD/MM/YYYY HH:mm');
+    // get lin rec to update;
+    cy.get(`[data-testid="${eventId}"]`).click({ force: true });
+    // pick a random cluster
+    // fill recommendation endDateTime
+    cy.get('input[type="tel"]').last().clear();
+    cy.get('input[type="tel"]').last().type(endDateTime);
+
+    cy.get('[data-testid="ClearIcon"]').click();
+    cy.contains('Discard changes?');
+    cy.contains('Yes').click();
+  });
   /************************************DELETE******************************************************************************************************** */
   it('Check delete lin recommendation', () => {
     let eventId = `eventId-${idFutureLine}`;
