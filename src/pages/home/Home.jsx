@@ -29,9 +29,13 @@ const Home = ({ removeToken }) => {
 
   const handleAlertFallback = (recFallback) => {
     let isExpiredFlag = 0;
-    let rec = recFallback.items[0].recommendation;
-    for (var i = 0; i < rec.length; i++) {
-      if (rec[i].warningMessage !== '') {
+    let rec = recFallback.items[0]?.recommendation;
+    for (var i = 0; i < rec?.length; i++) {
+      if (
+        rec[i] !== undefined &&
+        rec[i].hasOwnProperty('warningMessage') &&
+        rec[i].warningMessage !== ''
+      ) {
         isExpiredFlag = 1;
       }
     }

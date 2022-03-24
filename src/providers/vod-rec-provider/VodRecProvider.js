@@ -78,6 +78,9 @@ export async function deleteVodRec(id) {
 
 export async function getFallbackVodRec(url) {
   const res = await axios.get(url);
+  if (res.data.items.length === 0) {
+    res.data.items.push({ recommendation: new Array(10) });
+  }
   return res.data;
 }
 
