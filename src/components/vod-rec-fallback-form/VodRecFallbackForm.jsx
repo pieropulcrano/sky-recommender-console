@@ -23,6 +23,10 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
     () => ({
       ...DEFAULT_VALUES,
       ...initialValues,
+      recommendation: {
+        ...DEFAULT_VALUES.recommendation,
+        ...initialValues.recommendation,
+      },
     }),
     [initialValues],
   );
@@ -41,7 +45,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
     });
   };
 
-  const createRow = (startIndex, endIndex) => {
+  const createRow = (startIndex, endIndex, values) => {
     const rows = [];
     for (let i = startIndex; i <= endIndex; i++) {
       rows.push(
@@ -64,15 +68,15 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
         validationSchema={validationSchema}
         enableReinitialize
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, values }) => (
           <Form>
             <Grid container spacing={1.5}>
               <Grid item xs={12}>
-                <SlotsRowWrapper>{createRow(1, 5)}</SlotsRowWrapper>
+                <SlotsRowWrapper>{createRow(1, 5, values)}</SlotsRowWrapper>
               </Grid>
 
               <Grid item xs={12}>
-                <SlotsRowWrapper>{createRow(6, 10)}</SlotsRowWrapper>
+                <SlotsRowWrapper>{createRow(6, 10, values)}</SlotsRowWrapper>
               </Grid>
 
               <Grid item xs={12}>
