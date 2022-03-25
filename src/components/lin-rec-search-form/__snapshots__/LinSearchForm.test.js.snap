@@ -316,7 +316,8 @@ HTMLCollection [
                     </div>
                     <div
                       aria-colindex="3"
-                      class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable"
+                      aria-sort="ascending"
+                      class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable MuiDataGrid-columnHeader--sorted"
                       data-field="startProgram"
                       role="columnheader"
                       style="width: 150px; min-width: 150px; max-width: 150px;"
