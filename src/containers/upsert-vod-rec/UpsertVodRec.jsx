@@ -51,6 +51,19 @@ const UpsertVodRec = ({
     if (vodRec) validTo.current = vodRec.items[0].validTo;
   }, [vodRec]);
 
+  const cleanPrevVod = () => {
+    debugger;
+    if (prevVodRec?.item?.recommendation?.length > 0) {
+      debugger;
+      setPrevRecVod([]);
+    }
+  };
+
+  const handleCloseModalAndDeleteVodRec = () => {
+    cleanPrevVod();
+    handleCloseModal();
+  };
+
   const loadPrevVodRec = React.useCallback(
     async (params) => {
       const { cluster, startDateTime } = params;
@@ -109,8 +122,8 @@ const UpsertVodRec = ({
 
   const onSubmit = React.useCallback(
     async (values) => {
-      setIsSubmitting(true);
       try {
+        setIsSubmitting(true);
         if (id) {
           const updated = prepareVodRec(id, values);
           updated.validTo = validTo.current;
@@ -121,6 +134,7 @@ const UpsertVodRec = ({
             type: 'success',
             id: Date.now(),
           });
+          cleanPrevVod();
           setIsSubmitting(false);
           onSuccess();
         } else {
@@ -133,9 +147,12 @@ const UpsertVodRec = ({
             data_test: 'vod-update-ok-not',
             id: Date.now(),
           });
+          cleanPrevVod();
+          setIsSubmitting(false);
           onSuccess();
         }
       } catch (error) {
+        cleanPrevVod();
         setIsSubmitting(false);
         addAlert({
           text: getMessageError(error),
@@ -145,9 +162,9 @@ const UpsertVodRec = ({
         });
       }
     },
-    [id, onSuccess, addAlert],
+    [id, onSuccess, addAlert, cleanPrevVod],
   );
-
+  console.log(prevVodRec);
   return (
     <>
       {id && !vodRec && !vodRecError ? (
@@ -165,7 +182,7 @@ const UpsertVodRec = ({
             modalTitle={modalTitle}
             openModal={openModal}
             handleOpenModalConfirm={handleOpenModalConfirm}
-            handleCloseModal={handleCloseModal}
+            handleCloseModal={handleCloseModalAndDeleteVodRec}
             initialValues={
               vodRec
                 ? {

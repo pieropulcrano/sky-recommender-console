@@ -110,7 +110,6 @@ const VocRecForm = ({
     }
     return rows;
   };
-
   return (
     <Modal
       title={modalTitle}
