@@ -42,7 +42,7 @@ describe('DataGridTable', () => {
       </Formik>,
     );
 
-    const rowCheckBox = screen.queryByLabelText('Select Row checkbox');
+    const rowCheckBox = screen.queryByLabelText('Select row');
     await waitFor(() => {
       fireEvent.click(rowCheckBox);
     });

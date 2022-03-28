@@ -134,7 +134,7 @@ const reccomendations = [
     cluster: 'CL_NOT_CIN',
     type: 'VOD',
     validFrom: '',
-    validTo: '',
+    validTo: '2099-12-14T15:00:00Z',
     recommendation: [
       {
         id: '61GP6',
@@ -208,7 +208,7 @@ const reccomendations = [
     cluster: 'CL_NOT_CIN',
     type: 'VOD',
     validFrom: '',
-    validTo: '',
+    validTo: '2099-12-14T15:00:00Z',
     recommendation: [
       {
         id: '61GP6',

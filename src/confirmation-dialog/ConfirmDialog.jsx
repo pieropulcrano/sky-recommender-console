@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {
   LeftButtons,
   ButtonsWrapper,
+  RigthButtonWrapper,
 } from '../components/common/Common.styled';
 
 const ConfirmDialog = ({ title, children, open, setOpen, onConfirm }) => {
@@ -25,28 +26,32 @@ const ConfirmDialog = ({ title, children, open, setOpen, onConfirm }) => {
       <DialogTitle id="confirm-dialog">{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <Grid item xs={12}>
-          <ButtonsWrapper>
-            <LeftButtons>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => setOpen(false)}
-              >
-                No
-              </Button>
-            </LeftButtons>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={() => {
-                setOpen(false);
-                onConfirm();
-              }}
-            >
-              Yes
-            </Button>
-          </ButtonsWrapper>
+        <Grid container spacing={1.5}>
+          <Grid item xs={12}>
+            <ButtonsWrapper>
+              <LeftButtons>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => setOpen(false)}
+                >
+                  No
+                </Button>
+              </LeftButtons>
+              <RigthButtonWrapper>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => {
+                    setOpen(false);
+                    onConfirm();
+                  }}
+                >
+                  Yes
+                </Button>
+              </RigthButtonWrapper>
+            </ButtonsWrapper>
+          </Grid>
         </Grid>
       </DialogActions>
     </Dialog>

@@ -11,7 +11,7 @@ Cypress.Commands.add('testSearchVodModal', (event) => {
     //dovrebbe aver trovato almeno 1 riga
     cy.get('No rows').should('not.exist');
     //clicco la prima riga
-    cy.get(`[aria-label="Select Row checkbox"]`).first().click();
+    cy.get(`[aria-label="Select row"]`).first().click();
     //submit
     cy.contains('Select').click();
     //controllo che abbia chiuso
@@ -43,7 +43,7 @@ Cypress.Commands.add('selecetNewLine', (event, startDateEvent) => {
     // it should be at least one result
     cy.get('No rows').should('not.exist');
     // click on first row
-    cy.get(`[aria-label="Select Row checkbox"]`).first().click();
+    cy.get(`[aria-label="Select row"]`).first().click();
     // click on submit
     cy.contains('Select').click();
   });

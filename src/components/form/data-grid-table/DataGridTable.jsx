@@ -42,7 +42,14 @@ const DataGridTable = ({ name, rows, columns, ...props }) => {
         onPageSizeChange={handlePageSizeChange}
         selectionModel={selectionModel}
         onSelectionModelChange={handleSelectionModelChange}
+        renderAsync={true}
         {...props}
+        sx={{
+          '& .MuiDataGrid-columnHeaders': {
+            borderTopLeftRadius: '0px',
+            borderTopRightRadius: '0px',
+          },
+        }}
       />
       {meta.error && <ErrorMsg>Pick a value from the result list.</ErrorMsg>}
     </DataGridTableWrapper>
