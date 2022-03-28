@@ -12,7 +12,7 @@ HTMLCollection [
         class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-ayy8wd-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
@@ -40,7 +40,7 @@ HTMLCollection [
                 class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="css-173wfxe"
+                  class="css-1ftyaf0"
                 >
                   <span>
                     Title
@@ -51,7 +51,7 @@ HTMLCollection [
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-ayy8wd-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
         >
           <button
             class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
@@ -78,7 +78,7 @@ HTMLCollection [
         class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1em9ut6-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
         >
           <div
             class="css-x8ilf6"
@@ -87,7 +87,7 @@ HTMLCollection [
               aria-colcount="8"
               aria-multiselectable="false"
               aria-rowcount="0"
-              class="MuiDataGrid-root css-w4jlra-MuiDataGrid-root"
+              class="MuiDataGrid-root css-j1c84w-MuiDataGrid-root"
               role="grid"
             >
               <div>
@@ -97,13 +97,16 @@ HTMLCollection [
                 class="MuiDataGrid-main css-204u17-MuiDataGrid-main"
               >
                 <div
-                  class="MuiDataGrid-overlay css-163y13e-MuiDataGrid-overlay"
-                  style="height: -56px; width: 0px; top: 56px; position: absolute; left: 0px;"
+                  style="height: -56px; width: 0px; position: absolute; top: 56px;"
                 >
-                  No rows
+                  <div
+                    class="MuiDataGrid-overlay css-1lk5ll6-MuiDataGrid-overlay"
+                  >
+                    No rows
+                  </div>
                 </div>
                 <div
-                  class="MuiDataGrid-columnHeaders css-okt5j6-MuiDataGrid-columnHeaders"
+                  class="MuiDataGrid-columnHeaders css-f3jnds-MuiDataGrid-columnHeaders"
                   style="min-height: 56px; max-height: 56px; line-height: 56px;"
                 >
                   <div
@@ -127,35 +130,39 @@ HTMLCollection [
                         <div
                           class="MuiDataGrid-columnHeaderTitleContainer"
                         >
-                          <span
-                            class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiDataGrid-checkboxInput css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root"
+                          <div
+                            class="MuiDataGrid-columnHeaderTitleContainerContent"
                           >
-                            <input
-                              aria-label="Select All Rows checkbox"
-                              class="PrivateSwitchBase-input css-1m9pwf3"
-                              data-indeterminate="false"
-                              tabindex="-1"
-                              type="checkbox"
-                            />
-                            <svg
-                              aria-hidden="true"
-                              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                              data-testid="CheckBoxOutlineBlankIcon"
-                              focusable="false"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                              />
-                            </svg>
                             <span
-                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                            />
-                          </span>
+                              class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiDataGrid-checkboxInput css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root"
+                            >
+                              <input
+                                aria-label="Select all rows"
+                                class="PrivateSwitchBase-input css-1m9pwf3"
+                                data-indeterminate="false"
+                                tabindex="-1"
+                                type="checkbox"
+                              />
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="CheckBoxOutlineBlankIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                                />
+                              </svg>
+                              <span
+                                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                              />
+                            </span>
+                          </div>
                         </div>
                       </div>
                       <div
-                        class="MuiDataGrid-columnSeparator"
+                        class="MuiDataGrid-columnSeparator MuiDataGrid-columnSeparator--sideRight"
                         style="min-height: 56px; opacity: 1;"
                       >
                         <svg
@@ -187,11 +194,15 @@ HTMLCollection [
                           class="MuiDataGrid-columnHeaderTitleContainer"
                         >
                           <div
-                            aria-label=""
-                            class="MuiDataGrid-columnHeaderTitle css-1jbbcbn-MuiDataGrid-columnHeaderTitle"
-                            data-mui-internal-clone-element="true"
+                            class="MuiDataGrid-columnHeaderTitleContainerContent"
                           >
-                            Title
+                            <div
+                              aria-label=""
+                              class="MuiDataGrid-columnHeaderTitle css-1jbbcbn-MuiDataGrid-columnHeaderTitle"
+                              data-mui-internal-clone-element="true"
+                            >
+                              Title
+                            </div>
                           </div>
                           <div
                             class="MuiDataGrid-iconButtonContainer css-ltf0zy-MuiDataGrid-iconButtonContainer"
@@ -251,7 +262,7 @@ HTMLCollection [
                         </div>
                       </div>
                       <div
-                        class="MuiDataGrid-columnSeparator"
+                        class="MuiDataGrid-columnSeparator MuiDataGrid-columnSeparator--sideRight"
                         style="min-height: 56px; opacity: 1;"
                       >
                         <svg
@@ -283,11 +294,15 @@ HTMLCollection [
                           class="MuiDataGrid-columnHeaderTitleContainer"
                         >
                           <div
-                            aria-label=""
-                            class="MuiDataGrid-columnHeaderTitle css-1jbbcbn-MuiDataGrid-columnHeaderTitle"
-                            data-mui-internal-clone-element="true"
+                            class="MuiDataGrid-columnHeaderTitleContainerContent"
                           >
-                            Start Date
+                            <div
+                              aria-label=""
+                              class="MuiDataGrid-columnHeaderTitle css-1jbbcbn-MuiDataGrid-columnHeaderTitle"
+                              data-mui-internal-clone-element="true"
+                            >
+                              Start Date
+                            </div>
                           </div>
                           <div
                             class="MuiDataGrid-iconButtonContainer css-ltf0zy-MuiDataGrid-iconButtonContainer"
@@ -347,7 +362,7 @@ HTMLCollection [
                         </div>
                       </div>
                       <div
-                        class="MuiDataGrid-columnSeparator"
+                        class="MuiDataGrid-columnSeparator MuiDataGrid-columnSeparator--sideRight"
                         style="min-height: 56px; opacity: 1;"
                       >
                         <svg
@@ -373,11 +388,12 @@ HTMLCollection [
                     style="width: 0px; height: auto; margin-top: 56px; overflow-x: hidden;"
                   >
                     <div
-                      class="MuiDataGrid-virtualScrollerContent css-jz7yqw-MuiDataGrid-virtualScrollerContent"
-                      style="width: auto; height: 1px;"
+                      class="MuiDataGrid-virtualScrollerContent MuiDataGrid-virtualScrollerContent--overflowed css-jz7yqw-MuiDataGrid-virtualScrollerContent"
+                      style="width: auto; height: 1px; min-height: auto;"
                     >
                       <div
-                        class="MuiDataGrid-virtualScrollerRenderZone css-uw2ren-MuiDataGrid-virtualScrollerRenderZone"
+                        class="MuiDataGrid-virtualScrollerRenderZone css-s1v7zr-MuiDataGrid-virtualScrollerRenderZone"
+                        style="transform: translate3d(0px, undefinedpx, 0px);"
                       />
                     </div>
                   </div>
@@ -399,7 +415,7 @@ HTMLCollection [
               </div>
               <div>
                 <div
-                  class="MuiDataGrid-footerContainer css-1b34haf-MuiDataGrid-footerContainer"
+                  class="MuiDataGrid-footerContainer css-17jjc08-MuiDataGrid-footerContainer"
                 >
                   <div />
                   <div
@@ -419,6 +435,7 @@ HTMLCollection [
                       </p>
                       <div
                         class="MuiInputBase-root MuiInputBase-colorPrimary css-16c50h-MuiInputBase-root-MuiTablePagination-select"
+                        variant="standard"
                       >
                         <div
                           aria-expanded="false"
@@ -506,7 +523,7 @@ HTMLCollection [
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1em9ut6-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
         >
           <div
             class="css-1diyz6t"

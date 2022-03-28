@@ -112,19 +112,18 @@ describe('SearchLinRec', () => {
         <SearchLinRec {...props} />
       </LocalizationProvider>,
     );
-
     const titleInput = screen.queryByLabelText('Title');
     userEvent.type(titleInput, 'title');
 
     const dateInput = screen.getByLabelText('Choose date');
     await userEvent.type(dateInput, '20/10/2999 6:00 PM', { delay: 1 });
 
-    const searchButton = screen.queryByText('Search');
+    const searchButton = screen.getByText('Search');
 
     await waitFor(() => fireEvent.click(searchButton));
 
     await waitFor(() => {
-      const rowCheckBox = screen.queryByLabelText('Select Row checkbox');
+      const rowCheckBox = screen.queryByLabelText('Select row');
       fireEvent.click(rowCheckBox);
     });
 
