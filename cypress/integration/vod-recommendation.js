@@ -134,4 +134,19 @@ describe('Testing crud vod raccomandation', () => {
     // check for notification
     cy.contains('Vod Deleted');
   });
+
+  /************************************************************************************CONFIRM POPUP***************************************************************** */
+  it('Check confirm popup VOD on prev data', () => {
+    //opena modal
+    cy.contains('NEW VOD').click();
+
+    cy.selectRandomCluster(randomIndexClusterVal);
+    //type the date in the start date input
+    cy.get('input[type="tel"]').type(dateToSearch);
+    //click on load
+    cy.contains('Load').click();
+    cy.get('[data-test="close-modal-btn"]').click();
+    cy.contains('Discard changes?');
+    cy.contains('Yes').click();
+  });
 });

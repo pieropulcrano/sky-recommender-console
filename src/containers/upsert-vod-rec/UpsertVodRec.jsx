@@ -52,9 +52,7 @@ const UpsertVodRec = ({
   }, [vodRec]);
 
   const cleanPrevVod = () => {
-    debugger;
     if (prevVodRec?.item?.recommendation?.length > 0) {
-      debugger;
       setPrevRecVod([]);
     }
   };
@@ -164,7 +162,6 @@ const UpsertVodRec = ({
     },
     [id, onSuccess, addAlert, cleanPrevVod],
   );
-  console.log(prevVodRec);
   return (
     <>
       {id && !vodRec && !vodRecError ? (

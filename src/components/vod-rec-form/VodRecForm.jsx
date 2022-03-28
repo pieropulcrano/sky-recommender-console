@@ -40,6 +40,7 @@ const VocRecForm = ({
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
   const [isEditingFutureRec, setIsEditingFutureRec] = React.useState(false);
+  const [isSearching, setIsSearching] = React.useState(false);
 
   const formRef = React.useRef();
 
@@ -70,7 +71,7 @@ const VocRecForm = ({
   const handleClose = () => setOpen(false);
 
   const handleCheckOpenModalConfirm = () => {
-    if (formRef.current.dirty) {
+    if (formRef.current.dirty || isSearching) {
       handleOpenModalConfirm();
     } else {
       handleCloseModal();
@@ -156,7 +157,10 @@ const VocRecForm = ({
                           variant="contained"
                           color="primary"
                           loading={prevVodRecIsLoading}
-                          onClick={() => loadPrevVodRec(values)}
+                          onClick={() => {
+                            setIsSearching(true);
+                            loadPrevVodRec(values);
+                          }}
                         >
                           Load
                         </LoadingButton>
