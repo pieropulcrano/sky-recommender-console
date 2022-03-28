@@ -15,6 +15,7 @@ exports[`Select should display validation errors 1`] = `
   </label>
   <div
     class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary Mui-error MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+    variant="outlined"
   >
     <div
       aria-describedby="mui-4-helper-text"
@@ -55,7 +56,7 @@ exports[`Select should display validation errors 1`] = `
       class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
     >
       <legend
-        class="css-173wfxe"
+        class="css-1ftyaf0"
       >
         <span>
           Select
@@ -87,6 +88,7 @@ exports[`Select should render 1`] = `
   </label>
   <div
     class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+    variant="outlined"
   >
     <div
       aria-expanded="false"
@@ -126,7 +128,7 @@ exports[`Select should render 1`] = `
       class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
     >
       <legend
-        class="css-173wfxe"
+        class="css-1ftyaf0"
       >
         <span>
           Select
@@ -147,7 +149,7 @@ NodeList [
       data-testid="select-id"
     >
       <label
-        class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-focused css-1kty9di-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-focused css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         for="mui-2"
         id="mui-2-label"
@@ -156,6 +158,7 @@ NodeList [
       </label>
       <div
         class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+        variant="outlined"
       >
         <div
           aria-expanded="true"
@@ -195,7 +198,7 @@ NodeList [
           class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            class="css-1z7n62"
+            class="css-1in441m"
           >
             <span>
               Select

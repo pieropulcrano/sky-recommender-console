@@ -44,6 +44,16 @@ const LinRecSearchForm = ({
                 columns={columns}
                 loading={isSearching}
                 rows={searchResult}
+                initialState={{
+                  sorting: {
+                    sortModel: [
+                      {
+                        field: 'startProgram',
+                        sort: 'asc',
+                      },
+                    ],
+                  },
+                }}
               />
             </Grid>
             <Grid item xs={12}>

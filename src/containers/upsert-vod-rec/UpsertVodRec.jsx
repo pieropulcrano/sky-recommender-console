@@ -35,6 +35,7 @@ const UpsertVodRec = ({
   const { addAlert } = useNotification();
 
   let searchedDate = React.useRef();
+  let validTo = React.useRef();
 
   React.useEffect(() => {
     if (vodRecError)
@@ -45,6 +46,10 @@ const UpsertVodRec = ({
         id: Date.now(),
       });
   }, [addAlert, vodRecError]);
+
+  React.useEffect(() => {
+    if (vodRec) validTo.current = vodRec.items[0].validTo;
+  }, [vodRec]);
 
   const loadPrevVodRec = React.useCallback(
     async (params) => {
@@ -108,6 +113,7 @@ const UpsertVodRec = ({
       try {
         if (id) {
           const updated = prepareVodRec(id, values);
+          updated.validTo = validTo.current;
           await updateVodRec(id, updated);
           addAlert({
             text: 'Vod was successfully updated.',

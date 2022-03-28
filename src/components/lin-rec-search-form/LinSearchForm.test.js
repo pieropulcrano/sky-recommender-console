@@ -61,7 +61,7 @@ describe('LinSearchForm', () => {
           </LocalizationProvider>,
         );
 
-        const rowCheckBox = screen.queryByLabelText('Select Row checkbox');
+        const rowCheckBox = screen.queryByLabelText('Select row');
         await waitFor(() => fireEvent.click(rowCheckBox));
 
         const selectButton = screen.queryByText('Select');
