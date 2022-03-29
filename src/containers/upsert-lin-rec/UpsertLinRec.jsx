@@ -21,11 +21,11 @@ const UpsertLinRec = ({
   onSuccess,
   modalTitle,
   openModal,
-  handleOpenModalConfirm,
   handleCloseModal,
 }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
+  const [confirmOpen, setConfirmOpen] = React.useState(false);
 
   const { data: linRec, error: linRecError } = useLinRec(id);
 
@@ -41,6 +41,14 @@ const UpsertLinRec = ({
       });
     }
   }, [addAlert, linRecError]);
+
+  const handleOpenModalConfirm = () => {
+    setConfirmOpen(true);
+  };
+
+  const handleCloseModalConfirm = React.useCallback(() => {
+    handleCloseModal();
+  }, [handleCloseModal]);
 
   const onDelete = async (id) => {
     try {
@@ -120,7 +128,9 @@ const UpsertLinRec = ({
             modalTitle={modalTitle}
             openModal={openModal}
             handleOpenModalConfirm={handleOpenModalConfirm}
-            handleCloseModal={handleCloseModal}
+            handleCloseModal={handleCloseModalConfirm}
+            confirmOpen={confirmOpen}
+            setConfirmOpen={setConfirmOpen}
             initialValues={
               linRec
                 ? {
@@ -161,10 +171,6 @@ UpsertLinRec.propTypes = {
    * The callback function called for open the modal
    */
   openModal: PropTypes.bool,
-  /**
-   * The callback function called for open the modal of confirmation
-   */
-  handleOpenModalConfirm: PropTypes.func.isRequired,
   /**
    * The callback function called for Close the modal
    */

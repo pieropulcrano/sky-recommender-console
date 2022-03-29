@@ -19,6 +19,7 @@ import {
 import { validationSchema } from './validation';
 import { clusters, DEFAULT_VALUES } from './config';
 import { isExpired } from '../../utils/date';
+import ConfirmDialog from '../../confirmation-dialog/ConfirmDialog';
 
 /**
  * Form to create / edit a vod recommendation
@@ -36,11 +37,13 @@ const VocRecForm = ({
   openModal,
   handleOpenModalConfirm,
   handleCloseModal,
+  confirmOpen,
+  setConfirmOpen,
+  isSearching,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
   const [isEditingFutureRec, setIsEditingFutureRec] = React.useState(false);
-  const [isSearching, setIsSearching] = React.useState(false);
 
   const formRef = React.useRef();
 
@@ -112,121 +115,133 @@ const VocRecForm = ({
     return rows;
   };
   return (
-    <Modal
-      title={modalTitle}
-      open={openModal}
-      handleClose={handleCheckOpenModalConfirm}
-      data_test="scheduler-modal"
-    >
-      <RecFormWrapper>
-        <Formik
-          onSubmit={handleSubmit}
-          initialValues={mergedInitialValues}
-          validationSchema={validationSchema}
-          enableReinitialize
-          innerRef={formRef}
-        >
-          {({ setFieldValue, values, resetForm }) => (
-            <Form data-test="form-upsert-rec-vod">
-              <Grid container spacing={1.5}>
-                {/* The VOD is still editable (not in the past) or we are creating new one */}
-                {(isEditingFutureRec || !recId) && (
-                  <>
-                    <Grid item xs={4}>
-                      <Select
-                        data-test="select-cluster"
-                        name="cluster"
-                        label="Cluster"
-                        size="medium"
-                        options={clusters}
-                      />
-                    </Grid>
+    <>
+      <ConfirmDialog
+        title="Discard changes?"
+        open={confirmOpen}
+        setOpen={setConfirmOpen}
+        onConfirm={handleCloseModal}
+      >
+        Are you sure you want to leave without saving?
+      </ConfirmDialog>
 
-                    <Grid item xs={4}>
-                      <DateTimePicker
-                        data_test="select-date"
-                        name="startDateTime"
-                        label="Start Date"
-                        disablePast
-                      />
-                    </Grid>
-
-                    {!recId && (
-                      <Grid item xs={4} justifyContent="flex-end">
-                        <LoadingButton
-                          variant="contained"
-                          color="primary"
-                          loading={prevVodRecIsLoading}
-                          onClick={() => {
-                            setIsSearching(true);
-                            loadPrevVodRec(values);
-                          }}
-                        >
-                          Load
-                        </LoadingButton>
+      <Modal
+        title={modalTitle}
+        open={openModal}
+        handleClose={handleCheckOpenModalConfirm}
+        data_test="scheduler-modal"
+      >
+        <RecFormWrapper>
+          <Formik
+            onSubmit={handleSubmit}
+            initialValues={mergedInitialValues}
+            validationSchema={validationSchema}
+            enableReinitialize
+            innerRef={formRef}
+          >
+            {({ setFieldValue, values, resetForm }) => (
+              <Form data-test="form-upsert-rec-vod">
+                <Grid container spacing={1.5}>
+                  {/* The VOD is still editable (not in the past) or we are creating new one */}
+                  {(isEditingFutureRec || !recId) && (
+                    <>
+                      <Grid item xs={4}>
+                        <Select
+                          data-test="select-cluster"
+                          name="cluster"
+                          label="Cluster"
+                          size="medium"
+                          options={clusters}
+                        />
                       </Grid>
-                    )}
-                  </>
-                )}
 
-                <Grid item xs={12}>
-                  <Marginer direction="horizontal" margin={10} />
-                  <SlotsRowWrapper>
-                    {createRow(1, 5, values, recId)}
-                  </SlotsRowWrapper>
-                  <Marginer direction="horizontal" margin={10} />
-                </Grid>
+                      <Grid item xs={4}>
+                        <DateTimePicker
+                          data_test="select-date"
+                          name="startDateTime"
+                          label="Start Date"
+                          disablePast
+                        />
+                      </Grid>
 
-                {/* The VOD is still editable (not in the past) or we are creating new one */}
-                {(isEditingFutureRec || !recId) && (
-                  <Grid item xs={12}>
-                    <ButtonsWrapper>
-                      <LeftButtons>
-                        <ClearBtn onClick={() => clearSlots(resetForm, values)}>
-                          Clear
-                        </ClearBtn>
-                        <Marginer direction="vertical" margin={10} />
-                        {recId && (
+                      {!recId && (
+                        <Grid item xs={4} justifyContent="flex-end">
                           <LoadingButton
                             variant="contained"
-                            color="error"
-                            loading={isDeleting}
-                            onClick={() => onDelete(recId)}
+                            color="primary"
+                            loading={prevVodRecIsLoading}
+                            onClick={() => {
+                              loadPrevVodRec(values);
+                            }}
                           >
-                            Delete
+                            Load
                           </LoadingButton>
-                        )}
-                      </LeftButtons>
-                      <LoadingButton
-                        type="submit"
-                        variant="contained"
-                        color="success"
-                        data-test="submit-upsert-btn"
-                        loading={isSubmitting}
-                      >
-                        {recId ? 'Update' : 'Create'}
-                      </LoadingButton>
-                    </ButtonsWrapper>
-                  </Grid>
-                )}
-              </Grid>
+                        </Grid>
+                      )}
+                    </>
+                  )}
 
-              <Modal
-                title="Search VOD Event"
-                data_test="search-vod-modal"
-                open={open}
-                handleClose={handleClose}
-              >
-                <SearchVodRec
-                  addEvent={assignEventToSlot(setFieldValue)}
+                  <Grid item xs={12}>
+                    <Marginer direction="horizontal" margin={10} />
+                    <SlotsRowWrapper>
+                      {createRow(1, 5, values, recId)}
+                    </SlotsRowWrapper>
+                    <Marginer direction="horizontal" margin={10} />
+                  </Grid>
+
+                  {/* The VOD is still editable (not in the past) or we are creating new one */}
+                  {(isEditingFutureRec || !recId) && (
+                    <Grid item xs={12}>
+                      <ButtonsWrapper>
+                        <LeftButtons>
+                          <ClearBtn
+                            onClick={() => clearSlots(resetForm, values)}
+                          >
+                            Clear
+                          </ClearBtn>
+                          <Marginer direction="vertical" margin={10} />
+                          {recId && (
+                            <LoadingButton
+                              variant="contained"
+                              color="error"
+                              loading={isDeleting}
+                              onClick={() => onDelete(recId)}
+                            >
+                              Delete
+                            </LoadingButton>
+                          )}
+                        </LeftButtons>
+                        <LoadingButton
+                          type="submit"
+                          variant="contained"
+                          color="success"
+                          data-test="submit-upsert-btn"
+                          loading={isSubmitting}
+                        >
+                          {recId ? 'Update' : 'Create'}
+                        </LoadingButton>
+                      </ButtonsWrapper>
+                    </Grid>
+                  )}
+                </Grid>
+
+                <Modal
+                  title="Search VOD Event"
+                  data_test="search-vod-modal"
+                  open={open}
                   handleClose={handleClose}
-                />
-              </Modal>
-            </Form>
-          )}
-        </Formik>
-      </RecFormWrapper>
-    </Modal>
+                >
+                  <SearchVodRec
+                    addEvent={assignEventToSlot(setFieldValue)}
+                    handleClose={handleClose}
+                  />
+                </Modal>
+              </Form>
+            )}
+          </Formik>
+        </RecFormWrapper>
+      </Modal>
+    </>
   );
 };
 
@@ -279,6 +294,18 @@ VocRecForm.propTypes = {
    * The callback function called for Close the modal
    */
   handleCloseModal: PropTypes.func.isRequired,
+  /**
+   * Bool for open the confirmation popup
+   */
+  confirmOpen: PropTypes.bool.isRequired,
+  /**
+   * The callback function called for Open the confirmation modal
+   */
+  setConfirmOpen: PropTypes.func.isRequired,
+  /**
+   * Bool to check the onclick event on search button and show the confirmation popup
+   */
+  isSearching: PropTypes.bool.isRequired,
 };
 
 export default VocRecForm;

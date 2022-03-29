@@ -24,6 +24,7 @@ import Marginer from '../marginer/Marginer';
 import DateTimePicker from '../form/date-time-picker/DateTimePicker';
 import { clusters, DEFAULT_VALUES } from './config';
 import { slotTypes } from '../form/event-slot/EventSlot.types';
+import ConfirmDialog from '../../confirmation-dialog/ConfirmDialog';
 
 /**
  * Component to create / edit a linear recommendation.
@@ -40,6 +41,8 @@ const LinRecForm = ({
   openModal,
   handleOpenModalConfirm,
   handleCloseModal,
+  confirmOpen,
+  setConfirmOpen,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
@@ -120,141 +123,153 @@ const LinRecForm = ({
   const handleSubmit = (values) => onSubmit(values);
 
   return (
-    <Modal
-      title={modalTitle}
-      open={openModal}
-      handleClose={handleCheckOpenModalConfirm}
-      data_test="scheduler-modal"
-    >
-      <RecFormWrapper>
-        <Formik
-          initialValues={mergedInitialValues}
-          validationSchema={
-            recId && isEditingPresentRec
-              ? isEditingPresentRecSchema
-              : validationSchema
-          }
-          innerRef={formRef}
-          onSubmit={handleSubmit}
-          enableReinitialize
-        >
-          {({ setFieldValue, values, resetForm }) => (
-            <Form data-testid="form-upsert-rec-lin">
-              <Grid container spacing={1.5}>
-                {/*Able only if we are creating a new recommendation or we are editing a recommendation scheduled for the future */}
-                <Grid item xs={4}>
-                  <Select
-                    name="cluster"
-                    label="Cluster"
-                    size="medium"
-                    options={clusters}
-                    data-test="select-cluster"
-                    disabled={!recId || isEditingFutureRec ? false : true}
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <DateTimePicker
-                    name="startDateTime"
-                    label="Start Date"
-                    disablePast={!recId || isEditingFutureRec ? true : false}
-                    disabled={!recId || isEditingFutureRec ? false : true}
-                  />
-                </Grid>
-                {/*Able only if we are creating a new recommendation or we are editing a recommendation scheduled for the present/future */}
-                <Grid item xs={4}>
-                  <DateTimePicker
-                    name="endDateTime"
-                    label="End Date"
-                    disablePast={
-                      isEditingPresentRec || isEditingFutureRec || !recId
-                        ? true
-                        : false
-                    }
-                    disabled={
-                      isEditingPresentRec || isEditingFutureRec || !recId
-                        ? false
-                        : true
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12} data-testid="sd-slot-row">
-                  <Marginer direction="horizontal" margin={10} />
-                  <SlotsRowWrapper>
-                    {createRow(slotTypes.SD, values.startDateTime)}
-                  </SlotsRowWrapper>
-                </Grid>
-                <Grid item xs={12} data-testid="hd-slot-row">
-                  <SlotsRowWrapper>
-                    {createRow(slotTypes.HD, values.startDateTime)}
-                  </SlotsRowWrapper>
-                </Grid>
-                <Grid item xs={12}>
-                  <ButtonsWrapper>
-                    <LeftButtons>
-                      <ClearBtn
-                        disabled={!recId || isEditingFutureRec ? false : true}
-                        onClick={() => clearSlots(resetForm, values)}
-                      >
-                        Clear
-                      </ClearBtn>
-                      <Marginer direction="vertical" margin={10} />
-                      {recId && (
-                        <LoadingButton
-                          variant="contained"
-                          color="error"
-                          loading={isDeleting}
-                          onClick={() => onDelete(recId)}
-                          disabled={
-                            !isEditingPresentRec && isEditingFutureRec && recId
-                              ? false
-                              : true
-                          }
-                        >
-                          Delete
-                        </LoadingButton>
-                      )}
-                    </LeftButtons>
-                    <LoadingButton
-                      type="submit"
-                      variant="contained"
-                      color="success"
-                      loading={isSubmitting}
-                      disabled={
-                        !isEditingPresentRec && !isEditingFutureRec && recId
+    <>
+      <ConfirmDialog
+        title="Discard changes?"
+        open={confirmOpen}
+        setOpen={setConfirmOpen}
+        onConfirm={handleCloseModal}
+      >
+        Are you sure you want to leave without saving?
+      </ConfirmDialog>
+      <Modal
+        title={modalTitle}
+        open={openModal}
+        handleClose={handleCheckOpenModalConfirm}
+        data_test="scheduler-modal"
+      >
+        <RecFormWrapper>
+          <Formik
+            initialValues={mergedInitialValues}
+            validationSchema={
+              recId && isEditingPresentRec
+                ? isEditingPresentRecSchema
+                : validationSchema
+            }
+            innerRef={formRef}
+            onSubmit={handleSubmit}
+            enableReinitialize
+          >
+            {({ setFieldValue, values, resetForm }) => (
+              <Form data-testid="form-upsert-rec-lin">
+                <Grid container spacing={1.5}>
+                  {/*Able only if we are creating a new recommendation or we are editing a recommendation scheduled for the future */}
+                  <Grid item xs={4}>
+                    <Select
+                      name="cluster"
+                      label="Cluster"
+                      size="medium"
+                      options={clusters}
+                      data-test="select-cluster"
+                      disabled={!recId || isEditingFutureRec ? false : true}
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <DateTimePicker
+                      name="startDateTime"
+                      label="Start Date"
+                      disablePast={!recId || isEditingFutureRec ? true : false}
+                      disabled={!recId || isEditingFutureRec ? false : true}
+                    />
+                  </Grid>
+                  {/*Able only if we are creating a new recommendation or we are editing a recommendation scheduled for the present/future */}
+                  <Grid item xs={4}>
+                    <DateTimePicker
+                      name="endDateTime"
+                      label="End Date"
+                      disablePast={
+                        isEditingPresentRec || isEditingFutureRec || !recId
                           ? true
                           : false
                       }
-                    >
-                      {recId ? 'Update' : 'Create'}
-                    </LoadingButton>
-                  </ButtonsWrapper>
+                      disabled={
+                        isEditingPresentRec || isEditingFutureRec || !recId
+                          ? false
+                          : true
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12} data-testid="sd-slot-row">
+                    <Marginer direction="horizontal" margin={10} />
+                    <SlotsRowWrapper>
+                      {createRow(slotTypes.SD, values.startDateTime)}
+                    </SlotsRowWrapper>
+                  </Grid>
+                  <Grid item xs={12} data-testid="hd-slot-row">
+                    <SlotsRowWrapper>
+                      {createRow(slotTypes.HD, values.startDateTime)}
+                    </SlotsRowWrapper>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <ButtonsWrapper>
+                      <LeftButtons>
+                        <ClearBtn
+                          disabled={!recId || isEditingFutureRec ? false : true}
+                          onClick={() => clearSlots(resetForm, values)}
+                        >
+                          Clear
+                        </ClearBtn>
+                        <Marginer direction="vertical" margin={10} />
+                        {recId && (
+                          <LoadingButton
+                            variant="contained"
+                            color="error"
+                            loading={isDeleting}
+                            onClick={() => onDelete(recId)}
+                            disabled={
+                              !isEditingPresentRec &&
+                              isEditingFutureRec &&
+                              recId
+                                ? false
+                                : true
+                            }
+                          >
+                            Delete
+                          </LoadingButton>
+                        )}
+                      </LeftButtons>
+                      <LoadingButton
+                        type="submit"
+                        variant="contained"
+                        color="success"
+                        loading={isSubmitting}
+                        disabled={
+                          !isEditingPresentRec && !isEditingFutureRec && recId
+                            ? true
+                            : false
+                        }
+                      >
+                        {recId ? 'Update' : 'Create'}
+                      </LoadingButton>
+                    </ButtonsWrapper>
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Modal
-                title={`Search Linear Event [${currentSlot
-                  ?.split('.')[2]
-                  .toUpperCase()}]`}
-                open={open}
-                handleClose={handleClose}
-                data_test="search-lin-modal"
-              >
-                <SearchLinRec
-                  addEvent={assignEventToSlot(setFieldValue)}
-                  resolution={currentSlot?.split('.')[2].toUpperCase()}
+                <Modal
+                  title={`Search Linear Event [${currentSlot
+                    ?.split('.')[2]
+                    .toUpperCase()}]`}
+                  open={open}
                   handleClose={handleClose}
-                  initialStartDateTime={
-                    values.startDateTime &&
-                    !isNaN(Date.parse(formatToISO8601(values.startDateTime)))
-                      ? formatToISO8601(values.startDateTime)
-                      : null
-                  }
-                />
-              </Modal>
-            </Form>
-          )}
-        </Formik>
-      </RecFormWrapper>
-    </Modal>
+                  data_test="search-lin-modal"
+                >
+                  <SearchLinRec
+                    addEvent={assignEventToSlot(setFieldValue)}
+                    resolution={currentSlot?.split('.')[2].toUpperCase()}
+                    handleClose={handleClose}
+                    initialStartDateTime={
+                      values.startDateTime &&
+                      !isNaN(Date.parse(formatToISO8601(values.startDateTime)))
+                        ? formatToISO8601(values.startDateTime)
+                        : null
+                    }
+                  />
+                </Modal>
+              </Form>
+            )}
+          </Formik>
+        </RecFormWrapper>
+      </Modal>
+    </>
   );
 };
 
@@ -299,6 +314,14 @@ LinRecForm.propTypes = {
    * The callback function called for Close the modal
    */
   handleCloseModal: PropTypes.func.isRequired,
+  /**
+   * Bool for open the confirmation popup
+   */
+  confirmOpen: PropTypes.bool.isRequired,
+  /**
+   * The callback function called for Open the confirmation modal
+   */
+  setConfirmOpen: PropTypes.func.isRequired,
 };
 
 export default LinRecForm;
