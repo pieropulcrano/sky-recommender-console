@@ -57,6 +57,20 @@ describe('Event Slot', () => {
       expect(document.body.childNodes[0].children).toMatchSnapshot();
     });
 
+    it('should render a disabled plus slot', () => {
+      props.disableAddIcon = true;
+      render(
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+        >
+          <EventSlot {...props} />
+        </Formik>,
+      );
+
+      expect(document.body.childNodes[0].children).toMatchSnapshot();
+    });
+
     it('should render an hd slot', () => {
       props.type = 'hd';
       render(

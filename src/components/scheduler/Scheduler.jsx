@@ -16,7 +16,6 @@ import {
 import { prepareForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
-import ConfirmDialog from '../../confirmation-dialog/ConfirmDialog';
 
 /**
  * Component to handle the scheduling of the recommendations.
@@ -33,7 +32,6 @@ const Scheduler = () => {
   const [isEditing, setIsEditing] = React.useState(false);
   const [selectedRec, setSelectedRec] = React.useState(undefined);
   const [recType, setRecType] = React.useState(undefined);
-  const [confirmOpen, setConfirmOpen] = React.useState(false);
 
   const { addAlert } = useNotification();
 
@@ -46,10 +44,6 @@ const Scheduler = () => {
   }`;
 
   const handleOpenModal = () => setOpenModal(true);
-
-  const handleOpenModalConfirm = () => {
-    setConfirmOpen(true);
-  };
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -133,15 +127,6 @@ const Scheduler = () => {
 
   return (
     <>
-      <ConfirmDialog
-        title="Discard changes?"
-        open={confirmOpen}
-        setOpen={setConfirmOpen}
-        onConfirm={handleCloseModal}
-      >
-        Are you sure you want to leave without saving?
-      </ConfirmDialog>
-
       {recIsLoading && <Spinner height="65vh" />}
       <Hidden isLoading={recIsLoading}>
         <StyleWrapper>
@@ -189,7 +174,6 @@ const Scheduler = () => {
             onSuccess={handleCRUDSuccess}
             modalTitle={modalTitle}
             openModal={openModal}
-            handleOpenModalConfirm={handleOpenModalConfirm}
             handleCloseModal={handleCloseModal}
           />
         )}
@@ -199,7 +183,6 @@ const Scheduler = () => {
             onSuccess={handleCRUDSuccess}
             modalTitle={modalTitle}
             openModal={openModal}
-            handleOpenModalConfirm={handleOpenModalConfirm}
             handleCloseModal={handleCloseModal}
           />
         )}
@@ -208,7 +191,6 @@ const Scheduler = () => {
             onSuccess={handleCRUDSuccess}
             modalTitle={modalTitle}
             openModal={openModal}
-            handleOpenModalConfirm={handleOpenModalConfirm}
             handleCloseModal={handleCloseModal}
           />
         )}
@@ -218,7 +200,6 @@ const Scheduler = () => {
             onSuccess={handleCRUDSuccess}
             modalTitle={modalTitle}
             openModal={openModal}
-            handleOpenModalConfirm={handleOpenModalConfirm}
             handleCloseModal={handleCloseModal}
           />
         )}

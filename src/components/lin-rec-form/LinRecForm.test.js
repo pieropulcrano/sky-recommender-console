@@ -24,6 +24,8 @@ describe('Lin Rec Form', () => {
       openModal: true,
       handleOpenModalConfirm: jest.fn(),
       handleCloseModal: jest.fn(),
+      confirmOpen: false,
+      setConfirmOpen: jest.fn(),
     };
   });
 

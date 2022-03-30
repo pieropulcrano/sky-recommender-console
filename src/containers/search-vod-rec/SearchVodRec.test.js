@@ -36,6 +36,7 @@ describe('Search Vod Rec', () => {
     props = {
       addEvent: jest.fn(),
       handleClose: jest.fn(),
+      startDate: '2024-01-24T23:00:00Z',
     };
   });
 
@@ -66,6 +67,7 @@ describe('Search Vod Rec', () => {
         expect(mockedSearchVodRec).toHaveBeenCalledWith({
           title: titleToSearch,
           type: 'VOD',
+          startDate: props.startDate,
         });
       });
     });

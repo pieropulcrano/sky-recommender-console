@@ -22,13 +22,14 @@ const UpsertVodRec = ({
   onSuccess,
   modalTitle,
   openModal,
-  handleOpenModalConfirm,
   handleCloseModal,
 }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [prevVodRecIsLoading, setPrevVodRecIsLoading] = React.useState(false);
   const [prevVodRec, setPrevRecVod] = React.useState([]);
+  const [confirmOpen, setConfirmOpen] = React.useState(false);
+  const [isSearching, setIsSearching] = React.useState(false);
 
   const { data: vodRec, error: vodRecError } = useVodRec(id);
 
@@ -51,6 +52,36 @@ const UpsertVodRec = ({
     if (vodRec) validTo.current = vodRec.items[0].validTo;
   }, [vodRec]);
 
+  const cleanPrevVod = React.useCallback(() => {
+    if (prevVodRec?.item?.recommendation?.length > 0) {
+      setPrevRecVod([]);
+    }
+  }, [prevVodRec, setPrevRecVod]);
+
+  const handleClearPrevVod = React.useCallback(() => {
+    if (prevVodRec?.item?.recommendation?.length > 0) {
+      setPrevRecVod({
+        message: prevVodRec.message,
+        status: prevVodRec.status,
+        item: {
+          ...prevVodRec.item,
+          recommendation: new Array(),
+        },
+      });
+    }
+    console.log(prevVodRec);
+  });
+
+  const handleOpenModalConfirm = () => {
+    setConfirmOpen(true);
+  };
+
+  const handleCloseModalConfirm = React.useCallback(() => {
+    cleanPrevVod();
+    handleCloseModal();
+    setIsSearching(false);
+  }, [cleanPrevVod, handleCloseModal]);
+
   const loadPrevVodRec = React.useCallback(
     async (params) => {
       const { cluster, startDateTime } = params;
@@ -71,6 +102,7 @@ const UpsertVodRec = ({
         searchedDate.current = startDateTime;
         setPrevVodRecIsLoading(false);
         setPrevRecVod(res);
+        setIsSearching(true);
       } catch (error) {
         setPrevVodRecIsLoading(false);
         addAlert({
@@ -109,8 +141,8 @@ const UpsertVodRec = ({
 
   const onSubmit = React.useCallback(
     async (values) => {
-      setIsSubmitting(true);
       try {
+        setIsSubmitting(true);
         if (id) {
           const updated = prepareVodRec(id, values);
           updated.validTo = validTo.current;
@@ -121,7 +153,9 @@ const UpsertVodRec = ({
             type: 'success',
             id: Date.now(),
           });
+          cleanPrevVod();
           setIsSubmitting(false);
+          setIsSearching(false);
           onSuccess();
         } else {
           const vodRec = prepareVodRec(null, values);
@@ -133,9 +167,13 @@ const UpsertVodRec = ({
             data_test: 'vod-update-ok-not',
             id: Date.now(),
           });
+          cleanPrevVod();
+          setIsSubmitting(false);
+          setIsSearching(false);
           onSuccess();
         }
       } catch (error) {
+        cleanPrevVod();
         setIsSubmitting(false);
         addAlert({
           text: getMessageError(error),
@@ -145,9 +183,8 @@ const UpsertVodRec = ({
         });
       }
     },
-    [id, onSuccess, addAlert],
+    [id, onSuccess, addAlert, cleanPrevVod],
   );
-
   return (
     <>
       {id && !vodRec && !vodRecError ? (
@@ -165,7 +202,11 @@ const UpsertVodRec = ({
             modalTitle={modalTitle}
             openModal={openModal}
             handleOpenModalConfirm={handleOpenModalConfirm}
-            handleCloseModal={handleCloseModal}
+            handleCloseModal={handleCloseModalConfirm}
+            confirmOpen={confirmOpen}
+            setConfirmOpen={setConfirmOpen}
+            isSearching={isSearching}
+            handleClearPrevVod={handleClearPrevVod}
             initialValues={
               vodRec
                 ? {
@@ -213,10 +254,6 @@ UpsertVodRec.propTypes = {
    * The callback function called for open the modal
    */
   openModal: PropTypes.bool,
-  /**
-   * The callback function called for open the modal of confirmation
-   */
-  handleOpenModalConfirm: PropTypes.func.isRequired,
   /**
    * The callback function called for Close the modal
    */

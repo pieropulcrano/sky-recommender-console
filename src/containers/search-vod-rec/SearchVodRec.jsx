@@ -4,12 +4,13 @@ import VodRecSearchForm from '../../components/vod-rec-search-form/VodRecSearchF
 import useNotification from '../../hooks/useNotification';
 import { searchEvent } from '../../providers/event-provider/EventProvider';
 import getMessageError from '../../utils/errorHandling';
+import { formatToISO8601 } from '../../utils/date';
 
 /**
  * Container component that handle the logic to search a vod event.
  */
 
-const SearchVodRec = ({ addEvent, handleClose }) => {
+const SearchVodRec = ({ addEvent, handleClose, startDate }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
   const { addAlert } = useNotification();
@@ -19,7 +20,15 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
       setSearchResult([]);
       setIsSearching(true);
       try {
-        let res = await searchEvent({ ...values, type: 'VOD' });
+        let payload = { ...values, type: 'VOD' };
+        if (startDate) {
+          payload.startDate = startDate;
+        } else {
+          payload.startDate = formatToISO8601(
+            new Date(new Date().setDate(new Date().getDate() + 7)),
+          );
+        }
+        let res = await searchEvent(payload);
         setSearchResult(res);
       } catch (error) {
         addAlert({
@@ -32,7 +41,7 @@ const SearchVodRec = ({ addEvent, handleClose }) => {
         setIsSearching(false);
       }
     },
-    [addAlert],
+    [addAlert, startDate],
   );
 
   const onSubmit = (event) => {
