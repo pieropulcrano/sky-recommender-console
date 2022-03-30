@@ -58,6 +58,20 @@ const UpsertVodRec = ({
     }
   }, [prevVodRec, setPrevRecVod]);
 
+  const handleClearPrevVod = React.useCallback(() => {
+    if (prevVodRec?.item?.recommendation?.length > 0) {
+      setPrevRecVod({
+        message: prevVodRec.message,
+        status: prevVodRec.status,
+        item: {
+          ...prevVodRec.item,
+          recommendation: new Array(),
+        },
+      });
+    }
+    console.log(prevVodRec);
+  });
+
   const handleOpenModalConfirm = () => {
     setConfirmOpen(true);
   };
@@ -192,6 +206,7 @@ const UpsertVodRec = ({
             confirmOpen={confirmOpen}
             setConfirmOpen={setConfirmOpen}
             isSearching={isSearching}
+            handleClearPrevVod={handleClearPrevVod}
             initialValues={
               vodRec
                 ? {

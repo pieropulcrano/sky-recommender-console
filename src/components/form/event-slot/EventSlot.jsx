@@ -20,6 +20,7 @@ import {
   EventTitle,
   EventDateTime,
   AddIcon,
+  AddIconDisabled,
   StartDateIcon,
   EndDateIcon,
   EventChannel,
@@ -32,7 +33,14 @@ import {
 const SLOT_TYPE_HD = 'hd';
 const SLOT_TYPE_SD = 'sd';
 
-const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
+const EventSlot = ({
+  name,
+  handleOpen,
+  type,
+  disabled,
+  data_test_slot,
+  disableAddIcon,
+}) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
   const { value } = field;
@@ -47,11 +55,18 @@ const EventSlot = ({ name, handleOpen, type, disabled, data_test_slot }) => {
         <EventImageWrapper error={meta && meta.touched && meta.error}>
           {type === SLOT_TYPE_SD ? <SD /> : type === SLOT_TYPE_HD && <HD />}
           <EmptyEventWrapper error={meta && meta.touched && meta.error}>
-            {!disabled && (
-              <IconButton onClick={handleOpenModal}>
-                <AddIcon fontSize="large" />
-              </IconButton>
-            )}
+            <>
+              {!disabled && !disableAddIcon && (
+                <IconButton onClick={handleOpenModal}>
+                  <AddIcon fontSize="large" />
+                </IconButton>
+              )}
+              {disableAddIcon && (
+                <IconButton disabled={true}>
+                  <AddIconDisabled fontSize="large" />
+                </IconButton>
+              )}
+            </>
           </EmptyEventWrapper>
         </EventImageWrapper>
         {meta && meta.touched && meta.error && (
@@ -158,6 +173,10 @@ EventSlot.propTypes = {
    * Disable all possible interaction with the component (add / remove event).
    */
   disabled: PropTypes.bool,
+  /**
+   * Disable possible interaction with the component (add ).
+   */
+  disableAddIcon: PropTypes.bool,
 };
 
 export default EventSlot;

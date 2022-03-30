@@ -18,7 +18,7 @@ import {
 } from '../common/Common.styled';
 import { validationSchema } from './validation';
 import { clusters, DEFAULT_VALUES } from './config';
-import { isExpired } from '../../utils/date';
+import { isExpired, formatToISO8601 } from '../../utils/date';
 import ConfirmDialog from '../../confirmation-dialog/ConfirmDialog';
 
 /**
@@ -40,6 +40,7 @@ const VocRecForm = ({
   confirmOpen,
   setConfirmOpen,
   isSearching,
+  handleClearPrevVod,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
@@ -81,7 +82,7 @@ const VocRecForm = ({
     }
   };
 
-  const clearSlots = (resetForm, values) =>
+  const clearSlots = (resetForm, values) => {
     resetForm({
       values: {
         ...DEFAULT_VALUES,
@@ -89,6 +90,8 @@ const VocRecForm = ({
         cluster: values.cluster,
       },
     });
+    handleClearPrevVod();
+  };
 
   const assignEventToSlot = (setFieldValue) => (value) => {
     setFieldValue(currentSlot, {
@@ -109,6 +112,7 @@ const VocRecForm = ({
           name={`recommendation.${i}`}
           handleOpen={handleOpen}
           disabled={recId && !isEditingFutureRec}
+          disableAddIcon={values.startDateTime === null}
         />,
       );
     }
@@ -234,6 +238,12 @@ const VocRecForm = ({
                   <SearchVodRec
                     addEvent={assignEventToSlot(setFieldValue)}
                     handleClose={handleClose}
+                    startDate={
+                      values.startDateTime &&
+                      !isNaN(Date.parse(formatToISO8601(values.startDateTime)))
+                        ? formatToISO8601(values.startDateTime)
+                        : null
+                    }
                   />
                 </Modal>
               </Form>

@@ -37,6 +37,41 @@ HTMLCollection [
 ]
 `;
 
+exports[`Event Slot empty should render a disabled plus slot 1`] = `
+HTMLCollection [
+  <div
+    class="empity-slot css-1fk8khu"
+  >
+    <div
+      class="MuiBox-root css-1smxw4b"
+    >
+      <div
+        class="MuiBox-root css-1vwnyhv"
+      >
+        <button
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-9dlxcj-MuiSvgIcon-root"
+            data-testid="AddCircleIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
 exports[`Event Slot empty should render a disabled slot 1`] = `
 HTMLCollection [
   <div

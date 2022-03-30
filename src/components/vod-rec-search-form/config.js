@@ -26,7 +26,12 @@ export const columns = [
     type: 'dateTime',
     renderCell: CellExpand,
   },
-  { field: 'branding', headerName: 'Branding', width: '100' },
+  {
+    field: 'branding',
+    headerName: 'Branding',
+    width: '100',
+    renderCell: CellExpand,
+  },
   { field: 'thumbnailType', headerName: 'Thumbnail Type', width: '150' },
   {
     field: 'verticalImageUrl',

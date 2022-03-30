@@ -104,7 +104,7 @@ const LinRecForm = ({
     });
   };
 
-  const createRow = (slotType) => {
+  const createRow = (slotType, values) => {
     const rows = [];
     for (let i = 1; i <= 5; i++) {
       rows.push(
@@ -114,6 +114,7 @@ const LinRecForm = ({
           name={`recommendation.${i}.${slotType}`}
           type={slotType}
           disabled={recId && !isEditingFutureRec}
+          disableAddIcon={values.startDateTime === null}
         />,
       );
     }
@@ -192,12 +193,12 @@ const LinRecForm = ({
                   <Grid item xs={12} data-testid="sd-slot-row">
                     <Marginer direction="horizontal" margin={10} />
                     <SlotsRowWrapper>
-                      {createRow(slotTypes.SD, values.startDateTime)}
+                      {createRow(slotTypes.SD, values)}
                     </SlotsRowWrapper>
                   </Grid>
                   <Grid item xs={12} data-testid="hd-slot-row">
                     <SlotsRowWrapper>
-                      {createRow(slotTypes.HD, values.startDateTime)}
+                      {createRow(slotTypes.HD, values)}
                     </SlotsRowWrapper>
                   </Grid>
                   <Grid item xs={12}>

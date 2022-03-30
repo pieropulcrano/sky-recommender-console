@@ -65,6 +65,10 @@ export const AddIcon = styled((props) => <AddCircleIcon {...props} />)`
   color: blue;
 `;
 
+export const AddIconDisabled = styled((props) => <AddCircleIcon {...props} />)`
+  color: grey;
+`;
+
 export const Warning = styled(ReportProblemIcon)`
   position: absolute;
   right: 0;
