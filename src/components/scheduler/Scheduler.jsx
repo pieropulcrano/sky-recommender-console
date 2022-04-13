@@ -16,6 +16,7 @@ import {
 import { prepareForScheduler } from './Scheduler.helpers';
 import { getRec } from '../../providers/rec-provider/RecProvider';
 import { formatToISO8601 } from '../../utils/date';
+import useToken from '../../hooks/useToken';
 
 /**
  * Component to handle the scheduling of the recommendations.
@@ -33,6 +34,7 @@ const Scheduler = () => {
   const [selectedRec, setSelectedRec] = React.useState(undefined);
   const [recType, setRecType] = React.useState(undefined);
 
+  const { token } = useToken();
   const { addAlert } = useNotification();
 
   const CalendarRef = React.useRef();
@@ -56,10 +58,13 @@ const Scheduler = () => {
   const loadRec = React.useCallback(
     async (info, success, error) => {
       try {
-        const res = await getRec({
-          validFrom: formatToISO8601(info.startStr),
-          validTo: formatToISO8601(info.endStr),
-        });
+        const res = await getRec(
+          {
+            validFrom: formatToISO8601(info.startStr),
+            validTo: formatToISO8601(info.endStr),
+          },
+          token,
+        );
         const data = prepareForScheduler(res);
         success(data);
       } catch (err) {
@@ -72,7 +77,7 @@ const Scheduler = () => {
         error();
       }
     },
-    [addAlert],
+    [addAlert, token],
   );
 
   const handleRecLoading = (isLoading) => setRecIsLoading(isLoading);

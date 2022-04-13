@@ -19,22 +19,47 @@ import Login from '../pages/login/Login';
  */
 const App = () => {
   const { token, saveToken, removeToken } = useToken();
+  const [tokenL, setToken] = React.useState(token);
 
+  const handleRemoveToken = () => {
+    setToken(undefined);
+    removeToken();
+  };
+
+  const handeSetToken = (data) => {
+    saveToken(data);
+    setToken(data);
+  };
+
+  window.addEventListener('unload', (event) => {
+    //on close tab
+    handleRemoveToken();
+  });
+
+  React.useEffect(() => {
+    //on refresh page
+    if (performance.navigation.type === 1) {
+      handleRemoveToken();
+    } else {
+      // console.log('This page is not reloaded');
+    }
+  }, []);
   return (
     <Router basename={`${process.env.REACT_APP_BASENAME}`}>
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <AlertContextProvider>
-          {!token ? (
-            <Login saveToken={saveToken} />
-          ) : (
-            <Switch>
-              <Route exact from="/">
-                <Home removeToken={removeToken} />
-              </Route>
-              <Redirect from="*" to="/" />
-            </Switch>
-          )}
+          <Switch>
+            {!tokenL && <Login saveToken={handeSetToken} />}
+            {tokenL && (
+              <>
+                <Route exact from="/">
+                  <Home removeToken={handleRemoveToken} />
+                </Route>
+                <Redirect from="*" to="/" />
+              </>
+            )}
+          </Switch>
 
           <Notification />
         </AlertContextProvider>

@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react';
-
+import { logoutUser } from '../providers/auth-provider/AuthProvider';
 export default function useToken() {
-  const [token, setToken] = useState();
+  const getToken = () => {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+    return userToken;
+  };
 
+  const [token, setToken] = useState(getToken());
+
+  const saveTokenL = (userToken) => {
+    sessionStorage.setItem('token', JSON.stringify(userToken));
+    setToken(userToken.token);
+  };
   useEffect(() => {
     const timeoutConnection = setInterval(() => {
       setToken(undefined);
@@ -10,15 +20,13 @@ export default function useToken() {
     return () => clearInterval(timeoutConnection);
   }, [setToken]);
 
-  const saveToken = (userToken) => {
-    setToken(userToken);
-  };
-
-  const removeToken = () => {
+  const removeToken = async () => {
+    await logoutUser(token);
+    sessionStorage.removeItem('token');
     setToken(undefined);
   };
   return {
-    saveToken: saveToken,
+    saveToken: saveTokenL,
     removeToken: removeToken,
     token,
   };

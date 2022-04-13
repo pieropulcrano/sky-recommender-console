@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { db } from './db';
+import { checkTokenExpiration } from './utils';
 
 export const handlers = [
   //Login
@@ -14,10 +15,19 @@ export const handlers = [
       });
 
       if (user) {
-        return res(ctx.json({ status: '0', message: '' }));
+        let token = Date.now();
+        return res(ctx.json({ status: '0', message: '', token: token }));
       } else {
         return res(ctx.json({ status: '999', message: 'Not authorized' }));
       }
+    } catch (error) {
+      return res(ctx.status(400));
+    }
+  }),
+  //Logout
+  rest.post(process.env.REACT_APP_API_LOGOUT_URL, (req, res, ctx) => {
+    try {
+      return res(ctx.json({ status: '0', message: '' }));
     } catch (error) {
       return res(ctx.status(400));
     }

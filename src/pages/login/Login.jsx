@@ -12,11 +12,11 @@ const Login = ({ saveToken }) => {
     async (values) => {
       setIsSubmitting(true);
       try {
-        const token = await loginUser({
+        const responseLogin = await loginUser({
           ...values,
         });
         setIsSubmitting(false);
-        saveToken(token);
+        await saveToken(responseLogin.token);
       } catch (error) {
         setIsSubmitting(false);
         addAlert({
