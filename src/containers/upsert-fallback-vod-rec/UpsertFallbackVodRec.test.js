@@ -47,6 +47,7 @@ describe('Upsert Fallback Vod Rec', () => {
   beforeEach(() => {
     props = {
       handleAlertFallback: jest.fn(),
+      removeToken: jest.fn(),
     };
   });
 
@@ -93,6 +94,7 @@ describe('Upsert Fallback Vod Rec', () => {
             fallbackReccMock.items[0].id,
             fallbackReccMock.items[0],
           ),
+          null,
         );
       });
 
@@ -145,6 +147,7 @@ describe('Upsert Fallback Vod Rec', () => {
             fallbackReccMock.items[0].id,
             fallbackReccMock.items[0],
           ),
+          null,
         );
       });
 

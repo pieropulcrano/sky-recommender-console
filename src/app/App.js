@@ -26,7 +26,7 @@ const App = () => {
     removeToken();
   };
 
-  const handeSetToken = (data) => {
+  const handleSetToken = (data) => {
     saveToken(data);
     setToken(data);
   };
@@ -39,18 +39,21 @@ const App = () => {
   React.useEffect(() => {
     //on refresh page
     if (performance.navigation.type === 1) {
-      handleRemoveToken();
+      // debugger;
+      if (token) {
+        handleRemoveToken();
+      }
     } else {
       // console.log('This page is not reloaded');
     }
-  }, []);
+  }, [handleRemoveToken, token]);
   return (
     <Router basename={`${process.env.REACT_APP_BASENAME}`}>
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <AlertContextProvider>
           <Switch>
-            {!tokenL && <Login saveToken={handeSetToken} />}
+            {!tokenL && <Login saveToken={handleSetToken} />}
             {tokenL && (
               <>
                 <Route exact from="/">

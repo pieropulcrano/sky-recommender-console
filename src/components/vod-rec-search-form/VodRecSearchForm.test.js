@@ -16,6 +16,7 @@ describe('Vod Rec Search Form', () => {
       onSearch: jest.fn(),
       isSearching: false,
       searchResult: [],
+      removeToken: jest.fn(),
     };
   });
 

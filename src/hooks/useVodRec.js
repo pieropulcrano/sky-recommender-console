@@ -7,8 +7,8 @@ import { getVodRec } from '../providers/vod-rec-provider/VodRecProvider';
  * @returns {Object} - The requested vod recommendation.
  */
 
-export default function useVodRec(recVodId) {
+export default function useVodRec(recVodId, token) {
   return useSWR(recVodId ? `rec-vod/${recVodId}` : null, () =>
-    getVodRec(recVodId),
+    getVodRec(recVodId, token),
   );
 }

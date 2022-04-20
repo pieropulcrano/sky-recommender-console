@@ -7,10 +7,12 @@ import { createUrlQuery } from '../../utils/url';
  * @returns {Object} The requested vod recommendation.
  */
 
-export async function getVodRec(id) {
+export async function getVodRec(id, token) {
   id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
-  const res = await axios.get(url);
+  const res = await axios.get(url, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 }
 
@@ -20,10 +22,12 @@ export async function getVodRec(id) {
  * @returns {Object} The requested vod recommendation.
  */
 
-export async function getPrevVodRec(params) {
+export async function getPrevVodRec(params, token) {
   const query = createUrlQuery(params);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}?${query}`;
-  const res = await axios.get(url);
+  const res = await axios.get(url, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 }
 
@@ -33,10 +37,13 @@ export async function getPrevVodRec(params) {
  * @returns {Object} The created vod recommendation.
  */
 
-export async function createVodRec(recVod) {
+export async function createVodRec(recVod, token) {
   const res = await axios.post(
     process.env.REACT_APP_API_RECOMMENDATION_URL,
     recVod,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
   );
   return res.data;
 }
@@ -48,11 +55,14 @@ export async function createVodRec(recVod) {
  * @returns {Object} The updated vod recommendation.
  */
 
-export async function updateVodRec(id, recVod) {
+export async function updateVodRec(id, recVod, token) {
   id = encodeURIComponent(id);
   const res = await axios.put(
     `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`,
     recVod,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
   );
   return res.data;
 }
@@ -63,10 +73,12 @@ export async function updateVodRec(id, recVod) {
  * @returns {String} The id of deleted recommendation.
  */
 
-export async function deleteVodRec(id) {
+export async function deleteVodRec(id, token) {
   id = encodeURIComponent(id);
   const url = `${process.env.REACT_APP_API_RECOMMENDATION_URL}/${id}`;
-  const res = await axios.delete(url);
+  const res = await axios.delete(url, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return res.data;
 }
 
@@ -76,8 +88,10 @@ export async function deleteVodRec(id) {
  * @returns {Object} The requested vod recommendation.
  */
 
-export async function getFallbackVodRec(url) {
-  const res = await axios.get(url);
+export async function getFallbackVodRec(url, token) {
+  const res = await axios.get(url, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   if (res.data.items.length === 0) {
     res.data.items.push({ recommendation: new Array(10) });
   }
@@ -91,10 +105,13 @@ export async function getFallbackVodRec(url) {
  * @returns {Object} The updated fallback vod recommendation.
  */
 
-export async function updateFallbackVodRec(fallbackVodRec) {
+export async function updateFallbackVodRec(fallbackVodRec, token) {
   const res = await axios.put(
     `${process.env.REACT_APP_API_FALLBACK_RECOMMENDATION_URL}`,
     fallbackVodRec,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
   );
   return res.data;
 }

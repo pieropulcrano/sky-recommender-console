@@ -43,6 +43,7 @@ const LinRecForm = ({
   handleCloseModal,
   confirmOpen,
   setConfirmOpen,
+  removeToken,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
@@ -257,6 +258,7 @@ const LinRecForm = ({
                     addEvent={assignEventToSlot(setFieldValue)}
                     resolution={currentSlot?.split('.')[2].toUpperCase()}
                     handleClose={handleClose}
+                    removeToken={removeToken}
                     initialStartDateTime={
                       values.startDateTime &&
                       !isNaN(Date.parse(formatToISO8601(values.startDateTime)))
@@ -323,6 +325,10 @@ LinRecForm.propTypes = {
    * The callback function called for Open the confirmation modal
    */
   setConfirmOpen: PropTypes.func.isRequired,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default LinRecForm;

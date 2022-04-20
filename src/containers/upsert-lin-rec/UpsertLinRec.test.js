@@ -24,6 +24,7 @@ describe('UpsertLinRec', () => {
   let openModal = true;
   let handleOpenModalConfirm = jest.fn();
   let handleCloseModal = jest.fn();
+  let mockedRemoveToken = jest.fn();
 
   beforeEach(() => {
     linRec = linRecFixture;
@@ -49,15 +50,16 @@ describe('UpsertLinRec', () => {
           openModal={openModal}
           handleOpenModalConfirm={handleOpenModalConfirm}
           handleCloseModal={handleCloseModal}
+          removeToken={mockedRemoveToken}
         />
       </LocalizationProvider>,
     );
 
-    await waitFor(() => {
-      expect(mockedUseLinRec).toHaveBeenCalledTimes(1);
-      expect(mockedUseLinRec).toHaveBeenCalledWith(id);
-      expect(mockedAddAlert).toHaveBeenCalledTimes(1);
-    });
+    // await waitFor(() => {
+    expect(mockedUseLinRec).toHaveBeenCalledTimes(1);
+    expect(mockedUseLinRec).toHaveBeenCalledWith(id, null);
+    expect(mockedAddAlert).toHaveBeenCalledTimes(1);
+    // });
   });
 
   it('should handle delete recommendation success correctly', async () => {
@@ -86,6 +88,7 @@ describe('UpsertLinRec', () => {
           openModal={openModal}
           handleOpenModalConfirm={handleOpenModalConfirm}
           handleCloseModal={handleCloseModal}
+          removeToken={mockedRemoveToken}
         />
       </LocalizationProvider>,
     );
@@ -97,7 +100,7 @@ describe('UpsertLinRec', () => {
     await waitFor(() => {
       fireEvent.click(deleteButton);
       expect(mockedDeleteLinRec).toHaveBeenCalledTimes(1);
-      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec.items[0].id);
+      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec.items[0].id, null);
     });
 
     await waitFor(() => {
@@ -132,6 +135,7 @@ describe('UpsertLinRec', () => {
           openModal={openModal}
           handleOpenModalConfirm={handleOpenModalConfirm}
           handleCloseModal={handleCloseModal}
+          removeToken={mockedRemoveToken}
         />
       </LocalizationProvider>,
     );
@@ -143,7 +147,7 @@ describe('UpsertLinRec', () => {
     await waitFor(() => {
       fireEvent.click(deleteButton);
       expect(mockedDeleteLinRec).toHaveBeenCalledTimes(1);
-      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec.items[0].id);
+      expect(mockedDeleteLinRec).toHaveBeenCalledWith(linRec.items[0].id, null);
     });
 
     await waitFor(() => {
@@ -185,6 +189,7 @@ describe('UpsertLinRec', () => {
           openModal={openModal}
           handleOpenModalConfirm={handleOpenModalConfirm}
           handleCloseModal={handleCloseModal}
+          removeToken={mockedRemoveToken}
         />
       </LocalizationProvider>,
     );
@@ -198,13 +203,17 @@ describe('UpsertLinRec', () => {
     });
 
     expect(mockedUpdateLinRec).toHaveBeenCalledTimes(1);
-    expect(mockedUpdateLinRec).toHaveBeenCalledWith(linRec.items[0].id, {
-      cluster: linRec.items[0].cluster,
-      recommendation: linRec.items[0].recommendation,
-      type: linRec.items[0].type,
-      validFrom: linRec.items[0].validFrom,
-      validTo: linRec.items[0].validTo,
-    });
+    expect(mockedUpdateLinRec).toHaveBeenCalledWith(
+      linRec.items[0].id,
+      {
+        cluster: linRec.items[0].cluster,
+        recommendation: linRec.items[0].recommendation,
+        type: linRec.items[0].type,
+        validFrom: linRec.items[0].validFrom,
+        validTo: linRec.items[0].validTo,
+      },
+      null,
+    );
 
     await waitFor(() => {
       expect(onSuccess).toHaveBeenCalledTimes(1);
@@ -243,6 +252,7 @@ describe('UpsertLinRec', () => {
           openModal={openModal}
           handleOpenModalConfirm={handleOpenModalConfirm}
           handleCloseModal={handleCloseModal}
+          removeToken={mockedRemoveToken}
         />
       </LocalizationProvider>,
     );
@@ -255,13 +265,17 @@ describe('UpsertLinRec', () => {
     });
 
     expect(mockedUpdateLinRec).toHaveBeenCalledTimes(1);
-    expect(mockedUpdateLinRec).toHaveBeenCalledWith(linRec.items[0].id, {
-      cluster: linRec.items[0].cluster,
-      recommendation: linRec.items[0].recommendation,
-      type: linRec.items[0].type,
-      validFrom: linRec.items[0].validFrom,
-      validTo: linRec.items[0].validTo,
-    });
+    expect(mockedUpdateLinRec).toHaveBeenCalledWith(
+      linRec.items[0].id,
+      {
+        cluster: linRec.items[0].cluster,
+        recommendation: linRec.items[0].recommendation,
+        type: linRec.items[0].type,
+        validFrom: linRec.items[0].validFrom,
+        validTo: linRec.items[0].validTo,
+      },
+      null,
+    );
 
     await waitFor(() => {
       expect(onSuccess).not.toHaveBeenCalled();
@@ -294,6 +308,7 @@ describe('UpsertLinRec', () => {
           openModal={openModal}
           handleOpenModalConfirm={handleOpenModalConfirm}
           handleCloseModal={handleCloseModal}
+          removeToken={mockedRemoveToken}
         />
       </LocalizationProvider>,
     );

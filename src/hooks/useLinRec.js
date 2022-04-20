@@ -7,8 +7,8 @@ import { getLinRec } from '../providers/lin-rec-provider/LinRecProvider';
  * @returns {Object} - The requested linear recommendation.
  */
 
-export default function useLinRec(recLinId) {
+export default function useLinRec(recLinId, token) {
   return useSWR(recLinId ? `lin-vod/${recLinId}` : null, () =>
-    getLinRec(recLinId),
+    getLinRec(recLinId, token),
   );
 }

@@ -21,6 +21,7 @@ describe('SearchLinRec', () => {
     addEvent,
     handleClose,
     resolution: 'SD',
+    removeToken: jest.fn(),
   };
 
   beforeEach(() => {

@@ -11,9 +11,13 @@ import Scheduler from './Scheduler';
  */
 
 let mockedAddAlert = jest.fn();
+let mockedRemoveToken = jest.fn();
 
 jest.mock('../../hooks/useNotification', () => () => ({
   addAlert: mockedAddAlert,
+}));
+jest.mock('../../hooks/useToken', () => () => ({
+  addAlert: mockedRemoveToken,
 }));
 
 describe('Scheduler', () => {

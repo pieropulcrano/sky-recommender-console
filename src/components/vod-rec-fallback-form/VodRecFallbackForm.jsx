@@ -15,7 +15,12 @@ import { DEFAULT_VALUES } from './config';
  * Form to add / edit the fallback vod recommendation
  */
 
-const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
+const VocRecFallbackForm = ({
+  onSubmit,
+  initialValues,
+  isSubmitting,
+  removeToken,
+}) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(null);
 
@@ -102,6 +107,7 @@ const VocRecFallbackForm = ({ onSubmit, initialValues, isSubmitting }) => {
               <SearchVodRec
                 addEvent={assignEventToSlot(setFieldValue)}
                 handleClose={handleClose}
+                removeToken={removeToken}
               />
             </Modal>
           </Form>
@@ -124,6 +130,10 @@ VocRecFallbackForm.propTypes = {
    * The form is performing a submit operation
    */
   isSubmitting: PropTypes.bool.isRequired,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default VocRecFallbackForm;

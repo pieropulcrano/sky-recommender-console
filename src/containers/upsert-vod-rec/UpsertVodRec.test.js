@@ -83,6 +83,7 @@ describe('UpsertVodRec', () => {
       openModal: true,
       handleOpenModalConfirm: jest.fn(),
       handleCloseModal: jest.fn(),
+      removeToken: jest.fn(),
     };
   });
 
@@ -101,7 +102,7 @@ describe('UpsertVodRec', () => {
 
       await waitFor(() => {
         expect(mockedUseVodRec).toHaveBeenCalledTimes(1);
-        expect(mockedUseVodRec).toHaveBeenCalledWith(props.id);
+        expect(mockedUseVodRec).toHaveBeenCalledWith(props.id, null);
         expect(mockedAddAlert).toHaveBeenCalledWith(alertErrorLoading);
       });
     });
@@ -127,7 +128,7 @@ describe('UpsertVodRec', () => {
       await waitFor(() => {
         fireEvent.click(deleteButton);
         expect(mockedDeleteVodRec).toHaveBeenCalledTimes(1);
-        expect(mockedDeleteVodRec).toHaveBeenCalledWith(props.id);
+        expect(mockedDeleteVodRec).toHaveBeenCalledWith(props.id, null);
       });
 
       await waitFor(() => {
@@ -158,13 +159,17 @@ describe('UpsertVodRec', () => {
         fireEvent.click(updateButton);
       });
       expect(mockedUpdateVodRec).toHaveBeenCalledTimes(1);
-      expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec.items[0].id, {
-        cluster: vodRec.items[0].cluster,
-        recommendation: vodRec.items[0].recommendation,
-        type: vodRec.items[0].type,
-        validFrom: vodRec.items[0].validFrom,
-        validTo: '',
-      });
+      expect(mockedUpdateVodRec).toHaveBeenCalledWith(
+        vodRec.items[0].id,
+        {
+          cluster: vodRec.items[0].cluster,
+          recommendation: vodRec.items[0].recommendation,
+          type: vodRec.items[0].type,
+          validFrom: vodRec.items[0].validFrom,
+          validTo: '',
+        },
+        null,
+      );
 
       await waitFor(() => {
         expect(props.onSuccess).not.toHaveBeenCalled();
@@ -259,7 +264,10 @@ describe('UpsertVodRec', () => {
       await waitFor(() => {
         fireEvent.click(deleteButton);
         expect(mockedDeleteVodRec).toHaveBeenCalledTimes(1);
-        expect(mockedDeleteVodRec).toHaveBeenCalledWith(vodRec.items[0].id);
+        expect(mockedDeleteVodRec).toHaveBeenCalledWith(
+          vodRec.items[0].id,
+          null,
+        );
       });
 
       await waitFor(() => {
@@ -294,13 +302,17 @@ describe('UpsertVodRec', () => {
       });
 
       await waitFor(() => {
-        expect(mockedUpdateVodRec).toHaveBeenCalledWith(vodRec.items[0].id, {
-          cluster: vodRec.items[0].cluster,
-          recommendation: vodRec.items[0].recommendation,
-          type: vodRec.items[0].type,
-          validFrom: vodRec.items[0].validFrom,
-          validTo: '',
-        });
+        expect(mockedUpdateVodRec).toHaveBeenCalledWith(
+          vodRec.items[0].id,
+          {
+            cluster: vodRec.items[0].cluster,
+            recommendation: vodRec.items[0].recommendation,
+            type: vodRec.items[0].type,
+            validFrom: vodRec.items[0].validFrom,
+            validTo: '',
+          },
+          null,
+        );
       });
 
       await waitFor(() => {

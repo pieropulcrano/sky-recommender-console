@@ -24,6 +24,7 @@ const DataGridTable = ({ name, rows, columns, ...props }) => {
       const selectionSet = new Set(selectionModel);
       const result = selection.filter((s) => !selectionSet.has(s));
       setSelectionModel(result);
+      setFieldValue(name, rows.filter((row) => row.id === result[0])[0]);
     } else {
       setSelectionModel(selection);
       setFieldValue(name, rows.filter((row) => row.id === selection[0])[0]);

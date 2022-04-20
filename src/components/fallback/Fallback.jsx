@@ -9,12 +9,15 @@ import { FallbackWrapper } from './Fallback.styled';
  * Component that renders the form to edit the vod fallback events.
  */
 
-const Fallback = ({ handleAlertFallback }) => {
+const Fallback = ({ handleAlertFallback, removeToken }) => {
   return (
     <Container maxWidth="xl">
       <Marginer direction="horizontal" margin={60} />
       <FallbackWrapper>
-        <UpsertFallbackVodRec handleAlertFallback={handleAlertFallback} />
+        <UpsertFallbackVodRec
+          handleAlertFallback={handleAlertFallback}
+          removeToken={removeToken}
+        />
       </FallbackWrapper>
       <Marginer direction="horizontal" margin={80} />
     </Container>
@@ -27,6 +30,10 @@ Fallback.propTypes = {
    * @param {Array} data - Fallback vod events.
    */
   handleAlertFallback: PropTypes.func.isRequired,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default Fallback;

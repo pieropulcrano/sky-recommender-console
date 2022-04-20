@@ -31,6 +31,7 @@ const VodRecSearchForm = ({
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
+        enableReinitialize
       >
         <Form>
           <Marginer direction="horizontal" margin={10} />

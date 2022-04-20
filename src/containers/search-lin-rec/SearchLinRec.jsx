@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LinRecSearchForm from '../../components/lin-rec-search-form/LinRecSearchForm';
 import useNotification from '../../hooks/useNotification';
+import useToken from '../../hooks/useToken';
 import { formatToISO8601 } from '../../utils/date';
 import { searchEvent } from '../../providers/event-provider/EventProvider';
 import getMessageError from '../../utils/errorHandling';
@@ -15,9 +16,11 @@ const SearchLinRec = ({
   handleClose,
   resolution,
   initialStartDateTime,
+  removeToken,
 }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const [searchResult, setSearchResult] = React.useState([]);
+  const { token } = useToken();
   const { addAlert } = useNotification();
 
   const onSearch = React.useCallback(
@@ -31,9 +34,12 @@ const SearchLinRec = ({
       };
       if (resolution === 'SD') toSearch.resolution = 'SD';
       try {
-        let res = await searchEvent(toSearch);
+        let res = await searchEvent(toSearch, token);
         setSearchResult(res);
       } catch (error) {
+        if (error?.response?.status === 401) {
+          removeToken();
+        }
         addAlert({
           title: 'Vod search error',
           text: getMessageError(error),
@@ -44,7 +50,7 @@ const SearchLinRec = ({
         setIsSearching(false);
       }
     },
-    [resolution, addAlert],
+    [resolution, addAlert, removeToken],
   );
 
   const onSubmit = (event) => {
@@ -81,6 +87,10 @@ SearchLinRec.propTypes = {
    *   Start date time selected for create Linear rec.
    */
   initialStartDateTime: PropTypes.string,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default SearchLinRec;

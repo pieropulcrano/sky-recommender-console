@@ -18,9 +18,13 @@ export async function loginUser(credentials) {
 }
 
 export async function logoutUser(token) {
-  const res = await axios.post(process.env.REACT_APP_API_LOGOUT_URL, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const res = await axios.post(
+    process.env.REACT_APP_API_LOGOUT_URL,
+    undefined,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  );
   if (res.data.status === '999') {
     throw new Error();
   }

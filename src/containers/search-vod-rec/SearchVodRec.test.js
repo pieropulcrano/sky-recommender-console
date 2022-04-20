@@ -37,6 +37,7 @@ describe('Search Vod Rec', () => {
       addEvent: jest.fn(),
       handleClose: jest.fn(),
       startDate: '2024-01-24T23:00:00Z',
+      removeToken: jest.fn(),
     };
   });
 
@@ -64,12 +65,15 @@ describe('Search Vod Rec', () => {
       const searchButton = screen.getByText(searchBtn);
       await waitFor(() => {
         fireEvent.click(searchButton);
-        expect(mockedSearchVodRec).toHaveBeenCalledWith({
+      });
+      expect(mockedSearchVodRec).toHaveBeenCalledWith(
+        {
           title: titleToSearch,
           type: 'VOD',
           startDate: props.startDate,
-        });
-      });
+        },
+        null,
+      );
     });
 
     it('Search ko', async () => {

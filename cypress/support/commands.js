@@ -1,3 +1,5 @@
+// import { cy } from 'date-fns/locale';
+
 Cypress.Commands.add('testSearchVodModal', (event) => {
   //dovrebbe esserci un modal apert
   cy.get('[data-test="search-vod-modal"]').should('have.length', 1);
@@ -22,12 +24,20 @@ Cypress.Commands.add('testSearchVodModal', (event) => {
 Cypress.Commands.add('login', () => {
   let user = 'test';
   let pwd = 'test';
+  // cy.get('body').then(($body) => {
+  //   debugger;
+  //   if ($body.text().includes('Sign in')) {
+  //     debugger;
   // search lin event title
-  cy.get('input[type="text"]').type(user);
-  // insert startDate
-  cy.get('input[type="password"]').type(pwd);
-  //submit
-  cy.contains('Login').click();
+  if (!sessionStorage.getItem('token')) {
+    cy.get('input[type="text"]').type(user);
+    // insert startDate
+    cy.get('input[type="password"]').type(pwd);
+    //submit
+    cy.contains('Login').click();
+  }
+  //   }
+  // });
 });
 
 Cypress.Commands.add('selecetNewLine', (event, startDateEvent) => {

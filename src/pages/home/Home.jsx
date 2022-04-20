@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import IconButton from '@mui/material/IconButton';
 import { TabIcon, Warning, LogoutIcon } from './Home.styled';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
+import useToken from '../../hooks/useToken';
 
 /**
  * Component rendered when the user lands on the site homepage.
@@ -21,7 +22,8 @@ import useFallbackVodRec from '../../hooks/useFallbackVodRec';
 const Home = ({ removeToken }) => {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [alertFallback, setAlertFallback] = React.useState(0);
-  const { data: fallbackVodRec } = useFallbackVodRec();
+  const { token } = useToken();
+  const { data: fallbackVodRec } = useFallbackVodRec(token);
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -80,9 +82,12 @@ const Home = ({ removeToken }) => {
           )}
         </Tabs>
 
-        {selectedTab === 0 && <Schedule />}
+        {selectedTab === 0 && <Schedule removeToken={removeToken} />}
         {selectedTab === 1 && (
-          <Fallback handleAlertFallback={handleAlertFallback} />
+          <Fallback
+            handleAlertFallback={handleAlertFallback}
+            removeToken={removeToken}
+          />
         )}
       </Container>
     </>
@@ -91,6 +96,10 @@ const Home = ({ removeToken }) => {
 Home.propTypes = {
   /**
    * Callback function called when the user clicks on the Logout button.
+   */
+  removeToken: PropTypes.func.isRequired,
+  /**
+   * Perform logout
    */
   removeToken: PropTypes.func.isRequired,
 };

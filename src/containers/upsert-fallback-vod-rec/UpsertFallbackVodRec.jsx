@@ -8,21 +8,27 @@ import {
 import useNotification from '../../hooks/useNotification';
 import VodRecFallbackForm from '../../components/vod-rec-fallback-form/VodRecFallbackForm';
 import useFallbackVodRec from '../../hooks/useFallbackVodRec';
+import useToken from '../../hooks/useToken';
 import getMessageError from '../../utils/errorHandling';
 
 /**
  * Container component that handle the logic to create / edit a fallback vod recommendation.
  */
 
-const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
+const UpsertFallbackVodRec = ({ handleAlertFallback, removeToken }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const { token } = useToken();
   const { data: fallbackVodRec, error: fallbackVodRecError } =
-    useFallbackVodRec();
+    useFallbackVodRec(token);
 
   const { addAlert } = useNotification();
 
   React.useEffect(() => {
     if (fallbackVodRecError) {
+      if (fallbackVodRecError?.response?.status === 401) {
+        removeToken();
+      }
+
       addAlert({
         text: 'An error occured during the loading of the fallback vod rec.',
         title: 'Vod Fallback loading failed',
@@ -37,7 +43,7 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
       setIsSubmitting(true);
 
       const data = prepareFallbackVodRec(fallbackVodRec.items[0].id, values);
-      await updateFallbackVodRec(data);
+      await updateFallbackVodRec(data, token);
       handleAlertFallback({ items: [data] });
       setIsSubmitting(false);
       addAlert({
@@ -48,6 +54,9 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
         id: Date.now(),
       });
     } catch (error) {
+      if (error?.response?.status === 401) {
+        removeToken();
+      }
       setIsSubmitting(false);
       addAlert({
         text: getMessageError(error),
@@ -63,6 +72,7 @@ const UpsertFallbackVodRec = ({ handleAlertFallback }) => {
       {!fallbackVodRec && !fallbackVodRecError && <Spinner />}
       {(fallbackVodRec || fallbackVodRecError) && (
         <VodRecFallbackForm
+          removeToken={removeToken}
           onSubmit={onSubmit}
           isSubmitting={isSubmitting}
           initialValues={

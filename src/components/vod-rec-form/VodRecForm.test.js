@@ -44,6 +44,7 @@ describe('Vod Rec Form', () => {
       confirmOpen: false,
       setConfirmOpen: jest.fn(),
       isSearching: false,
+      removeToken: jest.fn(),
     };
   });
 

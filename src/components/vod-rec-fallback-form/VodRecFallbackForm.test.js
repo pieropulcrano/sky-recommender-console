@@ -12,6 +12,7 @@ describe('VodRecFallbackForm', () => {
       onSubmit: onSubitMock,
       initialValues: fallbackRecommendationFixture.items[0],
       isSubmitting: false,
+      removeToken: jest.fn(),
     };
 
     render(<VodRecFallbackForm {...props} />);
@@ -23,6 +24,7 @@ describe('VodRecFallbackForm', () => {
       onSubmit: onSubitMock,
       initialValues: { id: '9999', type: 'FALLBACK', recommendation: [] },
       isSubmitting: false,
+      removeToken: jest.fn(),
     };
 
     render(<VodRecFallbackForm {...props} />);

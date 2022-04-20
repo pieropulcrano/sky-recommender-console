@@ -13,6 +13,7 @@ import useVodRec from '../../hooks/useVodRec';
 import { formatToISO8601 } from '../../utils/date';
 import useNotification from '../../hooks/useNotification';
 import getMessageError from '../../utils/errorHandling';
+import useToken from '../../hooks/useToken';
 
 /**
  * Container component that handle the logic to create / edit a vod recommendation.
@@ -23,6 +24,7 @@ const UpsertVodRec = ({
   modalTitle,
   openModal,
   handleCloseModal,
+  removeToken,
 }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
@@ -31,7 +33,8 @@ const UpsertVodRec = ({
   const [confirmOpen, setConfirmOpen] = React.useState(false);
   const [isSearching, setIsSearching] = React.useState(false);
 
-  const { data: vodRec, error: vodRecError } = useVodRec(id);
+  const { token } = useToken();
+  const { data: vodRec, error: vodRecError } = useVodRec(id, token);
 
   const { addAlert } = useNotification();
 
@@ -39,14 +42,18 @@ const UpsertVodRec = ({
   let validTo = React.useRef();
 
   React.useEffect(() => {
-    if (vodRecError)
+    if (vodRecError) {
+      if (vodRecError?.response?.status === 401) {
+        removeToken();
+      }
       addAlert({
         text: 'An error occured during the loading of the vod rec.',
         title: 'Vod loading failed',
         type: 'error',
         id: Date.now(),
       });
-  }, [addAlert, vodRecError]);
+    }
+  }, [addAlert, vodRecError, removeToken]);
 
   React.useEffect(() => {
     if (vodRec) validTo.current = vodRec.items[0].validTo;
@@ -88,10 +95,13 @@ const UpsertVodRec = ({
       if (!cluster || !startDateTime) return;
       try {
         setPrevVodRecIsLoading(true);
-        const res = await getPrevVodRec({
-          cluster,
-          startDate: formatToISO8601(startDateTime),
-        });
+        const res = await getPrevVodRec(
+          {
+            cluster,
+            startDate: formatToISO8601(startDateTime),
+          },
+          token,
+        );
         if (Object.keys(res.item).length === 0)
           addAlert({
             text: 'There are no recommendations prior to the date entered.',
@@ -105,6 +115,9 @@ const UpsertVodRec = ({
         setIsSearching(true);
       } catch (error) {
         setPrevVodRecIsLoading(false);
+        if (error?.response?.status === 401) {
+          removeToken();
+        }
         addAlert({
           text: getMessageError(error),
           title: 'Vod loading failed',
@@ -113,13 +126,13 @@ const UpsertVodRec = ({
         });
       }
     },
-    [addAlert],
+    [addAlert, removeToken, token], //removeToken
   );
 
   const onDelete = async (id) => {
     try {
       setIsDeleting(true);
-      await deleteVodRec(id);
+      await deleteVodRec(id, token);
       addAlert({
         text: 'Vod was successfully deleted.',
         title: ` Vod Deleted`,
@@ -130,6 +143,9 @@ const UpsertVodRec = ({
       onSuccess();
     } catch (error) {
       setIsDeleting(false);
+      if (error?.response?.status === 401) {
+        removeToken();
+      }
       addAlert({
         text: getMessageError(error),
         title: `Vod deleting error`,
@@ -146,7 +162,7 @@ const UpsertVodRec = ({
         if (id) {
           const updated = prepareVodRec(id, values);
           updated.validTo = validTo.current;
-          await updateVodRec(id, updated);
+          await updateVodRec(id, updated, token);
           addAlert({
             text: 'Vod was successfully updated.',
             title: ` Vod Updated`,
@@ -159,7 +175,7 @@ const UpsertVodRec = ({
           onSuccess();
         } else {
           const vodRec = prepareVodRec(null, values);
-          await createVodRec(vodRec);
+          await createVodRec(vodRec, token);
           addAlert({
             text: 'Vod was successfully created.',
             title: ` Vod Created`,
@@ -175,6 +191,9 @@ const UpsertVodRec = ({
       } catch (error) {
         cleanPrevVod();
         setIsSubmitting(false);
+        if (error?.response?.status === 401) {
+          removeToken();
+        }
         addAlert({
           text: getMessageError(error),
           title: `Vod saving error`,
@@ -183,7 +202,7 @@ const UpsertVodRec = ({
         });
       }
     },
-    [id, onSuccess, addAlert, cleanPrevVod],
+    [id, onSuccess, addAlert, cleanPrevVod, removeToken],
   );
   return (
     <>
@@ -207,6 +226,7 @@ const UpsertVodRec = ({
             setConfirmOpen={setConfirmOpen}
             isSearching={isSearching}
             handleClearPrevVod={handleClearPrevVod}
+            removeToken={removeToken}
             initialValues={
               vodRec
                 ? {
@@ -258,6 +278,10 @@ UpsertVodRec.propTypes = {
    * The callback function called for Close the modal
    */
   handleCloseModal: PropTypes.func.isRequired,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default UpsertVodRec;

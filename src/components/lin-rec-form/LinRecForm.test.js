@@ -26,6 +26,7 @@ describe('Lin Rec Form', () => {
       handleCloseModal: jest.fn(),
       confirmOpen: false,
       setConfirmOpen: jest.fn(),
+      removeToken: jest.fn(),
     };
   });
 

@@ -41,11 +41,11 @@ const VocRecForm = ({
   setConfirmOpen,
   isSearching,
   handleClearPrevVod,
+  removeToken,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState(undefined);
   const [isEditingFutureRec, setIsEditingFutureRec] = React.useState(false);
-
   const formRef = React.useRef();
 
   React.useEffect(() => {
@@ -238,6 +238,7 @@ const VocRecForm = ({
                   <SearchVodRec
                     addEvent={assignEventToSlot(setFieldValue)}
                     handleClose={handleClose}
+                    removeToken={removeToken}
                     startDate={
                       values.startDateTime &&
                       !isNaN(Date.parse(formatToISO8601(values.startDateTime)))
@@ -316,6 +317,10 @@ VocRecForm.propTypes = {
    * Bool to check the onclick event on search button and show the confirmation popup
    */
   isSearching: PropTypes.bool.isRequired,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default VocRecForm;

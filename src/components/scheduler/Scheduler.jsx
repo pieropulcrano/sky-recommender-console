@@ -22,7 +22,7 @@ import useToken from '../../hooks/useToken';
  * Component to handle the scheduling of the recommendations.
  */
 
-const Scheduler = () => {
+const Scheduler = ({ removeToken }) => {
   /**
    * isloading is handled here in order to avoid infinite loop
    * @see https://github.com/fullcalendar/fullcalendar-react/issues/97
@@ -68,6 +68,9 @@ const Scheduler = () => {
         const data = prepareForScheduler(res);
         success(data);
       } catch (err) {
+        if (err?.response?.status === 401) {
+          removeToken();
+        }
         addAlert({
           text: err.message,
           title: 'Recommendations loading failed',
@@ -77,7 +80,7 @@ const Scheduler = () => {
         error();
       }
     },
-    [addAlert, token],
+    [addAlert, token], //removeToken
   );
 
   const handleRecLoading = (isLoading) => setRecIsLoading(isLoading);
@@ -180,6 +183,7 @@ const Scheduler = () => {
             modalTitle={modalTitle}
             openModal={openModal}
             handleCloseModal={handleCloseModal}
+            removeToken={removeToken}
           />
         )}
         {isEditing && recType === recTypes.vod && selectedRec?.id && (
@@ -189,6 +193,7 @@ const Scheduler = () => {
             modalTitle={modalTitle}
             openModal={openModal}
             handleCloseModal={handleCloseModal}
+            removeToken={removeToken}
           />
         )}
         {!isEditing && recType === recTypes.lin && (
@@ -197,6 +202,7 @@ const Scheduler = () => {
             modalTitle={modalTitle}
             openModal={openModal}
             handleCloseModal={handleCloseModal}
+            removeToken={removeToken}
           />
         )}
         {isEditing && recType === recTypes.lin && selectedRec?.id && (
@@ -206,6 +212,7 @@ const Scheduler = () => {
             modalTitle={modalTitle}
             openModal={openModal}
             handleCloseModal={handleCloseModal}
+            removeToken={removeToken}
           />
         )}
       </Hidden>

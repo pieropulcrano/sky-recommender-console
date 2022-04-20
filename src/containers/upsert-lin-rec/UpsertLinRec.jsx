@@ -9,6 +9,7 @@ import { prepareLinRec, normalizeLinRec } from './UpsertLinRec.helpers';
 import Spinner from '../../components/spinner/Spinner';
 import LinRecForm from '../../components/lin-rec-form/LinRecForm';
 import useLinRec from '../../hooks/useLinRec';
+import useToken from '../../hooks/useToken';
 import useNotification from '../../hooks/useNotification';
 import getMessageError from '../../utils/errorHandling';
 
@@ -22,17 +23,21 @@ const UpsertLinRec = ({
   modalTitle,
   openModal,
   handleCloseModal,
+  removeToken,
 }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
-
-  const { data: linRec, error: linRecError } = useLinRec(id);
+  const { token } = useToken();
+  const { data: linRec, error: linRecError } = useLinRec(id, token);
 
   const { addAlert } = useNotification();
 
   React.useEffect(() => {
     if (linRecError) {
+      if (linRecError?.response?.status === 401) {
+        removeToken();
+      }
       addAlert({
         text: 'An error occured during the loading of the lin rec.',
         title: 'Lin loading failed',
@@ -40,7 +45,7 @@ const UpsertLinRec = ({
         id: Date.now(),
       });
     }
-  }, [addAlert, linRecError]);
+  }, [addAlert, linRecError, removeToken]);
 
   const handleOpenModalConfirm = () => {
     setConfirmOpen(true);
@@ -53,7 +58,7 @@ const UpsertLinRec = ({
   const onDelete = async (id) => {
     try {
       setIsDeleting(true);
-      await deleteLinRec(id);
+      await deleteLinRec(id, token);
       addAlert({
         text: 'Lin was successfully deleted.',
         title: ` Lin Deleted`,
@@ -63,6 +68,9 @@ const UpsertLinRec = ({
       setIsDeleting(false);
       onSuccess();
     } catch (error) {
+      if (error?.response?.status === 401) {
+        removeToken();
+      }
       addAlert({
         text: getMessageError(error),
         title: `Lin deleting error`,
@@ -79,7 +87,7 @@ const UpsertLinRec = ({
       try {
         if (id) {
           const updated = prepareLinRec(id, values);
-          await updateLinRec(id, updated);
+          await updateLinRec(id, updated, token);
           addAlert({
             text: 'Lin was successfully updated.',
             title: ` Lin Updated`,
@@ -90,7 +98,7 @@ const UpsertLinRec = ({
           onSuccess();
         } else {
           const linRec = prepareLinRec(null, values);
-          await createLinRec(linRec);
+          await createLinRec(linRec, token);
           addAlert({
             text: 'Lin was successfully created.',
             title: 'Lin Created',
@@ -101,6 +109,9 @@ const UpsertLinRec = ({
           onSuccess();
         }
       } catch (error) {
+        if (error?.response?.status === 401) {
+          removeToken();
+        }
         addAlert({
           text: getMessageError(error),
           title: 'Lin saving error',
@@ -110,7 +121,7 @@ const UpsertLinRec = ({
         setIsSubmitting(false);
       }
     },
-    [id, onSuccess, addAlert],
+    [id, onSuccess, addAlert, removeToken],
   );
 
   return (
@@ -131,6 +142,7 @@ const UpsertLinRec = ({
             handleCloseModal={handleCloseModalConfirm}
             confirmOpen={confirmOpen}
             setConfirmOpen={setConfirmOpen}
+            removeToken={removeToken}
             initialValues={
               linRec
                 ? {
@@ -175,6 +187,10 @@ UpsertLinRec.propTypes = {
    * The callback function called for Close the modal
    */
   handleCloseModal: PropTypes.func.isRequired,
+  /**
+   * Perform logout
+   */
+  removeToken: PropTypes.func.isRequired,
 };
 
 export default UpsertLinRec;

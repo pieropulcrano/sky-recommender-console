@@ -36,7 +36,7 @@ export const handlers = [
   rest.get(process.env.REACT_APP_API_RECOMMENDATIONS_URL, (req, res, ctx) => {
     try {
       const allReccomendations = db.reccomendation.getAll();
-
+      //return res(ctx.status(401));
       return res(
         ctx.json({ status: '0', message: '', items: allReccomendations }),
       );
@@ -57,6 +57,7 @@ export const handlers = [
             },
           },
         });
+        // return res(ctx.status(401));
         return res(
           ctx.json({ status: '0', message: '', items: [reccomendation] }),
         );
@@ -81,6 +82,7 @@ export const handlers = [
       });
       let rec = reccomendation ? reccomendation : {};
       return res(ctx.json({ status: '0', message: '', item: rec }));
+      //return res(ctx.status(401));
     } catch (error) {
       return res(ctx.status(400));
     }
@@ -169,7 +171,7 @@ export const handlers = [
       } else {
         throw new Error();
       }
-
+      //  return res(ctx.status(401));
       return res(ctx.json({ status: '0', message: '', items: events }));
     } catch (error) {
       return res(ctx.status(400));
@@ -181,6 +183,7 @@ export const handlers = [
     (req, res, ctx) => {
       try {
         const fallback = db.fallback.getAll();
+        // return res(ctx.status(401));
         return res(ctx.json({ status: '0', message: '', items: fallback }));
       } catch (error) {
         return res(ctx.status(400));
