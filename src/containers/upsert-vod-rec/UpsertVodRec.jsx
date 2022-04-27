@@ -45,13 +45,20 @@ const UpsertVodRec = ({
     if (vodRecError) {
       if (vodRecError?.response?.status === 401) {
         removeToken();
+        addAlert({
+          text: 'Session Expired',
+          title: 'Vod loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
+      } else {
+        addAlert({
+          text: 'An error occured during the loading of the vod rec.',
+          title: 'Vod loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
       }
-      addAlert({
-        text: 'An error occured during the loading of the vod rec.',
-        title: 'Vod loading failed',
-        type: 'error',
-        id: Date.now(),
-      });
     }
   }, [addAlert, vodRecError, removeToken]);
 
@@ -117,13 +124,20 @@ const UpsertVodRec = ({
         setPrevVodRecIsLoading(false);
         if (error?.response?.status === 401) {
           removeToken();
+          addAlert({
+            text: 'Session Expired',
+            title: 'Vod loading failed',
+            type: 'error',
+            id: Date.now(),
+          });
+        } else {
+          addAlert({
+            text: getMessageError(error),
+            title: 'Vod loading failed',
+            type: 'warning',
+            id: Date.now(),
+          });
         }
-        addAlert({
-          text: getMessageError(error),
-          title: 'Vod loading failed',
-          type: 'warning',
-          id: Date.now(),
-        });
       }
     },
     [addAlert, removeToken, token], //removeToken
@@ -145,13 +159,20 @@ const UpsertVodRec = ({
       setIsDeleting(false);
       if (error?.response?.status === 401) {
         removeToken();
+        addAlert({
+          text: 'Session Expired',
+          title: 'Vod deleting error',
+          type: 'error',
+          id: Date.now(),
+        });
+      } else {
+        addAlert({
+          text: getMessageError(error),
+          title: `Vod deleting error`,
+          type: 'error',
+          id: Date.now(),
+        });
       }
-      addAlert({
-        text: getMessageError(error),
-        title: `Vod deleting error`,
-        type: 'error',
-        id: Date.now(),
-      });
     }
   };
 
@@ -193,13 +214,20 @@ const UpsertVodRec = ({
         setIsSubmitting(false);
         if (error?.response?.status === 401) {
           removeToken();
+          addAlert({
+            text: 'Session Expired',
+            title: 'Vod saving error',
+            type: 'error',
+            id: Date.now(),
+          });
+        } else {
+          addAlert({
+            text: getMessageError(error),
+            title: `Vod saving error`,
+            type: 'error',
+            id: Date.now(),
+          });
         }
-        addAlert({
-          text: getMessageError(error),
-          title: `Vod saving error`,
-          type: 'error',
-          id: Date.now(),
-        });
       }
     },
     [id, onSuccess, addAlert, cleanPrevVod, removeToken],

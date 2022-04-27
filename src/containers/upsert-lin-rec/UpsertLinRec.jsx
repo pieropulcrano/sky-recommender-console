@@ -37,13 +37,20 @@ const UpsertLinRec = ({
     if (linRecError) {
       if (linRecError?.response?.status === 401) {
         removeToken();
+        addAlert({
+          text: 'Session Expired',
+          title: 'Lin loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
+      } else {
+        addAlert({
+          text: 'An error occured during the loading of the lin rec.',
+          title: 'Lin loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
       }
-      addAlert({
-        text: 'An error occured during the loading of the lin rec.',
-        title: 'Lin loading failed',
-        type: 'error',
-        id: Date.now(),
-      });
     }
   }, [addAlert, linRecError, removeToken]);
 
@@ -70,13 +77,20 @@ const UpsertLinRec = ({
     } catch (error) {
       if (error?.response?.status === 401) {
         removeToken();
+        addAlert({
+          text: 'Session Expired',
+          title: 'Lin deleting error',
+          type: 'error',
+          id: Date.now(),
+        });
+      } else {
+        addAlert({
+          text: getMessageError(error),
+          title: `Lin deleting error`,
+          type: 'error',
+          id: Date.now(),
+        });
       }
-      addAlert({
-        text: getMessageError(error),
-        title: `Lin deleting error`,
-        type: 'error',
-        id: Date.now(),
-      });
       setIsDeleting(false);
     }
   };
@@ -111,13 +125,20 @@ const UpsertLinRec = ({
       } catch (error) {
         if (error?.response?.status === 401) {
           removeToken();
+          addAlert({
+            text: 'Session Expired',
+            title: 'Lin saving error',
+            type: 'error',
+            id: Date.now(),
+          });
+        } else {
+          addAlert({
+            text: getMessageError(error),
+            title: 'Lin saving error',
+            type: 'error',
+            id: Date.now(),
+          });
         }
-        addAlert({
-          text: getMessageError(error),
-          title: 'Lin saving error',
-          type: 'error',
-          id: Date.now(),
-        });
         setIsSubmitting(false);
       }
     },

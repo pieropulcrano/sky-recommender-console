@@ -70,13 +70,21 @@ const Scheduler = ({ removeToken }) => {
       } catch (err) {
         if (err?.response?.status === 401) {
           removeToken();
+          addAlert({
+            text: 'Session Expired',
+            title: 'Recommendations loading failed',
+            type: 'error',
+            id: Date.now(),
+          });
+        } else {
+          addAlert({
+            text: err.message,
+            title: 'Recommendations loading failed',
+            type: 'error',
+            id: Date.now(),
+          });
         }
-        addAlert({
-          text: err.message,
-          title: 'Recommendations loading failed',
-          type: 'error',
-          id: Date.now(),
-        });
+
         error();
       }
     },

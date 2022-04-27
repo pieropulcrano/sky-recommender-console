@@ -35,13 +35,20 @@ const SearchVodRec = ({ addEvent, handleClose, startDate, removeToken }) => {
       } catch (error) {
         if (error?.response?.status === 401) {
           removeToken();
+          addAlert({
+            text: 'Session Expired',
+            title: 'Vod search error',
+            type: 'error',
+            id: Date.now(),
+          });
+        } else {
+          addAlert({
+            title: 'Vod search error',
+            text: getMessageError(error),
+            type: 'error',
+            id: Date.now(),
+          });
         }
-        addAlert({
-          title: 'Vod search error',
-          text: getMessageError(error),
-          type: 'error',
-          id: Date.now(),
-        });
       } finally {
         setIsSearching(false);
       }

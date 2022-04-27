@@ -27,14 +27,20 @@ const UpsertFallbackVodRec = ({ handleAlertFallback, removeToken }) => {
     if (fallbackVodRecError) {
       if (fallbackVodRecError?.response?.status === 401) {
         removeToken();
+        addAlert({
+          text: 'Session Expired',
+          title: 'Vod Fallback loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
+      } else {
+        addAlert({
+          text: 'An error occured during the loading of the fallback vod rec.',
+          title: 'Vod Fallback loading failed',
+          type: 'error',
+          id: Date.now(),
+        });
       }
-
-      addAlert({
-        text: 'An error occured during the loading of the fallback vod rec.',
-        title: 'Vod Fallback loading failed',
-        type: 'error',
-        id: Date.now(),
-      });
     }
   }, [addAlert, fallbackVodRecError]);
 
@@ -56,14 +62,21 @@ const UpsertFallbackVodRec = ({ handleAlertFallback, removeToken }) => {
     } catch (error) {
       if (error?.response?.status === 401) {
         removeToken();
+        addAlert({
+          text: 'Session Expired',
+          title: 'Vod Fallback saving error',
+          type: 'error',
+          id: Date.now(),
+        });
+      } else {
+        addAlert({
+          text: getMessageError(error),
+          title: `Vod Fallback saving error`,
+          type: 'error',
+          id: Date.now(),
+        });
       }
       setIsSubmitting(false);
-      addAlert({
-        text: getMessageError(error),
-        title: `Vod Fallback saving error`,
-        type: 'error',
-        id: Date.now(),
-      });
     }
   };
 
